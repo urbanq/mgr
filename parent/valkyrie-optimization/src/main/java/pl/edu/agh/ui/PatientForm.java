@@ -12,9 +12,9 @@ public class PatientForm extends TabbedForm {
     protected Tab[] getTabs() {
         FormLayout layout = new FormLayout("default, 3dlu, fill:pref:nogrow, 3dlu, 100dlu", "default");
         FormLayoutFormBuilder builder = new FormLayoutFormBuilder(getBindingFactory(), layout);
-        setFocusControl(builder.addPropertyAndLabel("firstName")[1]);
+        setFocusControl(builder.addPropertyAndLabel("firstname")[1]);
         builder.nextRow();
-        builder.addPropertyAndLabel("lastName");
+        builder.addPropertyAndLabel("lastname");
         builder.nextRow();
         builder.addPropertyAndLabel("pesel");
 

@@ -23,8 +23,8 @@ public class PatientDataEditor extends DefaultDataEditorWidget {
         setFilterForm(new PatientFilterForm());
 
         PropertyColumnTableDescription tableDescription = new PropertyColumnTableDescription("patientDataEditor", Patient.class);
-        tableDescription.addPropertyColumn("firstName");
-        tableDescription.addPropertyColumn("lastName");
+        tableDescription.addPropertyColumn("firstname");
+        tableDescription.addPropertyColumn("lastname");
         tableDescription.addPropertyColumn("pesel");
         setTableWidget(tableDescription);
     }

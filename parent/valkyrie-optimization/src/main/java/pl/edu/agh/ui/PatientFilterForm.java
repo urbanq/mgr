@@ -27,9 +27,17 @@ public class PatientFilterForm extends FilterForm {
         builder.nextRow();
         builder.addPropertyAndLabel("quickSearch");
         builder.nextRow();
-        builder.addHorizontalSeparator("Item search fields", 3);
+        builder.addHorizontalSeparator("Firstname", 3);
         builder.nextRow();
-        builder.addPropertyAndLabel("peselContains");
+        builder.addPropertyAndLabel("firstname");
+        builder.nextRow();
+        builder.addHorizontalSeparator("Lastname", 3);
+        builder.nextRow();
+        builder.addPropertyAndLabel("lastname");
+        builder.nextRow();
+        builder.addHorizontalSeparator("PESEL", 3);
+        builder.nextRow();
+        builder.addPropertyAndLabel("pesel");
         return builder.getPanel();
     }
 }

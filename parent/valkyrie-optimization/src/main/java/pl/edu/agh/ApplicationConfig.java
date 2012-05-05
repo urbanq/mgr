@@ -152,7 +152,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     public DataSource dataSource() {
         SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:/home/mateusz/mgr-git/database");
+        dataSource.setUrl("jdbc:h2:/home/mateusz/mgr-git/database;IGNORECASE=TRUE;AUTO_RECONNECT=TRUE");
         dataSource.setUsername("sa");
         dataSource.setPassword("");
         dataSource.setAutoCommit(true);

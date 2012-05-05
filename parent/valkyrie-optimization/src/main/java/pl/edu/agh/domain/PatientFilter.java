@@ -1,18 +1,37 @@
 package pl.edu.agh.domain;
 
-public class PatientFilter {
+import pl.edu.agh.dao.GenericFilter;
+
+public class PatientFilter implements GenericFilter<Patient> {
     private String quickSearch;
+    private String pesel;
+    private String firstname;
+    private String lastname;
 
-    private String peselContains;
-
-    public String getPeselContains()
+    public String getPesel()
     {
-        return peselContains;
+        return pesel;
     }
 
-    public void setPeselContains(String peselContains)
+    public void setPesel(String pesel)
     {
-        this.peselContains = peselContains;
+        this.pesel = pesel;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getQuickSearch()

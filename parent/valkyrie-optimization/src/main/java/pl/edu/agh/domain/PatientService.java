@@ -3,7 +3,6 @@ package pl.edu.agh.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.dao.PatientDao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PatientService {
@@ -12,13 +11,7 @@ public class PatientService {
     private PatientDao patientDao;
 
     public List<Patient> findPatients(final PatientFilter filter) {
-        List<Patient> filtered = new ArrayList<Patient>();
-        for (Patient supplier : patientDao.getAll()) {
-            if (checkFilter(supplier, filter)) {
-                filtered.add(supplier);
-            }
-        }
-        return filtered;
+        return patientDao.getList(filter);
     }
 
     public Patient create(Patient patient) {
@@ -35,13 +28,5 @@ public class PatientService {
 
     public Patient getPatient(Integer id) {
         return patientDao.get(id);
-    }
-
-    public boolean checkFilter(Patient supplier, PatientFilter filter) {
-        boolean nameOk = true;
-        boolean contactNameOk = true;
-        if (filter.getPeselContains() != null)
-            nameOk = supplier.getPesel().contains(filter.getPeselContains());
-        return nameOk && contactNameOk;
     }
 }
