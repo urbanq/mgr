@@ -97,7 +97,7 @@ public class JdbcPatientDao extends SimpleJdbcDaoSupport implements PatientDao {
     }
 
     private static String like(String column, boolean and) {
-        return (and ? " and" : " where")  + " upper(first_name) like upper(?)";
+        return (and ? " and" : " where")  + " upper(" + column + ") like upper(?)";
     }
 
     private static final class PatientMappingQuery extends MappingSqlQuery<Patient> {

@@ -22,7 +22,7 @@ public class ValidationRulesSource extends DefaultRulesSource {
      * to display when this validator fails.
      */
     private final Constraint NAME_CONSTRAINT = all(new Constraint[] { required(), minLength(2),
-            regexp("[-'.a-zA-ZąĄęĘćĆśŚóÓżŻźŻ ]*", "alphabeticConstraint") });
+            regexp("[-'.a-zA-ZąĄęĘćĆńŃśŚóÓżŻźŻ ]*", "alphabeticConstraint") });
 
     /** Zipcode validator, allows NNNNN or NNNNN-NNNN */
     private final Constraint ZIPCODE_CONSTRAINT = all(new Constraint[] { required(), minLength(5), maxLength(10),
@@ -52,9 +52,9 @@ public class ValidationRulesSource extends DefaultRulesSource {
     private Rules createPatientRules() {
         return new Rules(Patient.class) {
             protected void initRules() {
-                add("firstName", NAME_CONSTRAINT);
-                add("lastName", NAME_CONSTRAINT);
-                add(not(eqProperty("firstName", "lastName")));
+                add("firstname", NAME_CONSTRAINT);
+                add("lastname", NAME_CONSTRAINT);
+                add(not(eqProperty("firstname", "lastname")));
                 add("pesel", PESEL_CONSTRAINT);
             }
         };
