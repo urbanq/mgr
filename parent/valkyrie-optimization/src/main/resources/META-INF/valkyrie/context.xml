@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="classpath:/org/valkyriercp/application/valkyrie-base.xml"/>
+
+    <bean class="pl.edu.agh.ApplicationConfig"/>
+
+    <!--<bean id="dataSource" class="org.firebirdsql.pool.FBWrappingDataSource">-->
+        <!--<property name="database" value="localhost/3050:/home/mateusz/mgr-git/database.gdb"/>-->
+        <!--<property name="userName" value="mateusz" />-->
+        <!--<property name="password" value="haselko"/>-->
+        <!--<property name="maxPoolSize" value="10" />-->
+        <!--<property name="minPoolSize" value="5"/>-->
+        <!--<property name="maxStatements" value="50" />-->
+        <!--<property name="type" value="TYPE4" />-->
+    <!--</bean>-->
+    <!--<bean id="dataSource"-->
+          <!--class="org.springframework.jdbc.datasource.SingleConnectionDataSource"-->
+          <!--destroy-method="destroy">-->
+        <!--<property name="driverClassName" value="org.h2.Driver"/>-->
+        <!--<property name="url" value="jdbc:h2:/home/mateusz/mgr-git/database"/>-->
+        <!--<property name="username" value="sa"/>-->
+        <!--<property name="password" value=""/>-->
+        <!--<property name="autoCommit" value="false"/>-->
+        <!--<property name="suppressClose" value="true"/>-->
+    <!--</bean>-->
+</beans>
