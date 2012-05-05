@@ -52,7 +52,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
 
     public Map<String, Resource> getImageSourceResources() {
         Map<String, Resource> resources = super.getImageSourceResources();
-        resources.put("pl.agh.edu", applicationContext().getResource("classpath:/pl/edu/agh/images.properties"));
+        resources.put("pl.agh.edu.images", applicationContext().getResource("classpath:/pl/edu/agh/images.properties"));
         return resources;
     }
 
@@ -152,7 +152,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     public DataSource dataSource() {
         SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:/home/mateusz/mgr-git/database;IGNORECASE=TRUE;AUTO_RECONNECT=TRUE");
+        dataSource.setUrl("jdbc:h2:/home/mateusz/mgr-git/database;AUTO_RECONNECT=TRUE");
         dataSource.setUsername("sa");
         dataSource.setPassword("");
         dataSource.setAutoCommit(true);
