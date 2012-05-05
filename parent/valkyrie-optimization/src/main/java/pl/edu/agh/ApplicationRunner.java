@@ -4,6 +4,6 @@ import org.valkyriercp.application.support.ApplicationLauncher;
 
 public class ApplicationRunner {
     public static void main(String[] args) {
-        new ApplicationLauncher();
+        new ApplicationLauncher(SplashScreenConfig.class, "/pl/edu/agh/context.xml");
     }
 }
