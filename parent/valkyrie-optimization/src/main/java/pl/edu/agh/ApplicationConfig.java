@@ -63,7 +63,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         return configurer;
     }
 
-    //    @Override
+//    @Override
 //    public ApplicationPageFactory applicationPageFactory() {
 //        return new TabbedApplicationPageFactory();
 //    }
