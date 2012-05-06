@@ -1,0 +1,515 @@
+"product_code","code","name","value_hosp","value_planned_hosp","value_one_day"
+"5.51.01.0001001","A01","Zabiegi wewnątrzczaszkowe z powodu poważnego urazu *",139,,
+"5.51.01.0001002","A02","Zabiegi wewnątrzczaszkowe z powodu urazu *",123,,
+"5.51.01.0001003","A03","Wszczepienie stymulatora struktur głębokich mózgu *",940,,
+"5.51.01.0001004","A04","Wszczepienie/ wymiana stymulatora rdzenia kręgowego lub wymiana generatora do stymulacji struktur głębokich mózgu *",625,,
+"5.51.01.0001011","A11","Kompleksowe zabiegi wewnątrzczaszkowe *",297,,
+"5.51.01.0001012","A12","Duże zabiegi wewnątrzczaszkowe *",191,,
+"5.51.01.0001013","A13","Średnie zabiegi wewnątrzczaszkowe *",119,113,
+"5.51.01.0001014","A14","Małe zabiegi wewnątrzczaszkowe *",31,29,28
+"5.51.01.0001022","A22","Duże zabiegi na rdzeniu kręgowym i w kanale kręgowym *",223,212,
+"5.51.01.0001023","A23","Średnie zabiegi na rdzeniu kręgowym i w kanale kręgowym *",129,123,
+"5.51.01.0001025","A25","Zabiegi na nerwach obwodowych *",94,89,85
+"5.51.01.0001026","A26","Zabiegi zwalczające ból i na układzie współczulnym *",13,12,11
+"5.51.01.0001030","A30","Kompleksowa diagnostyka polineuropatii i chorób mięśni",110,105,
+"5.51.01.0001031","A31","Choroby nerwów obwodowych",30,29,
+"5.51.01.0001032","A32","Choroby mięśni",60,,
+"5.51.01.0001033","A33","Zaburzenia równowagi",33,31,
+"5.51.01.0001034","A34","Guzy mózgu",85,,
+"5.51.01.0001035","A35","Choroby zwyrodnieniowe OUN",62,,
+"5.51.01.0001036","A36","Choroby demielinizacyjne",70,,
+"5.51.01.0001045","A45","Choroby naczyń mózgowych - leczenie zachowawcze",59,,
+"5.51.01.0001046","A46","Przemijające niedokrwienie mózgu",37,,
+"5.51.01.0001047","A47","Przemijające niedokrwienie mózgu - rozszerzona diagnostyka",74,,
+"5.51.01.0001048","A48","Kompleksowe leczenie udarów mózgu > 7 dni w oddziale udarowym",162,,
+"5.51.01.0001049","A49","Udar mózgu - leczenie > 3 dni",77,,
+"5.51.01.0001050","A50","Udar mózgu - leczenie",37,,
+"5.51.01.0001051","A51","Udar mózgu - leczenie trombolityczne > 7 dni w oddziale udarowym",242,,
+"5.51.01.0001056","A56","Choroby nerwów czaszkowych",33,31,
+"5.51.01.0001057","A57","Choroby zapalne układu nerwowego",77,,
+"5.51.01.0001058","A58","Encefalopatia",44,,
+"5.51.01.0001059","A59","Bóle głowy",29,28,
+"5.51.01.0001066","A66","Padaczka - diagnostyka i leczenie",16,15,
+"5.51.01.0001067","A67","Padaczka - diagnostyka i leczenie > 3 dni",77,,
+"5.51.01.0001076","A76","Urazy głowy z istotnym uszkodzeniem mózgu leczone zachowawczo",30,,
+"5.51.01.0001077","A77","Urazy głowy bez istotnego uszkodzenia mózgu leczone zachowawczo",16,,
+"5.51.01.0001086","A86","Choroby neuronu ruchowego",81,,
+"5.51.01.0001087","A87","Inne choroby układu nerwowego",31,29,
+"5.51.01.0002001","B01","Leczenie wysiękowej postaci AMD werteporfiną przy zastosowaniu terapii fotodynamicznej",138,131,
+"5.51.01.0002002","B02","Leczenie wysiękowej postaci AMD z zastosowaniem iniekcji doszklistkowych przeciwciała monoklonalnego anty-VEGF",57,57,57
+"5.51.01.0002004","B04","Przeszczep rogówki - kategoria I*",172,,
+"5.51.01.0002005","B05","Przeszczep rogówki - kategoria II*",136,,
+"5.51.01.0002006","B06","Przeszczep rogówki - kategoria III*",110,,
+"5.51.01.0002011","B11","Kompleksowe zabiegi w zaćmie i jaskrze *",109,104,98
+"5.51.01.0002012","B12","Usunięcie zaćmy powikłanej metodą emulsyfikacji z jednoczesnym wszczepieniem soczewki*",71,67,62
+"5.51.01.0002013","B13","Usunięcie zaćmy niepowikłanej metodą emulsyfikacji z jednoczesnym wszczepieniem soczewki*",61,58,55
+"5.51.01.0002014","B14","Usunięcie zaćmy powikłanej metodami innymi niż emulsyfikacja z jednoczesnym wszczepieniem soczewki*",63,60,
+"5.51.01.0002015","B15","Usunięcie zaćmy niepowikłanej metodami innymi niż emulsyfikacja z jednoczesnym wszczepieniem soczewki*",48,46,43
+"5.51.01.0002016","B16","Zabiegi z wykonaniem witrektomii z użyciem oleju silikonowego lub dekaliny, w tym wieloproceduralne *",163,155,147
+"5.51.01.0002017","B17","Zabiegi z wykonaniem witrektomii, w tym wieloproceduralne *",140,133,126
+"5.51.01.0002023","B23","Średnie zabiegi na soczewce *",46,44,41
+"5.51.01.0002024","B24","Małe zabiegi na soczewce *",12,11,11
+"5.51.01.0002032","B32","Duże zabiegi na aparacie ochronnym oka *",39,37,
+"5.51.01.0002033","B33","Średnie zabiegi na aparacie ochronnym oka *",15,14,14
+"5.51.01.0002034","B34","Małe zabiegi na aparacie ochronnym oka *",5,5,4
+"5.51.01.0002042","B42","Duże zabiegi na oczodole i aparacie łzowym *",166,158,
+"5.51.01.0002043","B43","Średnie zabiegi na oczodole i aparacie łzowym *",44,42,40
+"5.51.01.0002044","B44","Małe zabiegi na oczodole i aparacie łzowym *",12,11,11
+"5.51.01.0002052","B52","Duże zabiegi na rogówce i twardówce *",35,33,
+"5.51.01.0002053","B53","Średnie zabiegi na rogówce i twardówce *",22,21,20
+"5.51.01.0002063","B63","Zabiegi w zakresie mięśni okoruchowych *",46,44,41
+"5.51.01.0002072","B72","Duże zabiegi w jaskrze i na naczyniówce *",79,75,
+"5.51.01.0002073","B73","Średnie zabiegi w jaskrze i na naczyniówce *",53,50,48
+"5.51.01.0002074","B74","Małe zabiegi w jaskrze i na naczyniówce *",5,5,4
+"5.51.01.0002081","B81","Duże zabiegi na siatkówce *",99,94,
+"5.51.01.0002082","B82","Duże zabiegi na ciele szklistym *",48,46,
+"5.51.01.0002083","B83","Średnie zabiegi witreoretinalne *",29,28,26
+"5.51.01.0002084","B84","Małe zabiegi witreoretinalne *",16,15,14
+"5.51.01.0002098","B98","Leczenie zachowawcze okulistyczne",42,40,10
+"5.51.01.0003001","C01","Rozległe operacje nowotworów jamy ustnej, gardła i krtani z rekonstrukcją *",487,,
+"5.51.01.0003005","C05","Leczenie zaburzeń słuchu za pomocą implantów ślimakowych i pniowych *",2059,,
+"5.51.01.0003006","C06","Leczenie zaburzeń słuchu za pomocą innych wszczepialnych elektronicznych protez słuchu *",672,,
+"5.51.01.0003007","C07","Wymiana procesora mowy",688,,
+"5.51.01.0003011","C11","Kompleksowe zabiegi jamy ustnej, gardła i krtani *",220,209,
+"5.51.01.0003012","C12","Duże zabiegi jamy ustnej, gardła i krtani *",48,46,43
+"5.51.01.0003013","C13","Średnie zabiegi jamy ustnej, gardła i krtani < 18 r.ż.*",26,25,23
+"5.51.01.0003014","C14","Średnie zabiegi jamy ustnej, gardła i krtani > 17 r.ż.*",19,18,17
+"5.51.01.0003015","C15","Małe zabiegi jamy ustnej, gardła i krtani *",6,6,5
+"5.51.01.0003021","C21","Kompleksowe zabiegi szczękowo-twarzowe *",339,,
+"5.51.01.0003022","C22","Duże zabiegi szczękowo-twarzowe *",158,150,
+"5.51.01.0003023","C23","Średnie zabiegi szczękowo-twarzowe *",61,58,55
+"5.51.01.0003024","C24","Małe zabiegi szczękowo-twarzowe *",13,12,11
+"5.51.01.0003031","C31","Kompleksowe zabiegi uszu *",162,154,
+"5.51.01.0003032","C32","Duże zabiegi uszu *",67,64,
+"5.51.01.0003033","C33","Średnie zabiegi uszu *",20,19,18
+"5.51.01.0003034","C34","Małe zabiegi uszu *",13,12,11
+"5.51.01.0003041","C41","Kompleksowe zabiegi nosa *",94,89,
+"5.51.01.0003042","C42","Duże zabiegi nosa *",54,51,49
+"5.51.01.0003043","C43","Średnie zabiegi nosa *",31,29,28
+"5.51.01.0003044","C44","Małe zabiegi nosa *",9,9,8
+"5.51.01.0003045","C45","Duże zabiegi endoskopowe  < 18 r.ż.*",57,54,51
+"5.51.01.0003046","C46","Średnie zabiegi endoskopowe  < 18 r.ż.*",34,32,31
+"5.51.01.0003048","C48","Ostre zapalenie zatok przynosowych < 18 r.ż. z pw",63,,
+"5.51.01.0003056","C56","Poważne choroby gardła, uszu i nosa",45,,
+"5.51.01.0003057","C57","Inne choroby gardła, uszu i nosa",22,21,20
+"5.51.01.0004001","D01","Złożone zabiegi klatki piersiowej *",424,,
+"5.51.01.0004002","D02","Kompleksowe zabiegi klatki piersiowej *",292,,
+"5.51.01.0004003","D03","Duże zabiegi klatki piersiowej *",137,130,
+"5.51.01.0004004","D04","Średnie i małe zabiegi klatki piersiowej *",32,30,
+"5.51.01.0004005","D05","Bronchoskopia *",14,13,12
+"5.51.01.0004010","D10","Dychawica oskrzelowa",49,47,
+"5.51.01.0004016","D16","Zator płucny",80,,
+"5.51.01.0004017","D17","Ropień płuc, ropowica",90,,
+"5.51.01.0004018","D18","Zapalenie płuc nietypowe, wirusowe",72,,
+"5.51.01.0004019","D19","Rozstrzenie oskrzeli",70,,
+"5.51.01.0004020","D20","Gruźlica",33,,
+"5.51.01.0004021","D21","Zwłóknienie torbielowate",188,,
+"5.51.01.0004026","D26","Wysiękowe zapalenie opłucnej",53,,
+"5.51.01.0004028","D28","Choroby nowotworowe układu oddechowego i klatki piersiowej",76,,
+"5.51.01.0004036","D36","Zaburzenia oddychania w czasie snu",25,24,
+"5.51.01.0004037","D37","Inne choroby układu oddechowego",36,,
+"5.51.01.0004038","D38","Obrzęk płuc",47,,
+"5.51.01.0004046","D46","POChP i inne obturacyjne choroby układu oddechowego",36,34,
+"5.51.01.0004047","D47","Zapalenie płuc z pw",37,,
+"5.51.01.0004048","D48","Zapalenie płuc bez pw",25,,
+"5.51.01.0004049","D49","Uszkodzenia inhalacyjne płuc",91,,
+"5.51.01.0004050","D50","Zwłóknienie i pylica płuc",86,,
+"5.51.01.0004051","D51","Odma opłucnowa",46,,
+"5.51.01.0004052","D52","Niewydolność oddechowa",48,,
+"5.51.01.0004053","D53","Nadciśnienie płucne > 17 r.ż.",94,,
+"5.51.01.0004054","D54","Zapalenie opłucnej",37,,
+"5.51.01.0004055","D55","Ziarniniaki, choroby płuc alergiczne i z autoimmunizacji",95,,
+"5.51.01.0004056","D56","Ciężkie wady rozwojowe < 18 r.ż.",70,,
+"5.51.01.0005002","E02","Inne zabiegi kardiochirurgiczne > 17 r.ż.",367,,
+"5.51.01.0005003","E03","Inne zabiegi kardiochirurgiczne < 18 r.ż. *",307,,
+"5.51.01.0005004","E04","Pomostowanie naczyń wieńcowych z plastyką *",545,,
+"5.51.01.0005005","E05","Pomostowanie naczyń wieńcowych > 69 r.ż. lub z pw *",404,,
+"5.51.01.0005006","E06","Pomostowanie naczyń wieńcowych < 70 r.ż. bez pw *",383,,
+"5.51.01.0005011","E11","OZW - leczenie inwazyjne dwuetapowe > 3 dni *",289,,
+"5.51.01.0005012","E12","OZW - leczenie inwazyjne złożone *",264,,
+"5.51.01.0005013","E13","OZW - leczenie inwazyjne > 3 dni *",236,,
+"5.51.01.0005014","E14","OZW - leczenie inwazyjne < 4 dni *",197,,
+"5.51.01.0005016","E16","OZW > 69 r.ż. lub z pw",55,,
+"5.51.01.0005017","E17","OZW < 70 r.ż.",37,,
+"5.51.01.0005018","E18","OZW bez uniesienia ST",30,,
+"5.51.01.0005019","E19","OZW - leczenie z zastosowaniem leku trombolitycznego drugiej/ trzeciej generacji",135,,
+"5.51.01.0005021","E21","Przezskórne zamknięcie nieprawidłowych połączeń wewnątrzsercowych i zewnątrzsercowych > 17 r.ż.*",551,523,
+"5.51.01.0005022","E22","Przezskórne walwuloplastyki > 17 r.ż.*",473,449,
+"5.51.01.0005023","E23","Angioplastyka wieńcowa z implantacją DES *",295,280,
+"5.51.01.0005024","E24","Angioplastyka z implantacją nie mniej niż dwóch stentów lub wielonaczyniowa *",170,162,
+"5.51.01.0005025","E25","Angioplastyka z zastosowaniem jednego stentu i inne zabiegi *",126,120,
+"5.51.01.0005026","E26","Angioplastyka wieńcowa balonowa *",96,91,86
+"5.51.01.0005027","E27","Koronarografia i inne zabiegi inwazyjne *",32,30,29
+"5.51.01.0005031","E31","Wszczepienie/ wymiana rozrusznika jednojamowego *",120,114,
+"5.51.01.0005032","E32","Wszczepienie/ wymiana rozrusznika dwujamowego *",149,142,
+"5.51.01.0005033","E33","Wszczepienie/ wymiana układu z funkcją resynchronizującą serca (CRT) *",325,309,
+"5.51.01.0005034","E34","Wszczepienie/ wymiana kardiowertera-defibrylatora jedno-/ dwujamowego *",590,561,
+"5.51.01.0005036","E36","Wszczepienie/ wymiana CRT-D > 17 r.ż.*",894,849,
+"5.51.01.0005037","E37","Reperacja/ repozycja/ rewizja/ wymiana elektrody/ układu stymulującego/ kardiowertera-defibrylatora",59,56,
+"5.51.01.0005038","E38","Usunięcie przezżylne elektrod w przypadku powikłań *",248,,
+"5.51.01.0005039","E39","Leczenie zabiegowe zaburzeń rytmu < 18 r.ż.*",539,512,
+"5.51.01.0005041","E41","Ablacja zaburzeń rytmu z wykorzystaniem systemu elektroanatomicznego 3D *",499,474,
+"5.51.01.0005042","E42","Ablacja zaburzeń rytmu z wykorzystaniem systemu elektroanatomicznego *",335,318,
+"5.51.01.0005043","E43","Ablacja zaburzeń rytmu *",300,285,
+"5.51.01.0005044","E44","Diagnostyka inwazyjna zaburzeń rytmu serca *",130,124,
+"5.51.01.0005051","E51","Zapalenie wsierdzia",173,,
+"5.51.01.0005052","E52","Zaawansowana niewydolność krążenia",87,,
+"5.51.01.0005053","E53","Niewydolność krążenia > 69 r.ż. lub z pw",47,,
+"5.51.01.0005054","E54","Niewydolność krążenia < 70 r.ż. bez pw",31,,
+"5.51.01.0005055","E55","Zakrzepica żył głębokich",40,38,
+"5.51.01.0005056","E56","Choroba niedokrwienna serca > 69 r.ż. lub z pw",40,,
+"5.51.01.0005057","E57","Choroba niedokrwienna serca > 17 r.ż. < 70 r.ż. bez pw",31,,
+"5.51.01.0005059","E59","Nagłe zatrzymanie krążenia",46,,
+"5.51.01.0005061","E61","Zaburzenia rytmu serca > 69 r.ż. lub z pw",36,,
+"5.51.01.0005062","E62","Zaburzenia rytmu serca > 17 r.ż. < 70 r.ż. bez pw",19,18,
+"5.51.01.0005063","E63","Zaburzenia rytmu serca < 1 r.ż. lub < 18 r.ż. z pw",228,,
+"5.51.01.0005064","E64","Zaburzenia rytmu serca > 0 r.ż. i < 18 r.ż.",46,,
+"5.51.01.0005071","E71","Omdlenie i zapaść",27,26,
+"5.51.01.0005072","E72","Nieinwazyjna diagnostyka bólu w klatce piersiowej > 17 r.ż.",12,11,
+"5.51.01.0005073","E73","Choroby zastawek serca > 17 r.ż.",57,,
+"5.51.01.0005074","E74","Wrodzone wady serca > 17 r.ż.",76,,
+"5.51.01.0005075","E75","Wrodzone wady serca < 1 r.ż. lub < 18 r.ż. z pw",212,,
+"5.51.01.0005076","E76","Wrodzone wady serca > 0 r.ż. i < 18 r.ż.",52,,
+"5.51.01.0005077","E77","Inne choroby układu krążenia > 17 r.ż.",53,,
+"5.51.01.0005078","E78","Inne choroby układu krążenia < 1 r.ż. albo < 18 r.ż. z pw",235,,
+"5.51.01.0005079","E79","Inne choroby układu krążenia > 0 r.ż. i < 18 r.ż.",57,,
+"5.51.01.0005086","E86","Nadciśnienie tętnicze oporne i wtórne",80,,
+"5.51.01.0005087","E87","Ciężkie nadciśnienie tętnicze > 17 r.ż.",60,,
+"5.51.01.0005088","E88","Nadciśnienie tętnicze > 17 r.ż.",28,27,
+"5.51.01.0006001","F01","Kompleksowe zabiegi przełyku *",374,,
+"5.51.01.0006002","F02","Duże zabiegi przełyku, w tym protezowanie *",220,209,198
+"5.51.01.0006003","F03","Średnie i endoskopowe zabiegi przełyku *",52,49,47
+"5.51.01.0006004","F04","Diagnostyczne zabiegi przewodu pokarmowego *",11,10,10
+"5.51.01.0006007","F07","Choroby przełyku",45,,
+"5.51.01.0006011","F11","Kompleksowe zabiegi żołądka i dwunastnicy *",236,224,
+"5.51.01.0006012","F12","Duże zabiegi żołądka i dwunastnicy *",108,103,
+"5.51.01.0006013","F13","Zabiegi lecznicze żołądka i dwunastnicy *",38,36,34
+"5.51.01.0006016","F16","Choroby żołądka i dwunastnicy",37,35,
+"5.51.01.0006021","F21","Kompleksowe zabiegi jelita cienkiego *",195,,
+"5.51.01.0006022","F22","Duże i endoskopowe zabiegi jelita cienkiego *",137,130,123
+"5.51.01.0006026","F26","Choroby jelita cienkiego (bez chorób zapalnych)",57,,
+"5.51.01.0006031","F31","Kompleksowe zabiegi jelita grubego *",232,,
+"5.51.01.0006032","F32","Duże i endoskopowe zabiegi jelita grubego *",111,105,
+"5.51.01.0006033","F33","Średnie i endoskopowe zabiegi jelita grubego *",36,34,32
+"5.51.01.0006036","F36","Choroby jelita grubego",48,,
+"5.51.01.0006042","F42","Duże zabiegi jamy brzusznej *",120,114,
+"5.51.01.0006043","F43","Średnie i endoskopowe lecznicze zabiegi jamy brzusznej *",47,45,42
+"5.51.01.0006044","F44","Diagnostyczne i lecznicze zabiegi jamy brzusznej *",30,29,27
+"5.51.01.0006046","F46","Choroby jamy brzusznej",31,,
+"5.51.01.0006047","F47","Choroby infekcyjne jelit",31,,
+"5.51.01.0006051","F51","Kompleksowe zabiegi w chorobach zapalnych jelit *",153,,
+"5.51.01.0006052","F52","Duże i endoskopowe zabiegi w chorobach zapalnych jelit *",120,114,
+"5.51.01.0006053","F53","Średnie i endoskopowe zabiegi w chorobach zapalnych jelit *",25,24,23
+"5.51.01.0006056","F56","Choroby zapalne jelit > 17 r.ż.",80,,
+"5.51.01.0006057","F57","Choroby zapalne jelit < 18 r.ż.",90,,
+"5.51.01.0006061","F61","Kompleksowe zabiegi w krwawieniach z przewodu pokarmowego *",104,,
+"5.51.01.0006062","F62","Duże i endoskopowe lecznicze zabiegi w krwawieniach z przewodu pokarmowego *",65,62,
+"5.51.01.0006063","F63","Średnie i endoskopowe diagnostyczne zabiegi w krwawieniach z przewodu pokarmowego *",35,33,32
+"5.51.01.0006066","F66","Krwawienia z przewodu pokarmowego - leczenie zachowawcze",26,,
+"5.51.01.0006072","F72","Operacje przepuklin jamy brzusznej z wszczepem *",51,48,46
+"5.51.01.0006073","F73","Operacje przepuklin brzusznych *",37,35,33
+"5.51.01.0006082","F82","Wycięcie wyrostka robaczkowego z powikłaniami *",69,,
+"5.51.01.0006083","F83","Wycięcie wyrostka robaczkowego *",47,45,42
+"5.51.01.0006086","F86","Choroby wyrostka robaczkowego",32,,
+"5.51.01.0006093","F93","Średnie zabiegi odbytu *",25,24,23
+"5.51.01.0006094","F94","Małe zabiegi odbytu i odbytnicy *",10,10,9
+"5.51.01.0006096","F96","Choroby odbytu",41,,
+"5.51.01.0007001","G01","Rozległe zabiegi wątroby *",281,,
+"5.51.01.0007011","G11","Kompleksowe zabiegi wątroby *",160,,
+"5.51.01.0007012","G12","Duże zabiegi wątroby *",55,52,
+"5.51.01.0007013","G13","Średnie zabiegi wątroby *",22,21,
+"5.51.01.0007014","G14","Małe zabiegi wątroby *",10,10,9
+"5.51.01.0007016","G16","Ostre choroby wątroby",58,,
+"5.51.01.0007017","G17","Przewlekłe choroby wątroby z pw",98,,
+"5.51.01.0007018","G18","Przewlekłe choroby wątroby bez pw",42,,
+"5.51.01.0007021","G21","Kompleksowe zabiegi przewodów żółciowych *",266,,
+"5.51.01.0007022","G22","Duże zabiegi przewodów żółciowych *",93,88,
+"5.51.01.0007024","G24","Wycięcie pęcherzyka żółciowego z pw *",71,70,69
+"5.51.01.0007025","G25","Wycięcie pęcherzyka żółciowego *",63,60,57
+"5.51.01.0007026","G26","Choroby dróg żółciowych",30,29,
+"5.51.01.0007028","G28","Nowotwory dróg żółciowych",70,,
+"5.51.01.0007030","G30","Przeszczepienie trzustki*",1524,,
+"5.51.01.0007031","G31","Kompleksowe zabiegi trzustki *",305,,
+"5.51.01.0007032","G32","Duże zabiegi trzustki *",115,,
+"5.51.01.0007033","G33","Zabiegi endoskopowe i przezskórne dróg żółciowych i trzustki z wprowadzeniem protezy samorozprężalnej *",195,185,176
+"5.51.01.0007034","G34","Zabiegi endoskopowe i przezskórne dróg żółciowych i trzustki  *",83,79,75
+"5.51.01.0007035","G35","Zabiegi diagnostyczne dróg żółciowych i trzustki *",50,48,45
+"5.51.01.0007036","G36","Ostre zapalenie trzustki o ciężkim przebiegu",290,,
+"5.51.01.0007037","G37","Ostre zapalenie trzustki",58,,
+"5.51.01.0007038","G38","Przewlekłe choroby trzustki",55,,
+"5.51.01.0007042","G42","Zabiegi śledziony *",105,100,
+"5.51.01.0008001","H01","Endoprotezoplastyka pierwotna łokcia, barku, nadgarstka, stawu skokowo-goleniowego, częściowa kolana *",92,87,
+"5.51.01.0008002","H02","Endoprotezoplastyka pierwotna częściowa stawu biodrowego *",101,91,
+"5.51.01.0008003","H03","Endoprotezoplastyka pierwotna drobnych stawów w obrębie ręki *",37,35,
+"5.51.01.0008004","H04","Endoprotezoplastyka pierwotna całkowita cementowa, bipolarna biodra *",165,149,
+"5.51.01.0008005","H05","Endoprotezoplastyka pierwotna całkowita kolana, bezcementowa biodra *",234,211,
+"5.51.01.0008006","H06","Endoprotezoplastyka pierwotna całkowita biodra lub kolana z rekonstrukcją kostną, endoprotezoplastyka stawu biodrowego z zastosowaniem trzpienia przynasadowego, kapoplastyka stawu biodrowego *",383,345,
+"5.51.01.0008007","H07","Endoprotezoplastyka rewizyjna częściowa *",257,,
+"5.51.01.0008008","H08","Endoprotezoplastyka rewizyjna całkowita *",490,,
+"5.51.01.0008009","H09","Zabiegi operacyjne - rewizyjne z powodu aseptycznego obluzowania lub z towarzyszącym złamaniem ""okołoprotezowym"" *",175,,
+"5.51.01.0008010","H10","Zabiegi operacyjne - rewizyjne w przypadkach infekcji wokół protezy *",305,,
+"5.51.01.0008011","H11","Zabiegi resekcyjne zmian nowotworowych lub guzowatych z endoprotezoplastyką lub zabieg rewizyjny z użyciem protez poresekcyjnych *",246,,
+"5.51.01.0008021","H21","Artroskopowa rekonstrukcja z użyciem implantów mocujących *",95,90,86
+"5.51.01.0008022","H22","Artroskopia lecznicza *",55,52,50
+"5.51.01.0008023","H23","Artroskopia diagnostyczno - lecznicza *",29,28,26
+"5.51.01.0008031","H31","Kompleksowe zabiegi w zakresie kończyny dolnej i miednicy *",247,,
+"5.51.01.0008032","H32","Duże zabiegi w zakresie kończyny dolnej i miednicy *",89,85,80
+"5.51.01.0008033","H33","Średnie zabiegi na kończynie dolnej *",25,24,23
+"5.51.01.0008041","H41","Rekonstrukcja funkcji ręki, w tym mikrochirurgiczna *",215,,
+"5.51.01.0008042","H42","Duże zabiegi na kończynie górnej *",82,78,74
+"5.51.01.0008043","H43","Średnie zabiegi na kończynie górnej *",25,24,23
+"5.51.01.0008051","H51","Kompleksowe zabiegi korekcyjne kręgosłupa *",504,479,
+"5.51.01.0008052","H52","Zabiegi na kręgosłupie z zastosowaniem implantów *",270,257,
+"5.51.01.0008053","H53","Zabiegi na kręgosłupie bez stosowania implantów *",180,171,
+"5.51.01.0008055","H55","Zabiegi artroskopowe i przezskórne w zakresie kręgosłupa *",67,64,60
+"5.51.01.0008056","H56","Zespoły bólowe kręgosłupa",30,29,
+"5.51.01.0008060","H60","Rekonstrukcja złamań w obrębie miednicy z pw",361,,
+"5.51.01.0008061","H61","Rekonstrukcja złamań w obrębie miednicy bez pw",260,,
+"5.51.01.0008062","H62","Złamania lub zwichnięcia w obrębie miednicy lub kończyny dolnej *",88,84,
+"5.51.01.0008063","H63","Złamania lub zwichnięcia w obrębie kończyny górnej *",69,66,62
+"5.51.01.0008064","H64","Mniejsze złamania lub zwichnięcia *",19,18,17
+"5.51.01.0008066","H66","Czynnościowe leczenie złamań kości długich, stawowych, miednicy, kręgosłupa > 10 dni",93,,
+"5.51.01.0008067","H67","Czynnościowe leczenie złamań kości długich, stawowych, miednicy, kręgosłupa",46,,
+"5.51.01.0008072","H72","Amputacje rozległe i duże *",119,113,
+"5.51.01.0008073","H74","Mniejsze amputacje *",25,24,23
+"5.51.01.0008081","H81","Kompleksowe zabiegi w chorobach infekcyjnych, nowotworowych kości, stawów, tkanki łącznej > 10 dni *",198,188,
+"5.51.01.0008082","H82","Duże zabiegi w chorobach infekcyjnych, nowotworowych kości, stawów, tkanki łącznej *",64,61,
+"5.51.01.0008083","H83","Średnie zabiegi na tkankach miękkich *",38,36,34
+"5.51.01.0008084","H84","Mniejsze zabiegi w obrębie układu mięśniowo-szkieletowego lub tkanek miękkich *",12,11,10
+"5.51.01.0008085","H85","Pourazowe uszkodzenia poza uszkodzeniem mózgu > 17 r.ż.",14,13,12
+"5.51.01.0008086","H86","Choroby tkanek miękkich",42,,
+"5.51.01.0008087","H87","Choroby zapalne stawów i tkanki łącznej",68,,
+"5.51.01.0008088","H88","Choroby infekcyjne kości i stawów",66,,
+"5.51.01.0008089","H89","Choroby niezapalne kości i stawów",42,,
+"5.51.01.0008090","H90","Zapalenia stawów i układowe choroby tkanki łącznej wymagające intensywnego leczenia",120,,
+"5.51.01.0008092","H92","Zabiegi rekonstrukcyjne deformacji układu kostno-stawowego < 18 r.ż.*",172,163,
+"5.51.01.0008096","H96","Układowe choroby tkanki łącznej",85,,
+"5.51.01.0008098","H98","Krystalopatie",37,,
+"5.51.01.0009001","J01","Radykalne odjęcie piersi z rekonstrukcją *",170,162,
+"5.51.01.0009002","J02","Kompleksowe zabiegi w obrębie piersi *",102,97,
+"5.51.01.0009003","J03","Duże zabiegi w obrębie piersi *",52,49,
+"5.51.01.0009004","J04","Zabiegi rekonstrukcyjne piersi *",95,90,86
+"5.51.01.0009005","J05","Średnia chirurgia piersi *",24,23,22
+"5.51.01.0009006","J06","Mała chirurgia piersi *",11,10,10
+"5.51.01.0009007","J07","Choroby piersi łagodne",18,17,
+"5.51.01.0009008","J08","Choroby piersi złośliwe",35,33,
+"5.51.01.0009009","J09","Wycięcie węzłów chłonnych *",74,70,
+"5.51.01.0009010","J10","Biopsja mammotomiczna *",60,60,60
+"5.51.01.0009011","J11","Poważne oparzenia (odmrożenia), oparzenia 3o/  >19% TBSA - jednej lub wielu okolic ciała z przeszczepem skóry > 10 dni *",844,,
+"5.51.01.0009012","J12","Poważne oparzenia (odmrożenia), oparzenia 3o/ >19% TBSA - jednej lub wielu okolic ciała, przed przeniesieniem do oddziału specjalistycznego *",23,,
+"5.51.01.0009013","J13","Poważne oparzenia (odmrożenia), oparzenia 3o/ >19% TBSA - jednej lub wielu okolic ciała bez przeszczepu skóry > 10 dni *",412,,
+"5.51.01.0009014","J14","Oparzenia (odmrożenia) z wieloma przeszczepami skóry z pw *",178,,
+"5.51.01.0009015","J15","Oparzenia (odmrożenia) z wieloma przeszczepami skóry bez pw *",139,,
+"5.51.01.0009016","J16","Oparzenia z jednym przeszczepem skóry z pw *",149,,
+"5.51.01.0009017","J17","Oparzenia z jednym przeszczepem skóry bez pw *",111,,
+"5.51.01.0009018","J18","Oparzenia (odmrożenia) z innymi procedurami z pw *",174,,
+"5.51.01.0009019","J19","Oparzenia (odmrożenia) z innymi procedurami bez pw *",70,,
+"5.51.01.0009020","J20","Inne oparzenia (odmrożenia) z pw",44,,
+"5.51.01.0009021","J21","Inne oparzenia (odmrożenia) bez pw",25,,
+"5.51.01.0009032","J32","Duże zabiegi skórne *",75,71,68
+"5.51.01.0009033","J33","Średnie zabiegi skórne *",35,33,32
+"5.51.01.0009034","J34","Leczenie chirurgiczne zmian troficznych stopy *",83,79,
+"5.51.01.0009037","J37","Owrzodzenia skóry",64,62,
+"5.51.01.0009038","J38","Ciężkie choroby dermatologiczne",82,,
+"5.51.01.0009039","J39","Duże choroby dermatologiczne",33,31,
+"5.51.01.0009040","J40","Ciężka łuszczyca",46,44,
+"5.51.01.0009046","J46","Duże choroby infekcyjne skóry",40,38,
+"5.51.01.0009047","J47","Duże guzy skóry",62,,
+"5.51.01.0009049","J49","Łagodne choroby dermatologiczne",27,26,
+"5.51.01.0010001","K01","Zabiegi radykalne w rakach gruczołów dokrewnych *",285,,
+"5.51.01.0010002","K02","Operacja wola guzowatego powikłanego *",129,,
+"5.51.01.0010003","K03","Zabiegi dotyczące tarczycy i przytarczyc *",73,69,
+"5.51.01.0010004","K04","Zabiegi dotyczące nadnerczy *",205,195,
+"5.51.01.0010005","K05","Zabiegi diagnostyczne tarczycy, przytarczyc, nadnerczy *",14,13,12
+"5.51.01.0010006","K06","Stany naglące w endokrynologii > 17 r.ż.",82,,
+"5.51.01.0010007","K07","Stany naglące w endokrynologii < 18 r.ż.",98,,
+"5.51.01.0010016","K16","Choroby przysadki",41,39,37
+"5.51.01.0010026","K26","Zaburzenia wodno-elektrolitowe",28,27,
+"5.51.01.0010027","K27","Zaburzenia odżywienia",50,48,
+"5.51.01.0010028","K28","Wrodzone wady metaboliczne",86,82,
+"5.51.01.0010036","K36","Cukrzyca ze stanami hipoglikemicznymi",42,40,
+"5.51.01.0010037","K37","Cukrzyca ze stanami hiperglikemicznymi",48,46,
+"5.51.01.0010038","K38","Cukrzyca i stany hiperglikemiczne innego pochodzenia",44,42,
+"5.51.01.0010039","K39","Stopa cukrzycowa",83,,
+"5.51.01.0010046","K46","Ciężkie choroby tarczycy",49,,
+"5.51.01.0010047","K47","Choroby tarczycy",35,33,
+"5.51.01.0010048","K48","Orbitopatia tarczycowa - terapia przeciwzapalna i przygotowanie do radioterapii i leczenia dekompresyjnego",80,,
+"5.51.01.0010053","K53","Nadczynność gruczołów dokrewnych poza hiperprolaktynemią, nadczynnością tarczycy i guzami neuroendokrynnymi przewodu pokarmowego i układu oddechowego",73,,
+"5.51.01.0010054","K54","Autoimmunologiczne zespoły wielogruczołowe",44,,
+"5.51.01.0010055","K55","Raki gruczołów dokrewnych z zaburzeniami czynności hormonalnej, nowotworowe zespoły wielogruczołowe oraz ektopowe wydzielanie hormonów z wyłaczeniem guzów neuroendokrynnych przewodu pokarmowego i układu oddechowego",98,,
+"5.51.01.0010056","K56","Guzy złośliwe gruczołów dokrewnych bez zaburzeń czynności hormonalnej",66,,
+"5.51.01.0010057","K57","Guzy neuroendokrynne",86,,
+"5.51.01.0010058","K58","Nowotwory endokrynne poza przysadką",55,,
+"5.51.01.0010059","K59","Inne choroby układu wydzielania wewnętrznego",37,,
+"5.51.01.0010063","K63","Kwalifikacja do leczenia jodem radioaktywnym raka tarczycy lub ocena skuteczności leczenia z zastosowaniem rekombinowanego TSH [rhTSH]",194,,
+"5.51.01.0010064","K64","Leczenie radioizotopowe nowotworów z zastosowanierm 131I - meta-jodo-benzyl guanidyny (131 I-MIBG)",160,,
+"5.51.01.0011001","L01","Kompleksowe otwarte zabiegi nerek *",150,,
+"5.51.01.0011002","L02","Duże otwarte zabiegi nerek *",115,,
+"5.51.01.0011003","L03","Średnie otwarte zabiegi nerek *",46,44,
+"5.51.01.0011005","L05","Duże endoskopowe zabiegi nerek *",100,95,90
+"5.51.01.0011006","L06","Średnie endoskopowe zabiegi nerek *",40,38,36
+"5.51.01.0011007","L07","Zakażenia nerek lub dróg moczowych",24,23,
+"5.51.01.0011008","L08","Nowotwory nerek i dróg moczowych",70,,
+"5.51.01.0011012","L12","Duże otwarte zabiegi moczowodu *",105,,
+"5.51.01.0011013","L13","Średnie otwarte zabiegi moczowodu *",49,47,
+"5.51.01.0011015","L15","Duże endoskopowe zabiegi moczowodu *",80,76,75
+"5.51.01.0011016","L16","Średnie endoskopowe zabiegi moczowodu *",40,38,36
+"5.51.01.0011021","L21","Kompleksowe zabiegi pęcherza moczowego z wytworzeniem przetoki *",335,,
+"5.51.01.0011022","L22","Duże otwarte zabiegi na pęcherzu moczowym, w tym plastyka *",304,,
+"5.51.01.0011023","L23","Średnie otwarte zabiegi na pęcherzu moczowym *",33,31,
+"5.51.01.0011024","L24","Wytworzenie przetok odprowadzających mocz *",87,83,
+"5.51.01.0011025","L25","Duże endoskopowe zabiegi na pęcherzu moczowym *",86,82,
+"5.51.01.0011026","L26","Średnie zabiegi endoskopowe na pęcherzu moczowym *",52,49,47
+"5.51.01.0011027","L27","Zaburzenia odpływu moczu",17,16,15
+"5.51.01.0011029","L29","Choroby pęcherza moczowego i moczowodu",20,19,18
+"5.51.01.0011031","L31","Radykalna prostatektomia",160,,
+"5.51.01.0011032","L32","Otwarte zabiegi gruczołu krokowego i szyi pęcherza moczowego *",102,,
+"5.51.01.0011043","L43","Przezcewkowa resekcja gruczołu krokowego *",70,67,63
+"5.51.01.0011044","L45","Endoskopowe zabiegi gruczołu krokowego lub szyi pęcherza moczowego *",30,29,27
+"5.51.01.0011045","L46","Choroby gruczołu krokowego",12,11,
+"5.51.01.0011052","L52","Duże otwarte zabiegi cewki moczowej *",86,82,
+"5.51.01.0011053","L53","Średnie zabiegi cewki moczowej *",35,33,32
+"5.51.01.0011054","L54","Małe zabiegi cewki moczowej *",14,13,12
+"5.51.01.0011062","L62","Duże i średnie zabiegi prącia *",62,59,56
+"5.51.01.0011064","L64","Małe zabiegi prącia *",13,12,11
+"5.51.01.0011069","L69","Choroby prącia, jąder, nasieniowodu, moczowodu i cewki moczowej",17,16,
+"5.51.01.0011072","L72","Zabiegi moszny, jądra, najądrza i nasieniowodu *",31,29,28
+"5.51.01.0011081","L81","Leczenie powikłań leczenia nerkozastępczego > 17 r.ż.",58,,
+"5.51.01.0011082","L82","Ostra niewydolność nerek",79,,
+"5.51.01.0011083","L83","Przewlekła niewydolność nerek",36,,
+"5.51.01.0011084","L84","Inne choroby nerek",61,,
+"5.51.01.0011085","L85","Kamica moczowa",17,16,15
+"5.51.01.0011086","L86","Badania w zakresie dróg moczowych",11,10,9
+"5.51.01.0011087","L87","Leczenie powikłań leczenia nerkozastępczego < 18 r.ż.",72,,
+"5.51.01.0011091","L91","Implantacja lub wymiana hydraulicznego zwieracza cewki moczowej (AUS) *",563,,
+"5.51.01.0011092","L92","ESWL",20,19,18
+"5.51.01.0011093","L93","Przeszczepienie nerki - kategoria I*",979,,
+"5.51.01.0011094","L94","Przeszczepienie nerki - kategoria II*",843,,
+"5.51.01.0011095","L95","Przeszczepienie nerki - kategoria I < 18 r.ż.*",1067,,
+"5.51.01.0011096","L96","Przeszczepienie nerki - kategoria II < 18 r.ż.*",931,,
+"5.51.01.0011097","L97","Przeszczepienie nerki i trzustki*",1950,,
+"5.51.01.0012001","M01","Kompleksowe zabiegi dolnej części układu rozrodczego bez pw *",260,247,
+"5.51.01.0012002","M02","Duże zabiegi dolnej części układu rozrodczego *",81,77,
+"5.51.01.0012003","M03","Średnie zabiegi dolnej części układu rozrodczego *",26,25,23
+"5.51.01.0012004","M04","Małe zabiegi dolnej części układu rozrodczego *",13,12,11
+"5.51.01.0012005","M05","Zabiegi w nietrzymaniu moczu i na szyi pęcherza moczowego u kobiet *",75,71,68
+"5.51.01.0012006","M06","Kompleksowe zabiegi dolnej części układu rozrodczego z pw*",289,275,
+"5.51.01.0012011","M11","Kompleksowe zabiegi górnej części układu rozrodczego bez pw *",267,254,
+"5.51.01.0012012","M12","Bardzo duże zabiegi górnej części układu rozrodczego bez pw *",165,157,
+"5.51.01.0012013","M13","Duże zabiegi górnej części układu rozrodczego *",68,65,
+"5.51.01.0012014","M14","Średnie zabiegi górnej części układu rozrodczego *",47,45,42
+"5.51.01.0012015","M15","Małe zabiegi górnej części układu rozrodczego *",18,17,16
+"5.51.01.0012016","M16","Zagrażające lub dokonane poronienie, zakończenie ciąży obumarłej",28,27,
+"5.51.01.0012017","M17","Indukcja poronienia",26,25,
+"5.51.01.0012018","M18","Leczenie zachowawcze dolnej części układu rozrodczego",18,17,
+"5.51.01.0012019","M19","Leczenie zachowawcze zaburzeń statyki narządu rodnego",18,17,
+"5.51.01.0012020","M20","Kompleksowe zabiegi górnej części układu rozrodczego z pw*",295,280,
+"5.51.01.0012021","M21","Bardzo duże zabiegi górnej części układu rozrodczego z pw*",183,174,
+"5.51.01.0012026","M26","Leczenie zachowawcze górnej części układu rozrodczego",20,19,
+"5.51.01.0012027","M27","Leczenie zachowawcze jajników, jajowodów i miednicy mniejszej",42,40,
+"5.51.01.0012028","M28","Leczenie zachowawcze nowotworów złośliwych układu rozrodczego z pw",82,,
+"5.51.01.0012029","M29","Leczenie zachowawcze nowotworów złośliwych układu rozrodczego bez pw",34,32,
+"5.51.01.0012030","M30","Leczenie zachowawcze w innych chorobach układu rozrodczego",30,29,
+"5.51.01.0013001","N01","Poród *",33,31,
+"5.51.01.0013002","N02","Poród mnogi lub przedwczesny *",46,,
+"5.51.01.0013003","N03","Patologia ciąży lub płodu z porodem > 5 dni *",56,,
+"5.51.01.0013004","N04","Patologia ciąży - diagnostyka, obserwacja < 3 dni",9,9,
+"5.51.01.0013005","N05","Patologia ciąży i połogu- diagnostyka, leczenie > 2 dni",31,29,
+"5.51.01.0013006","N06","Patologia ciąży i połogu- diagnostyka, leczenie > 11 dni",64,,
+"5.51.01.0013007","N07","Ciężka patologia ciąży - diagnostyka rozszerzona, leczenie kompleksowe",75,,
+"5.51.01.0013008","N08","Ciężka patologia płodu - diagnostyka, leczenie",63,,
+"5.51.01.0013009","N09","Ciężka patologia ciąży z porodem - diagnostyka rozszerzona, leczenie kompleksowe > 10 dni*",156,,
+"5.51.01.0013011","N11","Ciężka patologia ciąży z porodem - diagnostyka rozszerzona, leczenie kompleksowe > 10 dni z pw*",164,,
+"5.51.01.0013020","N20","Noworodek wymagający normalnej opieki",20,19,
+"5.51.01.0013021","N21","Ciężka patologia noworodka > 30 dni",1000,,
+"5.51.01.0013022","N22","Noworodek wymagający intensywnej terapii",450,,
+"5.51.01.0013023","N23","Noworodek wymagający intensywnej opieki",111,,
+"5.51.01.0013024","N24","Noworodek wymagający szczególnej opieki",90,,
+"5.51.01.0013025","N25","Noworodek wymagający wzmożonego nadzoru",55,,
+"5.51.01.0013026","N26","Noworodek wymagający intensywnej terapii z zabiegiem chirurgicznym *",499,,
+"5.51.01.0013031","N31","Kompleksowe zabiegi chirurgii noworodka i niemowlęcia *",347,,
+"5.51.01.0013032","N32","Duże zabiegi chirurgii noworodka i niemowlęcia *",206,,
+"5.51.01.0013033","N33","Średnie zabiegi chirurgii noworodka i niemowlęcia *",112,,
+"5.51.01.0013034","N34","Małe zabiegi chirurgii noworodka i niemowlęcia *",57,,
+"5.51.01.0014001","P01","Astma lub trudności w oddychaniu",38,36,
+"5.51.01.0014003","P03","Choroby górnego odcinka dróg oddechowych",25,24,
+"5.51.01.0014004","P04","Choroby dolnych dróg oddechowych",60,57,
+"5.51.01.0014005","P05","Główne infekcje (w tym choroby immunologiczne)",95,,
+"5.51.01.0014006","P06","Mniejsze infekcje (w tym choroby immunologiczne)",30,29,
+"5.51.01.0014007","P07","Nowotwory",52,,
+"5.51.01.0014008","P08","Drgawki gorączkowe",17,16,
+"5.51.01.0014009","P09","Choroby układu nerwowego",22,,
+"5.51.01.0014010","P10","Choroby endokrynologiczne (bez cukrzycy)",58,,
+"5.51.01.0014011","P11","Poważne choroby żołądkowo-jelitowe i metaboliczne",51,,
+"5.51.01.0014012","P12","Inne zaburzenia żołądkowo-jelitowe i metaboliczne",30,29,
+"5.51.01.0014013","P13","Alergie",52,49,
+"5.51.01.0014014","P14","Pourazowe uszkodzenia poza uszkodzeniem mózgu",24,23,
+"5.51.01.0014015","P15","Zaburzenia zachowania",41,,
+"5.51.01.0014016","P16","Poważne schorzenia uwarunkowane genetycznie i inne choroby wrodzone",35,,
+"5.51.01.0014017","P17","Choroby układu moczowo - płciowego",30,29,
+"5.51.01.0014018","P18","Choroby nerek z niewydolnością nerkową",80,,
+"5.51.01.0014019","P19","Choroby krwi",35,33,
+"5.51.01.0014020","P20","Choroby skóry, układu mięśniowo-kostnego lub tkanki łącznej",41,39,
+"5.51.01.0014021","P21","Choroby układu krążenia",53,50,
+"5.51.01.0014022","P22","Infekcyjne i nieinfekcyjne zapalenie żołądka i jelit",42,39,
+"5.51.01.0014023","P23","Padaczka",60,,
+"5.51.01.0014024","P24","Cukrzyca",68,65,
+"5.51.01.0014025","P25","Uraz głowy z urazem mózgu",23,,
+"5.51.01.0014026","P26","Leczenie nowotworów z pw > 7 dni",101,,
+"5.51.01.0014027","P27","Guzy lite układu nerwowego",67,,
+"5.51.01.0014028","P28","Guzy lite narządów, tkanek i innych układów",58,,
+"5.51.01.0014029","P29","Bóle głowy - diagnostyka i leczenie > 3 dni",49,,
+"5.51.01.0015001","Q01","Endowaskularne zaopatrzenie tętniaka aorty *",1216,,
+"5.51.01.0015002","Q02","Zabiegi naczyniowe w obszarze brzusznym z pw i reoperacje *",264,,
+"5.51.01.0015003","Q03","Zabiegi naczyniowe w obszarze brzusznym *",173,,
+"5.51.01.0015011","Q11","Zabiegi hybrydowe w obrębie naczyń obwodowych *",319,,
+"5.51.01.0015012","Q12","Zabiegi na tętnicach kończyn dolnych *",147,140,
+"5.51.01.0015013","Q13","Pomostowanie tętnic obwodowych *",203,,
+"5.51.01.0015014","Q14","Pomostowanie i rekonstrucja naczyń pozaczaszkowych i kończyn górnych *",152,,
+"5.51.01.0015015","Q15","Zabiegi w zakresie naczyń pozaczaszkowych i kończyn górnych *",124,,
+"5.51.01.0015016","Q16","Inne zabiegi na naczyniach *",119,113,107
+"5.51.01.0015017","Q17","Sympatektomia *",56,53,50
+"5.51.01.0015018","Q18","Duże zabiegi na układzie limfatycznym *",60,57,54
+"5.51.01.0015019","Q19","Średnie zabiegi na układzie limfatycznym *",40,38,36
+"5.51.01.0015020","Q20","Małe zabiegi na układzie limfatycznym *",12,11,11
+"5.51.01.0015022","Q22","Zakrzepowe zapalenie żył - leczenie operacyjne *",53,50,
+"5.51.01.0015023","Q23","Operacje żylaków z safenektomią *",37,36,36
+"5.51.01.0015024","Q24","Operacje żylaków bez safenektomii *",13,12,11
+"5.51.01.0015031","Q31","Choroby krwotoczne naczyń mózgowych - remodeling naczyń z zastosowaniem stentu *",937,,
+"5.51.01.0015032","Q32","Choroby krwotoczne naczyń mózgowych - duży endowaskularny zabieg naprawczy *",679,,
+"5.51.01.0015033","Q33","Choroby krwotoczne naczyń mózgowych - średni endowaskularny zabieg naprawczy *",536,,
+"5.51.01.0015041","Q41","Zabiegi endowaskularne - 1. grupa *",96,,
+"5.51.01.0015042","Q42","Zabiegi endowaskularne - 2. grupa *",140,,
+"5.51.01.0015043","Q43","Zabiegi endowaskularne - 3. grupa *",180,,
+"5.51.01.0015044","Q44","Zabiegi endowaskularne - 4. grupa *",210,,
+"5.51.01.0015045","Q45","Zabiegi endowaskularne - 5. grupa *",190,,
+"5.51.01.0015046","Q46","Zabiegi endowaskularne - 6. grupa *",239,,
+"5.51.01.0015047","Q47","Zabiegi endowaskularne - 7. grupa *",260,,
+"5.51.01.0015048","Q48","Radiologia zabiegowa - zabiegi diagnostyczne *",32,30,29
+"5.51.01.0015051","Q51","Dostęp naczyniowy w leczeniu nerkozastępczym z wykorzystaniem protez naczyniowych *",118,,
+"5.51.01.0015052","Q52","Dostęp w leczeniu nerkozastępczym *",64,,
+"5.51.01.0015066","Q66","Choroby naczyń",48,,
+"5.51.01.0016001","S01","Intensywne leczenie ostrych białaczek > 17 r.ż.",550,,
+"5.51.01.0016002","S02","Choroby układu krwiotwórczego i odpornościowego > 10 dni",190,,
+"5.51.01.0016003","S03","Choroby układu krwiotwórczego i odpornościowego > 1 dnia",49,,
+"5.51.01.0016004","S04","Choroby układu krwiotwórczego i odpornościowego < 2 dni",15,,
+"5.51.01.0016005","S05","Zaburzenia krzepliwości, inne choroby krwi i śledziony > 10 dni",65,,
+"5.51.01.0016006","S06","Zaburzenia krzepliwości, inne choroby krwi i śledziony > 1 dnia",11,,
+"5.51.01.0016007","S07","Zaburzenia krzepliwości, inne choroby krwi i śledziony < 2 dni",6,,
+"5.51.01.0016008","S08","Intensywne leczenie ostrych białaczek < 18 r.ż.",550,,
+"5.51.01.0016021","S21","Przeszczepienie autologicznych komórek krwiotwórczych*",1000,,
+"5.51.01.0016022","S22","Przeszczepienie allogenicznych komórek krwiotwórczych od rodzeństwa identycznego w HLA*",2353,,
+"5.51.01.0016023","S23","Przeszczepienie allogenicznych komórek krwiotwórczych od dawcy alternatywnego*",4705,,
+"5.51.01.0016033","S33","Choroby alergiczne > 17 r.ż.",40,38,
+"5.51.01.0016040","S40","Intensywne leczenie zatruć",185,,
+"5.51.01.0016041","S41","Zatrucie ciężkie",123,,
+"5.51.01.0016042","S42","Zatrucie średnie",88,,
+"5.51.01.0016043","S43","Zatrucie lekkie",42,,
+"5.51.01.0016044","S44","Inne stany w toksykologii",73,,
+"5.51.01.0016051","S51","AIDS - leczenie choroby pełnoobjawowej",126,,
+"5.51.01.0016052","S52","Niedobory odporności inne niż HIV/ AIDS",49,,
+"5.51.01.0016053","S53","Posocznica",140,,
+"5.51.01.0016054","S54","Obserwacja i wstępna diagnostyka w celu wykluczenia chorób zakaźnych > 1 dnia",12,,
+"5.51.01.0016055","S55","Gorączka niejasnego pochodzenia",27,,
+"5.51.01.0016057","S57","Inne choroby wirusowe",27,,
+"5.51.01.0016060","S60","Choroby zakaźne niewirusowe",40,,
