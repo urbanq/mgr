@@ -1,0 +1,557 @@
+"JGP_CODE","PRODUCT_CODE","NAME","A1","A2","A3","A4","C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","D1","D2","E1","G1","G2","G3","H1","I1","K1","K2","N1","N2","N3","N4","O1","O2","O3","O4","O5","P1","P2","R1","T1","T2","U1","NOTE"
+"A01","5.51.01.0001001","Zabiegi wewnątrzczaszkowe z powodu poważnego urazu *",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,"X",,,,,"X","X",,,,,,,
+"A02","5.51.01.0001002","Zabiegi wewnątrzczaszkowe z powodu urazu *",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,"X",,,,,"X","X",,,,,,,
+"A03","5.51.01.0001003","Wszczepienie stymulatora struktur głębokich mózgu *",,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"A04","5.51.01.0001004","Wszczepienie/ wymiana stymulatora rdzenia kręgowego lub wymiana generatora do stymulacji struktur głębokich mózgu *",,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,
+"A11","5.51.01.0001011","Kompleksowe zabiegi wewnątrzczaszkowe *",,,,,"X",,,"X",,"X","X",,,,,,,,,,,,,,,,"X",,,,,"X","X",,,,,,,
+"A12","5.51.01.0001012","Duże zabiegi wewnątrzczaszkowe *",,,,,"X",,,"X",,"X","X",,,,,,,,,,,,,,,,"X",,,,,"X","X",,,,,,,
+"A13","5.51.01.0001013","Średnie zabiegi wewnątrzczaszkowe *",,,,,"X",,,"X",,"X","X",,,,,,,,,,,,,,,,"X",,,,,"X","X",,,,,,,
+"A14","5.51.01.0001014","Małe zabiegi wewnątrzczaszkowe *",,,,,"X",,,"X",,"X","X",,,,,,,,,,,,,,,,"X","X",,,,"X","X",,,,,,,
+"A22","5.51.01.0001022","Duże zabiegi na rdzeniu kręgowym i w kanale kręgowym *",,,,,"X",,,,,,,,,,,,,,,,,,,,,,"X","X",,,,"X",,,,,,,,
+"A23","5.51.01.0001023","Średnie zabiegi na rdzeniu kręgowym i w kanale kręgowym *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,"X","X",,,,"X",,,,,,,,
+"A25","5.51.01.0001025","Zabiegi na nerwach obwodowych *",,,,,"X",,,"X","X","X","X",,,,,,,,,,,,,,,,"X","X",,,,"X","X",,,,,,,
+"A26","5.51.01.0001026","Zabiegi zwalczające ból i na układzie współczulnym *",,,"X",,"X","X","X","X","X",,"X",,"X",,,,,,"X",,,,,,,,"X","X",,"X","X","X","X",,,"X",,,"X",
+"A30","5.51.01.0001030","Kompleksowa diagnostyka polineuropatii i chorób mięśni",,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,"X",,,,
+"A31","5.51.01.0001031","Choroby nerwów obwodowych",,,,,"X",,,"X",,,,,"X",,,"X","X",,"X",,,,,,,,"X","X",,,,"X",,,,"X",,,,
+"A32","5.51.01.0001032","Choroby mięśni",,,,,,,,,,,,,"X",,,,,,"X",,,,,,,,"X","X",,,,,,,,"X",,,,
+"A33","5.51.01.0001033","Zaburzenia równowagi",,,,"X",,,,,,,,,"X",,,,,,"X",,,,,,,,"X","X",,,,,"X",,,,,,,
+"A34","5.51.01.0001034","Guzy mózgu",,,,,"X",,,,,,,,"X",,,,,,,,,,,,,,"X","X",,"X","X",,,,,,,,,
+"A35","5.51.01.0001035","Choroby zwyrodnieniowe OUN",,,,,,,,,,,,,"X",,,,,,"X",,,,,,,,,"X",,,,,,,,,,,,
+"A36","5.51.01.0001036","Choroby demielinizacyjne",,,,,,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,
+"A45","5.51.01.0001045","Choroby naczyń mózgowych - leczenie zachowawcze",,,"X",,"X",,,"X",,,,,"X",,,,,,"X",,,,,,,,"X","X",,,,"X",,,,,,,,
+"A46","5.51.01.0001046","Przemijające niedokrwienie mózgu",,,,,,,,,,,,,"X",,,,,,,,,,,,,,"X","X",,,,,,,,,,,,
+"A47","5.51.01.0001047","Przemijające niedokrwienie mózgu - rozszerzona diagnostyka",,,,,,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,
+"A48","5.51.01.0001048","Kompleksowe leczenie udarów mózgu > 7 dni w oddziale udarowym",,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,"- warunki określone w zał. nr 3;
+- konieczność udokumentowania wykonania badania obrazowego w kierunku stwierdzenia ogniska chorobowego"
+"A49","5.51.01.0001049","Udar mózgu - leczenie > 3 dni",,,,,,,,,,,,,"X",,,,,,"X",,,,,,,,"X","X",,,,,,,,,,,,"konieczność udokumentowania wykonania badania obrazowego w kierunku stwierdzenia ogniska chorobowego"
+"A50","5.51.01.0001050","Udar mózgu - leczenie",,,,,,,,,,,,,"X",,,,,,"X",,,,,,,,"X","X",,,,,,,,,,,,"konieczność udokumentowania wykonania badania obrazowego w kierunku stwierdzenia ogniska chorobowego"
+"A51","5.51.01.0001051","Udar mózgu - leczenie trombolityczne > 7 dni w oddziale udarowym",,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,"- warunki określone w zał. nr 3;
+- konieczność udokumentowania wykonania badania obrazowego w kierunku stwierdzenia ogniska chorobowego"
+"A56","5.51.01.0001056","Choroby nerwów czaszkowych",,,,"X","X",,,"X",,,"X",,,,,,,,,,,,,,,,"X","X","X",,,,"X",,,,,,,
+"A57","5.51.01.0001057","Choroby zapalne układu nerwowego",,,,,"X",,,"X",,,,,"X","X","X",,,,"X",,,,,,,,"X","X",,,,,"X",,,,,,,
+"A58","5.51.01.0001058","Encefalopatia",,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,
+"A59","5.51.01.0001059","Bóle głowy",,,,"X","X",,,"X",,,"X",,"X",,,,,,"X",,,,,,,,"X","X",,,,,"X",,,,,,,
+"A66","5.51.01.0001066","Padaczka - diagnostyka i leczenie",,,,,,,,,,,,,"X",,,,,,"X",,,,,,,,"X","X",,,,,,,,,,,,
+"A67","5.51.01.0001067","Padaczka - diagnostyka i leczenie > 3 dni",,,,,,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,
+"A76","5.51.01.0001076","Urazy głowy z istotnym uszkodzeniem mózgu leczone zachowawczo",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,"X","X",,,,"X",,,,,,,,
+"A77","5.51.01.0001077","Urazy głowy bez istotnego uszkodzenia mózgu leczone zachowawczo",,,,,"X",,,"X",,,"X",,,,,,,,,,,,,,,,"X","X","X",,,"X","X",,,,,,,
+"A86","5.51.01.0001086","Choroby neuronu ruchowego",,,,,,,,,,,,,"X",,,,,,"X",,,,,,,,"X","X",,,,,,,,,,,,
+"A87","5.51.01.0001087","Inne choroby układu nerwowego",,,,"X","X",,,"X",,,,,"X",,,,,,"X",,,,,,,,"X","X",,"X","X","X","X","X",,,,,,
+"B01","5.51.01.0002001","Leczenie wysiękowej postaci AMD werteporfiną przy zastosowaniu terapii fotodynamicznej",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,"warunki określone w zał. nr 3"
+"B02","5.51.01.0002002","Leczenie wysiękowej postaci AMD z zastosowaniem iniekcji doszklistkowych przeciwciała monoklonalnego anty-VEGF",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,," zgodnie z opisem świadczenia (zał. nr 12)"
+"B04","5.51.01.0002004","Przeszczep rogówki - kategoria I*",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,," - warunki określone w zał. nr 3
+ - nie można łączyć ze świadczeniami o kodach od 5.53.01.0003019 do 5.53.01.0004077"
+"B05","5.51.01.0002005","Przeszczep rogówki - kategoria II*",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,," - warunki określone w zał. nr 3
+ - nie można łączyć ze świadczeniami o kodach od 5.53.01.0003019 do 5.53.01.0004077"
+"B06","5.51.01.0002006","Przeszczep rogówki - kategoria III*",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,," - warunki określone w zał. nr 3
+ - nie można łączyć ze świadczeniami o kodach od 5.53.01.0003019 do 5.53.01.0004077"
+"B11","5.51.01.0002011","Kompleksowe zabiegi w zaćmie i jaskrze *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,"warunki określone w zał. nr 3"
+"B12","5.51.01.0002012","Usunięcie zaćmy powikłanej metodą emulsyfikacji z jednoczesnym wszczepieniem soczewki*",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,"warunki określone w zał. nr 3"
+"B13","5.51.01.0002013","Usunięcie zaćmy niepowikłanej metodą emulsyfikacji z jednoczesnym wszczepieniem soczewki*",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,"warunki określone w zał. nr 3"
+"B14","5.51.01.0002014","Usunięcie zaćmy powikłanej metodami innymi niż emulsyfikacja z jednoczesnym wszczepieniem soczewki*",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,"warunki określone w zał. nr 3"
+"B15","5.51.01.0002015","Usunięcie zaćmy niepowikłanej metodami innymi niż emulsyfikacja z jednoczesnym wszczepieniem soczewki*",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,"warunki określone w zał. nr 3"
+"B16","5.51.01.0002016","Zabiegi z wykonaniem witrektomii z użyciem oleju silikonowego lub dekaliny, w tym wieloproceduralne *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B17","5.51.01.0002017","Zabiegi z wykonaniem witrektomii, w tym wieloproceduralne *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B23","5.51.01.0002023","Średnie zabiegi na soczewce *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B24","5.51.01.0002024","Małe zabiegi na soczewce *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B32","5.51.01.0002032","Duże zabiegi na aparacie ochronnym oka *",,,,,"X",,,,"X","X","X",,,,,,,,,,,,,,,,,,"X",,,,"X",,,,,,,
+"B33","5.51.01.0002033","Średnie zabiegi na aparacie ochronnym oka *",,,,,"X",,,,"X","X","X",,,,,,,,,,,,,,,,,,"X",,,,"X",,,,,,,
+"B34","5.51.01.0002034","Małe zabiegi na aparacie ochronnym oka *",,,,,"X",,,,"X","X","X",,,,,,,,,,,,,,,,,,"X",,,,"X",,,,,,,
+"B42","5.51.01.0002042","Duże zabiegi na oczodole i aparacie łzowym *",,,,,"X",,,,"X","X","X",,,,,,,,,,,,,,,,,,"X",,,,"X",,,,,,,
+"B43","5.51.01.0002043","Średnie zabiegi na oczodole i aparacie łzowym *",,,,,"X",,,,"X","X","X",,,,,,,,,,,,,,,,,,"X",,,,"X",,,,,,,
+"B44","5.51.01.0002044","Małe zabiegi na oczodole i aparacie łzowym *",,,,,"X",,,,"X","X","X",,,,,,,,,,,,,,,,,,"X",,,,"X",,,,,,,
+"B52","5.51.01.0002052","Duże zabiegi na rogówce i twardówce *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B53","5.51.01.0002053","Średnie zabiegi na rogówce i twardówce *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B63","5.51.01.0002063","Zabiegi w zakresie mięśni okoruchowych *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B72","5.51.01.0002072","Duże zabiegi w jaskrze i na naczyniówce *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,"warunki określone w zał. nr 3"
+"B73","5.51.01.0002073","Średnie zabiegi w jaskrze i na naczyniówce *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,"warunki określone w zał. nr 3"
+"B74","5.51.01.0002074","Małe zabiegi w jaskrze i na naczyniówce *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,"warunki określone w zał. nr 3"
+"B81","5.51.01.0002081","Duże zabiegi na siatkówce *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B82","5.51.01.0002082","Duże zabiegi na ciele szklistym *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B83","5.51.01.0002083","Średnie zabiegi witreoretinalne *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B84","5.51.01.0002084","Małe zabiegi witreoretinalne *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,
+"B98","5.51.01.0002098","Leczenie zachowawcze okulistyczne",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X","X","X",,,,,,,,,
+"C01","5.51.01.0003001","Rozległe operacje nowotworów jamy ustnej, gardła i krtani z rekonstrukcją *",,,,,"X","X",,,"X","X","X",,,,,,,,,,,,,,,,"X",,,,,,"X",,,,,,,
+"C05","5.51.01.0003005","Leczenie zaburzeń słuchu za pomocą implantów ślimakowych i pniowych *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,"warunki określone w zał. nr 3"
+"C06","5.51.01.0003006","Leczenie zaburzeń słuchu za pomocą innych wszczepialnych elektronicznych protez słuchu *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,"warunki określone w zał. nr 3"
+"C07","5.51.01.0003007","Wymiana procesora mowy",,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,," - warunki określone w zał. nr 3
+ - obejmuje wyłącznie wymanę całego urządzenia
+ - wymiana nie wcześniej niż przed upływem okresu gwarancji; 
+ - konieczność przedstawienia opinii ośrodka o braku przydatności urządzenia do dalszego użytkowania;
+ - nie obejmuje wymiany z powodu uszkodzeń z winy użytkownika "
+"C11","5.51.01.0003011","Kompleksowe zabiegi jamy ustnej, gardła i krtani *",,,,,"X","X",,"X","X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C12","5.51.01.0003012","Duże zabiegi jamy ustnej, gardła i krtani *",,,,,"X","X",,"X","X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,"w przypadku procedury 31.984 Wymiana protezy głosowej - nie częściej niż dwa razy w roku"
+"C13","5.51.01.0003013","Średnie zabiegi jamy ustnej, gardła i krtani < 18 r.ż.*",,,,,"X","X",,"X","X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C14","5.51.01.0003014","Średnie zabiegi jamy ustnej, gardła i krtani > 17 r.ż.*",,,,,"X","X",,"X","X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C15","5.51.01.0003015","Małe zabiegi jamy ustnej, gardła i krtani *",,,,,"X",,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C21","5.51.01.0003021","Kompleksowe zabiegi szczękowo-twarzowe *",,,,,"X",,,,"X","X","X",,,,,,,,,,,,,,,,"X",,,,,,"X",,,,,,,
+"C22","5.51.01.0003022","Duże zabiegi szczękowo-twarzowe *",,,,,"X",,,,"X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C23","5.51.01.0003023","Średnie zabiegi szczękowo-twarzowe *",,,,,"X",,,,,"X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C24","5.51.01.0003024","Małe zabiegi szczękowo-twarzowe *",,,,,"X",,,,,"X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C31","5.51.01.0003031","Kompleksowe zabiegi uszu *",,,,,"X",,,,"X","X",,,,,,,,,,,,,,,,,"X",,,,,,"X",,,,,,,
+"C32","5.51.01.0003032","Duże zabiegi uszu *",,,,,"X",,,,"X","X",,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C33","5.51.01.0003033","Średnie zabiegi uszu *",,,,,"X",,,,"X","X",,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C34","5.51.01.0003034","Małe zabiegi uszu *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C41","5.51.01.0003041","Kompleksowe zabiegi nosa *",,,,,"X",,,,"X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C42","5.51.01.0003042","Duże zabiegi nosa *",,,,,"X",,,,,"X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C43","5.51.01.0003043","Średnie zabiegi nosa *",,,,,"X",,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C44","5.51.01.0003044","Małe zabiegi nosa *",,,,,"X",,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C45","5.51.01.0003045","Duże zabiegi endoskopowe  < 18 r.ż.*",,,,,"X",,,,,"X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C46","5.51.01.0003046","Średnie zabiegi endoskopowe  < 18 r.ż.*",,,,,"X",,,,,"X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C48","5.51.01.0003048","Ostre zapalenie zatok przynosowych < 18 r.ż. z pw",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"C56","5.51.01.0003056","Poważne choroby gardła, uszu i nosa",,,,"X",,,,,,,"X",,,,,,,,,,,,,,,,,,,"X","X",,"X","X",,,,,,
+"C57","5.51.01.0003057","Inne choroby gardła, uszu i nosa","X",,,"X",,,,,,,"X","X","X",,"X",,,,"X",,,,,,,,,"X",,"X","X",,"X","X",,,,,,
+"D01","5.51.01.0004001","Złożone zabiegi klatki piersiowej *",,,,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"D02","5.51.01.0004002","Kompleksowe zabiegi klatki piersiowej *",,,,,"X","X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,"w chirurgii ogólnej w stanach nagłych"
+"D03","5.51.01.0004003","Duże zabiegi klatki piersiowej *",,,,,"X","X",,"X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,"w chirurgii ogólnej w stanach nagłych"
+"D04","5.51.01.0004004","Średnie i małe zabiegi klatki piersiowej *",,,,,"X","X",,"X","X",,,"X","X",,,,,,"X",,,,"X",,,,,,,,,"X",,,,,,,,
+"D05","5.51.01.0004005","Bronchoskopia *","X",,,,"X","X",,"X","X",,,"X","X",,,,,,"X",,,,,,,,,,,,,,"X",,,,,,,
+"D10","5.51.01.0004010","Dychawica oskrzelowa","X",,,,,,,,,,,"X","X",,,,,,"X",,,,,,,,,,,,,,,,,,,,,
+"D16","5.51.01.0004016","Zator płucny",,,"X",,"X","X","X","X","X",,,"X","X",,,,,,"X",,,,,"X","X",,,"X",,,,,,"X",,"X",,,,
+"D17","5.51.01.0004017","Ropień płuc, ropowica",,,,,"X","X",,"X",,,,"X","X","X",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,
+"D18","5.51.01.0004018","Zapalenie płuc nietypowe, wirusowe",,,,,,,,,,,,"X","X","X",,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D19","5.51.01.0004019","Rozstrzenie oskrzeli",,,,,,"X",,,,,,"X","X",,,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D20","5.51.01.0004020","Gruźlica",,,,,,,,,,,,"X",,"X",,,,,,,,,,,,,,,,,,,,"X",,,,,,
+"D21","5.51.01.0004021","Zwłóknienie torbielowate","X",,,,,,,,,,,"X",,,,,,"X",,,,,,,,,,,,,,,,"X",,,,,,
+"D26","5.51.01.0004026","Wysiękowe zapalenie opłucnej",,,,,"X","X",,"X",,,,"X","X","X",,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D28","5.51.01.0004028","Choroby nowotworowe układu oddechowego i klatki piersiowej",,,,,"X","X",,"X","X",,,"X","X",,,,,"X","X",,,,,,,,,,,"X","X",,,"X",,,,,,
+"D36","5.51.01.0004036","Zaburzenia oddychania w czasie snu",,,,"X",,,,,,,,"X","X",,,,,,,,,,,,,,,"X",,,,,"X","X",,,,,,
+"D37","5.51.01.0004037","Inne choroby układu oddechowego","X",,,"X","X","X",,,,,,"X","X","X",,,,,"X",,,,,"X",,,,,,,,,"X","X",,,,,,
+"D38","5.51.01.0004038","Obrzęk płuc",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,"X",,,,,,
+"D46","5.51.01.0004046","POChP i inne obturacyjne choroby układu oddechowego","X",,,,,,,,,,,"X","X","X",,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D47","5.51.01.0004047","Zapalenie płuc z pw","X",,,,,,,,,,,"X","X","X",,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D48","5.51.01.0004048","Zapalenie płuc bez pw","X",,,,,,,,,,,"X","X","X",,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D49","5.51.01.0004049","Uszkodzenia inhalacyjne płuc",,,,,,"X",,,,,,"X","X",,,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D50","5.51.01.0004050","Zwłóknienie i pylica płuc",,,,,,,,,,,,"X","X",,,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D51","5.51.01.0004051","Odma opłucnowa",,,,,"X","X",,"X",,,,"X","X",,,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D52","5.51.01.0004052","Niewydolność oddechowa","X",,,"X",,"X",,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,"X","X",,,,,,
+"D53","5.51.01.0004053","Nadciśnienie płucne > 17 r.ż.",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"D54","5.51.01.0004054","Zapalenie opłucnej",,,,,"X","X",,,,,,"X","X","X",,,,,"X",,,,,,,,,,,,,,,"X",,,,,,
+"D55","5.51.01.0004055","Ziarniniaki, choroby płuc alergiczne i z autoimmunizacji","X",,"X",,,,,,,,,"X",,,"X",,,,"X",,,"X",,,,,,,,,,,,"X",,"X",,,,
+"D56","5.51.01.0004056","Ciężkie wady rozwojowe < 18 r.ż.",,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"E02","5.51.01.0005002","Inne zabiegi kardiochirurgiczne > 17 r.ż.",,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,
+"E03","5.51.01.0005003","Inne zabiegi kardiochirurgiczne < 18 r.ż. *",,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,
+"E04","5.51.01.0005004","Pomostowanie naczyń wieńcowych z plastyką *",,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,
+"E05","5.51.01.0005005","Pomostowanie naczyń wieńcowych > 69 r.ż. lub z pw *",,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,
+"E06","5.51.01.0005006","Pomostowanie naczyń wieńcowych < 70 r.ż. bez pw *",,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,
+"E11","5.51.01.0005011","OZW - leczenie inwazyjne dwuetapowe > 3 dni *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E12","5.51.01.0005012","OZW - leczenie inwazyjne złożone *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E13","5.51.01.0005013","OZW - leczenie inwazyjne > 3 dni *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E14","5.51.01.0005014","OZW - leczenie inwazyjne < 4 dni *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E16","5.51.01.0005016","OZW > 69 r.ż. lub z pw",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E17","5.51.01.0005017","OZW < 70 r.ż.",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E18","5.51.01.0005018","OZW bez uniesienia ST",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E19","5.51.01.0005019","OZW - leczenie z zastosowaniem leku trombolitycznego drugiej/ trzeciej generacji",,,,,,,,,,,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E21","5.51.01.0005021","Przezskórne zamknięcie nieprawidłowych połączeń wewnątrzsercowych i zewnątrzsercowych > 17 r.ż.*",,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E22","5.51.01.0005022","Przezskórne walwuloplastyki > 17 r.ż.*",,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E23","5.51.01.0005023","Angioplastyka wieńcowa z implantacją DES *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E24","5.51.01.0005024","Angioplastyka z implantacją nie mniej niż dwóch stentów lub wielonaczyniowa *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E25","5.51.01.0005025","Angioplastyka z zastosowaniem jednego stentu i inne zabiegi *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E26","5.51.01.0005026","Angioplastyka wieńcowa balonowa *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E27","5.51.01.0005027","Koronarografia i inne zabiegi inwazyjne *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"E31","5.51.01.0005031","Wszczepienie/ wymiana rozrusznika jednojamowego *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E32","5.51.01.0005032","Wszczepienie/ wymiana rozrusznika dwujamowego *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E33","5.51.01.0005033","Wszczepienie/ wymiana układu z funkcją resynchronizującą serca (CRT) *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E34","5.51.01.0005034","Wszczepienie/ wymiana kardiowertera-defibrylatora jedno-/ dwujamowego *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E36","5.51.01.0005036","Wszczepienie/ wymiana CRT-D > 17 r.ż.*",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E37","5.51.01.0005037","Reperacja/ repozycja/ rewizja/ wymiana elektrody/ układu stymulującego/ kardiowertera-defibrylatora",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E38","5.51.01.0005038","Usunięcie przezżylne elektrod w przypadku powikłań *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E39","5.51.01.0005039","Leczenie zabiegowe zaburzeń rytmu < 18 r.ż.*",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E41","5.51.01.0005041","Ablacja zaburzeń rytmu z wykorzystaniem systemu elektroanatomicznego 3D *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E42","5.51.01.0005042","Ablacja zaburzeń rytmu z wykorzystaniem systemu elektroanatomicznego *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E43","5.51.01.0005043","Ablacja zaburzeń rytmu *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E44","5.51.01.0005044","Diagnostyka inwazyjna zaburzeń rytmu serca *",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E51","5.51.01.0005051","Zapalenie wsierdzia",,,,,,,,,,,,"X","X",,,,,,"X",,,,"X","X",,,,,,,,,,,,,,,,
+"E52","5.51.01.0005052","Zaawansowana niewydolność krążenia",,,,,,,,,,,,"X",,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E53","5.51.01.0005053","Niewydolność krążenia > 69 r.ż. lub z pw",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E54","5.51.01.0005054","Niewydolność krążenia < 70 r.ż. bez pw",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E55","5.51.01.0005055","Zakrzepica żył głębokich",,,"X",,"X",,"X","X",,,,"X","X",,"X",,,,"X",,,,,"X",,,,,,,,,,"X",,,,,,
+"E56","5.51.01.0005056","Choroba niedokrwienna serca > 69 r.ż. lub z pw",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E57","5.51.01.0005057","Choroba niedokrwienna serca > 17 r.ż. < 70 r.ż. bez pw",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E59","5.51.01.0005059","Nagłe zatrzymanie krążenia",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,"X",,,,,,
+"E61","5.51.01.0005061","Zaburzenia rytmu serca > 69 r.ż. lub z pw",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E62","5.51.01.0005062","Zaburzenia rytmu serca > 17 r.ż. < 70 r.ż. bez pw",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E63","5.51.01.0005063","Zaburzenia rytmu serca < 1 r.ż. lub < 18 r.ż. z pw",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E64","5.51.01.0005064","Zaburzenia rytmu serca > 0 r.ż. i < 18 r.ż.",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E71","5.51.01.0005071","Omdlenie i zapaść",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,"X",,,,,,
+"E72","5.51.01.0005072","Nieinwazyjna diagnostyka bólu w klatce piersiowej > 17 r.ż.",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E73","5.51.01.0005073","Choroby zastawek serca > 17 r.ż.",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,
+"E74","5.51.01.0005074","Wrodzone wady serca > 17 r.ż.",,,,,,,,,,,,"X","X",,,,,,"X",,,,"X","X",,,,,,,,,,,,,,,,
+"E75","5.51.01.0005075","Wrodzone wady serca < 1 r.ż. lub < 18 r.ż. z pw",,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,,,,,
+"E76","5.51.01.0005076","Wrodzone wady serca > 0 r.ż. i < 18 r.ż.",,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,,,,,
+"E77","5.51.01.0005077","Inne choroby układu krążenia > 17 r.ż.",,,,,,,,,,,,"X","X",,,,,,"X",,,,,"X",,,,,,,"X",,,,,,,,,
+"E78","5.51.01.0005078","Inne choroby układu krążenia < 1 r.ż. albo < 18 r.ż. z pw",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E79","5.51.01.0005079","Inne choroby układu krążenia > 0 r.ż. i < 18 r.ż.",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,
+"E86","5.51.01.0005086","Nadciśnienie tętnicze oporne i wtórne",,,,,,,,,,,,,"X",,,,"X",,,,,,,"X","X",,,,,,,,,,,,,,,
+"E87","5.51.01.0005087","Ciężkie nadciśnienie tętnicze > 17 r.ż.",,,,,,,,,,,,,"X",,,,"X",,,,,,,"X","X",,,,,,,,,,,,,,,
+"E88","5.51.01.0005088","Nadciśnienie tętnicze > 17 r.ż.",,,,,,,,,,,,"X","X",,,,"X",,"X",,,,,"X","X",,,,,,,,,,,,,,,
+"F01","5.51.01.0006001","Kompleksowe zabiegi przełyku *",,,,,"X","X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"F02","5.51.01.0006002","Duże zabiegi przełyku, w tym protezowanie *",,,,,"X","X",,"X","X",,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,,,
+"F03","5.51.01.0006003","Średnie i endoskopowe zabiegi przełyku *",,,,,"X","X",,"X","X",,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,,,
+"F04","5.51.01.0006004","Diagnostyczne zabiegi przewodu pokarmowego *",,,,,"X","X",,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,"X","X",,"X","X",,,,,,
+"F07","5.51.01.0006007","Choroby przełyku",,,,,"X","X",,"X","X",,,,"X",,,,,"X","X",,,,,,,,,,,"X","X",,,"X",,,,,,
+"F11","5.51.01.0006011","Kompleksowe zabiegi żołądka i dwunastnicy *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"F12","5.51.01.0006012","Duże zabiegi żołądka i dwunastnicy *",,,,,"X",,,"X","X",,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,
+"F13","5.51.01.0006013","Zabiegi lecznicze żołądka i dwunastnicy *",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,"X","X",,,"X",,,,,,
+"F16","5.51.01.0006016","Choroby żołądka i dwunastnicy",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,"X","X",,,"X",,,,,,
+"F21","5.51.01.0006021","Kompleksowe zabiegi jelita cienkiego *",,,,,"X",,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,
+"F22","5.51.01.0006022","Duże i endoskopowe zabiegi jelita cienkiego *",,,,,"X",,,"X","X",,,,,,,,,"X",,"X",,,,,,,,,,,,,,,,,,,,
+"F26","5.51.01.0006026","Choroby jelita cienkiego (bez chorób zapalnych)",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,"X",,,,,,,,"X","X",,,"X",,,,,,
+"F31","5.51.01.0006031","Kompleksowe zabiegi jelita grubego *",,,,,"X",,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,
+"F32","5.51.01.0006032","Duże i endoskopowe zabiegi jelita grubego *",,,,,"X",,,"X","X",,,,,,,,,"X",,"X",,,,,,,,,,,,,,,,,,,,
+"F33","5.51.01.0006033","Średnie i endoskopowe zabiegi jelita grubego *",,,,,"X",,,"X","X",,,,"X","X",,,,"X",,"X",,,,,,,,,,,,,,,,,,,,
+"F36","5.51.01.0006036","Choroby jelita grubego",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,"X","X",,,"X",,,,,,
+"F42","5.51.01.0006042","Duże zabiegi jamy brzusznej *",,,,,"X","X",,"X","X",,,,,,,,,"X",,"X",,,,,,,,,,,,,,,,,,,"X",
+"F43","5.51.01.0006043","Średnie i endoskopowe lecznicze zabiegi jamy brzusznej *",,,,,"X",,,"X","X",,,,"X","X",,,,"X",,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"F44","5.51.01.0006044","Diagnostyczne i lecznicze zabiegi jamy brzusznej *",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X","X",,,,,"X",,,,,"X","X",,,,"X",,,,"X",
+"F46","5.51.01.0006046","Choroby jamy brzusznej",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X","X",,,,,,,,,,"X","X",,,"X","X",,,,,
+"F47","5.51.01.0006047","Choroby infekcyjne jelit",,,,,,,,,,,,,"X","X",,,,"X","X",,,,,,,,,,,,,,,,,,,,,
+"F51","5.51.01.0006051","Kompleksowe zabiegi w chorobach zapalnych jelit *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"F52","5.51.01.0006052","Duże i endoskopowe zabiegi w chorobach zapalnych jelit *",,,,,"X",,,"X","X",,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,
+"F53","5.51.01.0006053","Średnie i endoskopowe zabiegi w chorobach zapalnych jelit *",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,,,,,,,,,,,
+"F56","5.51.01.0006056","Choroby zapalne jelit > 17 r.ż.",,,,,,,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,,,,,,,,,,,
+"F57","5.51.01.0006057","Choroby zapalne jelit < 18 r.ż.",,,,,"X",,,,"X",,,,,"X",,,,"X",,,,,,,,,,,,,,,,,,,,,,
+"F61","5.51.01.0006061","Kompleksowe zabiegi w krwawieniach z przewodu pokarmowego *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"F62","5.51.01.0006062","Duże i endoskopowe lecznicze zabiegi w krwawieniach z przewodu pokarmowego *",,,,,"X",,,"X","X",,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,
+"F63","5.51.01.0006063","Średnie i endoskopowe diagnostyczne zabiegi w krwawieniach z przewodu pokarmowego *",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,"X","X",,,,,,,,,
+"F66","5.51.01.0006066","Krwawienia z przewodu pokarmowego - leczenie zachowawcze",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,"X","X",,,"X",,,,,,
+"F72","5.51.01.0006072","Operacje przepuklin jamy brzusznej z wszczepem *",,,,,"X",,,"X","X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"F73","5.51.01.0006073","Operacje przepuklin brzusznych *",,,,,"X",,,"X","X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"F82","5.51.01.0006082","Wycięcie wyrostka robaczkowego z powikłaniami *",,,,,"X",,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"F83","5.51.01.0006083","Wycięcie wyrostka robaczkowego *",,,,,"X",,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"F86","5.51.01.0006086","Choroby wyrostka robaczkowego",,,,,"X",,,"X","X",,,,"X","X",,,,,"X",,,,,,,,,,,"X","X",,,,,,,,,
+"F93","5.51.01.0006093","Średnie zabiegi odbytu *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"F94","5.51.01.0006094","Małe zabiegi odbytu i odbytnicy *",,,,,"X",,,"X","X",,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,
+"F96","5.51.01.0006096","Choroby odbytu",,,,,"X",,,"X","X",,,,"X","X","X",,,"X","X","X",,,,,,,,,,"X","X",,,"X","X",,,,"X",
+"G01","5.51.01.0007001","Rozległe zabiegi wątroby *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G11","5.51.01.0007011","Kompleksowe zabiegi wątroby *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G12","5.51.01.0007012","Duże zabiegi wątroby *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G13","5.51.01.0007013","Średnie zabiegi wątroby *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G14","5.51.01.0007014","Małe zabiegi wątroby *",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,,,,,"X",,,,,,
+"G16","5.51.01.0007016","Ostre choroby wątroby",,,,,"X",,,"X",,,,,"X","X",,,,"X","X",,,,,,"X",,,,,,,,,,,,,,,
+"G17","5.51.01.0007017","Przewlekłe choroby wątroby z pw",,,,,,,,,,,,,"X","X",,,,"X","X",,,,,,,,,,,"X","X",,,,,,,,,
+"G18","5.51.01.0007018","Przewlekłe choroby wątroby bez pw",,,,,,,,,,,,,"X","X",,,,"X","X",,,,,,,,,,,"X","X",,,"X",,,,,,
+"G21","5.51.01.0007021","Kompleksowe zabiegi przewodów żółciowych *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G22","5.51.01.0007022","Duże zabiegi przewodów żółciowych *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G24","5.51.01.0007024","Wycięcie pęcherzyka żółciowego z pw *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G25","5.51.01.0007025","Wycięcie pęcherzyka żółciowego *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G26","5.51.01.0007026","Choroby dróg żółciowych",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,,,,,"X",,,,,,
+"G28","5.51.01.0007028","Nowotwory dróg żółciowych",,,,,"X",,,"X","X",,,,"X",,,,,"X","X",,,,,,,,,,,"X","X",,,,,,,,,
+"G30","5.51.01.0007030","Przeszczepienie trzustki*",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",," - warunki określone w zał. nr 3
+- zgodnie z opisem świadczenia (zał. nr 12)
+ - nie można łączyć z innymi świadczeniami z wyłączeniem świadczeń z katalogu świadczeń do sumowania po upływie liczby dni finansowanych grupą"
+"G31","5.51.01.0007031","Kompleksowe zabiegi trzustki *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G32","5.51.01.0007032","Duże zabiegi trzustki *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"G33","5.51.01.0007033","Zabiegi endoskopowe i przezskórne dróg żółciowych i trzustki z wprowadzeniem protezy samorozprężalnej *",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,,,,,,,,,,,
+"G34","5.51.01.0007034","Zabiegi endoskopowe i przezskórne dróg żółciowych i trzustki  *",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,,,,,,,,,,,
+"G35","5.51.01.0007035","Zabiegi diagnostyczne dróg żółciowych i trzustki *",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,,,,,,,,,,,
+"G36","5.51.01.0007036","Ostre zapalenie trzustki o ciężkim przebiegu",,,,,"X",,,"X",,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,
+"G37","5.51.01.0007037","Ostre zapalenie trzustki",,,,,"X",,,"X",,,,,"X","X",,,,"X","X",,,,,,,,,,,,,,,,,,,,,
+"G38","5.51.01.0007038","Przewlekłe choroby trzustki",,,,,"X",,,"X","X",,,,"X","X",,,,"X","X",,,,,,,,,,,"X","X",,,"X",,,,,,
+"G42","5.51.01.0007042","Zabiegi śledziony *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"H01","5.51.01.0008001","Endoprotezoplastyka pierwotna łokcia, barku, nadgarstka, stawu skokowo-goleniowego, częściowa kolana *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,"- nie zawiera kosztów wyrobów medycznych (endoprotezy);
+- wymaga zgody OW Funduszu;
+- konieczne przedstawienie rachunku/ faktury zakupu;"
+"H02","5.51.01.0008002","Endoprotezoplastyka pierwotna częściowa stawu biodrowego *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H03","5.51.01.0008003","Endoprotezoplastyka pierwotna drobnych stawów w obrębie ręki *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H04","5.51.01.0008004","Endoprotezoplastyka pierwotna całkowita cementowa, bipolarna biodra *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H05","5.51.01.0008005","Endoprotezoplastyka pierwotna całkowita kolana, bezcementowa biodra *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H06","5.51.01.0008006","Endoprotezoplastyka pierwotna całkowita biodra lub kolana z rekonstrukcją kostną, endoprotezoplastyka stawu biodrowego z zastosowaniem trzpienia przynasadowego, kapoplastyka stawu biodrowego *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H07","5.51.01.0008007","Endoprotezoplastyka rewizyjna częściowa *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H08","5.51.01.0008008","Endoprotezoplastyka rewizyjna całkowita *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H09","5.51.01.0008009","Zabiegi operacyjne - rewizyjne z powodu aseptycznego obluzowania lub z towarzyszącym złamaniem ""okołoprotezowym"" *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H10","5.51.01.0008010","Zabiegi operacyjne - rewizyjne w przypadkach infekcji wokół protezy *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H11","5.51.01.0008011","Zabiegi resekcyjne zmian nowotworowych lub guzowatych z endoprotezoplastyką lub zabieg rewizyjny z użyciem protez poresekcyjnych *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,"- nie zawiera kosztów wyrobów medycznych (endoprotezy);
+- wymaga zgody OW Funduszu;
+- konieczne przedstawienie rachunku/ faktury zakupu;"
+"H21","5.51.01.0008021","Artroskopowa rekonstrukcja z użyciem implantów mocujących *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H22","5.51.01.0008022","Artroskopia lecznicza *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,"X",,,,"X",,,,
+"H23","5.51.01.0008023","Artroskopia diagnostyczno - lecznicza *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,"X",,,,"X",,,,
+"H31","5.51.01.0008031","Kompleksowe zabiegi w zakresie kończyny dolnej i miednicy *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H32","5.51.01.0008032","Duże zabiegi w zakresie kończyny dolnej i miednicy *",,,,,"X",,,"X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H33","5.51.01.0008033","Średnie zabiegi na kończynie dolnej *",,,,,"X",,,"X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H41","5.51.01.0008041","Rekonstrukcja funkcji ręki, w tym mikrochirurgiczna *",,,,,"X",,,"X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H42","5.51.01.0008042","Duże zabiegi na kończynie górnej *",,,,,"X",,,"X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H43","5.51.01.0008043","Średnie zabiegi na kończynie górnej *",,,,,"X",,,"X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H51","5.51.01.0008051","Kompleksowe zabiegi korekcyjne kręgosłupa *",,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"X",,,,,,,,
+"H52","5.51.01.0008052","Zabiegi na kręgosłupie z zastosowaniem implantów *",,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"X",,,,,,,,
+"H53","5.51.01.0008053","Zabiegi na kręgosłupie bez stosowania implantów *",,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"X",,,,,,,,
+"H55","5.51.01.0008055","Zabiegi artroskopowe i przezskórne w zakresie kręgosłupa *",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,"X","X",,,,"X",,,,,,,,
+"H56","5.51.01.0008056","Zespoły bólowe kręgosłupa",,,,,"X",,,"X",,,,,"X","X",,,,,"X",,,,,,,,"X","X",,"X","X","X",,"X",,"X",,,,
+"H60","5.51.01.0008060","Rekonstrukcja złamań w obrębie miednicy z pw",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H61","5.51.01.0008061","Rekonstrukcja złamań w obrębie miednicy bez pw",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H62","5.51.01.0008062","Złamania lub zwichnięcia w obrębie miednicy lub kończyny dolnej *",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H63","5.51.01.0008063","Złamania lub zwichnięcia w obrębie kończyny górnej *",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H64","5.51.01.0008064","Mniejsze złamania lub zwichnięcia *",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H66","5.51.01.0008066","Czynnościowe leczenie złamań kości długich, stawowych, miednicy, kręgosłupa > 10 dni",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,"X","X",,,,"X",,"X",,,,,,
+"H67","5.51.01.0008067","Czynnościowe leczenie złamań kości długich, stawowych, miednicy, kręgosłupa",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,"X","X",,,,"X",,"X",,,,,,
+"H72","5.51.01.0008072","Amputacje rozległe i duże *",,,,,"X",,"X","X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H74","5.51.01.0008073","Mniejsze amputacje *",,,,,"X",,"X","X","X","X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H81","5.51.01.0008081","Kompleksowe zabiegi w chorobach infekcyjnych, nowotworowych kości, stawów, tkanki łącznej > 10 dni *",,,,,"X","X",,"X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H82","5.51.01.0008082","Duże zabiegi w chorobach infekcyjnych, nowotworowych kości, stawów, tkanki łącznej *",,,,,"X","X",,"X","X",,"X",,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H83","5.51.01.0008083","Średnie zabiegi na tkankach miękkich *",,,,,"X","X","X","X","X","X","X",,,,,,,,,,,,,,,,"X","X",,,,"X",,,,,,,,
+"H84","5.51.01.0008084","Mniejsze zabiegi w obrębie układu mięśniowo-szkieletowego lub tkanek miękkich *",,,,,"X","X","X","X","X","X","X",,,,,,,,,,,,,,,,"X","X",,,,"X",,,,,,,,
+"H85","5.51.01.0008085","Pourazowe uszkodzenia poza uszkodzeniem mózgu > 17 r.ż.",,,,,,"X",,"X",,,"X",,,,,,,,"X",,,,,,,,"X","X",,,,"X","X",,,,,,,
+"H86","5.51.01.0008086","Choroby tkanek miękkich",,,,,"X",,,,,,,,"X","X",,,,,"X",,,,,,,,"X","X",,"X","X","X",,"X",,"X",,,,
+"H87","5.51.01.0008087","Choroby zapalne stawów i tkanki łącznej",,,,,"X",,,,,,,,"X","X","X",,,,"X",,,"X",,,,,"X","X",,"X","X","X",,"X",,"X",,,,
+"H88","5.51.01.0008088","Choroby infekcyjne kości i stawów",,,,,"X",,,,,,,,"X","X",,,,,"X",,,,,,,,"X","X",,"X","X","X",,"X",,"X",,,,
+"H89","5.51.01.0008089","Choroby niezapalne kości i stawów",,,,,"X",,,,,,,,"X","X",,,"X",,"X",,,,,,,,"X","X",,"X","X","X",,"X",,"X",,,,
+"H90","5.51.01.0008090","Zapalenia stawów i układowe choroby tkanki łącznej wymagające intensywnego leczenia",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,"X",,,,
+"H92","5.51.01.0008092","Zabiegi rekonstrukcyjne deformacji układu kostno-stawowego < 18 r.ż.*",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,
+"H96","5.51.01.0008096","Układowe choroby tkanki łącznej",,,,,"X",,,,,,,,"X","X","X",,,,"X",,,"X",,,,,"X","X",,"X","X","X",,"X",,"X",,,,
+"H98","5.51.01.0008098","Krystalopatie",,,,,"X",,,,,,,,"X","X",,,,,"X",,,,,,,,"X","X",,"X","X","X",,"X",,"X",,,,
+"J01","5.51.01.0009001","Radykalne odjęcie piersi z rekonstrukcją *",,,,,,,,"X","X","X",,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"J02","5.51.01.0009002","Kompleksowe zabiegi w obrębie piersi *",,,,,,,,"X","X","X",,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"J03","5.51.01.0009003","Duże zabiegi w obrębie piersi *",,,,,,,,"X","X","X",,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"J04","5.51.01.0009004","Zabiegi rekonstrukcyjne piersi *",,,,,"X",,,"X","X","X",,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"J05","5.51.01.0009005","Średnia chirurgia piersi *",,,,,"X",,,"X","X","X",,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"J06","5.51.01.0009006","Mała chirurgia piersi *",,,,,"X",,,"X","X","X",,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"J07","5.51.01.0009007","Choroby piersi łagodne",,,,,"X",,,"X","X",,,,"X",,,,,,"X","X",,,,,,,,,,"X","X",,,,"X",,,,,
+"J08","5.51.01.0009008","Choroby piersi złośliwe",,,,,"X",,,"X","X",,,,"X",,,,,,"X","X",,,,,,,,,,"X","X",,,,"X",,,,,
+"J09","5.51.01.0009009","Wycięcie węzłów chłonnych *",,,,,"X","X",,"X","X",,"X",,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"J10","5.51.01.0009010","Biopsja mammotomiczna *",,,,,,,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"J11","5.51.01.0009011","Poważne oparzenia (odmrożenia), oparzenia 3o/  >19% TBSA - jednej lub wielu okolic ciała z przeszczepem skóry > 10 dni *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J12","5.51.01.0009012","Poważne oparzenia (odmrożenia), oparzenia 3o/ >19% TBSA - jednej lub wielu okolic ciała, przed przeniesieniem do oddziału specjalistycznego *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J13","5.51.01.0009013","Poważne oparzenia (odmrożenia), oparzenia 3o/ >19% TBSA - jednej lub wielu okolic ciała bez przeszczepu skóry > 10 dni *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J14","5.51.01.0009014","Oparzenia (odmrożenia) z wieloma przeszczepami skóry z pw *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J15","5.51.01.0009015","Oparzenia (odmrożenia) z wieloma przeszczepami skóry bez pw *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J16","5.51.01.0009016","Oparzenia z jednym przeszczepem skóry z pw *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J17","5.51.01.0009017","Oparzenia z jednym przeszczepem skóry bez pw *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J18","5.51.01.0009018","Oparzenia (odmrożenia) z innymi procedurami z pw *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J19","5.51.01.0009019","Oparzenia (odmrożenia) z innymi procedurami bez pw *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J20","5.51.01.0009020","Inne oparzenia (odmrożenia) z pw",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J21","5.51.01.0009021","Inne oparzenia (odmrożenia) bez pw",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J32","5.51.01.0009032","Duże zabiegi skórne *",,,,,"X",,,"X","X","X","X",,,,"X",,,,,,,,,,,,,,,,,"X","X",,,,,,,
+"J33","5.51.01.0009033","Średnie zabiegi skórne *",,,,,"X",,,"X","X","X","X",,,,"X",,,,,,,,,,,,,,,,,"X","X",,,,,,,
+"J34","5.51.01.0009034","Leczenie chirurgiczne zmian troficznych stopy *",,,,,"X",,"X","X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"J37","5.51.01.0009037","Owrzodzenia skóry",,,"X",,"X",,"X","X",,"X",,,"X","X","X",,,,"X",,,,,,,,,,,,,,,,,,,,,
+"J38","5.51.01.0009038","Ciężkie choroby dermatologiczne","X",,,,"X",,,,,,,,,"X","X",,,,,,,,,,,,,,,,,,,,,"X",,,,
+"J39","5.51.01.0009039","Duże choroby dermatologiczne","X",,,,"X",,,"X",,"X",,,"X","X","X",,,,"X",,,,,,,,,,,,,,,,,"X",,,,
+"J40","5.51.01.0009040","Ciężka łuszczyca",,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,," - zgodnie z opisem świadczenia (zał. nr 12)
+ - kwalifikacja zgodnie z załącznikami nr 13a, 13b i 13c; PASI>10 i BSA>10% i DLQI>10 "
+"J46","5.51.01.0009046","Duże choroby infekcyjne skóry","X",,,,"X",,,"X",,"X",,,"X","X","X",,,,"X",,,,,,,,,,,,,,,,,"X",,,,
+"J47","5.51.01.0009047","Duże guzy skóry",,,,,"X",,,,"X","X",,,,,"X",,,,"X",,,,,,,,,,,"X","X",,,,,,,,,
+"J49","5.51.01.0009049","Łagodne choroby dermatologiczne","X",,,,"X",,,"X","X","X",,,"X","X","X",,,,"X",,,,,,,,,,,"X","X",,,,,"X",,,,
+"K01","5.51.01.0010001","Zabiegi radykalne w rakach gruczołów dokrewnych *",,,,,"X","X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"K02","5.51.01.0010002","Operacja wola guzowatego powikłanego *",,,,,"X","X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"K03","5.51.01.0010003","Zabiegi dotyczące tarczycy i przytarczyc *",,,,,"X","X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,
+"K04","5.51.01.0010004","Zabiegi dotyczące nadnerczy *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,"X",
+"K05","5.51.01.0010005","Zabiegi diagnostyczne tarczycy, przytarczyc, nadnerczy *",,,,,"X","X",,"X","X",,,,,,,,"X",,,,,,,,,,,,,,,,"X",,,,,,,
+"K06","5.51.01.0010006","Stany naglące w endokrynologii > 17 r.ż.",,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,
+"K07","5.51.01.0010007","Stany naglące w endokrynologii < 18 r.ż.",,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,
+"K16","5.51.01.0010016","Choroby przysadki",,,,,,,,,,,,,"X",,,,"X",,,"X",,,,,,,"X",,,"X","X",,,,"X",,,,,
+"K26","5.51.01.0010026","Zaburzenia wodno-elektrolitowe",,,,,,,,"X","X",,,,"X","X",,"X","X",,"X",,,,,,,,"X",,,,,,,,,,,,,
+"K27","5.51.01.0010027","Zaburzenia odżywienia",,,,,,,,"X","X",,,,"X","X",,"X","X","X","X",,,,,,,,,"X",,,,,,"X",,,,,,
+"K28","5.51.01.0010028","Wrodzone wady metaboliczne",,,,,,,,,,,,,"X",,,"X","X","X","X",,"X",,,,,,,,,,,,,"X",,,,,,
+"K36","5.51.01.0010036","Cukrzyca ze stanami hipoglikemicznymi",,,,,,,,,,,,,"X",,,"X","X",,"X",,,,,,,,,,,,,,,"X",,,,,,
+"K37","5.51.01.0010037","Cukrzyca ze stanami hiperglikemicznymi",,,,,,,,,,,,,"X",,,"X","X",,"X",,,,,,,,,,,,,,,,,,,,,
+"K38","5.51.01.0010038","Cukrzyca i stany hiperglikemiczne innego pochodzenia",,,,,,,,,,,,"X","X",,,"X","X",,"X",,,,,,,,,,,,,,,,,,,,,
+"K39","5.51.01.0010039","Stopa cukrzycowa",,,"X",,,,"X","X",,,,,"X",,"X","X","X",,"X",,,,,,,,,,,,,,,,,,,,,
+"K46","5.51.01.0010046","Ciężkie choroby tarczycy",,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,
+"K47","5.51.01.0010047","Choroby tarczycy",,,,,,,,"X","X",,,,"X",,,,"X",,"X",,,,,,,,,,,,,,,"X",,,,,,
+"K48","5.51.01.0010048","Orbitopatia tarczycowa - terapia przeciwzapalna i przygotowanie do radioterapii i leczenia dekompresyjnego",,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,
+"K53","5.51.01.0010053","Nadczynność gruczołów dokrewnych poza hiperprolaktynemią, nadczynnością tarczycy i guzami neuroendokrynnymi przewodu pokarmowego i układu oddechowego",,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,
+"K54","5.51.01.0010054","Autoimmunologiczne zespoły wielogruczołowe",,,,,,,,,,,,,,,,,"X",,,,,"X",,,,,,,,,,,,,,,,,,
+"K55","5.51.01.0010055","Raki gruczołów dokrewnych z zaburzeniami czynności hormonalnej, nowotworowe zespoły wielogruczołowe oraz ektopowe wydzielanie hormonów z wyłaczeniem guzów neuroendokrynnych przewodu pokarmowego i układu oddechowego",,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,
+"K56","5.51.01.0010056","Guzy złośliwe gruczołów dokrewnych bez zaburzeń czynności hormonalnej",,,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,"X","X",,,,,,,,,
+"K57","5.51.01.0010057","Guzy neuroendokrynne",,,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,"X","X",,,,,,,,,
+"K58","5.51.01.0010058","Nowotwory endokrynne poza przysadką",,,,,,,,,,,,,"X",,,,"X","X",,,,,,,,,,,,"X","X",,,,,,,,,
+"K59","5.51.01.0010059","Inne choroby układu wydzielania wewnętrznego",,,,,,,,,,,,,"X",,,,"X","X","X","X",,,,,,,,,,,,,,,"X","X",,,,
+"K63","5.51.01.0010063","Kwalifikacja do leczenia jodem radioaktywnym raka tarczycy lub ocena skuteczności leczenia z zastosowaniem rekombinowanego TSH [rhTSH]",,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,
+"K64","5.51.01.0010064","Leczenie radioizotopowe nowotworów z zastosowanierm 131I - meta-jodo-benzyl guanidyny (131 I-MIBG)",,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,
+"L01","5.51.01.0011001","Kompleksowe otwarte zabiegi nerek *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L02","5.51.01.0011002","Duże otwarte zabiegi nerek *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L03","5.51.01.0011003","Średnie otwarte zabiegi nerek *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L05","5.51.01.0011005","Duże endoskopowe zabiegi nerek *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L06","5.51.01.0011006","Średnie endoskopowe zabiegi nerek *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L07","5.51.01.0011007","Zakażenia nerek lub dróg moczowych",,,,,"X",,,,,,,,"X","X",,,,,"X",,,,,,"X",,,,,,,,,"X",,,,,"X",
+"L08","5.51.01.0011008","Nowotwory nerek i dróg moczowych",,,,,"X",,,,,,,,,,,,,,,,,,,,"X",,,,,"X","X",,,,,,,,"X",
+"L12","5.51.01.0011012","Duże otwarte zabiegi moczowodu *",,,,,"X",,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L13","5.51.01.0011013","Średnie otwarte zabiegi moczowodu *",,,,,"X",,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L15","5.51.01.0011015","Duże endoskopowe zabiegi moczowodu *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L16","5.51.01.0011016","Średnie endoskopowe zabiegi moczowodu *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L21","5.51.01.0011021","Kompleksowe zabiegi pęcherza moczowego z wytworzeniem przetoki *",,,,,"X",,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"L22","5.51.01.0011022","Duże otwarte zabiegi na pęcherzu moczowym, w tym plastyka *",,,,,"X",,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"L23","5.51.01.0011023","Średnie otwarte zabiegi na pęcherzu moczowym *",,,,,"X",,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"L24","5.51.01.0011024","Wytworzenie przetok odprowadzających mocz *",,,,,"X",,,"X","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"L25","5.51.01.0011025","Duże endoskopowe zabiegi na pęcherzu moczowym *",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L26","5.51.01.0011026","Średnie zabiegi endoskopowe na pęcherzu moczowym *",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L27","5.51.01.0011027","Zaburzenia odpływu moczu",,,,,"X",,,"X",,,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"L29","5.51.01.0011029","Choroby pęcherza moczowego i moczowodu",,,,,"X",,,"X",,,,,"X",,,,,,"X","X",,,,,"X",,,,,"X","X",,,"X","X",,,,"X",
+"L31","5.51.01.0011031","Radykalna prostatektomia",,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L32","5.51.01.0011032","Otwarte zabiegi gruczołu krokowego i szyi pęcherza moczowego *",,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L43","5.51.01.0011043","Przezcewkowa resekcja gruczołu krokowego *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L45","5.51.01.0011044","Endoskopowe zabiegi gruczołu krokowego lub szyi pęcherza moczowego *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L46","5.51.01.0011045","Choroby gruczołu krokowego",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,,,,"X",
+"L52","5.51.01.0011052","Duże otwarte zabiegi cewki moczowej *",,,,,"X",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L53","5.51.01.0011053","Średnie zabiegi cewki moczowej *",,,,,"X",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L54","5.51.01.0011054","Małe zabiegi cewki moczowej *",,,,,"X",,,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L62","5.51.01.0011062","Duże i średnie zabiegi prącia *",,,,,"X",,,"X","X","X",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L64","5.51.01.0011064","Małe zabiegi prącia *",,,,,"X",,,"X",,"X",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L69","5.51.01.0011069","Choroby prącia, jąder, nasieniowodu, moczowodu i cewki moczowej",,,,,"X",,,"X","X","X",,,,,"X",,,,,,,,,,,,,,,"X","X",,,"X",,,,,"X",
+"L72","5.51.01.0011072","Zabiegi moszny, jądra, najądrza i nasieniowodu *",,,,,"X",,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L81","5.51.01.0011081","Leczenie powikłań leczenia nerkozastępczego > 17 r.ż.",,,,,,,,,,,,,"X","X",,,,,"X",,,,,,"X",,,,,,,,,,,,,,,"także w przypadku leczenia nerkozastępczego prowadzonego w innym ośrodku"
+"L82","5.51.01.0011082","Ostra niewydolność nerek",,,,,,,,,,,,,"X","X",,,,,"X",,,,,,"X",,,,,,,,,"X",,,,,"X",
+"L83","5.51.01.0011083","Przewlekła niewydolność nerek",,,,,,,,,,,,,"X","X",,,,,"X",,,,,,"X",,,,,,,,,"X",,,,,,
+"L84","5.51.01.0011084","Inne choroby nerek",,,,,,,,,,,,,"X","X",,"X",,,"X",,,,,,"X",,,,,,,,,"X",,,,,"X",
+"L85","5.51.01.0011085","Kamica moczowa",,,,,"X",,,"X",,,,,"X",,,,,,"X",,,,,,"X",,,,,,,,,"X","X",,,,"X",
+"L86","5.51.01.0011086","Badania w zakresie dróg moczowych",,,,,"X",,,"X",,,,,"X",,,,,,"X",,,,,,"X",,,,,,,,,,,,,,"X",
+"L87","5.51.01.0011087","Leczenie powikłań leczenia nerkozastępczego < 18 r.ż.",,,,,,,,,,,,,,"X",,,,,,,,,,,"X",,,,,,,,,"X",,,,,,"także w przypadku leczenia nerkozastępczego prowadzonego w innym ośrodku"
+"L91","5.51.01.0011091","Implantacja lub wymiana hydraulicznego zwieracza cewki moczowej (AUS) *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X","warunki określone w zał. nr 3"
+"L92","5.51.01.0011092","ESWL",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",
+"L93","5.51.01.0011093","Przeszczepienie nerki - kategoria I*",,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",," - warunki określone w zał. nr 3
+- zgodnie z opisem świadczenia (zał. nr 12)
+ - nie można łączyć z innymi świadczeniami z wyłączeniem świadczeń z katalogu świadczeń do sumowania po upływie liczby dni finansowanych grupą
+ - nie można łączyć ze świadczeniem 5.10.00.0000052 hemodializa z katalogu świadczeń odrębnie kontraktowanych oraz ze świadczeniem 5.53.01.0001478 z katalogu świadczeń do sumowania"
+"L94","5.51.01.0011094","Przeszczepienie nerki - kategoria II*",,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",," - warunki określone w zał. nr 3
+- zgodnie z opisem świadczenia (zał. nr 12)
+ - nie można łączyć z innymi świadczeniami z wyłączeniem świadczeń z katalogu świadczeń do sumowania po upływie liczby dni finansowanych grupą
+ - nie można łączyć ze świadczeniem 5.10.00.0000052 hemodializa z katalogu świadczeń odrębnie kontraktowanych oraz ze świadczeniem 5.53.01.0001478 z katalogu świadczeń do sumowania"
+"L95","5.51.01.0011095","Przeszczepienie nerki - kategoria I < 18 r.ż.*",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",," - warunki określone w zał. nr 3
+- zgodnie z opisem świadczenia (zał. nr 12)
+ - nie można łączyć z innymi świadczeniami z wyłączeniem świadczeń z katalogu świadczeń do sumowania po upływie liczby dni finansowanych grupą
+ - nie można łączyć ze świadczeniem 5.10.00.0000052 hemodializa z katalogu świadczeń odrębnie kontraktowanych oraz ze świadczeniem 5.53.01.0001478 z katalogu świadczeń do sumowania"
+"L96","5.51.01.0011096","Przeszczepienie nerki - kategoria II < 18 r.ż.*",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",," - warunki określone w zał. nr 3
+- zgodnie z opisem świadczenia (zał. nr 12)
+ - nie można łączyć z innymi świadczeniami z wyłączeniem świadczeń z katalogu świadczeń do sumowania po upływie liczby dni finansowanych grupą
+ - nie można łączyć ze świadczeniem 5.10.00.0000052 hemodializa z katalogu świadczeń odrębnie kontraktowanych oraz ze świadczeniem 5.53.01.0001478 z katalogu świadczeń do sumowania"
+"L97","5.51.01.0011097","Przeszczepienie nerki i trzustki*",,,,,"X",,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",," - warunki określone w zał. nr 3
+- zgodnie z opisem świadczenia (zał. nr 12)
+ - nie można łączyć z innymi świadczeniami z wyłączeniem świadczeń z katalogu świadczeń do sumowania po upływie liczby dni finansowanych grupą
+ - nie można łączyć ze świadczeniem 5.10.00.0000052 hemodializa z katalogu świadczeń odrębnie kontraktowanych oraz ze świadczeniem 5.53.01.0001478 z katalogu świadczeń do sumowania"
+"M01","5.51.01.0012001","Kompleksowe zabiegi dolnej części układu rozrodczego bez pw *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M02","5.51.01.0012002","Duże zabiegi dolnej części układu rozrodczego *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M03","5.51.01.0012003","Średnie zabiegi dolnej części układu rozrodczego *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M04","5.51.01.0012004","Małe zabiegi dolnej części układu rozrodczego *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M05","5.51.01.0012005","Zabiegi w nietrzymaniu moczu i na szyi pęcherza moczowego u kobiet *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M06","5.51.01.0012006","Kompleksowe zabiegi dolnej części układu rozrodczego z pw*",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M11","5.51.01.0012011","Kompleksowe zabiegi górnej części układu rozrodczego bez pw *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M12","5.51.01.0012012","Bardzo duże zabiegi górnej części układu rozrodczego bez pw *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M13","5.51.01.0012013","Duże zabiegi górnej części układu rozrodczego *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M14","5.51.01.0012014","Średnie zabiegi górnej części układu rozrodczego *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M15","5.51.01.0012015","Małe zabiegi górnej części układu rozrodczego *",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M16","5.51.01.0012016","Zagrażające lub dokonane poronienie, zakończenie ciąży obumarłej",,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,
+"M17","5.51.01.0012017","Indukcja poronienia",,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,,"(zgodnie z ustawą z dnia 7 stycznia 1993 r o planowaniu rodziny, ochronie płodu ludzkiego i warunkach dopuszczalności przerwania ciąży)"
+"M18","5.51.01.0012018","Leczenie zachowawcze dolnej części układu rozrodczego",,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,"X","X",,,,"X",,,,"X",
+"M19","5.51.01.0012019","Leczenie zachowawcze zaburzeń statyki narządu rodnego",,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M20","5.51.01.0012020","Kompleksowe zabiegi górnej części układu rozrodczego z pw*",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M21","5.51.01.0012021","Bardzo duże zabiegi górnej części układu rozrodczego z pw*",,,,,"X",,,,"X",,,,,,,,,,,"X",,,,,,,,,,,,,,,"X",,,,"X",
+"M26","5.51.01.0012026","Leczenie zachowawcze górnej części układu rozrodczego",,,,,,,,,,,,,,,,,"X",,,"X",,,,,,,,,,"X","X",,,,"X",,,,,
+"M27","5.51.01.0012027","Leczenie zachowawcze jajników, jajowodów i miednicy mniejszej",,,,,"X",,,"X","X",,,,,,,,"X",,,"X",,,,,,,,,,"X","X",,,,"X",,,,"X",
+"M28","5.51.01.0012028","Leczenie zachowawcze nowotworów złośliwych układu rozrodczego z pw",,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,"X","X",,,,"X",,,,"X",
+"M29","5.51.01.0012029","Leczenie zachowawcze nowotworów złośliwych układu rozrodczego bez pw",,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,"X","X",,,,"X",,,,"X",
+"M30","5.51.01.0012030","Leczenie zachowawcze w innych chorobach układu rozrodczego",,,,,"X",,,"X","X",,,,,,,,"X",,,"X",,,,,,,,,,"X","X",,,,"X",,,,"X",
+"N01","5.51.01.0013001","Poród *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,
+"N02","5.51.01.0013002","Poród mnogi lub przedwczesny *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"warunki określone w zał. nr 3 dla 2 poziomu referencyjnego"
+"N03","5.51.01.0013003","Patologia ciąży lub płodu z porodem > 5 dni *",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"warunki określone w zał. nr 3 dla 2 poziomu referencyjnego"
+"N04","5.51.01.0013004","Patologia ciąży - diagnostyka, obserwacja < 3 dni",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,
+"N05","5.51.01.0013005","Patologia ciąży i połogu- diagnostyka, leczenie > 2 dni",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,
+"N06","5.51.01.0013006","Patologia ciąży i połogu- diagnostyka, leczenie > 11 dni",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"warunki określone w zał. nr 3 dla 2 poziomu referencyjnego"
+"N07","5.51.01.0013007","Ciężka patologia ciąży - diagnostyka rozszerzona, leczenie kompleksowe",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"warunki określone w zał. nr 3 dla 3 poziomu referencyjnego"
+"N08","5.51.01.0013008","Ciężka patologia płodu - diagnostyka, leczenie",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"warunki określone w zał. nr 3 dla 3 poziomu referencyjnego"
+"N09","5.51.01.0013009","Ciężka patologia ciąży z porodem - diagnostyka rozszerzona, leczenie kompleksowe > 10 dni*",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"warunki określone w zał. nr 3 dla 3 poziomu referencyjnego"
+"N11","5.51.01.0013011","Ciężka patologia ciąży z porodem - diagnostyka rozszerzona, leczenie kompleksowe > 10 dni z pw*",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,"warunki określone w zał. nr 3 dla 3 poziomu referencyjnego"
+"N20","5.51.01.0013020","Noworodek wymagający normalnej opieki",,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,"X",,,,,
+"N21","5.51.01.0013021","Ciężka patologia noworodka > 30 dni",,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,"warunki określone w zał. nr 3 dla 3 poziomu referencyjnego"
+"N22","5.51.01.0013022","Noworodek wymagający intensywnej terapii",,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,"warunki określone w zał. nr 3 dla 2 poziomu referencyjnego"
+"N23","5.51.01.0013023","Noworodek wymagający intensywnej opieki",,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,"warunki określone w zał. nr 3 dla 2 poziomu referencyjnego"
+"N24","5.51.01.0013024","Noworodek wymagający szczególnej opieki",,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,
+"N25","5.51.01.0013025","Noworodek wymagający wzmożonego nadzoru",,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,
+"N26","5.51.01.0013026","Noworodek wymagający intensywnej terapii z zabiegiem chirurgicznym *",,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,"warunki określone w zał. nr 3 dla 3 poziomu referencyjnego"
+"N31","5.51.01.0013031","Kompleksowe zabiegi chirurgii noworodka i niemowlęcia *",,,,,"X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,"X","warunki określone w zał. nr 3"
+"N32","5.51.01.0013032","Duże zabiegi chirurgii noworodka i niemowlęcia *",,,,,"X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,"X","warunki określone w zał. nr 3"
+"N33","5.51.01.0013033","Średnie zabiegi chirurgii noworodka i niemowlęcia *",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X","warunki określone w zał. nr 3"
+"N34","5.51.01.0013034","Małe zabiegi chirurgii noworodka i niemowlęcia *",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X","warunki określone w zał. nr 3"
+"P01","5.51.01.0014001","Astma lub trudności w oddychaniu","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,
+"P03","5.51.01.0014003","Choroby górnego odcinka dróg oddechowych","X",,,"X",,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,,
+"P04","5.51.01.0014004","Choroby dolnych dróg oddechowych","X",,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,"X",,,,"X",,,,,,
+"P05","5.51.01.0014005","Główne infekcje (w tym choroby immunologiczne)",,,,,,,,,,,,,,"X",,,,,,,,"X",,,,,,,,"X",,,,"X",,,,,,
+"P06","5.51.01.0014006","Mniejsze infekcje (w tym choroby immunologiczne)",,,,,,,,,,,,,,"X",,,,,,,,"X",,,,,,,,"X",,,,"X",,,,,,
+"P07","5.51.01.0014007","Nowotwory",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,"X",,,,,,
+"P08","5.51.01.0014008","Drgawki gorączkowe",,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,"X",,,,"X",,,,,,
+"P09","5.51.01.0014009","Choroby układu nerwowego",,,,"X",,,,,,,,,,,,,,,,,,,,,,,,"X",,"X",,,,"X",,,,,,
+"P10","5.51.01.0014010","Choroby endokrynologiczne (bez cukrzycy)",,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,"X",,,,,,
+"P11","5.51.01.0014011","Poważne choroby żołądkowo-jelitowe i metaboliczne",,,,,"X",,,,,,,,,"X",,,"X","X",,,,,,,,,,,,"X",,,,"X",,,,,,
+"P12","5.51.01.0014012","Inne zaburzenia żołądkowo-jelitowe i metaboliczne",,,,,"X",,,,,,,,,"X",,,"X","X",,,,,,,,,,,,"X",,,,"X",,,,,,
+"P13","5.51.01.0014013","Alergie","X",,,,,,,,,,,"X",,,"X",,,,,,,,,,,,,,,"X",,,,"X",,,,,,
+"P14","5.51.01.0014014","Pourazowe uszkodzenia poza uszkodzeniem mózgu",,,,,"X",,,,,,,,,,,,,,,,,,,,,,,,"X",,,"X","X","X","X",,,,,
+"P15","5.51.01.0014015","Zaburzenia zachowania",,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,"X",,,,,,
+"P16","5.51.01.0014016","Poważne schorzenia uwarunkowane genetycznie i inne choroby wrodzone",,,,"X","X",,,,,,,"X",,,"X",,,"X",,"X",,,,,"X",,,"X","X",,,"X","X","X","X",,,,"X",
+"P17","5.51.01.0014017","Choroby układu moczowo - płciowego",,,,,"X",,,,,,,,,,,,,,,,,,,,"X",,,,,"X",,,,"X",,,,,"X",
+"P18","5.51.01.0014018","Choroby nerek z niewydolnością nerkową",,,,,"X",,,,,,,,,,,,,,,,,,,,"X",,,,,"X",,,,"X",,,,,"X",
+"P19","5.51.01.0014019","Choroby krwi",,,,,"X",,,,,,,,,,,,,,,,,"X",,,,,,,,"X",,,,"X",,,,,,
+"P20","5.51.01.0014020","Choroby skóry, układu mięśniowo-kostnego lub tkanki łącznej","X",,,,"X",,,,,,,,,,"X",,,,,,,"X",,,,,,,,"X",,"X",,"X",,"X",,,,
+"P21","5.51.01.0014021","Choroby układu krążenia",,,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,"X",,,,"X",,,,,,
+"P22","5.51.01.0014022","Infekcyjne i nieinfekcyjne zapalenie żołądka i jelit",,,,,"X",,,,,,,,,"X",,,,"X",,,,,,,,,,,,"X",,,,"X",,,,,,
+"P23","5.51.01.0014023","Padaczka",,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,"X",,,,,,
+"P24","5.51.01.0014024","Cukrzyca",,,,,,,,,,,,,,,,"X","X",,,,,,,,,,,,,,,,,"X",,,,,,
+"P25","5.51.01.0014025","Uraz głowy z urazem mózgu",,,,,"X",,,,,,,,,,,,,,,,,,,,,,"X",,,,,"X",,"X",,,,,,
+"P26","5.51.01.0014026","Leczenie nowotworów z pw > 7 dni",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,
+"P27","5.51.01.0014027","Guzy lite układu nerwowego",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,
+"P28","5.51.01.0014028","Guzy lite narządów, tkanek i innych układów",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,
+"P29","5.51.01.0014029","Bóle głowy - diagnostyka i leczenie > 3 dni",,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,
+"Q01","5.51.01.0015001","Endowaskularne zaopatrzenie tętniaka aorty *",,,,,,,"X",,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,"- warunki określone w zał. nr 3;
+- w kardiochirurgii dotyczy wyłącznie aorty piersiowej"
+"Q02","5.51.01.0015002","Zabiegi naczyniowe w obszarze brzusznym z pw i reoperacje *",,,,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"w chirurgii ogólnej wyłącznie w przypadku pękniętego tętniaka aorty"
+"Q03","5.51.01.0015003","Zabiegi naczyniowe w obszarze brzusznym *",,,,,"X",,"X","X",,,,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,"w chirurgii ogólnej wyłącznie w przypadku pękniętego tętniaka aorty"
+"Q11","5.51.01.0015011","Zabiegi hybrydowe w obrębie naczyń obwodowych *",,,"X",,"X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Q12","5.51.01.0015012","Zabiegi na tętnicach kończyn dolnych *",,,,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Q13","5.51.01.0015013","Pomostowanie tętnic obwodowych *",,,,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Q14","5.51.01.0015014","Pomostowanie i rekonstrucja naczyń pozaczaszkowych i kończyn górnych *",,,,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Q15","5.51.01.0015015","Zabiegi w zakresie naczyń pozaczaszkowych i kończyn górnych *",,,,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Q16","5.51.01.0015016","Inne zabiegi na naczyniach *",,,,,"X",,"X","X","X","X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,"w chirurgii ogólnej w stanach nagłych"
+"Q17","5.51.01.0015017","Sympatektomia *",,,,,"X","X","X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Q18","5.51.01.0015018","Duże zabiegi na układzie limfatycznym *",,,,,"X","X","X","X","X",,"X",,,,,,,,,"X",,,,,,,,,,"X","X",,"X",,"X",,,,,
+"Q19","5.51.01.0015019","Średnie zabiegi na układzie limfatycznym *",,,,,"X","X","X","X","X",,"X",,,,,,,,,"X",,,,,,,,,,"X","X",,"X",,"X",,,,,
+"Q20","5.51.01.0015020","Małe zabiegi na układzie limfatycznym *",,,,,"X","X","X","X","X",,"X",,,,,,,,,"X",,,,,,,,,,"X","X",,"X",,"X",,,,,
+"Q22","5.51.01.0015022","Zakrzepowe zapalenie żył - leczenie operacyjne *",,,,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Q23","5.51.01.0015023","Operacje żylaków z safenektomią *",,,,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Q24","5.51.01.0015024","Operacje żylaków bez safenektomii *",,,,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Q31","5.51.01.0015031","Choroby krwotoczne naczyń mózgowych - remodeling naczyń z zastosowaniem stentu *",,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"Q32","5.51.01.0015032","Choroby krwotoczne naczyń mózgowych - duży endowaskularny zabieg naprawczy *",,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"Q33","5.51.01.0015033","Choroby krwotoczne naczyń mózgowych - średni endowaskularny zabieg naprawczy *",,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"Q41","5.51.01.0015041","Zabiegi endowaskularne - 1. grupa *",,,"X",,"X",,"X",,,,,,,,,,,,,,,,,"X",,,"X",,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"Q42","5.51.01.0015042","Zabiegi endowaskularne - 2. grupa *",,,"X",,"X",,"X",,,,,,,,,,,,,,,,,"X",,,"X",,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"Q43","5.51.01.0015043","Zabiegi endowaskularne - 3. grupa *",,,"X",,"X",,"X",,,,,,,,,,,,,,,,,"X",,,"X",,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"Q44","5.51.01.0015044","Zabiegi endowaskularne - 4. grupa *",,,"X",,"X",,"X",,,,,,,,,,,,,,,,,"X",,,"X",,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"Q45","5.51.01.0015045","Zabiegi endowaskularne - 5. grupa *",,,"X",,"X",,"X",,,,,"X",,,,,,,,,,,,"X",,,"X",,,,,,,,,,,,"X","warunki określone w zał. nr 3"
+"Q46","5.51.01.0015046","Zabiegi endowaskularne - 6. grupa *",,,"X",,"X",,"X",,,,,,,,,,,,,,,,,"X",,,"X",,,,,,,,,,,,,"warunki określone w zał. nr 3"
+"Q47","5.51.01.0015047","Zabiegi endowaskularne - 7. grupa *",,,"X",,"X",,"X",,,,,,,,,,,,,,,,,"X",,,"X","X",,,,,,,,,,,,"- warunki określone w zał. nr 3
+- w neurologii możliwość realizacji wyłącznie 00.633 Przezskórne wprowadzenie stentu(ów) do tętnicy szyjnej z neuroprotekcją, 
+00.634 Przezskórne wprowadzenie stentu(ów) do pnia ramienno-głowowego z neuroprotekcją"
+"Q48","5.51.01.0015048","Radiologia zabiegowa - zabiegi diagnostyczne *",,,"X",,"X","X","X","X","X",,,,"X",,,,,,,,,,,,"X",,"X","X",,"X","X","X","X","X",,,,,"X",
+"Q51","5.51.01.0015051","Dostęp naczyniowy w leczeniu nerkozastępczym z wykorzystaniem protez naczyniowych *",,,"X",,"X",,"X","X",,,,,"X",,,,,,"X",,,,"X",,"X",,,,,,,,,,,,,,,
+"Q52","5.51.01.0015052","Dostęp w leczeniu nerkozastępczym *",,,"X",,"X",,"X","X",,,,,"X",,,,,,"X",,,,"X",,"X",,,,,,,,,,,,,,,
+"Q66","5.51.01.0015066","Choroby naczyń",,,"X",,"X",,"X","X",,,,,"X",,,,,,"X",,,,,,"X",,,,,,,,,,,,,,,
+"S01","5.51.01.0016001","Intensywne leczenie ostrych białaczek > 17 r.ż.",,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,,"X",,,,,,,,," - wdrożenie leczenia (indukcja) oraz reindukcja
+ - w przypadku immunoablacji w leczeniu aplazji szpiku konieczność spełnienia warunków określonych w zał. nr 3 (pkt 21.3)"
+"S02","5.51.01.0016002","Choroby układu krwiotwórczego i odpornościowego > 10 dni",,,,,,,,,,,,,,"X",,,,,,,"X","X",,,,,,,,"X","X",,,,,,,,,
+"S03","5.51.01.0016003","Choroby układu krwiotwórczego i odpornościowego > 1 dnia",,,,,,,,,,,,,"X","X",,,,,"X",,"X","X",,,,,,,,"X","X",,,,,,,,,
+"S04","5.51.01.0016004","Choroby układu krwiotwórczego i odpornościowego < 2 dni",,,,,,,,,,,,,"X","X",,,,,,,"X","X",,,,,,,,"X","X",,,,,,,,,
+"S05","5.51.01.0016005","Zaburzenia krzepliwości, inne choroby krwi i śledziony > 10 dni",,,,,,,,,,,,,"X","X",,,,,"X",,"X","X",,,,,,,,"X","X",,,"X",,,,,,
+"S06","5.51.01.0016006","Zaburzenia krzepliwości, inne choroby krwi i śledziony > 1 dnia",,,,,,,,,,,,,"X","X",,,,,"X",,"X","X",,,,,,,,"X","X",,,"X",,,,,,
+"S07","5.51.01.0016007","Zaburzenia krzepliwości, inne choroby krwi i śledziony < 2 dni",,,,,,,,,,,,,"X","X",,,,,"X",,"X","X",,,,,,,,"X","X",,,"X",,,,,,
+"S08","5.51.01.0016008","Intensywne leczenie ostrych białaczek < 18 r.ż.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X","X",,,,,,,,,
+"S21","5.51.01.0016021","Przeszczepienie autologicznych komórek krwiotwórczych*",,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,"X",,,,,,,,"X",," - warunki określone w zał. nr 3
+ - nie można łączyć z innymi świadczeniami z wyłączeniem świadczeń z katalogu świadczeń do sumowania po upływie liczby dni finansowanych grupą"
+"S22","5.51.01.0016022","Przeszczepienie allogenicznych komórek krwiotwórczych od rodzeństwa identycznego w HLA*",,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,"X",,,,,,,,"X",," - warunki określone w zał. nr 3
+ - obejmuje hospitalizację dawcy
+ - nie można łączyć z innymi świadczeniami z wyłączeniem świadczeń z katalogu świadczeń do sumowania po upływie liczby dni finansowanych grupą"
+"S23","5.51.01.0016023","Przeszczepienie allogenicznych komórek krwiotwórczych od dawcy alternatywnego*",,,,,,,,,,,,,,,,,,,,,"X",,,,,,,,,"X",,,,,,,,"X",," - warunki określone w zał. nr 3
+ - obejmuje hospitalizację dawcy
+ - nie można łączyć z innymi świadczeniami z wyłączeniem świadczeń z katalogu świadczeń do sumowania po upływie liczby dni finansowanych grupą"
+"S33","5.51.01.0016033","Choroby alergiczne > 17 r.ż.","X",,,,,,,,,,,"X","X",,"X",,,,,,,,,,,,,,,,,,,,,,,,,
+"S40","5.51.01.0016040","Intensywne leczenie zatruć",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,," - konieczne potwierdzenie rodzaju zatrucia skalą PSS
+ - nie można łączyć ze świadczeniem 5.10.00.0000052 hemodializa z katalogu świadczeń odrębnie kontraktowanych"
+"S41","5.51.01.0016041","Zatrucie ciężkie",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,"konieczne potwierdzenie rodzaju zatrucia skalą PSS"
+"S42","5.51.01.0016042","Zatrucie średnie",,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,"X",,,"X",,,"- konieczne potwierdzenie rodzaju zatrucia skalą PSS
+- warunki określone w zał. nr 3"
+"S43","5.51.01.0016043","Zatrucie lekkie",,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,,"X",,,"X",,,"konieczne potwierdzenie rodzaju zatrucia skalą PSS"
+"S44","5.51.01.0016044","Inne stany w toksykologii",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"X",,,
+"S51","5.51.01.0016051","AIDS - leczenie choroby pełnoobjawowej",,,,,,,,,,,,,,"X","X",,,,,,,,,,,,,,,,,,,"X",,,,,,
+"S52","5.51.01.0016052","Niedobory odporności inne niż HIV/ AIDS","X",,,,,,,,,,,,"X","X","X",,,,"X",,"X","X",,,,,,,,"X","X",,,,,"X",,,,
+"S53","5.51.01.0016053","Posocznica",,,,,"X","X","X","X","X","X",,"X","X","X",,,,"X","X","X","X",,"X",,"X",,"X",,,"X","X","X",,"X","X","X",,"X","X",
+"S54","5.51.01.0016054","Obserwacja i wstępna diagnostyka w celu wykluczenia chorób zakaźnych > 1 dnia",,,,,,,,,,,,,,"X",,,,,,,,,,,,,,,,,,,,"X",,,,,,
+"S55","5.51.01.0016055","Gorączka niejasnego pochodzenia",,,,,,,,,,,,,"X","X",,,,,"X",,,,,,,,,,,"X","X",,,"X",,"X",,,,
+"S57","5.51.01.0016057","Inne choroby wirusowe",,,,,,,,,,,,,,"X","X",,,,,,,,,,,,,,,,,,,,,,,,,
+"S60","5.51.01.0016060","Choroby zakaźne niewirusowe",,,,,,,,"X",,,,"X",,"X","X",,,,,,,,,,,,,,,,,,,,,"X",,,,
