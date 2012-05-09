@@ -21,10 +21,15 @@ import org.valkyriercp.rules.RulesSource;
 import org.valkyriercp.taskpane.TaskPaneNavigatorApplicationWindowFactory;
 import org.valkyriercp.text.SelectAllFormComponentInterceptorFactory;
 import org.valkyriercp.widget.WidgetViewDescriptor;
+import pl.edu.agh.dao.ICD10Dao;
 import pl.edu.agh.dao.PatientDao;
+import pl.edu.agh.dao.jdbc.JdbcICD10Dao;
 import pl.edu.agh.dao.jdbc.JdbcPatientDao;
+import pl.edu.agh.domain.ICD10Service;
 import pl.edu.agh.domain.PatientService;
 import pl.edu.agh.domain.ValidationRulesSource;
+import pl.edu.agh.ui.ICD10DataEditor;
+import pl.edu.agh.ui.ICD10DataProvider;
 import pl.edu.agh.ui.PatientDataEditor;
 import pl.edu.agh.ui.PatientDataProvider;
 
@@ -93,6 +98,16 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         return new PatientDataProvider(patientService());
     }
 
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public ICD10DataEditor icd10DataEditor() {
+        return new ICD10DataEditor(icd10DataProvider());
+    }
+
+    public ICD10DataProvider icd10DataProvider() {
+        return new ICD10DataProvider(icd10Service());
+    }
+
     // Views
 
     @Bean
@@ -101,6 +116,11 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         return patientDataEditor().createViewDescriptor("patientView");
     }
 
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public WidgetViewDescriptor icd10View() {
+        return icd10DataEditor().createViewDescriptor("icd10View");
+    }
 //    @Bean
 //    public WidgetViewDescriptor startView() {
 //        Widget htmlViewWidget = new HTMLViewWidget(new ClassPathResource("/org/valkyriercp/sample/showcase/html/start.html"));
@@ -120,6 +140,11 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public PatientService patientService() {
         return new PatientService();
+    }
+
+    @Bean
+    public ICD10Service icd10Service() {
+        return new ICD10Service();
     }
 
     // Binders
@@ -165,6 +190,13 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public PatientDao patientDao() {
         JdbcPatientDao dao = new JdbcPatientDao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public ICD10Dao icd10Dao() {
+        JdbcICD10Dao dao = new JdbcICD10Dao();
         dao.setDataSource(dataSource());
         return dao;
     }

@@ -2,13 +2,13 @@ package pl.edu.agh.dao.jdbc;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import org.springframework.jdbc.object.MappingSqlQuery;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import pl.edu.agh.dao.PatientDao;
+import pl.edu.agh.dao.jdbc.mapper.PatientMapper;
 import pl.edu.agh.domain.Patient;
 import pl.edu.agh.domain.PatientFilter;
 
@@ -79,25 +79,21 @@ public class JdbcPatientDao extends SimpleJdbcDaoSupport implements PatientDao {
         boolean and = false;
 
         if (StringUtils.isNotBlank(filter.getFirstname())) {
-            sql.append(like("first_name", and));
+            sql.append(SQLBuilderUtil.like("first_name", and));
             args.add("%" + filter.getFirstname() + "%");
             and = true;
         }
         if (StringUtils.isNotBlank(filter.getLastname())) {
-            sql.append(like("last_name", and));
+            sql.append(SQLBuilderUtil.like("last_name", and));
             args.add("%" + filter.getLastname() + "%");
             and = true;
         }
         if (StringUtils.isNotBlank(filter.getPesel())) {
-            sql.append(like("pesel", and));
+            sql.append(SQLBuilderUtil.like("pesel", and));
             args.add("%" + filter.getPesel() + "%");
             and = true;
         }
         return getJdbcTemplate().query(sql.toString(), args.toArray(), MAPPER);
-    }
-
-    private static String like(String column, boolean and) {
-        return (and ? " and" : " where")  + " upper(" + column + ") like upper(?)";
     }
 
     private static final class PatientMappingQuery extends MappingSqlQuery<Patient> {
@@ -110,18 +106,6 @@ public class JdbcPatientDao extends SimpleJdbcDaoSupport implements PatientDao {
         @Override
         public Patient mapRow(ResultSet rs, int rowNumber) throws SQLException {
             return MAPPER.mapRow(rs, rowNumber);
-        }
-    }
-
-    private static final class PatientMapper implements RowMapper<Patient> {
-        @Override
-        public Patient mapRow(ResultSet rs, int rowNum) throws SQLException {
-            Patient patient = new Patient();
-            patient.setId(rs.getInt("id"));
-            patient.setFirstname(rs.getString("first_name"));
-            patient.setLastname(rs.getString("last_name"));
-            patient.setPesel(rs.getString("pesel"));
-            return patient;
         }
     }
 }

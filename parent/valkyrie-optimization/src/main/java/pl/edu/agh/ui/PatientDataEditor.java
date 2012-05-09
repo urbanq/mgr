@@ -10,8 +10,7 @@ import javax.annotation.PostConstruct;
 public class PatientDataEditor extends DefaultDataEditorWidget {
     private PatientDataProvider patientDataProvider;
 
-    public PatientDataEditor(PatientDataProvider patientDataProvider)
-    {
+    public PatientDataEditor(PatientDataProvider patientDataProvider) {
         super("patientDataEditor");
         this.patientDataProvider = patientDataProvider;
     }

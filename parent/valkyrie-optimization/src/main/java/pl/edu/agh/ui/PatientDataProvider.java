@@ -21,8 +21,8 @@ public class PatientDataProvider extends AbstractDataProvider {
     {
         if (criteria instanceof PatientFilter)
         {
-            PatientFilter itemFilter = (PatientFilter) criteria;
-            return service.findPatients(itemFilter);
+            PatientFilter filter = (PatientFilter) criteria;
+            return service.findPatients(filter);
         }
         else
         {
