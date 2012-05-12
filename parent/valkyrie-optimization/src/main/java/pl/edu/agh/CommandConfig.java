@@ -26,6 +26,11 @@ public class CommandConfig extends AbstractCommandConfig {
     }
 
     @Bean
+    public AbstractCommand icd9ViewCommand() {
+        return new ShowViewCommand("icd9ViewCommand", appConfig.icd9View());
+    }
+
+    @Bean
     public CommandGroup fileMenu() {
         CommandGroupFactoryBean fileMenuFactory = new CommandGroupFactoryBean();
         fileMenuFactory.setGroupId("fileMenu");
@@ -53,7 +58,9 @@ public class CommandConfig extends AbstractCommandConfig {
     public CommandGroup viewMenu() {
         CommandGroupFactoryBean windowMenuFactory = new CommandGroupFactoryBean();
         windowMenuFactory.setGroupId("viewMenu");
-        windowMenuFactory.setMembers(patientViewCommand(), icd10ViewCommand());
+        windowMenuFactory.setMembers(patientViewCommand(),
+                                     icd10ViewCommand(),
+                                     icd9ViewCommand());
         return windowMenuFactory.getCommandGroup();
     }
 

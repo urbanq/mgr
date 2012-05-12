@@ -22,7 +22,7 @@ public class ICD10DataEditor extends DefaultDataEditorWidget {
         setFilterForm(new ICD10FilterForm());
 
         PropertyColumnTableDescription tableDescription = new PropertyColumnTableDescription("icd10DataEditor", ICD10.class);
-        tableDescription.addPropertyColumn("code");
+        tableDescription.addPropertyColumn("code").withFixedWidth(90);;
         tableDescription.addPropertyColumn("name");
         setTableWidget(tableDescription);
     }

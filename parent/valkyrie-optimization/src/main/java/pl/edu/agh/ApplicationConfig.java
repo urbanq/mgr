@@ -22,16 +22,16 @@ import org.valkyriercp.taskpane.TaskPaneNavigatorApplicationWindowFactory;
 import org.valkyriercp.text.SelectAllFormComponentInterceptorFactory;
 import org.valkyriercp.widget.WidgetViewDescriptor;
 import pl.edu.agh.dao.ICD10Dao;
+import pl.edu.agh.dao.ICD9Dao;
 import pl.edu.agh.dao.PatientDao;
 import pl.edu.agh.dao.jdbc.JdbcICD10Dao;
+import pl.edu.agh.dao.jdbc.JdbcICD9Dao;
 import pl.edu.agh.dao.jdbc.JdbcPatientDao;
 import pl.edu.agh.domain.ICD10Service;
+import pl.edu.agh.domain.ICD9Service;
 import pl.edu.agh.domain.PatientService;
 import pl.edu.agh.domain.ValidationRulesSource;
-import pl.edu.agh.ui.ICD10DataEditor;
-import pl.edu.agh.ui.ICD10DataProvider;
-import pl.edu.agh.ui.PatientDataEditor;
-import pl.edu.agh.ui.PatientDataProvider;
+import pl.edu.agh.ui.*;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
@@ -108,6 +108,16 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         return new ICD10DataProvider(icd10Service());
     }
 
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public ICD9DataEditor icd9DataEditor() {
+        return new ICD9DataEditor(icd9DataProvider());
+    }
+
+    public ICD9DataProvider icd9DataProvider() {
+        return new ICD9DataProvider(icd9Service());
+    }
+
     // Views
 
     @Bean
@@ -120,6 +130,12 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Scope(BeanDefinition.SCOPE_PROTOTYPE)
     public WidgetViewDescriptor icd10View() {
         return icd10DataEditor().createViewDescriptor("icd10View");
+    }
+
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public WidgetViewDescriptor icd9View() {
+        return icd9DataEditor().createViewDescriptor("icd9View");
     }
 //    @Bean
 //    public WidgetViewDescriptor startView() {
@@ -145,6 +161,11 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public ICD10Service icd10Service() {
         return new ICD10Service();
+    }
+
+    @Bean
+    public ICD9Service icd9Service() {
+        return new ICD9Service();
     }
 
     // Binders
@@ -197,6 +218,13 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public ICD10Dao icd10Dao() {
         JdbcICD10Dao dao = new JdbcICD10Dao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public ICD9Dao icd9Dao() {
+        JdbcICD9Dao dao = new JdbcICD9Dao();
         dao.setDataSource(dataSource());
         return dao;
     }
