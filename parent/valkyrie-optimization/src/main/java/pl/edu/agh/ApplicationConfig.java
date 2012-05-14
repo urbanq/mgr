@@ -23,14 +23,17 @@ import org.valkyriercp.text.SelectAllFormComponentInterceptorFactory;
 import org.valkyriercp.widget.WidgetViewDescriptor;
 import pl.edu.agh.dao.ICD10Dao;
 import pl.edu.agh.dao.ICD9Dao;
+import pl.edu.agh.dao.JGPDao;
 import pl.edu.agh.dao.PatientDao;
 import pl.edu.agh.dao.jdbc.JdbcICD10Dao;
 import pl.edu.agh.dao.jdbc.JdbcICD9Dao;
+import pl.edu.agh.dao.jdbc.JdbcJGPDao;
 import pl.edu.agh.dao.jdbc.JdbcPatientDao;
-import pl.edu.agh.domain.ICD10Service;
-import pl.edu.agh.domain.ICD9Service;
-import pl.edu.agh.domain.PatientService;
 import pl.edu.agh.domain.ValidationRulesSource;
+import pl.edu.agh.service.ICD10Service;
+import pl.edu.agh.service.ICD9Service;
+import pl.edu.agh.service.JGPService;
+import pl.edu.agh.service.PatientService;
 import pl.edu.agh.ui.*;
 
 import javax.sql.DataSource;
@@ -118,6 +121,16 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         return new ICD9DataProvider(icd9Service());
     }
 
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public JGPDataEditor jgpDataEditor() {
+        return new JGPDataEditor(jgpDataProvider());
+    }
+
+    public JGPDataProvider jgpDataProvider() {
+        return new JGPDataProvider(jgpService());
+    }
+
     // Views
 
     @Bean
@@ -136,6 +149,12 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Scope(BeanDefinition.SCOPE_PROTOTYPE)
     public WidgetViewDescriptor icd9View() {
         return icd9DataEditor().createViewDescriptor("icd9View");
+    }
+
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public WidgetViewDescriptor jgpView() {
+        return jgpDataEditor().createViewDescriptor("jgpView");
     }
 //    @Bean
 //    public WidgetViewDescriptor startView() {
@@ -166,6 +185,11 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public ICD9Service icd9Service() {
         return new ICD9Service();
+    }
+
+    @Bean
+    public JGPService jgpService() {
+        return new JGPService();
     }
 
     // Binders
@@ -225,6 +249,13 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public ICD9Dao icd9Dao() {
         JdbcICD9Dao dao = new JdbcICD9Dao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public JGPDao jgpDao() {
+        JdbcJGPDao dao = new JdbcJGPDao();
         dao.setDataSource(dataSource());
         return dao;
     }

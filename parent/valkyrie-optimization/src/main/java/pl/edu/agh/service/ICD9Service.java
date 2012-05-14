@@ -1,7 +1,9 @@
-package pl.edu.agh.domain;
+package pl.edu.agh.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.dao.ICD9Dao;
+import pl.edu.agh.domain.ICD9;
+import pl.edu.agh.domain.ICD9Filter;
 
 import java.util.List;
 

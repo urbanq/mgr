@@ -2,7 +2,7 @@ package pl.edu.agh.ui;
 
 import org.valkyriercp.widget.editor.provider.AbstractDataProvider;
 import pl.edu.agh.domain.ICD9Filter;
-import pl.edu.agh.domain.ICD9Service;
+import pl.edu.agh.service.ICD9Service;
 
 import java.util.List;
 

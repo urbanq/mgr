@@ -19,15 +19,6 @@ CREATE INDEX ICD9_TMP_CODE_IDX ON ICD9_TMP(CODE);
 ------------------------------------------------------------------------------------------------------------------------
 -- save data structure without duplicates etc.
 ------------------------------------------------------------------------------------------------------------------------
-CREATE TABLE LIST_TYPE(
-    ID CHAR(1) PRIMARY KEY,
-    NAME VARCHAR(10) NOT NULL
-);
-INSERT INTO LIST_TYPE (ID, NAME) VALUES ('G', 'globalna');
-INSERT INTO LIST_TYPE (ID, NAME) VALUES ('U', 'do sekcji');
-INSERT INTO LIST_TYPE (ID, NAME) VALUES ('H', 'do grupy');
-INSERT INTO LIST_TYPE (ID, NAME) VALUES ('N', 'negatywna');
-------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE ICD9(
     CODE VARCHAR(7) PRIMARY KEY,
     RANGE INT,

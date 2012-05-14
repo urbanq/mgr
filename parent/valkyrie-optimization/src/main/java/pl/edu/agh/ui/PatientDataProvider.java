@@ -3,7 +3,7 @@ package pl.edu.agh.ui;
 import org.valkyriercp.widget.editor.provider.AbstractDataProvider;
 import pl.edu.agh.domain.Patient;
 import pl.edu.agh.domain.PatientFilter;
-import pl.edu.agh.domain.PatientService;
+import pl.edu.agh.service.PatientService;
 
 import java.util.List;
 

@@ -3,19 +3,22 @@ package pl.edu.agh.ui;
 import com.jgoodies.forms.layout.FormLayout;
 import org.valkyriercp.form.FilterForm;
 import org.valkyriercp.form.builder.FormLayoutFormBuilder;
-import pl.edu.agh.domain.ICD10Filter;
+import pl.edu.agh.domain.JGPFilter;
 
 import javax.swing.*;
 
-
-public class ICD10FilterForm extends FilterForm {
-    public ICD10FilterForm() {
-        super("icd10FilterForm");
+/**
+ * User: mateusz
+ * Date: 14.05.12
+ */
+public class JGPFilterForm extends FilterForm {
+    public JGPFilterForm() {
+        super("jgpFilterForm");
     }
 
     @Override
     protected Object newFormObject() {
-        return new ICD10Filter();
+        return new JGPFilter();
     }
 
     protected JComponent createFormControl() {

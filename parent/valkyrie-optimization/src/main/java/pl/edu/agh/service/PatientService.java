@@ -1,7 +1,9 @@
-package pl.edu.agh.domain;
+package pl.edu.agh.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.dao.PatientDao;
+import pl.edu.agh.domain.Patient;
+import pl.edu.agh.domain.PatientFilter;
 
 import java.util.List;
 
