@@ -21,20 +21,15 @@ import org.valkyriercp.rules.RulesSource;
 import org.valkyriercp.taskpane.TaskPaneNavigatorApplicationWindowFactory;
 import org.valkyriercp.text.SelectAllFormComponentInterceptorFactory;
 import org.valkyriercp.widget.WidgetViewDescriptor;
-import pl.edu.agh.dao.ICD10Dao;
-import pl.edu.agh.dao.ICD9Dao;
-import pl.edu.agh.dao.JGPDao;
-import pl.edu.agh.dao.PatientDao;
-import pl.edu.agh.dao.jdbc.JdbcICD10Dao;
-import pl.edu.agh.dao.jdbc.JdbcICD9Dao;
-import pl.edu.agh.dao.jdbc.JdbcJGPDao;
-import pl.edu.agh.dao.jdbc.JdbcPatientDao;
+import pl.edu.agh.dao.*;
+import pl.edu.agh.dao.jdbc.*;
 import pl.edu.agh.domain.ValidationRulesSource;
 import pl.edu.agh.service.ICD10Service;
 import pl.edu.agh.service.ICD9Service;
 import pl.edu.agh.service.JGPService;
 import pl.edu.agh.service.PatientService;
 import pl.edu.agh.ui.*;
+import pl.edu.agh.ui.binder.DepartmentBinder;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
@@ -208,6 +203,11 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         return numberBinder;
     }
 
+    @Bean
+    public Binder departmentBinder() {
+        return new DepartmentBinder();
+    }
+
     @Override
     public Class<?> getCommandConfigClass() {
         return CommandConfig.class;
@@ -256,6 +256,13 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public JGPDao jgpDao() {
         JdbcJGPDao dao = new JdbcJGPDao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public DepartmentDao departmentDao() {
+        JdbcDepartmentDao dao = new JdbcDepartmentDao();
         dao.setDataSource(dataSource());
         return dao;
     }
