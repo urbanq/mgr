@@ -6,7 +6,7 @@
 CREATE TABLE AGE_LIMIT(
     ID INT PRIMARY KEY, -- Kod ograniczenia wiekowego
     UNDER INT,          -- Poniżej (Górna granica <)
-    OVER INT,           -- Powyżej Dolna granica >)
+    OVER INT,           -- Powyżej (Dolna granica >)
     TIME_UNIT CHAR(1) NOT NULL,  -- Jednostka
     FOREIGN KEY(TIME_UNIT) REFERENCES TIME_UNIT(ID)
 );
