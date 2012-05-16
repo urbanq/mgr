@@ -40,7 +40,9 @@ public class DepartmentBinder extends ComboBoxBinder {
         @Override
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            setText(((Department)value).getName());
+            if(value instanceof Department) {
+                setText(((Department)value).getName());
+            }
             return this;
         }
     }

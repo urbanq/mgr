@@ -13,6 +13,7 @@ import org.valkyriercp.application.config.support.AbstractApplicationConfig;
 import org.valkyriercp.application.config.support.UIManagerConfigurer;
 import org.valkyriercp.application.support.SingleViewPageDescriptor;
 import org.valkyriercp.form.binding.Binder;
+import org.valkyriercp.form.binding.BinderSelectionStrategy;
 import org.valkyriercp.form.binding.swing.NumberBinder;
 import org.valkyriercp.form.builder.ChainedInterceptorFactory;
 import org.valkyriercp.form.builder.FormComponentInterceptorFactory;
@@ -23,6 +24,7 @@ import org.valkyriercp.text.SelectAllFormComponentInterceptorFactory;
 import org.valkyriercp.widget.WidgetViewDescriptor;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.dao.jdbc.*;
+import pl.edu.agh.domain.Department;
 import pl.edu.agh.domain.ValidationRulesSource;
 import pl.edu.agh.service.ICD10Service;
 import pl.edu.agh.service.ICD9Service;
@@ -42,7 +44,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Override
     public ApplicationLifecycleAdvisor applicationLifecycleAdvisor() {
         ApplicationLifecycleAdvisor lifecycleAdvisor =  super.applicationLifecycleAdvisor();
-        lifecycleAdvisor.setStartingPageDescriptor(new SingleViewPageDescriptor(patientView()));
+        lifecycleAdvisor.setStartingPageDescriptor(new SingleViewPageDescriptor(gruperView()));
         return lifecycleAdvisor;
     }
 
@@ -126,6 +128,12 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         return new JGPDataProvider(jgpService());
     }
 
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public GruperWidget gruperWidget() {
+        return new GruperWidget();
+    }
+
     // Views
 
     @Bean
@@ -150,6 +158,12 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Scope(BeanDefinition.SCOPE_PROTOTYPE)
     public WidgetViewDescriptor jgpView() {
         return jgpDataEditor().createViewDescriptor("jgpView");
+    }
+
+    @Bean
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    public WidgetViewDescriptor gruperView() {
+        return gruperWidget().createViewDescriptor("gruperView");
     }
 //    @Bean
 //    public WidgetViewDescriptor startView() {
@@ -206,6 +220,12 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public Binder departmentBinder() {
         return new DepartmentBinder();
+    }
+
+    @Override
+    protected void registerBinders(BinderSelectionStrategy binderSelectionStrategy) {
+        super.registerBinders(binderSelectionStrategy);
+        binderSelectionStrategy.registerBinderForPropertyType(Department.class, departmentBinder());
     }
 
     @Override

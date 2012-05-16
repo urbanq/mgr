@@ -36,6 +36,11 @@ public class CommandConfig extends AbstractCommandConfig {
     }
 
     @Bean
+    public AbstractCommand gruperViewCommand() {
+        return new ShowViewCommand("gruperViewCommand", appConfig.gruperView());
+    }
+
+    @Bean
     public CommandGroup fileMenu() {
         CommandGroupFactoryBean fileMenuFactory = new CommandGroupFactoryBean();
         fileMenuFactory.setGroupId("fileMenu");
@@ -63,7 +68,8 @@ public class CommandConfig extends AbstractCommandConfig {
     public CommandGroup viewMenu() {
         CommandGroupFactoryBean windowMenuFactory = new CommandGroupFactoryBean();
         windowMenuFactory.setGroupId("viewMenu");
-        windowMenuFactory.setMembers(patientViewCommand(),
+        windowMenuFactory.setMembers(gruperViewCommand(),
+                                     patientViewCommand(),
                                      icd10ViewCommand(),
                                      icd9ViewCommand(),
                                      jgpViewCommand());
