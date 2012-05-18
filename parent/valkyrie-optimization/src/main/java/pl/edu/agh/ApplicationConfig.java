@@ -44,7 +44,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Override
     public ApplicationLifecycleAdvisor applicationLifecycleAdvisor() {
         ApplicationLifecycleAdvisor lifecycleAdvisor =  super.applicationLifecycleAdvisor();
-        lifecycleAdvisor.setStartingPageDescriptor(new SingleViewPageDescriptor(gruperView()));
+        lifecycleAdvisor.setStartingPageDescriptor(new SingleViewPageDescriptor(grouperView()));
         return lifecycleAdvisor;
     }
 
@@ -130,8 +130,8 @@ public class ApplicationConfig extends AbstractApplicationConfig {
 
     @Bean
     @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-    public GruperWidget gruperWidget() {
-        return new GruperWidget();
+    public GrouperWidget grouperWidget() {
+        return new GrouperWidget();
     }
 
     // Views
@@ -162,8 +162,8 @@ public class ApplicationConfig extends AbstractApplicationConfig {
 
     @Bean
     @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-    public WidgetViewDescriptor gruperView() {
-        return gruperWidget().createViewDescriptor("gruperView");
+    public WidgetViewDescriptor grouperView() {
+        return grouperWidget().createViewDescriptor("grouperView");
     }
 //    @Bean
 //    public WidgetViewDescriptor startView() {
