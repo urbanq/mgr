@@ -13,13 +13,16 @@ import pl.edu.agh.domain.GrouperFormObject;
 public class GrouperForm extends TabbedForm {
     @Override
     protected Tab[] getTabs() {
-        FormLayout layout = new FormLayout("default, 3dlu, fill:pref:nogrow, 3dlu, 100dlu", "default");
+        //TODO form layout
+//        FormLayout layout = new FormLayout("default, 3dlu, fill:pref:nogrow, 3dlu, 100dlu, 3dlu, 100dlu", "default");
+        FormLayout layout = new FormLayout("right:pref, 4dlu, fill:pref:grow, 6dlu, right:pref, 4dlu, fill:pref:grow", "default");
         FormLayoutFormBuilder builder = new FormLayoutFormBuilder(getBindingFactory(), layout);
-        setFocusControl(builder.addPropertyAndLabel("department")[1]);
-//        builder.nextRow();
-//        builder.addPropertyAndLabel("lastname");
-//        builder.nextRow();
-//        builder.addPropertyAndLabel("pesel");
+        setFocusControl(builder.addPropertyAndLabel("dateOfBirth", "jxDatePickerDateFieldBinder")[1]);
+        builder.addPropertyAndLabel("sex", 5);
+        builder.nextRow();
+        builder.addPropertyAndLabel("income", "jxDatePickerDateFieldBinder");
+        builder.nextRow();
+        builder.addPropertyAndLabel("outcome", "jxDatePickerDateFieldBinder");
 
         return new Tab[] { new Tab("baseTab", builder.getPanel())};
     }

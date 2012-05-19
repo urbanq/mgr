@@ -81,13 +81,13 @@
             <url>https://raw.github.com/Ekito/maven-repo/master/releases</url>
         </repository>
         <repository>
-            <id>http://spring-rich-c.sourceforge.net</id>
+            <id>spring-rich-c.sourceforge.net</id>
             <name>Maven Repository Sourceforge</name>
             <layout>default</layout>
             <url>http://spring-rich-c.sourceforge.net/maven2repository</url>
         </repository>
         <repository>
-            <id>http://download.java.net</id>
+            <id>download.java.net</id>
             <name>Maven Repository DownloadJavaNet</name>
             <layout>default</layout>
             <url>http://download.java.net/maven/2</url>
