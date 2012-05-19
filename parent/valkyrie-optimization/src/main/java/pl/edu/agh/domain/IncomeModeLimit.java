@@ -4,7 +4,7 @@ package pl.edu.agh.domain;
  * User: mateusz
  * Date: 19.05.12
  */
-public class IncomeModeLimit implements Comparable<IncomeModeLimit> {
+public class IncomeModeLimit implements Comparable<IncomeModeLimit>, Nameable {
     private int id;
     private String name;
 

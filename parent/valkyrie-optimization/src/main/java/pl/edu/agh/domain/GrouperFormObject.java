@@ -10,9 +10,13 @@ public class GrouperFormObject {
     private Date dateOfBirth;
     private Sex sex = Sex.NO_DATA;
 
-    private Date income;
+    private Date incomeDate;
+    private IncomeModeLimit incomeModeLimit;
 
-    private Date outcome;
+    private Date outcomeDate;
+    private OutcomeModeLimit outcomeModeLimit;
+
+    private HospitalType hospitalType;
 
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -30,29 +34,43 @@ public class GrouperFormObject {
         this.sex = sex;
     }
 
-    public Date getIncome() {
-        return income;
+    public Date getIncomeDate() {
+        return incomeDate;
     }
 
-    public void setIncome(Date income) {
-        this.income = income;
+    public void setIncomeDate(Date incomeDate) {
+        this.incomeDate = incomeDate;
     }
 
-    public Date getOutcome() {
-        return outcome;
+    public IncomeModeLimit getIncomeModeLimit() {
+        return incomeModeLimit;
     }
 
-    public void setOutcome(Date outcome) {
-        this.outcome = outcome;
+    public void setIncomeModeLimit(IncomeModeLimit incomeModeLimit) {
+        this.incomeModeLimit = incomeModeLimit;
     }
 
-    //    private Department department;
+    public Date getOutcomeDate() {
+        return outcomeDate;
+    }
 
-//    public Department getDepartment() {
-//        return department;
-//    }
-//
-//    public void setDepartment(Department department) {
-//        this.department = department;
-//    }
+    public void setOutcomeDate(Date outcomeDate) {
+        this.outcomeDate = outcomeDate;
+    }
+
+    public OutcomeModeLimit getOutcomeModeLimit() {
+        return outcomeModeLimit;
+    }
+
+    public void setOutcomeModeLimit(OutcomeModeLimit outcomeModeLimit) {
+        this.outcomeModeLimit = outcomeModeLimit;
+    }
+
+    public HospitalType getHospitalType() {
+        return hospitalType;
+    }
+
+    public void setHospitalType(HospitalType hospitalType) {
+        this.hospitalType = hospitalType;
+    }
 }

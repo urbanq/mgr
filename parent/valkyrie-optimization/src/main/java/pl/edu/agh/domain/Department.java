@@ -4,7 +4,7 @@ package pl.edu.agh.domain;
  * User: mateusz
  * Date: 14.05.12
  */
-public class Department {
+public class Department implements Nameable {
     private String id;
     private String name;
 

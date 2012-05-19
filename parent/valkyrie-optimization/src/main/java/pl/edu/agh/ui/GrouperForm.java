@@ -20,9 +20,13 @@ public class GrouperForm extends TabbedForm {
         setFocusControl(builder.addPropertyAndLabel("dateOfBirth", "jxDatePickerDateFieldBinder")[1]);
         builder.addPropertyAndLabel("sex", 5);
         builder.nextRow();
-        builder.addPropertyAndLabel("income", "jxDatePickerDateFieldBinder");
+        builder.addPropertyAndLabel("incomeDate", "jxDatePickerDateFieldBinder");
+        builder.addPropertyAndLabel("incomeModeLimit", 5);
         builder.nextRow();
-        builder.addPropertyAndLabel("outcome", "jxDatePickerDateFieldBinder");
+        builder.addPropertyAndLabel("outcomeDate", "jxDatePickerDateFieldBinder");
+        builder.addPropertyAndLabel("outcomeModeLimit", 5);
+        builder.nextRow();
+        builder.addPropertyAndLabel("hospitalType");
 
         return new Tab[] { new Tab("baseTab", builder.getPanel())};
     }

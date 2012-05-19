@@ -4,7 +4,7 @@ package pl.edu.agh.domain;
  * User: mateusz
  * Date: 19.05.12
  */
-public class OutcomeModeLimit implements Comparable<OutcomeModeLimit> {
+public class OutcomeModeLimit implements Comparable<OutcomeModeLimit>, Nameable {
     private int id;
     private String name;
 

@@ -25,13 +25,15 @@ import org.valkyriercp.widget.WidgetViewDescriptor;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.dao.jdbc.*;
 import pl.edu.agh.domain.Department;
+import pl.edu.agh.domain.IncomeModeLimit;
+import pl.edu.agh.domain.OutcomeModeLimit;
 import pl.edu.agh.domain.ValidationRulesSource;
 import pl.edu.agh.service.ICD10Service;
 import pl.edu.agh.service.ICD9Service;
 import pl.edu.agh.service.JGPService;
 import pl.edu.agh.service.PatientService;
 import pl.edu.agh.ui.*;
-import pl.edu.agh.ui.binder.DepartmentBinder;
+import pl.edu.agh.ui.binder.NameableBinder;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
@@ -83,6 +85,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         ChainedInterceptorFactory formComponentInterceptorFactory = (ChainedInterceptorFactory) super.formComponentInterceptorFactory();
         formComponentInterceptorFactory.getInterceptorFactories().add(new SelectAllFormComponentInterceptorFactory());
         formComponentInterceptorFactory.getInterceptorFactories().add(new ToolTipInterceptorFactory());
+//        formComponentInterceptorFactory.getInterceptorFactories().add(new ComboBoxAutoCompletionInterceptorFactory());
         return formComponentInterceptorFactory;
     }
 
@@ -219,13 +222,31 @@ public class ApplicationConfig extends AbstractApplicationConfig {
 
     @Bean
     public Binder departmentBinder() {
-        return new DepartmentBinder();
+        NameableBinder<Department> binder = new NameableBinder<Department>(Department.class);
+        binder.setDao(departmentDao());
+        return binder;
+    }
+
+    @Bean
+    public Binder incomeModeLimitBinder() {
+        NameableBinder<IncomeModeLimit> binder = new NameableBinder<IncomeModeLimit>(IncomeModeLimit.class);
+        binder.setDao(incomeModeLimitDao());
+        return binder;
+    }
+
+    @Bean
+    public Binder outcomeModeLimitBinder() {
+        NameableBinder<OutcomeModeLimit> binder = new NameableBinder<OutcomeModeLimit>(OutcomeModeLimit.class);
+        binder.setDao(outcomeModeLimitDao());
+        return binder;
     }
 
     @Override
     protected void registerBinders(BinderSelectionStrategy binderSelectionStrategy) {
         super.registerBinders(binderSelectionStrategy);
         binderSelectionStrategy.registerBinderForPropertyType(Department.class, departmentBinder());
+        binderSelectionStrategy.registerBinderForPropertyType(IncomeModeLimit.class, incomeModeLimitBinder());
+        binderSelectionStrategy.registerBinderForPropertyType(OutcomeModeLimit.class, outcomeModeLimitBinder());
     }
 
     @Override
@@ -283,6 +304,20 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public DepartmentDao departmentDao() {
         JdbcDepartmentDao dao = new JdbcDepartmentDao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public IncomeModeLimitDao incomeModeLimitDao() {
+        JdbcIncomeModeLimitDao dao = new JdbcIncomeModeLimitDao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public OutcomeModeLimitDao outcomeModeLimitDao() {
+        JdbcOutcomeModeLimitDao dao = new JdbcOutcomeModeLimitDao();
         dao.setDataSource(dataSource());
         return dao;
     }
