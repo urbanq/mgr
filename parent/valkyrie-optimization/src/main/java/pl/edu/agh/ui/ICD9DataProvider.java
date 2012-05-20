@@ -1,6 +1,7 @@
 package pl.edu.agh.ui;
 
 import org.valkyriercp.widget.editor.provider.AbstractDataProvider;
+import pl.edu.agh.domain.ICD9;
 import pl.edu.agh.domain.ICD9Filter;
 import pl.edu.agh.service.ICD9Service;
 
@@ -18,11 +19,12 @@ public class ICD9DataProvider extends AbstractDataProvider {
         this.service = service;
     }
 
-    public List getList(Object criteria)
-    {
+    public List getList(Object criteria) {
         if (criteria instanceof ICD9Filter) {
             ICD9Filter filter = (ICD9Filter) criteria;
             return service.findICD9(filter);
+        } else if(criteria instanceof ICD9) {
+            return service.findICD9(ICD9Filter.fromICD9((ICD9) criteria));
         } else {
             throw new IllegalArgumentException("This provider can only filter through ICD9Filter, not " + criteria.getClass());
         }

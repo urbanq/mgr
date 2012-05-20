@@ -35,6 +35,7 @@ import pl.edu.agh.service.JGPService;
 import pl.edu.agh.service.PatientService;
 import pl.edu.agh.ui.*;
 import pl.edu.agh.ui.binder.ICD10Binder;
+import pl.edu.agh.ui.binder.ICD9Binder;
 import pl.edu.agh.ui.binder.NameableBinder;
 
 import javax.sql.DataSource;
@@ -257,6 +258,11 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public Binder icd10Binder() {
         return new ICD10Binder();
+    }
+
+    @Bean
+    public Binder icd9Binder() {
+        return new ICD9Binder();
     }
 
     @Override
