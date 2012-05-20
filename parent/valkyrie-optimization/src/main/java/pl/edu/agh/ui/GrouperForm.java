@@ -14,8 +14,6 @@ import pl.edu.agh.ui.binder.VisitListBinding;
 public class GrouperForm extends TabbedForm {
     @Override
     protected Tab[] getTabs() {
-        //TODO form layout
-//        FormLayout layout = new FormLayout("default, 3dlu, fill:pref:nogrow, 3dlu, 100dlu, 3dlu, 100dlu", "default");
         FormLayout layout = new FormLayout("right:pref, 4dlu, fill:pref:grow, 6dlu, right:pref, 4dlu, fill:pref:grow", "default");
         FormLayoutFormBuilder builder = new FormLayoutFormBuilder(getBindingFactory(), layout);
         setFocusControl(builder.addPropertyAndLabel("dateOfBirth", "jxDatePickerDateFieldBinder")[1]);
@@ -31,8 +29,8 @@ public class GrouperForm extends TabbedForm {
         builder.nextRow();
         builder.addHorizontalSeparator("grouperForm.vistSeparator", 7);
         builder.nextRow("fill:default:grow");
-        VisitListBinding todoItemListBinding = new VisitListBinding(getFormModel(), "visits");
-        builder.addBinding(todoItemListBinding, 1, builder.getRow(), 7, 1);
+        VisitListBinding visitListBinding = new VisitListBinding(getFormModel(), "visits");
+        builder.addBinding(visitListBinding, 1, builder.getRow(), 7, 1);
 
         return new Tab[] { new Tab("baseTab", builder.getPanel())};
     }
