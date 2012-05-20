@@ -48,6 +48,8 @@ public class ValidationRulesSource extends DefaultRulesSource {
         // Add the rules specific to the object types we manage
         addRules(createPatientRules());
         addRules(createVisitRules());
+        addRules(createICD9WrapperRules());
+        addRules(createICD10WrapperRules());
     }
 
     private Rules createPatientRules() {
@@ -69,6 +71,25 @@ public class ValidationRulesSource extends DefaultRulesSource {
                 add("incomeDate", required());
                 add("outcomeDate", required());
                 add(gtProperty("outcomeDate", "incomeDate"));
+                add("recognitions", required());
+                add("procedures", required());
+            }
+        };
+    }
+
+    private Rules createICD9WrapperRules() {
+        return new Rules(ICD9Wrapper.class) {
+            protected void initRules() {
+                add("icd9", required());
+                add("procedureDate", required());
+            }
+        };
+    }
+
+    private Rules createICD10WrapperRules() {
+        return new Rules(ICD10Wrapper.class) {
+            protected void initRules() {
+                add("icd10", required());
             }
         };
     }
