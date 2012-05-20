@@ -3,17 +3,19 @@ package pl.edu.agh.ui;
 import com.jgoodies.forms.layout.FormLayout;
 import org.valkyriercp.binding.form.FormModel;
 import org.valkyriercp.form.builder.FormLayoutFormBuilder;
-import org.valkyriercp.widget.TabbedForm;
+import org.valkyriercp.widget.AbstractFocussableWidgetForm;
 import pl.edu.agh.domain.GrouperFormObject;
 import pl.edu.agh.ui.binder.VisitListBinding;
+
+import javax.swing.*;
 
 /**
  * User: mateusz
  * Date: 16.05.12
  */
-public class GrouperForm extends TabbedForm {
+public class GrouperForm extends AbstractFocussableWidgetForm {
     @Override
-    protected Tab[] getTabs() {
+    protected JComponent createFormControl() {
         FormLayout layout = new FormLayout("right:pref, 4dlu, fill:pref:grow, 6dlu, right:pref, 4dlu, fill:pref:grow", "default");
         FormLayoutFormBuilder builder = new FormLayoutFormBuilder(getBindingFactory(), layout);
         setFocusControl(builder.addPropertyAndLabel("dateOfBirth", "jxDatePickerDateFieldBinder")[1]);
@@ -27,12 +29,12 @@ public class GrouperForm extends TabbedForm {
         builder.nextRow();
         builder.addPropertyAndLabel("hospitalType");
         builder.nextRow();
-        builder.addHorizontalSeparator("grouperForm.vistSeparator", 7);
+        builder.addHorizontalSeparator("grouperForm.visitSeparator", 7);
         builder.nextRow("fill:default:grow");
         VisitListBinding visitListBinding = new VisitListBinding(getFormModel(), "visits");
         builder.addBinding(visitListBinding, 1, builder.getRow(), 7, 1);
 
-        return new Tab[] { new Tab("baseTab", builder.getPanel())};
+        return builder.getPanel();
     }
 
     @Override

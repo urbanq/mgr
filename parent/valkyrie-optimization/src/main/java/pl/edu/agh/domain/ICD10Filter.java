@@ -21,4 +21,12 @@ public class ICD10Filter implements GenericFilter<ICD10> {
     public void setName(String name) {
         this.name = name;
     }
+
+    public static ICD10Filter fromICD10(ICD10 icd10)
+    {
+        ICD10Filter filter = new ICD10Filter();
+        filter.setName(icd10.getName());
+        filter.setCode(icd10.getCode());
+        return filter;
+    }
 }

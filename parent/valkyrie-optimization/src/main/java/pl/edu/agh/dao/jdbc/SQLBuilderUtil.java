@@ -7,9 +7,16 @@ public final class SQLBuilderUtil {
     }
 
     /**
-     * ignore case like
+     * ignore case liek
      */
-    public static String like(String column, boolean and) {
+    public static String andLike(String column, boolean and) {
         return (and ? " and" : " where")  + " upper(" + column + ") like upper(?)";
+    }
+
+    /**
+     * ignore case liek
+     */
+    public static String orLike(String column, boolean or) {
+        return (or ? " or" : " where")  + " upper(" + column + ") like upper(?)";
     }
 }

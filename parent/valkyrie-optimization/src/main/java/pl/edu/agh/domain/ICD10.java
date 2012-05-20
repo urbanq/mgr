@@ -1,5 +1,8 @@
 package pl.edu.agh.domain;
 
+/**
+ * Rozpoznanie ICD10
+ */
 public class ICD10 implements Comparable<ICD10> {
     private String code;
     private String name;

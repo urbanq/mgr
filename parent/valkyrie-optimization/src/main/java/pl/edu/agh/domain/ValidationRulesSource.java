@@ -6,7 +6,7 @@ import org.valkyriercp.rules.support.DefaultRulesSource;
 
 /**
  * This class is a source for validation rules associated with the domain objects in this application. This class is
- * wired into application via the application context configuration like this:
+ * wired into application via the application context configuration andLike this:
  *
  * <pre>
  *    &lt;bean id=&quot;rulesSource&quot;

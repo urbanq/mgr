@@ -79,17 +79,17 @@ public class JdbcPatientDao extends SimpleJdbcDaoSupport implements PatientDao {
         boolean and = false;
 
         if (StringUtils.isNotBlank(filter.getFirstname())) {
-            sql.append(SQLBuilderUtil.like("first_name", and));
+            sql.append(SQLBuilderUtil.andLike("first_name", and));
             args.add("%" + filter.getFirstname() + "%");
             and = true;
         }
         if (StringUtils.isNotBlank(filter.getLastname())) {
-            sql.append(SQLBuilderUtil.like("last_name", and));
+            sql.append(SQLBuilderUtil.andLike("last_name", and));
             args.add("%" + filter.getLastname() + "%");
             and = true;
         }
         if (StringUtils.isNotBlank(filter.getPesel())) {
-            sql.append(SQLBuilderUtil.like("pesel", and));
+            sql.append(SQLBuilderUtil.andLike("pesel", and));
             args.add("%" + filter.getPesel() + "%");
             and = true;
         }

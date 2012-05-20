@@ -26,12 +26,12 @@ public class JdbcJGPDao extends SimpleJdbcDaoSupport implements JGPDao {
         boolean and = false;
 
         if (StringUtils.isNotBlank(filter.getCode())) {
-            sql.append(SQLBuilderUtil.like("code", and));
+            sql.append(SQLBuilderUtil.andLike("code", and));
             args.add("%" + filter.getCode() + "%");
             and = true;
         }
         if (StringUtils.isNotBlank(filter.getName())) {
-            sql.append(SQLBuilderUtil.like("name", and));
+            sql.append(SQLBuilderUtil.andLike("name", and));
             args.add("%" + filter.getName() + "%");
             and = true;
         }

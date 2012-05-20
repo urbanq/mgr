@@ -1,6 +1,8 @@
 package pl.edu.agh.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: mateusz
@@ -12,6 +14,9 @@ public class Visit implements Comparable<Visit> {
 
     private Date incomeDate;
     private Date outcomeDate;
+
+    private List<ICD10Wrapper> recognitions = new ArrayList<ICD10Wrapper>();
+    private List<ICD9Wrapper> procedures = new ArrayList<ICD9Wrapper>();
 
     public Department getDepartment() {
         return department;
@@ -43,6 +48,22 @@ public class Visit implements Comparable<Visit> {
 
     public void setOutcomeDate(Date outcomeDate) {
         this.outcomeDate = outcomeDate;
+    }
+
+    public List<ICD10Wrapper> getRecognitions() {
+        return recognitions;
+    }
+
+    public void setRecognitions(List<ICD10Wrapper> recognitions) {
+        this.recognitions = recognitions;
+    }
+
+    public List<ICD9Wrapper> getProcedures() {
+        return procedures;
+    }
+
+    public void setProcedures(List<ICD9Wrapper> procedures) {
+        this.procedures = procedures;
     }
 
     @Override

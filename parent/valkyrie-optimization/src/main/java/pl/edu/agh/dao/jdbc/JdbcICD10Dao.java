@@ -20,17 +20,17 @@ public class JdbcICD10Dao extends SimpleJdbcDaoSupport implements ICD10Dao {
     public List<ICD10> getList(ICD10Filter filter) {
         StringBuilder sql = new StringBuilder(SELECT_SQL);
         List<String> args = new ArrayList<String>();
-        boolean and = false;
+        boolean or = false;
 
         if (StringUtils.isNotBlank(filter.getCode())) {
-            sql.append(SQLBuilderUtil.like("code", and));
+            sql.append(SQLBuilderUtil.orLike("code", or));
             args.add("%" + filter.getCode() + "%");
-            and = true;
+            or = true;
         }
         if (StringUtils.isNotBlank(filter.getName())) {
-            sql.append(SQLBuilderUtil.like("name", and));
+            sql.append(SQLBuilderUtil.andLike("name", or));
             args.add("%" + filter.getName() + "%");
-            and = true;
+            or = true;
         }
         return getJdbcTemplate().query(sql.toString(), args.toArray(), MAPPER);
     }

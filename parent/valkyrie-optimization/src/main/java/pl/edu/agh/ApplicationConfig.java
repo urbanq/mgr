@@ -21,6 +21,7 @@ import org.valkyriercp.form.builder.ToolTipInterceptorFactory;
 import org.valkyriercp.rules.RulesSource;
 import org.valkyriercp.taskpane.TaskPaneNavigatorApplicationWindowFactory;
 import org.valkyriercp.text.SelectAllFormComponentInterceptorFactory;
+import org.valkyriercp.text.TextCaretFormComponentInterceptorFactory;
 import org.valkyriercp.widget.WidgetViewDescriptor;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.dao.jdbc.*;
@@ -33,6 +34,7 @@ import pl.edu.agh.service.ICD9Service;
 import pl.edu.agh.service.JGPService;
 import pl.edu.agh.service.PatientService;
 import pl.edu.agh.ui.*;
+import pl.edu.agh.ui.binder.ICD10Binder;
 import pl.edu.agh.ui.binder.NameableBinder;
 
 import javax.sql.DataSource;
@@ -95,6 +97,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         ChainedInterceptorFactory formComponentInterceptorFactory = (ChainedInterceptorFactory) super.formComponentInterceptorFactory();
         formComponentInterceptorFactory.getInterceptorFactories().add(new SelectAllFormComponentInterceptorFactory());
         formComponentInterceptorFactory.getInterceptorFactories().add(new ToolTipInterceptorFactory());
+        formComponentInterceptorFactory.getInterceptorFactories().add(new TextCaretFormComponentInterceptorFactory());
 //        formComponentInterceptorFactory.getInterceptorFactories().add(new ComboBoxAutoCompletionInterceptorFactory());
         return formComponentInterceptorFactory;
     }
@@ -249,6 +252,11 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         NameableBinder<OutcomeModeLimit> binder = new NameableBinder<OutcomeModeLimit>(OutcomeModeLimit.class);
         binder.setDao(outcomeModeLimitDao());
         return binder;
+    }
+
+    @Bean
+    public Binder icd10Binder() {
+        return new ICD10Binder();
     }
 
     @Override
