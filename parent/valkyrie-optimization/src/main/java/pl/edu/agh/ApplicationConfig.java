@@ -62,6 +62,16 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         resources.put("pl.agh.edu.images", applicationContext().getResource("classpath:/pl/edu/agh/images.properties"));
         return resources;
     }
+//
+//    @Bean
+//    public ApplicationObjectConfigurer applicationObjectConfigurer() {
+//        return new DefaultApplicationObjectConfigurer() {
+//            @Override
+//            protected Locale getLocale(){
+//                return new Locale("pl", "PL");
+//            }
+//        };
+//    }
 
     @Bean
     public UIManagerConfigurer uiManagerConfigurer() {

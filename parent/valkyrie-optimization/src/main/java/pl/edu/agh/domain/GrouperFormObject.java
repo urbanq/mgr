@@ -1,6 +1,8 @@
 package pl.edu.agh.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: mateusz
@@ -17,6 +19,12 @@ public class GrouperFormObject {
     private OutcomeModeLimit outcomeModeLimit;
 
     private HospitalType hospitalType;
+
+    private List<Visit> visits;
+
+    public GrouperFormObject() {
+        visits = new ArrayList<Visit>();
+    }
 
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -72,5 +80,13 @@ public class GrouperFormObject {
 
     public void setHospitalType(HospitalType hospitalType) {
         this.hospitalType = hospitalType;
+    }
+
+    public List<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<Visit> visits) {
+        this.visits = visits;
     }
 }

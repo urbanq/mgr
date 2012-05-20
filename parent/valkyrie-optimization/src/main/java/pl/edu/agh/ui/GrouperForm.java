@@ -5,6 +5,7 @@ import org.valkyriercp.binding.form.FormModel;
 import org.valkyriercp.form.builder.FormLayoutFormBuilder;
 import org.valkyriercp.widget.TabbedForm;
 import pl.edu.agh.domain.GrouperFormObject;
+import pl.edu.agh.ui.binder.VisitListBinding;
 
 /**
  * User: mateusz
@@ -27,6 +28,11 @@ public class GrouperForm extends TabbedForm {
         builder.addPropertyAndLabel("outcomeModeLimit", 5);
         builder.nextRow();
         builder.addPropertyAndLabel("hospitalType");
+        builder.nextRow();
+        builder.addHorizontalSeparator("grouperForm.vistSeparator", 7);
+        builder.nextRow("fill:default:grow");
+        VisitListBinding todoItemListBinding = new VisitListBinding(getFormModel(), "visits");
+        builder.addBinding(todoItemListBinding, 1, builder.getRow(), 7, 1);
 
         return new Tab[] { new Tab("baseTab", builder.getPanel())};
     }

@@ -47,6 +47,7 @@ public class ValidationRulesSource extends DefaultRulesSource {
 
         // Add the rules specific to the object types we manage
         addRules(createPatientRules());
+        addRules(createVisitRules());
     }
 
     private Rules createPatientRules() {
@@ -56,6 +57,18 @@ public class ValidationRulesSource extends DefaultRulesSource {
                 add("lastname", NAME_CONSTRAINT);
                 add(not(eqProperty("firstname", "lastname")));
                 add("pesel", PESEL_CONSTRAINT);
+            }
+        };
+    }
+
+    private Rules createVisitRules() {
+        return new Rules(Visit.class) {
+            protected void initRules() {
+                add("department", required());
+                add("service", required());
+                add("incomeDate", required());
+                add("outcomeDate", required());
+                add(gtProperty("outcomeDate", "incomeDate"));
             }
         };
     }

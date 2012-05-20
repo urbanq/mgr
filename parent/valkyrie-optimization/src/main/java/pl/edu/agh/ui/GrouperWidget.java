@@ -1,7 +1,10 @@
 package pl.edu.agh.ui;
 
 import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.*;
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
 import org.valkyriercp.application.support.DefaultButtonFocusListener;
 import org.valkyriercp.binding.validation.support.DefaultValidationResultsModel;
 import org.valkyriercp.command.support.ActionCommand;
@@ -10,6 +13,7 @@ import org.valkyriercp.form.*;
 import org.valkyriercp.util.ObjectUtils;
 import org.valkyriercp.widget.AbstractTitledWidget;
 import org.valkyriercp.widget.editor.AbstractDataEditorWidget;
+import pl.edu.agh.domain.Service;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
@@ -37,6 +41,10 @@ public class GrouperWidget extends AbstractTitledWidget {
     @PostConstruct
     public void postConstruct() {
         setDetailForm(new GrouperForm());
+        for (Service service : Service.values()) {
+            final String messageKey = Service.class.getName() + "." + service.name();
+            service.setMessage(applicationConfig.messageResolver().getMessage(messageKey));
+        }
     }
 
     @Override
