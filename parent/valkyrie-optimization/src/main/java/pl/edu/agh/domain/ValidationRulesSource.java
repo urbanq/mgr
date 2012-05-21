@@ -50,6 +50,7 @@ public class ValidationRulesSource extends DefaultRulesSource {
         addRules(createVisitRules());
         addRules(createICD9WrapperRules());
         addRules(createICD10WrapperRules());
+        addRules(createGrouperRules());
     }
 
     private Rules createPatientRules() {
@@ -72,7 +73,6 @@ public class ValidationRulesSource extends DefaultRulesSource {
                 add("outcomeDate", required());
                 add(gtProperty("outcomeDate", "incomeDate"));
                 add("recognitions", required());
-                add("procedures", required());
             }
         };
     }
@@ -94,41 +94,13 @@ public class ValidationRulesSource extends DefaultRulesSource {
         };
     }
 
-    /**
-     * Construct the rules that are used to validate a Contact domain object.
-     * @return validation rules
-     * @see Rules
-     */
-//    private Rules createContactRules() {
-//        // Construct a Rules object that contains all the constraints we need to apply
-//        // to our domain object. The Rules class offers a lot of convenience methods
-//        // for creating constraints on named properties.
-//
-//        return new Rules(Contact.class) {
-//            protected void initRules() {
-//                add("firstName", NAME_CONSTRAINT);
-//                add("lastName", NAME_CONSTRAINT);
-//                add(not(eqProperty("firstName", "lastName")));
-//
-//                // If a DOB is specified, it must be in the past
-//                add("dateOfBirth", lt(new Date()));
-//
-//                add("emailAddress", EMAIL_CONSTRAINT);
-//                add("homePhone", PHONE_CONSTRAINT);
-//                add("workPhone", PHONE_CONSTRAINT);
-//
-//                add("contactType", required());
-//
-//                // Note that you can define constraints on nested properties.
-//                // This is useful when the nested object is not displayed in
-//                // a form of its own.
-//                add("address.address1", required());
-//                add("address.city", required());
-//                add("address.state", required());
-//                add("address.zip", ZIPCODE_CONSTRAINT);
-//
-//                add("memo", required());
-//            }
-//        };
-//    }
+    private Rules createGrouperRules() {
+        return new Rules(Grouper.class) {
+            protected void initRules() {
+                add("incomeDate", required());
+                add("outcomeDate", required());
+                add("visits", required());
+            }
+        };
+    }
 }

@@ -4,7 +4,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import org.valkyriercp.binding.form.FormModel;
 import org.valkyriercp.form.builder.FormLayoutFormBuilder;
 import org.valkyriercp.widget.AbstractFocussableWidgetForm;
-import pl.edu.agh.domain.GrouperFormObject;
+import pl.edu.agh.domain.Grouper;
 import pl.edu.agh.ui.binder.VisitListBinding;
 
 import javax.swing.*;
@@ -39,6 +39,6 @@ public class GrouperForm extends AbstractFocussableWidgetForm {
 
     @Override
     public FormModel createFormModel() {
-        return formModelFactory.createFormModel(new GrouperFormObject(), "grouperForm");
+        return formModelFactory.createFormModel(new Grouper(), "grouperForm");
     }
 }

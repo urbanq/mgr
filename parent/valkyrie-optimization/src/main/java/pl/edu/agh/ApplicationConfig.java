@@ -71,7 +71,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
 //        return new DefaultApplicationObjectConfigurer() {
 //            @Override
 //            protected Locale getLocale(){
-//                return new Locale("pl", "PL");
+//                return Locale.
 //            }
 //        };
 //    }
