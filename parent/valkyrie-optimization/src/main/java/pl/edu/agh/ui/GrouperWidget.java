@@ -72,9 +72,9 @@ public class GrouperWidget extends AbstractTitledWidget {
 
     protected JPanel getButtonsPanel()
     {
-        ColumnSpec[] columnSpecs = new ColumnSpec[]{AbstractDataEditorWidget.FILL_NOGROW_COLUMN_SPEC, // save
+        ColumnSpec[] columnSpecs = new ColumnSpec[]{AbstractDataEditorWidget.FILL_NOGROW_COLUMN_SPEC, //commit
                 FormFactory.RELATED_GAP_COLSPEC, // gap
-                AbstractDataEditorWidget.FILL_NOGROW_COLUMN_SPEC, // undo
+                AbstractDataEditorWidget.FILL_NOGROW_COLUMN_SPEC, // clear
                 FormFactory.RELATED_GAP_COLSPEC, // gap
                 FormFactory.DEFAULT_COLSPEC, // separator
                 FormFactory.RELATED_GAP_COLSPEC, // gap
@@ -85,6 +85,7 @@ public class GrouperWidget extends AbstractTitledWidget {
         FormLayout formLayout = new FormLayout(columnSpecs, rowSpecs);
         JPanel buttonPanel = new JPanel(formLayout);
         buttonPanel.add(getCommitComponent(), cc.xy(1, 1));
+        buttonPanel.add(getClearCommand().createButton(), cc.xy(3, 1));
         return buttonPanel;
     }
 
@@ -104,6 +105,14 @@ public class GrouperWidget extends AbstractTitledWidget {
             groupCommand = createGroupCommand();
         }
         return groupCommand;
+    }
+
+    /**
+     * Returns the create command, lazily creates one if needed.
+     */
+    public ActionCommand getClearCommand()
+    {
+        return getDetailForm().getNewFormObjectCommand();
     }
 
     /**
