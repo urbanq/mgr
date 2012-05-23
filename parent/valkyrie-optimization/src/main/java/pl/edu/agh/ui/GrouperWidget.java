@@ -5,6 +5,7 @@ import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.valkyriercp.application.support.DefaultButtonFocusListener;
 import org.valkyriercp.binding.validation.support.DefaultValidationResultsModel;
 import org.valkyriercp.command.support.ActionCommand;
@@ -13,7 +14,10 @@ import org.valkyriercp.form.*;
 import org.valkyriercp.util.ObjectUtils;
 import org.valkyriercp.widget.AbstractTitledWidget;
 import org.valkyriercp.widget.editor.AbstractDataEditorWidget;
+import pl.edu.agh.domain.Grouper;
+import pl.edu.agh.domain.JGPResult;
 import pl.edu.agh.domain.Service;
+import pl.edu.agh.service.JGPService;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
@@ -33,6 +37,12 @@ public class GrouperWidget extends AbstractTitledWidget {
      */
     private AbstractForm detailForm;
 
+
+    /**
+     * service
+     */
+    @Autowired
+    private JGPService service;
 
     public GrouperWidget() {
         setId("grouperWidget");
@@ -138,10 +148,11 @@ public class GrouperWidget extends AbstractTitledWidget {
     protected void doCreate()
     {
         getDetailForm().commit();
-        Object newObject = null;
+        JGPResult result = null;
         try
         {
-            newObject = createNewEntity(getDetailForm().getFormObject());
+            result = executeGrouper((Grouper) getDetailForm().getFormObject());
+            //TODO visualize result on dialog?
         }
         catch (RuntimeException e)
         {
@@ -153,9 +164,9 @@ public class GrouperWidget extends AbstractTitledWidget {
         }
     }
 
-    private Object createNewEntity(Object formObject) {
-        //TODO in future this method will implement gruper algorithm
-        return null;  //To change body of created methods use File | Settings | File Templates.
+    private JGPResult executeGrouper(Grouper grouper) {
+        //TODO start glasspane?
+        return service.group(grouper);
     }
 
 
