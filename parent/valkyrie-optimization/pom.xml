@@ -4,7 +4,7 @@
     <parent>
         <artifactId>parent</artifactId>
         <groupId>pl.edu.agh</groupId>
-        <version>1.0</version>
+        <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -15,7 +15,7 @@
     <name>Valkyrie Optimization Project</name>
 
     <properties>
-        <valkyrie.version>1.0</valkyrie.version>
+        <valkyrie.version>1.0-SNAPSHOT</valkyrie.version>
         <logback.version>0.9.26</logback.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
