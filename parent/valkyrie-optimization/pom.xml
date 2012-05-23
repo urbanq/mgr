@@ -15,7 +15,7 @@
     <name>Valkyrie Optimization Project</name>
 
     <properties>
-        <valkyrie.version>1.0-SNAPSHOT</valkyrie.version>
+        <valkyrie.version>1.0</valkyrie.version>
         <logback.version>0.9.26</logback.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
