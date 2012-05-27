@@ -14,7 +14,7 @@ import org.valkyriercp.form.*;
 import org.valkyriercp.util.ObjectUtils;
 import org.valkyriercp.widget.AbstractTitledWidget;
 import org.valkyriercp.widget.editor.AbstractDataEditorWidget;
-import pl.edu.agh.domain.Grouper;
+import pl.edu.agh.domain.Hospitalization;
 import pl.edu.agh.domain.JGPResult;
 import pl.edu.agh.domain.Service;
 import pl.edu.agh.service.JGPService;
@@ -50,7 +50,7 @@ public class GrouperWidget extends AbstractTitledWidget {
 
     @PostConstruct
     public void postConstruct() {
-        setDetailForm(new GrouperForm());
+        setDetailForm(new HospitalizationForm());
         for (Service service : Service.values()) {
             final String messageKey = Service.class.getName() + "." + service.name();
             service.setMessage(applicationConfig.messageResolver().getMessage(messageKey));
@@ -136,7 +136,7 @@ public class GrouperWidget extends AbstractTitledWidget {
             @Override
             protected void doExecuteCommand()
             {
-                doCreate();
+                doGrouping();
             }
         };
         command.setSecurityControllerId(getId() + "." + GROUP_COMMAND_ID);
@@ -145,13 +145,13 @@ public class GrouperWidget extends AbstractTitledWidget {
         return command;
     }
 
-    protected void doCreate()
+    protected void doGrouping()
     {
         getDetailForm().commit();
         JGPResult result = null;
         try
         {
-            result = executeGrouper((Grouper) getDetailForm().getFormObject());
+            result = executeGrouper((Hospitalization) getDetailForm().getFormObject());
             //TODO visualize result on dialog?
         }
         catch (RuntimeException e)
@@ -164,9 +164,9 @@ public class GrouperWidget extends AbstractTitledWidget {
         }
     }
 
-    private JGPResult executeGrouper(Grouper grouper) {
+    private JGPResult executeGrouper(Hospitalization hospitalization) {
         //TODO start glasspane?
-        return service.group(grouper);
+        return service.group(hospitalization);
     }
 
 

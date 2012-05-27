@@ -8,7 +8,7 @@ import java.util.List;
  * User: mateusz
  * Date: 16.05.12
  */
-public class Grouper {
+public class Hospitalization {
     private Date dateOfBirth;
     private Sex sex = Sex.NO_DATA;
 
@@ -22,7 +22,7 @@ public class Grouper {
 
     private List<Visit> visits;
 
-    public Grouper() {
+    public Hospitalization() {
         visits = new ArrayList<Visit>();
     }
 

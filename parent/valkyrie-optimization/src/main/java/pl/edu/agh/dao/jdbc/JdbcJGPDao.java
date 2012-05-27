@@ -1,6 +1,7 @@
 package pl.edu.agh.dao.jdbc;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import pl.edu.agh.dao.JGPDao;
 import pl.edu.agh.dao.jdbc.mapper.JGPMapper;
@@ -16,6 +17,7 @@ import java.util.List;
  */
 public class JdbcJGPDao extends SimpleJdbcDaoSupport implements JGPDao {
     private final static String SELECT_SQL = "SELECT code,product_code,name FROM jgp";
+    private final static String SELECT_BY_CODE_SQL = SELECT_SQL + " WHERE code = ?";
 
     private final static JGPMapper MAPPER = new JGPMapper();
 
@@ -36,5 +38,14 @@ public class JdbcJGPDao extends SimpleJdbcDaoSupport implements JGPDao {
             and = true;
         }
         return getJdbcTemplate().query(sql.toString(), args.toArray(), MAPPER);
+    }
+
+    @Override
+    public JGP getByCode(String code) {
+        try {
+            return getJdbcTemplate().queryForObject(SELECT_BY_CODE_SQL, MAPPER, code);
+        } catch(EmptyResultDataAccessException emptyResultDataAccessException) {
+            return null;
+        }
     }
 }

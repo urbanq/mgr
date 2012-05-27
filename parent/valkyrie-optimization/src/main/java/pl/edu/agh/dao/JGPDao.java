@@ -8,4 +8,5 @@ import pl.edu.agh.domain.JGPFilter;
  * Date: 14.05.12
  */
 public interface JGPDao extends FilterDao<JGP, JGPFilter> {
+    JGP getByCode(String code);
 }

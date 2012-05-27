@@ -25,6 +25,7 @@ import org.valkyriercp.text.TextCaretFormComponentInterceptorFactory;
 import org.valkyriercp.widget.WidgetViewDescriptor;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.dao.jdbc.*;
+import pl.edu.agh.dao.jdbc.mapper.JGPParameterMapper;
 import pl.edu.agh.domain.Department;
 import pl.edu.agh.domain.IncomeModeLimit;
 import pl.edu.agh.domain.OutcomeModeLimit;
@@ -65,16 +66,6 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         resources.put("pl.agh.edu.images", applicationContext().getResource("classpath:/pl/edu/agh/images.properties"));
         return resources;
     }
-//
-//    @Bean
-//    public ApplicationObjectConfigurer applicationObjectConfigurer() {
-//        return new DefaultApplicationObjectConfigurer() {
-//            @Override
-//            protected Locale getLocale(){
-//                return Locale.
-//            }
-//        };
-//    }
 
     @Bean
     public UIManagerConfigurer uiManagerConfigurer() {
@@ -342,6 +333,32 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public OutcomeModeLimitDao outcomeModeLimitDao() {
         JdbcOutcomeModeLimitDao dao = new JdbcOutcomeModeLimitDao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public AgeLimitDao ageLimitDao() {
+        JdbcAgeLimitDao dao = new JdbcAgeLimitDao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public HospitalLimitDao hospitalLimitDao() {
+        JdbcHospitalLimitDao dao = new JdbcHospitalLimitDao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public JGPParameterMapper jgpParameterMapper() {
+        return new JGPParameterMapper();
+    }
+
+    @Bean
+    public JGPParameterDao jgpParameterDao() {
+        JdbcJGPParameterDao dao = new JdbcJGPParameterDao();
         dao.setDataSource(dataSource());
         return dao;
     }

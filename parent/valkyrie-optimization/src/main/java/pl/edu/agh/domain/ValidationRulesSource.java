@@ -95,7 +95,7 @@ public class ValidationRulesSource extends DefaultRulesSource {
     }
 
     private Rules createGrouperRules() {
-        return new Rules(Grouper.class) {
+        return new Rules(Hospitalization.class) {
             protected void initRules() {
                 add("incomeDate", required());
                 add("outcomeDate", required());
