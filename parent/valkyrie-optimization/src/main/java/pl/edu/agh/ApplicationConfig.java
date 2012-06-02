@@ -26,6 +26,7 @@ import org.valkyriercp.widget.WidgetViewDescriptor;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.dao.jdbc.*;
 import pl.edu.agh.dao.jdbc.mapper.JGPParameterMapper;
+import pl.edu.agh.dao.jdbc.mapper.JGPValueMapper;
 import pl.edu.agh.domain.Department;
 import pl.edu.agh.domain.IncomeModeLimit;
 import pl.edu.agh.domain.OutcomeModeLimit;
@@ -359,6 +360,18 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     @Bean
     public JGPParameterDao jgpParameterDao() {
         JdbcJGPParameterDao dao = new JdbcJGPParameterDao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public JGPValueMapper jgpValueMapper() {
+        return new JGPValueMapper();
+    }
+
+    @Bean
+    public JGPValueDao jgpValueDao() {
+        JdbcJGPValueDao dao = new JdbcJGPValueDao();
         dao.setDataSource(dataSource());
         return dao;
     }
