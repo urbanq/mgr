@@ -8,7 +8,7 @@ import java.util.List;
  * User: mateusz
  * Date: 19.05.12
  */
-public class Visit implements Comparable<Visit> {
+public class Stay implements Comparable<Stay> {
     private Department department;
     private Service service;
 
@@ -67,7 +67,7 @@ public class Visit implements Comparable<Visit> {
     }
 
     @Override
-    public int compareTo(Visit o) {
+    public int compareTo(Stay o) {
         return department.getName().compareToIgnoreCase(o.department.getName());
     }
 }

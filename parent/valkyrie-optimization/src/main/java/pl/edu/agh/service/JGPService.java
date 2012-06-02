@@ -25,8 +25,8 @@ public class JGPService {
     }
 
     public JGPResult group(Hospitalization hospitalization) {
-        if (CollectionUtils.isEmpty(hospitalization.getVisits())) {
-            throw new IllegalArgumentException("visits cannot be empty!");
+        if (CollectionUtils.isEmpty(hospitalization.getStays())) {
+            throw new IllegalArgumentException("stays cannot be empty!");
         }
         List<ICD9Wrapper> importantICD9 = importantICD9Codes(hospitalization);
 
@@ -46,8 +46,8 @@ public class JGPService {
      */
     private List<ICD9Wrapper> importantICD9Codes(Hospitalization hospitalization) {
         List<ICD9Wrapper> importantsICD9codes = new ArrayList<ICD9Wrapper>();
-        for(Visit visit : hospitalization.getVisits()) {
-            for(ICD9Wrapper icd9Wrapper : visit.getProcedures()) {
+        for(Stay stay : hospitalization.getStays()) {
+            for(ICD9Wrapper icd9Wrapper : stay.getProcedures()) {
                 if(icd9Wrapper.getIcd9().getRange() > 2) {
                     importantsICD9codes.add(icd9Wrapper);
                 }

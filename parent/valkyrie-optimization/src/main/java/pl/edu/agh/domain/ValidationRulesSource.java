@@ -47,7 +47,7 @@ public class ValidationRulesSource extends DefaultRulesSource {
 
         // Add the rules specific to the object types we manage
         addRules(createPatientRules());
-        addRules(createVisitRules());
+        addRules(createStayRules());
         addRules(createICD9WrapperRules());
         addRules(createICD10WrapperRules());
         addRules(createGrouperRules());
@@ -64,15 +64,14 @@ public class ValidationRulesSource extends DefaultRulesSource {
         };
     }
 
-    private Rules createVisitRules() {
-        return new Rules(Visit.class) {
+    private Rules createStayRules() {
+        return new Rules(Stay.class) {
             protected void initRules() {
                 add("department", required());
                 add("service", required());
                 add("incomeDate", required());
                 add("outcomeDate", required());
                 add(gtProperty("outcomeDate", "incomeDate"));
-                add("recognitions", required());
             }
         };
     }
@@ -99,7 +98,7 @@ public class ValidationRulesSource extends DefaultRulesSource {
             protected void initRules() {
                 add("incomeDate", required());
                 add("outcomeDate", required());
-                add("visits", required());
+                add("stays", required());
             }
         };
     }

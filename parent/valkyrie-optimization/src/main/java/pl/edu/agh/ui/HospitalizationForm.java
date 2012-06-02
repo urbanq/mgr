@@ -5,7 +5,7 @@ import org.valkyriercp.binding.form.FormModel;
 import org.valkyriercp.form.builder.FormLayoutFormBuilder;
 import org.valkyriercp.widget.AbstractFocussableWidgetForm;
 import pl.edu.agh.domain.Hospitalization;
-import pl.edu.agh.ui.binder.VisitListBinding;
+import pl.edu.agh.ui.binder.StayListBinding;
 
 import javax.swing.*;
 
@@ -29,10 +29,10 @@ public class HospitalizationForm extends AbstractFocussableWidgetForm {
         builder.nextRow();
         builder.addPropertyAndLabel("hospitalType");
         builder.nextRow();
-        builder.addHorizontalSeparator("hospitalizationForm.visitSeparator", 7);
+        builder.addHorizontalSeparator("hospitalizationForm.staySeparator", 7);
         builder.nextRow("fill:default:grow");
-        VisitListBinding visitListBinding = new VisitListBinding(getFormModel(), "visits");
-        builder.addBinding(visitListBinding, 1, builder.getRow(), 7, 1);
+        StayListBinding stayListBinding = new StayListBinding(getFormModel(), "stays");
+        builder.addBinding(stayListBinding, 1, builder.getRow(), 7, 1);
 
         return builder.getPanel();
     }

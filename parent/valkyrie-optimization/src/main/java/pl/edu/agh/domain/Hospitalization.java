@@ -20,10 +20,10 @@ public class Hospitalization {
 
     private HospitalType hospitalType;
 
-    private List<Visit> visits;
+    private List<Stay> stays;
 
     public Hospitalization() {
-        visits = new ArrayList<Visit>();
+        stays = new ArrayList<Stay>();
     }
 
     public Date getDateOfBirth() {
@@ -82,11 +82,11 @@ public class Hospitalization {
         this.hospitalType = hospitalType;
     }
 
-    public List<Visit> getVisits() {
-        return visits;
+    public List<Stay> getStays() {
+        return stays;
     }
 
-    public void setVisits(List<Visit> visits) {
-        this.visits = visits;
+    public void setStays(List<Stay> stays) {
+        this.stays = stays;
     }
 }

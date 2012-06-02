@@ -5,17 +5,17 @@ import org.valkyriercp.form.AbstractForm;
 import org.valkyriercp.form.binding.swing.AbstractGlazedListsBinding;
 import org.valkyriercp.widget.table.PropertyColumnTableDescription;
 import org.valkyriercp.widget.table.TableDescription;
-import pl.edu.agh.domain.Visit;
-import pl.edu.agh.ui.VisitForm;
+import pl.edu.agh.domain.Stay;
+import pl.edu.agh.ui.StayForm;
 
 /**
  * User: mateusz
  * Date: 20.05.12
  */
-public class VisitListBinding extends AbstractGlazedListsBinding {
-    public VisitListBinding(FormModel formModel, String formPropertyPath) {
+public class StayListBinding extends AbstractGlazedListsBinding {
+    public StayListBinding(FormModel formModel, String formPropertyPath) {
         super(formModel, formPropertyPath);
-        setDialogId("visitListBindingDialog");
+        setDialogId("stayListBindingDialog");
         setAddSupported(true);
         setEditSupported(true);
         setRemoveSupported(true);
@@ -23,7 +23,7 @@ public class VisitListBinding extends AbstractGlazedListsBinding {
     }
 
     protected TableDescription getTableDescription() {
-        PropertyColumnTableDescription desc = new PropertyColumnTableDescription("visitListBinding", Visit.class);
+        PropertyColumnTableDescription desc = new PropertyColumnTableDescription("stayListBinding", Stay.class);
         desc.addPropertyColumn("department.name");
         desc.addPropertyColumn("service");
         desc.addPropertyColumn("incomeDate");
@@ -35,17 +35,17 @@ public class VisitListBinding extends AbstractGlazedListsBinding {
 
     @Override
     protected Object getNewFormObject() {
-        return new Visit();
+        return new Stay();
     }
 
     @Override
     protected AbstractForm createAddEditForm() {
-        return new VisitForm();
+        return new StayForm();
     }
 
     @Override
     protected AbstractForm createDetailForm() {
-        AbstractForm f = new VisitForm();
+        AbstractForm f = new StayForm();
         f.getFormModel().setReadOnly(true);
         return f;
     }
