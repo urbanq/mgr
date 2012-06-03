@@ -56,7 +56,7 @@ public class JGPService {
                                 List<JGPResultValue> selectedJGP = new ArrayList<JGPResultValue>();
                                 //badanie warunkow JGP
                                 for (JGPParameter parameter : parameters) {
-                                    if (checkParameters(episode, parameter)) {
+                                    if (checkParameters(stay, parameter)) {
                                         JGP jgp = parameter.getJgp();
                                         Double value = jgpValueDao.getByJGP(jgp).getValue(episode.getHospitalType());
                                         JGPResultValue resultValue = new JGPResultValue();
@@ -91,13 +91,23 @@ public class JGPService {
         return null;
     }
 
-    private boolean checkParameters(Episode episode, JGPParameter parameter) {
+    private boolean checkParameters(Stay stay, JGPParameter parameter) {
         //todo here exclude conditions
 
         //TODO conditions checkers
         Condition condition = parameter.getCondition();
         if(Condition.A.equals(condition)) {
-
+            return CollectionUtils.size(stay.getProcedures()) == 1 || CollectionUtils.size(stay.getRecognitions()) == 1;
+        } else if(Condition.B.equals(condition)) {
+            boolean range2Cond = hasRange(stay.getProcedures(), RangeCondition.RANGE_2);
+            boolean timeCond = stay.getHospitalTime() < 2;
+            boolean ageCond = true;
+            AgeLimit ageLimit = parameter.getAgeLimit();
+            if(ageLimit != null) {
+                int age = stay.getEpisode().age(ageLimit.getTimeUnit());
+                ageCond = ageLimit.test(age);
+            }
+            return range2Cond && timeCond && ageCond;
         }
         return true;
     }
@@ -140,6 +150,15 @@ public class JGPService {
         return filtredProcedures;
     }
 
+    private boolean hasRange(List<ICD9Wrapper> procedures, RangeCondition rangeCondition) {
+        for(ICD9Wrapper icd9Wrapper : procedures) {
+            if(rangeCondition.equalsTo(icd9Wrapper.getIcd9().getRange())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private enum RangeCondition {
         RANGE_0(0),
         RANGE_2(2);
@@ -152,6 +171,10 @@ public class JGPService {
 
         public boolean greaterThen(Integer rangeToCheck) {
             return rangeToCheck > range;
+        }
+
+        public boolean equalsTo(Integer rangeToCheck) {
+            return rangeToCheck == range;
         }
     }
 }

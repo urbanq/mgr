@@ -158,5 +158,9 @@
             <groupId>com.jgoodies</groupId>
             <artifactId>looks</artifactId>
         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
     </dependencies>
 </project>

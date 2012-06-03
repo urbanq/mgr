@@ -1,5 +1,10 @@
 package pl.edu.agh.domain;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Weeks;
+import org.joda.time.Years;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -88,5 +93,23 @@ public class Episode {
 
     public void setStays(List<Stay> stays) {
         this.stays = stays;
+    }
+
+    public int age(TimeUnit timeUnit) {
+        DateTime birth = new DateTime(dateOfBirth);
+        DateTime now   = DateTime.now();
+        switch (timeUnit){
+            case DAY:
+                Days days = Days.daysBetween(birth, now);
+                return days.getDays();
+            case WEEK:
+                Weeks weeks = Weeks.weeksBetween(birth, now);
+                return weeks.getWeeks();
+            case YEAR:
+                Years years = Years.yearsBetween(birth, now);
+                return years.getYears();
+            default:
+                throw new IllegalArgumentException("age not implemented for time unit: " + timeUnit);
+        }
     }
 }

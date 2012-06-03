@@ -6,8 +6,8 @@ package pl.edu.agh.domain;
  */
 public class AgeLimit {
     private int id;
-    private int under;
-    private int over;
+    private Integer under;
+    private Integer over;
     private TimeUnit timeUnit;
 
     public int getId() {
@@ -22,7 +22,7 @@ public class AgeLimit {
         return under;
     }
 
-    public void setUnder(int under) {
+    public void setUnder(Integer under) {
         this.under = under;
     }
 
@@ -30,7 +30,7 @@ public class AgeLimit {
         return over;
     }
 
-    public void setOver(int over) {
+    public void setOver(Integer over) {
         this.over = over;
     }
 
@@ -40,5 +40,18 @@ public class AgeLimit {
 
     public void setTimeUnit(TimeUnit timeUnit) {
         this.timeUnit = timeUnit;
+    }
+
+    public boolean test(int age) {
+        if(under != null && over != null) {
+            return age < under && age > over;
+        }
+        if(under != null && over == null) {
+            return age < under;
+        }
+        if(under == null && over != null) {
+            return age > over;
+        }
+        throw new IllegalStateException("under and over properties are both null!");
     }
 }

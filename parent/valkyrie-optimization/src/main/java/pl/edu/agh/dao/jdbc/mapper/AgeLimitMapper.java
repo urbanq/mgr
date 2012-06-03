@@ -16,8 +16,8 @@ public class AgeLimitMapper implements RowMapper<AgeLimit> {
     public AgeLimit mapRow(ResultSet rs, int rowNum) throws SQLException {
         AgeLimit ageLimit = new AgeLimit();
         ageLimit.setId(rs.getInt("id"));
-        ageLimit.setUnder(rs.getInt("under"));
-        ageLimit.setOver(rs.getInt("over"));
+        ageLimit.setUnder(rs.getObject("under") != null ? (Integer)rs.getObject("under") : null);
+        ageLimit.setOver(rs.getObject("over") != null ? (Integer)rs.getObject("over") : null);
         ageLimit.setTimeUnit(TimeUnit.valueOf(rs.getString("time_unit").charAt(0)));
         return ageLimit;
     }
