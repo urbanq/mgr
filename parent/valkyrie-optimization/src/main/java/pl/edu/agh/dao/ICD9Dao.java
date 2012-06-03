@@ -8,4 +8,5 @@ import pl.edu.agh.domain.ICD9Filter;
  * Date: 12.05.12
  */
 public interface ICD9Dao extends FilterDao<ICD9, ICD9Filter> {
+    ICD9 getByCode(String code);
 }

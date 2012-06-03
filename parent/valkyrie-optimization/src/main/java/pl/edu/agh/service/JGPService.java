@@ -3,6 +3,7 @@ package pl.edu.agh.service;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+import pl.edu.agh.dao.ICD9ListDao;
 import pl.edu.agh.dao.JGPDao;
 import pl.edu.agh.dao.JGPParameterDao;
 import pl.edu.agh.dao.JGPValueDao;
@@ -24,6 +25,9 @@ public class JGPService {
 
     @Autowired
     private JGPValueDao jgpValueDao;
+
+    @Autowired
+    private ICD9ListDao icd9ListDao;
 
     public List<JGP> findJGP(final JGPFilter filter) {
         return jgpDao.getList(filter);
@@ -97,17 +101,87 @@ public class JGPService {
         //TODO conditions checkers
         Condition condition = parameter.getCondition();
         if(Condition.A.equals(condition)) {
-            return CollectionUtils.size(stay.getProcedures()) == 1 || CollectionUtils.size(stay.getRecognitions()) == 1;
+            return CollectionUtils.size(stay.getRecognitions()) == 1 || CollectionUtils.size(stay.getProcedures()) == 1;
         } else if(Condition.B.equals(condition)) {
             boolean range2Cond = hasRange(stay.getProcedures(), RangeCondition.RANGE_2);
             boolean timeCond = stay.getHospitalTime() < 2;
-            boolean ageCond = true;
-            AgeLimit ageLimit = parameter.getAgeLimit();
-            if(ageLimit != null) {
-                int age = stay.getEpisode().age(ageLimit.getTimeUnit());
-                ageCond = ageLimit.test(age);
-            }
+            boolean ageCond = checkAgeLimit(stay, parameter.getAgeLimit());
             return range2Cond && timeCond && ageCond;
+        } else if(Condition.C.equals(condition)) {
+            return CollectionUtils.size(stay.getRecognitions()) == 2 && CollectionUtils.size(stay.getProcedures()) == 2;
+        } else if(Condition.D.equals(condition)) {
+            List<ICD9Wrapper> procedures = stay.getProcedures();
+            List<ICD10Wrapper> recognitions = stay.getRecognitions();
+            boolean recognision1procedures2 = CollectionUtils.size(recognitions) == 1 && CollectionUtils.size(procedures) == 2;
+            boolean sameLists = false;
+            if(recognision1procedures2) {
+                List<ICD9List> icd9lists1 = icd9ListDao.getListCodes(procedures.get(0).getIcd9());
+                List<ICD9List> icd9lists2 = icd9ListDao.getListCodes(procedures.get(1).getIcd9());
+                for(ICD9List list1 : icd9lists1) {
+                    for(ICD9List list2 : icd9lists2){
+                        if(list1.getListCode().equals(list2.getListCode())) {
+                            sameLists = true;
+                            break;
+                        }
+                    }
+                    if(sameLists) {
+                        break;
+                    }
+                }
+            }
+            return recognision1procedures2 && sameLists;
+        } else if(Condition.E.equals(condition)) {
+            boolean recognision1procedures1 = CollectionUtils.size(stay.getRecognitions()) == 1 || CollectionUtils.size(stay.getProcedures()) == 1;
+            boolean ageCond = checkAgeLimit(stay, parameter.getAgeLimit());
+            boolean hospCond = checkHospitalLimit(stay, parameter.getHospitalLimit());
+            return recognision1procedures1 && ageCond && hospCond;
+        } else if(Condition.F.equals(condition)) {
+            List<ICD9Wrapper> procedures = stay.getProcedures();
+            boolean procedures2 = CollectionUtils.size(procedures) == 2;
+            boolean elseLists = false;
+            if(procedures2) {
+                List<ICD9List> icd9lists1 = icd9ListDao.getListCodes(procedures.get(0).getIcd9());
+                List<ICD9List> icd9lists2 = icd9ListDao.getListCodes(procedures.get(1).getIcd9());
+                boolean sameLists = false;
+                for(ICD9List list1 : icd9lists1) {
+                    for(ICD9List list2 : icd9lists2){
+                        if(list1.getListCode().equals(list2.getListCode())) {
+                            sameLists = true;
+                            break;
+                        }
+                    }
+                    if(sameLists) {
+                        break;
+                    }
+                }
+                elseLists = !sameLists;
+            }
+            return procedures2 && elseLists;
+        } else if(Condition.G.equals(condition)) {
+            List<ICD9Wrapper> procedures = stay.getProcedures();
+            List<ICD10Wrapper> recognitions = stay.getRecognitions();
+            boolean recognision1procedures2 = CollectionUtils.size(recognitions) == 1 && CollectionUtils.size(procedures) == 2;
+            boolean ageCond = checkAgeLimit(stay, parameter.getAgeLimit());
+            boolean hospCond = checkHospitalLimit(stay, parameter.getHospitalLimit());
+            return recognision1procedures2 && ageCond && hospCond;
+        } else if(Condition.H.equals(condition)) {
+
+        }
+        throw new IllegalStateException("not implemented condition: " + condition);
+    }
+
+    private boolean checkAgeLimit(Stay stay, AgeLimit ageLimit) {
+        if(ageLimit != null) {
+            int age = stay.getEpisode().age(ageLimit.getTimeUnit());
+            return ageLimit.test(age);
+        }
+        return true;
+    }
+
+    private boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit) {
+        if (hospLimit != null) {
+            int time = stay.getEpisode().hospital(hospLimit.getTimeUnit());
+            return hospLimit.test(time);
         }
         return true;
     }

@@ -4,7 +4,7 @@ package pl.edu.agh.domain;
  * User: mateusz
  * Date: 27.05.12
  */
-public class ICD9ListCode {
+public class ICD9List {
     private String listCode;
     private ICD9 icd9;
     private ListType listType;

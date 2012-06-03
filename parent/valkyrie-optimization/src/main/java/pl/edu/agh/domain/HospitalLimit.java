@@ -6,8 +6,8 @@ package pl.edu.agh.domain;
  */
 public class HospitalLimit {
     private int id;
-    private int under;
-    private int over;
+    private Integer under;
+    private Integer over;
     private TimeUnit timeUnit;
 
     public int getId() {
@@ -40,5 +40,18 @@ public class HospitalLimit {
 
     public void setTimeUnit(TimeUnit timeUnit) {
         this.timeUnit = timeUnit;
+    }
+
+    public boolean test(int time) {
+        if(under != null && over != null) {
+            return time < under && time > over;
+        }
+        if(under != null && over == null) {
+            return time < under;
+        }
+        if(under == null && over != null) {
+            return time > over;
+        }
+        throw new IllegalStateException("under and over properties are both null!");
     }
 }

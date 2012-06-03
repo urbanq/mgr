@@ -26,8 +26,6 @@ public class JGPParameterMapper implements RowMapper<JGPParameter> {
     private IncomeModeLimitDao incomeModeLimitDao;
     @Autowired
     private OutcomeModeLimitDao outcomeModeLimitDao;
-    @Autowired
-    private ICD9Dao icd9Dao;
 
     @Override
     public JGPParameter mapRow(ResultSet rs, int rowNum) throws SQLException {

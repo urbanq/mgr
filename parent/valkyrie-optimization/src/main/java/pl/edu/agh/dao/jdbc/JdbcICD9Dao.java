@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class JdbcICD9Dao extends SimpleJdbcDaoSupport implements ICD9Dao {
     private final static String SELECT_SQL = "SELECT code,name,range FROM icd9";
+    private final static String SELECT_BY_CODE_SQL = SELECT_SQL + " WHERE code = ?";
 
     private final static ICD9Mapper MAPPER = new ICD9Mapper();
 
@@ -36,5 +37,10 @@ public class JdbcICD9Dao extends SimpleJdbcDaoSupport implements ICD9Dao {
             and = true;
         }
         return getJdbcTemplate().query(sql.toString(), args.toArray(), MAPPER);
+    }
+
+    @Override
+    public ICD9 getByCode(String code) {
+        return getJdbcTemplate().queryForObject(SELECT_BY_CODE_SQL, new Object[]{code}, MAPPER);
     }
 }

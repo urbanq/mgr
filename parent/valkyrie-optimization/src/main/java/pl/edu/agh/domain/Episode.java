@@ -112,4 +112,25 @@ public class Episode {
                 throw new IllegalArgumentException("age not implemented for time unit: " + timeUnit);
         }
     }
+
+    /**
+     * @return hospitalization time
+     */
+    public int hospital(TimeUnit timeUnit) {
+        DateTime income = new DateTime(incomeDate);
+        DateTime outcome   = new DateTime(outcomeDate);
+        switch (timeUnit){
+            case DAY:
+                Days days = Days.daysBetween(income, outcome);
+                return days.getDays();
+            case WEEK:
+                Weeks weeks = Weeks.weeksBetween(income, outcome);
+                return weeks.getWeeks();
+            case YEAR:
+                Years years = Years.yearsBetween(income, outcome);
+                return years.getYears();
+            default:
+                throw new IllegalArgumentException("time not implemented for time unit: " + timeUnit);
+        }
+    }
 }
