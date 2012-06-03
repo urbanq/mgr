@@ -8,7 +8,7 @@ public class JGPParameter {
     private ListType listType;
     private String listCode;
     private JGP jgp;
-    private Algorithm algorithm;
+    private Condition condition;
     private HospitalLimit hospitalLimit;
     private AgeLimit ageLimit;
     private Sex sexLimit;
@@ -51,12 +51,12 @@ public class JGPParameter {
         this.jgp = jgp;
     }
 
-    public Algorithm getAlgorithm() {
-        return algorithm;
+    public Condition getCondition() {
+        return condition;
     }
 
-    public void setAlgorithm(Algorithm algorithm) {
-        this.algorithm = algorithm;
+    public void setCondition(Condition condition) {
+        this.condition = condition;
     }
 
     public HospitalLimit getHospitalLimit() {

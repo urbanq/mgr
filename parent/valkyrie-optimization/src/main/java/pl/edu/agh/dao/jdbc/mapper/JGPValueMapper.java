@@ -21,9 +21,9 @@ public class JGPValueMapper implements RowMapper<JGPValue> {
     public JGPValue mapRow(ResultSet rs, int rowNum) throws SQLException {
         JGPValue value = new JGPValue();
         value.setJgp(jgpDao.getByCode(rs.getString("jgp_code")));
-        value.setValue(HospitalType.NORMAL, rs.getInt("value_hosp"));
-        value.setValue(HospitalType.PLANNED, rs.getInt("value_planned_hosp"));
-        value.setValue(HospitalType.ONE_DAY, rs.getInt("value_one_day"));
+        value.setValue(HospitalType.NORMAL, rs.getDouble("value_hosp"));
+        value.setValue(HospitalType.PLANNED, rs.getDouble("value_planned_hosp"));
+        value.setValue(HospitalType.ONE_DAY, rs.getDouble("value_one_day"));
         return value;
     }
 }

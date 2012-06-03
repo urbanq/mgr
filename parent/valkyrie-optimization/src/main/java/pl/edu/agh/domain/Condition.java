@@ -1,10 +1,11 @@
 package pl.edu.agh.domain;
 
+
 /**
  * User: mateusz
  * Date: 27.05.12
  */
-public enum Algorithm {
+public enum Condition {
     A,
     B,
     C,
@@ -31,12 +32,14 @@ public enum Algorithm {
     Y,
     Z;
 
-    public static final Algorithm valueOf(char code) {
-        for(Algorithm algorithm : values()) {
-            if(algorithm.name().equalsIgnoreCase(String.valueOf(code))) {
-                return algorithm;
+    public static final Condition valueOf(char code) {
+        for(Condition condition : values()) {
+            if(condition.name().equalsIgnoreCase(String.valueOf(code))) {
+                return condition;
             }
         }
         throw new IllegalArgumentException("code = " + code);
     }
+
+//    public abstract boolean test(Episode hosp);
 }

@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class JGPValue {
     private JGP jgp;
-    private Map<HospitalType, Integer> values = new EnumMap<HospitalType, Integer>(HospitalType.class);
+    private Map<HospitalType, Double> values = new EnumMap<HospitalType, Double>(HospitalType.class);
 
     public JGP getJgp() {
         return jgp;
@@ -19,11 +19,11 @@ public class JGPValue {
         this.jgp = jgp;
     }
 
-    public Integer getValue(HospitalType hospitalType) {
+    public Double getValue(HospitalType hospitalType) {
         return values.get(hospitalType);
     }
 
-    public void setValue(HospitalType hospitalType, Integer value) {
+    public void setValue(HospitalType hospitalType, Double value) {
         values.put(hospitalType, value);
     }
 }

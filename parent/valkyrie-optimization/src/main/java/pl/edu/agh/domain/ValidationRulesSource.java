@@ -50,7 +50,7 @@ public class ValidationRulesSource extends DefaultRulesSource {
         addRules(createStayRules());
         addRules(createICD9WrapperRules());
         addRules(createICD10WrapperRules());
-        addRules(createGrouperRules());
+        addRules(createHospitalizationRules());
     }
 
     private Rules createPatientRules() {
@@ -93,9 +93,10 @@ public class ValidationRulesSource extends DefaultRulesSource {
         };
     }
 
-    private Rules createGrouperRules() {
-        return new Rules(Hospitalization.class) {
+    private Rules createHospitalizationRules() {
+        return new Rules(Episode.class) {
             protected void initRules() {
+                add("hospitalType", required());
                 add("incomeDate", required());
                 add("outcomeDate", required());
                 add("stays", required());

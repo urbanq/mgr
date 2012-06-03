@@ -7,8 +7,6 @@ import pl.edu.agh.dao.jdbc.mapper.JGPValueMapper;
 import pl.edu.agh.domain.JGP;
 import pl.edu.agh.domain.JGPValue;
 
-import java.util.List;
-
 /**
  * User: mateusz
  * Date: 02.06.12
@@ -23,7 +21,7 @@ public class JdbcJGPValueDao extends SimpleJdbcDaoSupport implements JGPValueDao
     private final static String SELECT_BY_JGP_CODE = "SELECT * FROM JGP_POINT_VALUE where jgp_code=?";
 
     @Override
-    public List<JGPValue> getByJGP(JGP jgp) {
-        return getJdbcTemplate().query(SELECT_BY_JGP_CODE, new Object[]{jgp.getCode()}, mapper) ;
+    public JGPValue getByJGP(JGP jgp) {
+        return getJdbcTemplate().queryForObject(SELECT_BY_JGP_CODE, new Object[]{jgp.getCode()}, mapper);
     }
 }

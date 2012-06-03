@@ -18,6 +18,8 @@ public class Stay implements Comparable<Stay> {
     private List<ICD10Wrapper> recognitions = new ArrayList<ICD10Wrapper>();
     private List<ICD9Wrapper> procedures = new ArrayList<ICD9Wrapper>();
 
+    private Episode episode;
+
     public Department getDepartment() {
         return department;
     }
@@ -64,6 +66,14 @@ public class Stay implements Comparable<Stay> {
 
     public void setProcedures(List<ICD9Wrapper> procedures) {
         this.procedures = procedures;
+    }
+
+    public Episode getEpisode() {
+        return episode;
+    }
+
+    public void setEpisode(Episode episode) {
+        this.episode = episode;
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.valkyriercp.form.AbstractForm;
 import org.valkyriercp.form.binding.swing.AbstractGlazedListsBinding;
 import org.valkyriercp.widget.table.PropertyColumnTableDescription;
 import org.valkyriercp.widget.table.TableDescription;
+import pl.edu.agh.domain.Episode;
 import pl.edu.agh.domain.Stay;
 import pl.edu.agh.ui.StayForm;
 
@@ -35,7 +36,9 @@ public class StayListBinding extends AbstractGlazedListsBinding {
 
     @Override
     protected Object getNewFormObject() {
-        return new Stay();
+        Stay stay = new Stay();
+        stay.setEpisode((Episode) getFormModel().getFormObject());
+        return stay;
     }
 
     @Override

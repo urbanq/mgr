@@ -14,13 +14,14 @@ import org.valkyriercp.form.*;
 import org.valkyriercp.util.ObjectUtils;
 import org.valkyriercp.widget.AbstractTitledWidget;
 import org.valkyriercp.widget.editor.AbstractDataEditorWidget;
-import pl.edu.agh.domain.Hospitalization;
+import pl.edu.agh.domain.Episode;
 import pl.edu.agh.domain.JGPResult;
 import pl.edu.agh.domain.Service;
 import pl.edu.agh.service.JGPService;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
+import java.util.List;
 
 /**
  * User: mateusz
@@ -50,7 +51,7 @@ public class GrouperWidget extends AbstractTitledWidget {
 
     @PostConstruct
     public void postConstruct() {
-        setDetailForm(new HospitalizationForm());
+        setDetailForm(new EpisodeForm());
         for (Service service : Service.values()) {
             final String messageKey = Service.class.getName() + "." + service.name();
             service.setMessage(applicationConfig.messageResolver().getMessage(messageKey));
@@ -148,10 +149,10 @@ public class GrouperWidget extends AbstractTitledWidget {
     protected void doGrouping()
     {
         getDetailForm().commit();
-        JGPResult result = null;
+        List<JGPResult> result = null;
         try
         {
-            result = executeGrouper((Hospitalization) getDetailForm().getFormObject());
+            result = executeGrouper((Episode) getDetailForm().getFormObject());
             //TODO visualize result on dialog?
         }
         catch (RuntimeException e)
@@ -164,9 +165,9 @@ public class GrouperWidget extends AbstractTitledWidget {
         }
     }
 
-    private JGPResult executeGrouper(Hospitalization hospitalization) {
+    private List<JGPResult> executeGrouper(Episode episode) {
         //TODO start glasspane?
-        return service.group(hospitalization);
+        return service.group(episode);
     }
 
 

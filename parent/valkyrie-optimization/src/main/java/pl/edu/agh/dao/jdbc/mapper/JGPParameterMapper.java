@@ -3,7 +3,7 @@ package pl.edu.agh.dao.jdbc.mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import pl.edu.agh.dao.*;
-import pl.edu.agh.domain.Algorithm;
+import pl.edu.agh.domain.Condition;
 import pl.edu.agh.domain.JGPParameter;
 import pl.edu.agh.domain.Sex;
 
@@ -35,7 +35,7 @@ public class JGPParameterMapper implements RowMapper<JGPParameter> {
         parameter.setListType(JGPParameter.ListType.valueOf(rs.getString("list_type")));
         parameter.setListCode(rs.getString("list_code"));
         parameter.setJgp(jgpDao.getByCode(rs.getString("jgp_code")));
-        parameter.setAlgorithm(Algorithm.valueOf(rs.getString("algorithm_code").charAt(0)));
+        parameter.setCondition(Condition.valueOf(rs.getString("algorithm_code").charAt(0)));
         //limitations
         parameter.setHospitalLimit(rs.getInt("hospital_limit") == 0 ? null : hospitalLimitDao.get(rs.getInt("hospital_limit")));
         parameter.setAgeLimit(rs.getInt("age_limit") == 0 ? null : ageLimitDao.get(rs.getInt("age_limit")));

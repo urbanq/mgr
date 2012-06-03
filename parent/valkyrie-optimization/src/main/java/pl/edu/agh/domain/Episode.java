@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * User: mateusz
- * Date: 16.05.12
+ * hospitalization, episode
+ * @author mateusz
  */
-public class Hospitalization {
+public class Episode {
     private Date dateOfBirth;
     private Sex sex = Sex.NO_DATA;
 
@@ -18,11 +18,11 @@ public class Hospitalization {
     private Date outcomeDate;
     private OutcomeModeLimit outcomeModeLimit;
 
-    private HospitalType hospitalType;
+    private HospitalType hospitalType = HospitalType.NORMAL;
 
     private List<Stay> stays;
 
-    public Hospitalization() {
+    public Episode() {
         stays = new ArrayList<Stay>();
     }
 
