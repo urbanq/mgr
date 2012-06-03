@@ -54,4 +54,11 @@ public class AgeLimit {
         }
         throw new IllegalStateException("under and over properties are both null!");
     }
+
+    public static AgeLimit under18() {
+        AgeLimit limit = new AgeLimit();
+        limit.setUnder(18);
+        limit.setTimeUnit(TimeUnit.YEAR);
+        return limit;
+    }
 }

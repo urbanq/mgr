@@ -116,7 +116,7 @@ public class Episode {
     /**
      * @return hospitalization time
      */
-    public int hospital(TimeUnit timeUnit) {
+    public int hospitalTime(TimeUnit timeUnit) {
         DateTime income = new DateTime(incomeDate);
         DateTime outcome   = new DateTime(outcomeDate);
         switch (timeUnit){

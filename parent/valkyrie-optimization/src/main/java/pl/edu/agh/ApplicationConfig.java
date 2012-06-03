@@ -42,7 +42,6 @@ import pl.edu.agh.ui.binder.ICD9Binder;
 import pl.edu.agh.ui.binder.NameableBinder;
 
 import javax.sql.DataSource;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -215,16 +214,9 @@ public class ApplicationConfig extends AbstractApplicationConfig {
 
     @Bean
     public Binder integerBinder() {
-        return new NumberBinder(Integer.class);
-    }
-
-    @Bean
-    public Binder euroBinder() {
-        NumberBinder numberBinder = new NumberBinder(BigDecimal.class);
-        numberBinder.setNrOfDecimals(2);
-        numberBinder.setLeftDecoration("€");
-        numberBinder.setFormat("#,##0.00");
-        return numberBinder;
+        NumberBinder integerBinder = new NumberBinder(Integer.class);
+        integerBinder.setNegativeSign(false);
+        return integerBinder;
     }
 
     @Bean
@@ -264,6 +256,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         binderSelectionStrategy.registerBinderForPropertyType(Department.class, departmentBinder());
         binderSelectionStrategy.registerBinderForPropertyType(IncomeModeLimit.class, incomeModeLimitBinder());
         binderSelectionStrategy.registerBinderForPropertyType(OutcomeModeLimit.class, outcomeModeLimitBinder());
+        binderSelectionStrategy.registerBinderForPropertyType(Integer.class, integerBinder());
     }
 
     @Override

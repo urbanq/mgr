@@ -9,6 +9,7 @@ import java.util.Date;
 public class ICD9Wrapper implements Comparable<ICD9Wrapper> {
     private ICD9 icd9;
     private Date procedureDate;
+    private Integer count = Integer.valueOf(1);
 
     public ICD9 getIcd9() {
         return icd9;
@@ -24,6 +25,14 @@ public class ICD9Wrapper implements Comparable<ICD9Wrapper> {
 
     public void setProcedureDate(Date procedureDate) {
         this.procedureDate = procedureDate;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package pl.edu.agh.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * Date: 21.05.12
  */
 public class JGPResult {
-    private List<JGPParameter> parameters;
+    private List<JGPParameter> parameters = new ArrayList<JGPParameter>();
     private Double value;
     private Stay stay;
 

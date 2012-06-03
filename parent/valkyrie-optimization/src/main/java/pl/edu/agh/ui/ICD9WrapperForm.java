@@ -26,6 +26,8 @@ public class ICD9WrapperForm extends AbstractFocussableWidgetForm {
         builder.nextRow();
         builder.addPropertyAndLabel("procedureDate", "jxDatePickerDateFieldBinder");
         builder.nextRow();
+        builder.addPropertyAndLabel("count", "integerBinder");
+        builder.nextRow();
         return builder.getPanel();
     }
 }
