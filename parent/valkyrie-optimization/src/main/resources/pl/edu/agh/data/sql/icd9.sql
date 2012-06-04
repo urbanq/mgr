@@ -41,7 +41,7 @@ CREATE TABLE ICD9_LIST_CODE(
     LIST_TYPE CHAR(1) NOT NULL,
     PRIMARY KEY (ICD9_CODE, LIST_CODE),
     FOREIGN KEY(ICD9_CODE) REFERENCES ICD9(CODE),
-    FOREIGN KEY(LIST_TYPE) REFERENCES LIST_TYPE(ID),
+    FOREIGN KEY(LIST_TYPE) REFERENCES ICD_LIST_TYPE(ID),
     FOREIGN KEY(LIST_CODE) REFERENCES ICD9_LIST(CODE)
 );
 ------------------------------------------------------------------------------------------------------------------------

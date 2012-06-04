@@ -40,7 +40,7 @@ CREATE TABLE ICD10_LIST_CODE(
     LIST_TYPE CHAR(1) NOT NULL,
     PRIMARY KEY (ICD10_CODE, LIST_CODE),
     FOREIGN KEY(ICD10_CODE) REFERENCES ICD10(CODE),
-    FOREIGN KEY(LIST_TYPE) REFERENCES LIST_TYPE(ID),
+    FOREIGN KEY(LIST_TYPE) REFERENCES ICD_LIST_TYPE(ID),
     FOREIGN KEY(LIST_CODE) REFERENCES ICD10_LIST(CODE)
 );
 ------------------------------------------------------------------------------------------------------------------------
