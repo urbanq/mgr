@@ -1,8 +1,5 @@
 package pl.edu.agh.domain;
 
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -82,10 +79,5 @@ public class Stay implements Comparable<Stay> {
     @Override
     public int compareTo(Stay o) {
         return department.getName().compareToIgnoreCase(o.department.getName());
-    }
-
-    public int getHospitalTime() {
-        Days days = Days.daysBetween(new DateTime(incomeDate), new DateTime(outcomeDate));
-        return days.getDays();
     }
 }

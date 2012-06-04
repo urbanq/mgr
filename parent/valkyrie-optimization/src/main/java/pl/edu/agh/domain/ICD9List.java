@@ -7,7 +7,7 @@ package pl.edu.agh.domain;
 public class ICD9List {
     private String listCode;
     private ICD9 icd9;
-    private ListType listType;
+    private ICDListType listType;
 
     public String getListCode() {
         return listCode;
@@ -25,11 +25,11 @@ public class ICD9List {
         this.icd9 = icd9;
     }
 
-    public ListType getListType() {
+    public ICDListType getListType() {
         return listType;
     }
 
-    public void setListType(ListType listType) {
+    public void setListType(ICDListType listType) {
         this.listType = listType;
     }
 }
