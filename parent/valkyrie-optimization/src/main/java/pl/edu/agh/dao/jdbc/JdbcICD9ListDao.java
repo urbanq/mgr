@@ -24,4 +24,12 @@ public class JdbcICD9ListDao extends SimpleJdbcDaoSupport implements ICD9ListDao
     public List<ICD9List> getListCodes(ICD9 icd9) {
         return getJdbcTemplate().query(SELECT_BY_CODE_SQL, new Object[]{icd9.getCode()}, mapper);
     }
+
+    private final static String SELECT_LIST_CODES_SQL = "SELECT lc1.list_code FROM icd9_list_code lc1 " +
+                                                        "INNER JOIN icd9_list_code lc2 on (lc1.list_code = lc2.list_code) " +
+                                                        "WHERE lc1.icd9_code = ? and lc2.icd9_code = ?";
+    @Override
+    public List<String> getListCodes(ICD9 firstICD9, ICD9 secondICD9) {
+        return getJdbcTemplate().queryForList(SELECT_LIST_CODES_SQL, String.class, firstICD9.getCode(), secondICD9.getCode());
+    }
 }

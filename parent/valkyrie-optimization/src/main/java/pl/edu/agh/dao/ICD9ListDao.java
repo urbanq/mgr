@@ -11,4 +11,6 @@ import java.util.List;
  */
 public interface ICD9ListDao {
     List<ICD9List> getListCodes(ICD9 icd9);
+
+    List<String> getListCodes(ICD9 firstICD9, ICD9 secondICD9);
 }

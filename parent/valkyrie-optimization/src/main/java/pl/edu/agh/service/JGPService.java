@@ -116,26 +116,18 @@ public class JGPService {
             boolean ageCond = checkAgeLimit(stay, parameter.getAgeLimit());
             return range2Cond && timeCond && ageCond;
         } else if(Condition.C.equals(condition)) {
-            return size(stay.getRecognitions()) == 2 && size(stay.getProcedures()) == 2;
+            List<ICD9Wrapper> procedures = stay.getProcedures();
+            List<ICD10Wrapper> recognitions = stay.getRecognitions();
+            return size(recognitions) == 2 && size(procedures) == 2;
         } else if(Condition.D.equals(condition)) {
             List<ICD9Wrapper> procedures = stay.getProcedures();
             List<ICD10Wrapper> recognitions = stay.getRecognitions();
             boolean recognision1procedures2 = size(recognitions) == 1 && size(procedures) == 2;
             boolean sameLists = false;
             if(recognision1procedures2) {
-                List<ICD9List> icd9lists1 = icd9ListDao.getListCodes(procedures.get(0).getIcd9());
-                List<ICD9List> icd9lists2 = icd9ListDao.getListCodes(procedures.get(1).getIcd9());
-                for(ICD9List list1 : icd9lists1) {
-                    for(ICD9List list2 : icd9lists2){
-                        if(list1.getListCode().equals(list2.getListCode())) {
-                            sameLists = true;
-                            break;
-                        }
-                    }
-                    if(sameLists) {
-                        break;
-                    }
-                }
+                List<String> listCodes = icd9ListDao.getListCodes(procedures.get(0).getIcd9(), procedures.get(1).getIcd9());
+                //niepusta lista list codes - oznacza ze kody naleza do tej samej listy icd9
+                sameLists = CollectionUtils.isNotEmpty(listCodes);
             }
             return recognision1procedures2 && sameLists;
         } else if(Condition.E.equals(condition)) {
