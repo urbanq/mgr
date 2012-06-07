@@ -67,7 +67,7 @@ public class JGPService {
                 List<JGPParameter> parameters = jgpParameterDao.getByProcedure(procedure.getIcd9());
                 if (CollectionUtils.isNotEmpty(parameters)) {
                     for (JGPParameter parameter : parameters) {
-                        if (checkParameters(stay, parameter)) {
+                        if (checkDirectionalConditions(stay, parameter)) {
                             JGP jgp = parameter.getJgp();
                             Double value = jgpValueDao.getByJGP(jgp).getValue(episode.getHospitalType());
 
@@ -91,7 +91,7 @@ public class JGPService {
                 List<JGPParameter> parameters = jgpParameterDao.getByRecognition(recognition.getIcd10());
                 if (CollectionUtils.isNotEmpty(parameters)) {
                     for (JGPParameter parameter : parameters) {
-                        if (checkParameters(stay, parameter)) {
+                        if (checkDirectionalConditions(stay, parameter)) {
                             JGP jgp = parameter.getJgp();
                             Double value = jgpValueDao.getByJGP(jgp).getValue(episode.getHospitalType());
 
@@ -108,7 +108,7 @@ public class JGPService {
         }
     }
 
-    private boolean checkParameters(Stay stay, JGPParameter parameter) {
+    private boolean checkDirectionalConditions(Stay stay, JGPParameter parameter) {
         //TODO here exclude conditions but where?
         List<ICD9Wrapper> procedures = stay.getProcedures();
         List<ICD10Wrapper> recognitions = stay.getRecognitions();
@@ -263,10 +263,10 @@ public class JGPService {
             if(proceduresSize && additional1Procedure && additional2Procedure) {
                 sameProceduresLists = checkSameLists(procedures.get(0), procedures.get(1), true);
             }
-            boolean hospCond = checkHospitalLimit(stay, parameter.getHospitalLimit());
+            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit());
             return recognitionsSize && proceduresSize && mainRecognition
                     && coexistRecognition && additional1Procedure && additional2Procedure
-                    && sameProceduresLists && elseRecognitionsLists;
+                    && sameProceduresLists && elseRecognitionsLists && hospLimit;
 
         } else if(Condition.P.equals(condition)) {
             boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);

@@ -8,6 +8,7 @@ CREATE TABLE DEPARTMENT(
     NAME VARCHAR(50) UNIQUE
 );
 
+INSERT INTO DEPARTMENT(ID, NAME) VALUES ('111', 'Pełny zakres świadczeń');
 INSERT INTO DEPARTMENT(ID, NAME) VALUES ('a1', 'alergologia');
 INSERT INTO DEPARTMENT(ID, NAME) VALUES ('a2', 'anestezjologia i intensywna terapia');
 INSERT INTO DEPARTMENT(ID, NAME) VALUES ('a3', 'angiologia');
