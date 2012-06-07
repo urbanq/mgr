@@ -25,7 +25,6 @@ import org.valkyriercp.text.TextCaretFormComponentInterceptorFactory;
 import org.valkyriercp.widget.WidgetViewDescriptor;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.dao.jdbc.*;
-import pl.edu.agh.dao.jdbc.mapper.ICD9ListMapper;
 import pl.edu.agh.dao.jdbc.mapper.JGPParameterMapper;
 import pl.edu.agh.dao.jdbc.mapper.JGPValueMapper;
 import pl.edu.agh.domain.Department;
@@ -370,14 +369,21 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         return dao;
     }
 
-    @Bean
-    public ICD9ListMapper icd9ListMapper() {
-        return new ICD9ListMapper();
-    }
+//    @Bean
+//    public ICD9ListMapper icd9ListMapper() {
+//        return new ICD9ListMapper();
+//    }
 
     @Bean
     public ICD9ListDao icd9ListDao() {
         JdbcICD9ListDao dao = new JdbcICD9ListDao();
+        dao.setDataSource(dataSource());
+        return dao;
+    }
+
+    @Bean
+    public ICD10ListDao icd10ListDao() {
+        JdbcICD10ListDao dao = new JdbcICD10ListDao();
         dao.setDataSource(dataSource());
         return dao;
     }
