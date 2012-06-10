@@ -55,8 +55,26 @@ public class HospitalLimit {
         throw new IllegalStateException("under and over properties are both null!");
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        HospitalLimit that = (HospitalLimit) o;
+
+        if (id != that.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
     public static HospitalLimit under2Days() {
         HospitalLimit limit = new HospitalLimit();
+        limit.setId(2 * 1000);
         limit.setUnder(2);
         limit.setTimeUnit(TimeUnit.DAY);
         return limit;
