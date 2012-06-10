@@ -21,19 +21,18 @@ import static org.apache.commons.collections.CollectionUtils.size;
  */
 public class JGPService {
     @Autowired
+    private DepartmentDao departmentDao;
+    @Autowired
     private JGPDao jgpDao;
-
     @Autowired
     private JGPParameterDao jgpParameterDao;
-
     @Autowired
     private JGPValueDao jgpValueDao;
-
     @Autowired
     private ICD9ListDao icd9ListDao;
-
     @Autowired
     private ICD10ListDao icd10ListDao;
+
 
     public List<JGP> findJGP(final JGPFilter filter) {
         return jgpDao.getList(filter);
@@ -109,7 +108,6 @@ public class JGPService {
     }
 
     private boolean checkDirectionalConditions(Stay stay, JGPParameter parameter) {
-        //TODO here exclude conditions but where?
         List<ICD9Wrapper> procedures = stay.getProcedures();
         List<ICD10Wrapper> recognitions = stay.getRecognitions();
 
@@ -398,8 +396,16 @@ public class JGPService {
         return true;
     }
 
+    private boolean checkDepartment(Stay stay, JGP jgp) {
+        if (stay.getDepartment() != null && !"111".equals(stay.getDepartment().getId())) {
+            List<Department> departments = departmentDao.getByJGP(jgp);
+            return departments.contains(stay.getDepartment());
+        }
+        return true;
+    }
+
     /**
-     * Sprawdzanie wystepowania procedur medycznych w danych epizodu
+     * create all procedures list from stays list
      */
     private List<ICD9Wrapper> procedures(List<Stay> stays) {
         List<ICD9Wrapper> procedures = new ArrayList<ICD9Wrapper>();
