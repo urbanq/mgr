@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.edu.agh</groupId>
-    <artifactId>valkyrie-optimization</artifactId>
+    <artifactId>grouper</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>Valkyrie Optimization Project</name>
+    <name>Valkyrie Grouper</name>
 
     <properties>
         <valkyrie.version>1.0-SNAPSHOT</valkyrie.version>

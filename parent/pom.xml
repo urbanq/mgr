@@ -15,7 +15,7 @@
     </properties>
 
     <modules>
-        <module>valkyrie-optimization</module>
+        <module>grouper</module>
         <module>simulated-annealing</module>
     </modules>
 
