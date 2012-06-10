@@ -181,7 +181,9 @@ public class JGPParameter {
         FIRST_ICD10(ListType.ICD10),
         SECOND_ICD10(ListType.ICD10),
         FIRST_ICD9(ListType.ICD9),
-        SECOND_ICD9(ListType.ICD9);
+        SECOND_ICD9(ListType.ICD9),
+        NEGATIVE_ICD9(ListType.ICD9),
+        NEGATIVE_ICD10(ListType.ICD10);
 
         private final ListType listType;
 

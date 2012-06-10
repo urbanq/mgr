@@ -103,7 +103,8 @@ public class JGPService {
                         checkSex(stay, parameter.getSexLimit(), jgpResult.reasons()) &&
                         checkIncomeMode(stay, parameter.getIncomeMode(), jgpResult.reasons()) &&
                         checkOutcomeMode(stay, parameter.getOutcomeMode(), jgpResult.reasons()) &&
-                        checkDepartment(stay, parameter.getJgp(), jgpResult.reasons())) {
+                        checkDepartment(stay, parameter.getJgp(), jgpResult.reasons()) &&
+                        checkNegativeICDCode(stay, parameter, jgpResult.reasons())) {
                     jgpGroupResult.accepted().add(jgpResult);
                 } else {
                     jgpGroupResult.notAccepted().add(jgpResult);
@@ -509,6 +510,32 @@ public class JGPService {
     private boolean checkExistRecognition(List<ICD10Wrapper> recognitions, String listCode, ICDCondition icdCondition, List<Reason> reasons) {
         reasons.add(new Reason(icdCondition, listCode));
         return checkExistRecognition(recognitions, listCode);
+    }
+
+    private boolean checkNegativeICDCode(Stay stay, JGPParameter parameter, List<Reason> reasons) {
+        if (StringUtils.isNotBlank(parameter.getNegativeICD10ListCode())) {
+            return checkNegativeRecognition(stay.getRecognitions(), parameter.getNegativeICD10ListCode(), reasons);
+        }
+        if (StringUtils.isNotBlank(parameter.getNegativeICD9ListCode())) {
+            return checkNegativeProcedure(stay.getProcedures(), parameter.getNegativeICD9ListCode(), reasons);
+        }
+        return true;
+    }
+
+    private boolean checkNegativeProcedure(List<ICD9Wrapper> procedures, String listCode, List<Reason> reasons) {
+        if (checkExistProcedure(procedures, listCode)) {
+            reasons.add(new Reason(ICDCondition.NEGATIVE_ICD9, listCode));
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkNegativeRecognition(List<ICD10Wrapper> recognitions, String listCode, List<Reason> reasons) {
+        if (checkExistRecognition(recognitions, listCode)) {
+            reasons.add(new Reason(ICDCondition.NEGATIVE_ICD10, listCode));
+            return false;
+        }
+        return true;
     }
 
     /**
