@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import org.springframework.jdbc.object.MappingSqlQuery;
 import pl.edu.agh.dao.IncomeModeLimitDao;
 import pl.edu.agh.dao.jdbc.mapper.IncomeModeLimitMapper;
-import pl.edu.agh.domain.IncomeModeLimit;
+import pl.edu.agh.domain.IncomeMode;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -24,16 +24,16 @@ public class JdbcIncomeModeLimitDao extends SimpleJdbcDaoSupport implements Inco
     private final static IncomeModeLimitMapper MAPPER = new IncomeModeLimitMapper();
 
     @Override
-    public IncomeModeLimit get(Integer id) {
+    public IncomeMode get(Integer id) {
         return new IncomeModeLimitMappingQuery(getDataSource()).findObject(id);
     }
 
     @Override
-    public List<IncomeModeLimit> getAll() {
+    public List<IncomeMode> getAll() {
         return getJdbcTemplate().query(SELECT_SQL, MAPPER);
     }
 
-    private static final class IncomeModeLimitMappingQuery extends MappingSqlQuery<IncomeModeLimit> {
+    private static final class IncomeModeLimitMappingQuery extends MappingSqlQuery<IncomeMode> {
         public IncomeModeLimitMappingQuery(DataSource ds) {
             super(ds, SELECT_BY_ID_SQL);
             super.declareParameter(new SqlParameter("id", Types.INTEGER));
@@ -41,7 +41,7 @@ public class JdbcIncomeModeLimitDao extends SimpleJdbcDaoSupport implements Inco
         }
 
         @Override
-        public IncomeModeLimit mapRow(ResultSet rs, int rowNumber) throws SQLException {
+        public IncomeMode mapRow(ResultSet rs, int rowNumber) throws SQLException {
             return MAPPER.mapRow(rs, rowNumber);
         }
     }

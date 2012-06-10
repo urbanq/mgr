@@ -377,6 +377,27 @@ public class JGPService {
         return true;
     }
 
+    private boolean checkSex(Stay stay, Sex sex) {
+        if(sex != null) {
+            return sex.equals(stay.getEpisode().getSex());
+        }
+        return true;
+    }
+
+    private boolean checkIncomeMode(Stay stay, IncomeMode incomeMode) {
+        if(incomeMode != null) {
+            return incomeMode.equals(stay.getEpisode().getIncomeMode());
+        }
+        return true;
+    }
+
+    private boolean checkOutcomeMode(Stay stay, OutcomeMode outcomeMode) {
+        if(outcomeMode != null) {
+            return outcomeMode.equals(stay.getEpisode().getOutcomeMode());
+        }
+        return true;
+    }
+
     /**
      * Sprawdzanie wystepowania procedur medycznych w danych epizodu
      */

@@ -28,8 +28,8 @@ import pl.edu.agh.dao.jdbc.*;
 import pl.edu.agh.dao.jdbc.mapper.JGPParameterMapper;
 import pl.edu.agh.dao.jdbc.mapper.JGPValueMapper;
 import pl.edu.agh.domain.Department;
-import pl.edu.agh.domain.IncomeModeLimit;
-import pl.edu.agh.domain.OutcomeModeLimit;
+import pl.edu.agh.domain.IncomeMode;
+import pl.edu.agh.domain.OutcomeMode;
 import pl.edu.agh.domain.ValidationRulesSource;
 import pl.edu.agh.service.ICD10Service;
 import pl.edu.agh.service.ICD9Service;
@@ -227,14 +227,14 @@ public class ApplicationConfig extends AbstractApplicationConfig {
 
     @Bean
     public Binder incomeModeLimitBinder() {
-        NameableBinder<IncomeModeLimit> binder = new NameableBinder<IncomeModeLimit>(IncomeModeLimit.class);
+        NameableBinder<IncomeMode> binder = new NameableBinder<IncomeMode>(IncomeMode.class);
         binder.setDao(incomeModeLimitDao());
         return binder;
     }
 
     @Bean
     public Binder outcomeModeLimitBinder() {
-        NameableBinder<OutcomeModeLimit> binder = new NameableBinder<OutcomeModeLimit>(OutcomeModeLimit.class);
+        NameableBinder<OutcomeMode> binder = new NameableBinder<OutcomeMode>(OutcomeMode.class);
         binder.setDao(outcomeModeLimitDao());
         return binder;
     }
@@ -253,8 +253,8 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     protected void registerBinders(BinderSelectionStrategy binderSelectionStrategy) {
         super.registerBinders(binderSelectionStrategy);
         binderSelectionStrategy.registerBinderForPropertyType(Department.class, departmentBinder());
-        binderSelectionStrategy.registerBinderForPropertyType(IncomeModeLimit.class, incomeModeLimitBinder());
-        binderSelectionStrategy.registerBinderForPropertyType(OutcomeModeLimit.class, outcomeModeLimitBinder());
+        binderSelectionStrategy.registerBinderForPropertyType(IncomeMode.class, incomeModeLimitBinder());
+        binderSelectionStrategy.registerBinderForPropertyType(OutcomeMode.class, outcomeModeLimitBinder());
         binderSelectionStrategy.registerBinderForPropertyType(Integer.class, integerBinder());
     }
 

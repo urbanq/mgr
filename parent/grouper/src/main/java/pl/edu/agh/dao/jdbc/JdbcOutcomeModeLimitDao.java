@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import org.springframework.jdbc.object.MappingSqlQuery;
 import pl.edu.agh.dao.OutcomeModeLimitDao;
 import pl.edu.agh.dao.jdbc.mapper.OutcomeModeLimitMapper;
-import pl.edu.agh.domain.OutcomeModeLimit;
+import pl.edu.agh.domain.OutcomeMode;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -24,16 +24,16 @@ public class JdbcOutcomeModeLimitDao extends SimpleJdbcDaoSupport implements Out
     private final static OutcomeModeLimitMapper MAPPER = new OutcomeModeLimitMapper();
 
     @Override
-    public OutcomeModeLimit get(Integer id) {
+    public OutcomeMode get(Integer id) {
         return new OutcomeModeLimitMappingQuery(getDataSource()).findObject(id);
     }
 
     @Override
-    public List<OutcomeModeLimit> getAll() {
+    public List<OutcomeMode> getAll() {
         return getJdbcTemplate().query(SELECT_SQL, MAPPER);
     }
 
-    private static final class OutcomeModeLimitMappingQuery extends MappingSqlQuery<OutcomeModeLimit> {
+    private static final class OutcomeModeLimitMappingQuery extends MappingSqlQuery<OutcomeMode> {
         public OutcomeModeLimitMappingQuery(DataSource ds) {
             super(ds, SELECT_BY_ID_SQL);
             super.declareParameter(new SqlParameter("id", Types.INTEGER));
@@ -41,7 +41,7 @@ public class JdbcOutcomeModeLimitDao extends SimpleJdbcDaoSupport implements Out
         }
 
         @Override
-        public OutcomeModeLimit mapRow(ResultSet rs, int rowNumber) throws SQLException {
+        public OutcomeMode mapRow(ResultSet rs, int rowNumber) throws SQLException {
             return MAPPER.mapRow(rs, rowNumber);
         }
     }

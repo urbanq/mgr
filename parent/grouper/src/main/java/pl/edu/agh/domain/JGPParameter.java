@@ -12,8 +12,8 @@ public class JGPParameter {
     private HospitalLimit hospitalLimit;
     private AgeLimit ageLimit;
     private Sex sexLimit;
-    private IncomeModeLimit incomeModeLimit;
-    private OutcomeModeLimit outcomeModeLimit;
+    private IncomeMode incomeMode;
+    private OutcomeMode outcomeMode;
 
     private String firstICD9ListCode;
     private int firstICD9MinimalCount;
@@ -83,20 +83,20 @@ public class JGPParameter {
         this.sexLimit = sexLimit;
     }
 
-    public IncomeModeLimit getIncomeModeLimit() {
-        return incomeModeLimit;
+    public IncomeMode getIncomeMode() {
+        return incomeMode;
     }
 
-    public void setIncomeModeLimit(IncomeModeLimit incomeModeLimit) {
-        this.incomeModeLimit = incomeModeLimit;
+    public void setIncomeMode(IncomeMode incomeMode) {
+        this.incomeMode = incomeMode;
     }
 
-    public OutcomeModeLimit getOutcomeModeLimit() {
-        return outcomeModeLimit;
+    public OutcomeMode getOutcomeMode() {
+        return outcomeMode;
     }
 
-    public void setOutcomeModeLimit(OutcomeModeLimit outcomeModeLimit) {
-        this.outcomeModeLimit = outcomeModeLimit;
+    public void setOutcomeMode(OutcomeMode outcomeMode) {
+        this.outcomeMode = outcomeMode;
     }
 
     public String getFirstICD9ListCode() {

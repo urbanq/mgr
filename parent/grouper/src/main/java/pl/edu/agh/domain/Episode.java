@@ -18,10 +18,10 @@ public class Episode {
     private Sex sex = Sex.NO_DATA;
 
     private Date incomeDate;
-    private IncomeModeLimit incomeModeLimit;
+    private IncomeMode incomeMode;
 
     private Date outcomeDate;
-    private OutcomeModeLimit outcomeModeLimit;
+    private OutcomeMode outcomeMode;
 
     private HospitalType hospitalType = HospitalType.NORMAL;
 
@@ -55,12 +55,12 @@ public class Episode {
         this.incomeDate = incomeDate;
     }
 
-    public IncomeModeLimit getIncomeModeLimit() {
-        return incomeModeLimit;
+    public IncomeMode getIncomeMode() {
+        return incomeMode;
     }
 
-    public void setIncomeModeLimit(IncomeModeLimit incomeModeLimit) {
-        this.incomeModeLimit = incomeModeLimit;
+    public void setIncomeMode(IncomeMode incomeMode) {
+        this.incomeMode = incomeMode;
     }
 
     public Date getOutcomeDate() {
@@ -71,12 +71,12 @@ public class Episode {
         this.outcomeDate = outcomeDate;
     }
 
-    public OutcomeModeLimit getOutcomeModeLimit() {
-        return outcomeModeLimit;
+    public OutcomeMode getOutcomeMode() {
+        return outcomeMode;
     }
 
-    public void setOutcomeModeLimit(OutcomeModeLimit outcomeModeLimit) {
-        this.outcomeModeLimit = outcomeModeLimit;
+    public void setOutcomeMode(OutcomeMode outcomeMode) {
+        this.outcomeMode = outcomeMode;
     }
 
     public HospitalType getHospitalType() {

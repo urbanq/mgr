@@ -1,7 +1,7 @@
 package pl.edu.agh.dao.jdbc.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
-import pl.edu.agh.domain.IncomeModeLimit;
+import pl.edu.agh.domain.IncomeMode;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,12 +10,12 @@ import java.sql.SQLException;
  * User: mateusz
  * Date: 19.05.12
  */
-public class IncomeModeLimitMapper implements RowMapper<IncomeModeLimit> {
+public class IncomeModeLimitMapper implements RowMapper<IncomeMode> {
     @Override
-    public IncomeModeLimit mapRow(ResultSet rs, int rowNum) throws SQLException {
-        IncomeModeLimit incomeModeLimit = new IncomeModeLimit();
-        incomeModeLimit.setId(rs.getInt("id"));
-        incomeModeLimit.setName(rs.getString("name"));
-        return incomeModeLimit;
+    public IncomeMode mapRow(ResultSet rs, int rowNum) throws SQLException {
+        IncomeMode incomeMode = new IncomeMode();
+        incomeMode.setId(rs.getInt("id"));
+        incomeMode.setName(rs.getString("name"));
+        return incomeMode;
     }
 }
