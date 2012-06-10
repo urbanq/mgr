@@ -3,8 +3,8 @@ package pl.edu.agh.dao.jdbc;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import org.springframework.jdbc.object.MappingSqlQuery;
-import pl.edu.agh.dao.IncomeModeLimitDao;
-import pl.edu.agh.dao.jdbc.mapper.IncomeModeLimitMapper;
+import pl.edu.agh.dao.IncomeModeDao;
+import pl.edu.agh.dao.jdbc.mapper.IncomeModeMapper;
 import pl.edu.agh.domain.IncomeMode;
 
 import javax.sql.DataSource;
@@ -17,11 +17,11 @@ import java.util.List;
  * User: mateusz
  * Date: 19.05.12
  */
-public class JdbcIncomeModeLimitDao extends SimpleJdbcDaoSupport implements IncomeModeLimitDao {
+public class JdbcIncomeModeDao extends SimpleJdbcDaoSupport implements IncomeModeDao {
     private final static String SELECT_SQL = "SELECT id,name FROM income_mode_limit";
     private final static String SELECT_BY_ID_SQL = SELECT_SQL + " WHERE id = ?";
 
-    private final static IncomeModeLimitMapper MAPPER = new IncomeModeLimitMapper();
+    private final static IncomeModeMapper MAPPER = new IncomeModeMapper();
 
     @Override
     public IncomeMode get(Integer id) {

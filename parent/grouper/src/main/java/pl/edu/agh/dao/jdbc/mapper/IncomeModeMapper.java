@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * User: mateusz
  * Date: 19.05.12
  */
-public class IncomeModeLimitMapper implements RowMapper<IncomeMode> {
+public class IncomeModeMapper implements RowMapper<IncomeMode> {
     @Override
     public IncomeMode mapRow(ResultSet rs, int rowNum) throws SQLException {
         IncomeMode incomeMode = new IncomeMode();

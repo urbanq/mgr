@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * User: mateusz
  * Date: 19.05.12
  */
-public class OutcomeModeLimitMapper  implements RowMapper<OutcomeMode> {
+public class OutcomeModeMapper implements RowMapper<OutcomeMode> {
     @Override
     public OutcomeMode mapRow(ResultSet rs, int rowNum) throws SQLException {
         OutcomeMode outcomeMode = new OutcomeMode();

@@ -22,10 +22,10 @@ public class EpisodeForm extends AbstractFocussableWidgetForm {
         builder.addPropertyAndLabel("sex", 5);
         builder.nextRow();
         builder.addPropertyAndLabel("incomeDate", "jxDatePickerDateFieldBinder");
-        builder.addPropertyAndLabel("incomeModeLimit", 5);
+        builder.addPropertyAndLabel("incomeMode", 5);
         builder.nextRow();
         builder.addPropertyAndLabel("outcomeDate", "jxDatePickerDateFieldBinder");
-        builder.addPropertyAndLabel("outcomeModeLimit", 5);
+        builder.addPropertyAndLabel("outcomeMode", 5);
         builder.nextRow();
         builder.addPropertyAndLabel("hospitalType");
         builder.nextRow();

@@ -3,8 +3,8 @@ package pl.edu.agh.dao.jdbc;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import org.springframework.jdbc.object.MappingSqlQuery;
-import pl.edu.agh.dao.OutcomeModeLimitDao;
-import pl.edu.agh.dao.jdbc.mapper.OutcomeModeLimitMapper;
+import pl.edu.agh.dao.OutcomeModeDao;
+import pl.edu.agh.dao.jdbc.mapper.OutcomeModeMapper;
 import pl.edu.agh.domain.OutcomeMode;
 
 import javax.sql.DataSource;
@@ -17,11 +17,11 @@ import java.util.List;
  * User: mateusz
  * Date: 19.05.12
  */
-public class JdbcOutcomeModeLimitDao extends SimpleJdbcDaoSupport implements OutcomeModeLimitDao {
+public class JdbcOutcomeModeDao extends SimpleJdbcDaoSupport implements OutcomeModeDao {
     private final static String SELECT_SQL = "SELECT id,name FROM outcome_mode_limit";
     private final static String SELECT_BY_ID_SQL = SELECT_SQL + " WHERE id = ?";
 
-    private final static OutcomeModeLimitMapper MAPPER = new OutcomeModeLimitMapper();
+    private final static OutcomeModeMapper MAPPER = new OutcomeModeMapper();
 
     @Override
     public OutcomeMode get(Integer id) {

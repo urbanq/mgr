@@ -6,5 +6,5 @@ import pl.edu.agh.domain.OutcomeMode;
  * User: mateusz
  * Date: 19.05.12
  */
-public interface OutcomeModeLimitDao extends ReadDao<OutcomeMode, Integer> {
+public interface OutcomeModeDao extends ReadDao<OutcomeMode, Integer> {
 }

@@ -226,16 +226,16 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     }
 
     @Bean
-    public Binder incomeModeLimitBinder() {
+    public Binder incomeModeBinder() {
         NameableBinder<IncomeMode> binder = new NameableBinder<IncomeMode>(IncomeMode.class);
-        binder.setDao(incomeModeLimitDao());
+        binder.setDao(incomeModeDao());
         return binder;
     }
 
     @Bean
-    public Binder outcomeModeLimitBinder() {
+    public Binder outcomeModeBinder() {
         NameableBinder<OutcomeMode> binder = new NameableBinder<OutcomeMode>(OutcomeMode.class);
-        binder.setDao(outcomeModeLimitDao());
+        binder.setDao(outcomeModeDao());
         return binder;
     }
 
@@ -253,8 +253,8 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     protected void registerBinders(BinderSelectionStrategy binderSelectionStrategy) {
         super.registerBinders(binderSelectionStrategy);
         binderSelectionStrategy.registerBinderForPropertyType(Department.class, departmentBinder());
-        binderSelectionStrategy.registerBinderForPropertyType(IncomeMode.class, incomeModeLimitBinder());
-        binderSelectionStrategy.registerBinderForPropertyType(OutcomeMode.class, outcomeModeLimitBinder());
+        binderSelectionStrategy.registerBinderForPropertyType(IncomeMode.class, incomeModeBinder());
+        binderSelectionStrategy.registerBinderForPropertyType(OutcomeMode.class, outcomeModeBinder());
         binderSelectionStrategy.registerBinderForPropertyType(Integer.class, integerBinder());
     }
 
@@ -318,15 +318,15 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     }
 
     @Bean
-    public IncomeModeLimitDao incomeModeLimitDao() {
-        JdbcIncomeModeLimitDao dao = new JdbcIncomeModeLimitDao();
+    public IncomeModeDao incomeModeDao() {
+        JdbcIncomeModeDao dao = new JdbcIncomeModeDao();
         dao.setDataSource(dataSource());
         return dao;
     }
 
     @Bean
-    public OutcomeModeLimitDao outcomeModeLimitDao() {
-        JdbcOutcomeModeLimitDao dao = new JdbcOutcomeModeLimitDao();
+    public OutcomeModeDao outcomeModeDao() {
+        JdbcOutcomeModeDao dao = new JdbcOutcomeModeDao();
         dao.setDataSource(dataSource());
         return dao;
     }

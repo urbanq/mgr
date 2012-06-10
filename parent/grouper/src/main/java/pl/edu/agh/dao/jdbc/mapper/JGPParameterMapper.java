@@ -23,9 +23,9 @@ public class JGPParameterMapper implements RowMapper<JGPParameter> {
     @Autowired
     private AgeLimitDao ageLimitDao;
     @Autowired
-    private IncomeModeLimitDao incomeModeLimitDao;
+    private IncomeModeDao incomeModeDao;
     @Autowired
-    private OutcomeModeLimitDao outcomeModeLimitDao;
+    private OutcomeModeDao outcomeModeDao;
 
     @Override
     public JGPParameter mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -38,8 +38,8 @@ public class JGPParameterMapper implements RowMapper<JGPParameter> {
         parameter.setHospitalLimit(rs.getInt("hospital_limit") == 0 ? null : hospitalLimitDao.get(rs.getInt("hospital_limit")));
         parameter.setAgeLimit(rs.getInt("age_limit") == 0 ? null : ageLimitDao.get(rs.getInt("age_limit")));
         parameter.setSexLimit(rs.getString("limit_sex") == null ? null : Sex.valueOf(rs.getString("limit_sex").charAt(0)));
-        parameter.setIncomeMode(rs.getInt("income_mode_limit") == 0 ? null : incomeModeLimitDao.get(rs.getInt("income_mode_limit")));
-        parameter.setOutcomeMode(rs.getInt("outcome_mode_limit") == 0 ? null : outcomeModeLimitDao.get(rs.getInt("outcome_mode_limit")));
+        parameter.setIncomeMode(rs.getInt("income_mode_limit") == 0 ? null : incomeModeDao.get(rs.getInt("income_mode_limit")));
+        parameter.setOutcomeMode(rs.getInt("outcome_mode_limit") == 0 ? null : outcomeModeDao.get(rs.getInt("outcome_mode_limit")));
         // conditions
         parameter.setFirstICD9ListCode(rs.getString("cond1_icd9_list_code"));
         parameter.setFirstICD9MinimalCount(rs.getInt("cond1_icd9_count"));
