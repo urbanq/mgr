@@ -42,79 +42,72 @@ public class JGPService {
      * nie rozliczam na podstawie dodatkowego katalogu świadczeń 1b,1c 1e
      * tylko glowna galaz parametry jgp
     */
-    public List<JGPResult> group(Episode episode) {
+    public JGPGroupResult group(Episode episode) {
         Assert.notEmpty(episode.getStays(), "stays cannot be empty!");
 
-        List<JGPResult> jgpResultList = new ArrayList<JGPResult>();
         List<Stay> stays = episode.getStays();
         List<ICD9Wrapper> procedures = procedures(stays);
 
+        JGPGroupResult jgpGroupResult;
         if(CollectionUtils.isNotEmpty(procedures) &&
             (checkRangeGreaterThen(procedures, RangeCondition.RANGE_2) ||
             (checkRangeEqualsTo(procedures, RangeCondition.RANGE_2) && episode.hospitalTime(TimeUnit.DAY) < 2))) {
-            doByProcedures(episode, jgpResultList);
+            jgpGroupResult = doByProcedures(episode);
         } else {
-            doByRecognitions(episode, jgpResultList);
+            jgpGroupResult = doByRecognitions(episode);
         }
-        if(CollectionUtils.isNotEmpty(jgpResultList)) {
-            doManDays(episode, jgpResultList);
+        if(CollectionUtils.isNotEmpty(jgpGroupResult.accepted())) {
+            doManDays(episode, jgpGroupResult.accepted());
         }
-        return jgpResultList;
+        return jgpGroupResult;
     }
 
-    private void doByProcedures(Episode episode, List<JGPResult> jgpResultList) {
+    private JGPGroupResult doByProcedures(Episode episode) {
+        JGPGroupResult jgpGroupResult = new JGPGroupResult();
         for (Stay stay : episode.getStays()) {
             List<ICD9Wrapper> procedures = stay.getProcedures();
             for (ICD9Wrapper procedure : procedures) {
                 List<JGPParameter> parameters = jgpParameterDao.getByProcedure(procedure.getIcd9());
-                if (CollectionUtils.isNotEmpty(parameters)) {
-                    for (JGPParameter parameter : parameters) {
-                        if (checkDirectionalConditions(stay, parameter) &&
-                            checkSex(stay, parameter.getSexLimit()) &&
-                            checkIncomeMode(stay, parameter.getIncomeMode()) &&
-                            checkOutcomeMode(stay, parameter.getOutcomeMode()) &&
-                            checkDepartment(stay, parameter.getJgp())) {
-                            JGP jgp = parameter.getJgp();
-                            Double value = jgpValueDao.getByJGP(jgp).getValue(episode.getHospitalType());
-
-                            JGPResult jgpResult = new JGPResult();
-                            jgpResult.setStay(stay);
-                            jgpResult.setJgp(jgp);
-                            jgpResult.setValue(value);
-                            jgpResultList.add(jgpResult);
-                        }
-                    }
-                }
+                resolveResultsByJGP(episode, stay, parameters, jgpGroupResult);
             }
 
         }
+        return jgpGroupResult;
     }
 
-    private void doByRecognitions(Episode episode, List<JGPResult> jgpResultList) {
+    private JGPGroupResult doByRecognitions(Episode episode) {
+        JGPGroupResult jgpGroupResult = new JGPGroupResult();
         for (Stay stay : episode.getStays()) {
             List<ICD10Wrapper> recognitions = stay.getRecognitions();
             for (ICD10Wrapper recognition : recognitions) {
                 List<JGPParameter> parameters = jgpParameterDao.getByRecognition(recognition.getIcd10());
-                if (CollectionUtils.isNotEmpty(parameters)) {
-                    for (JGPParameter parameter : parameters) {
-                        if (checkDirectionalConditions(stay, parameter) &&
-                            checkSex(stay, parameter.getSexLimit()) &&
-                            checkIncomeMode(stay, parameter.getIncomeMode()) &&
-                            checkOutcomeMode(stay, parameter.getOutcomeMode()) &&
-                            checkDepartment(stay, parameter.getJgp())) {
-                            JGP jgp = parameter.getJgp();
-                            Double value = jgpValueDao.getByJGP(jgp).getValue(episode.getHospitalType());
+                resolveResultsByJGP(episode, stay, parameters, jgpGroupResult);
+            }
+        }
+        return jgpGroupResult;
+    }
 
-                            JGPResult jgpResult = new JGPResult();
-                            jgpResult.setStay(stay);
-                            jgpResult.setJgp(jgp);
-                            jgpResult.setValue(value);
-                            jgpResultList.add(jgpResult);
-                        }
-                    }
+    private void resolveResultsByJGP(Episode episode, Stay stay, List<JGPParameter> parameters, JGPGroupResult jgpGroupResult) {
+        if (CollectionUtils.isNotEmpty(parameters)) {
+            for (JGPParameter parameter : parameters) {
+                JGP jgp = parameter.getJgp();
+                Double value = jgpValueDao.getByJGP(jgp).getValue(episode.getHospitalType());
+
+                JGPResult jgpResult = new JGPResult();
+                jgpResult.setStay(stay);
+                jgpResult.setJgp(jgp);
+                jgpResult.setValue(value);
+
+                if (checkDirectionalConditions(stay, parameter, jgpResult.reasons()) &&
+                        checkSex(stay, parameter.getSexLimit(), jgpResult.reasons()) &&
+                        checkIncomeMode(stay, parameter.getIncomeMode(), jgpResult.reasons()) &&
+                        checkOutcomeMode(stay, parameter.getOutcomeMode(), jgpResult.reasons()) &&
+                        checkDepartment(stay, parameter.getJgp(), jgpResult.reasons())) {
+                    jgpGroupResult.accepted().add(jgpResult);
+                } else {
+                    jgpGroupResult.notAccepted().add(jgpResult);
                 }
             }
-
         }
     }
 
@@ -138,7 +131,7 @@ public class JGPService {
         }
     }
 
-    private boolean checkDirectionalConditions(Stay stay, JGPParameter parameter) {
+    private boolean checkDirectionalConditions(Stay stay, JGPParameter parameter, List<Reason> reasons) {
         List<ICD9Wrapper> procedures = stay.getProcedures();
         List<ICD10Wrapper> recognitions = stay.getRecognitions();
 
@@ -406,28 +399,28 @@ public class JGPService {
         return true;
     }
 
-    private boolean checkSex(Stay stay, Sex sex) {
+    private boolean checkSex(Stay stay, Sex sex, List<Reason> reasons) {
         if(sex != null) {
             return sex.equals(stay.getEpisode().getSex());
         }
         return true;
     }
 
-    private boolean checkIncomeMode(Stay stay, IncomeMode incomeMode) {
+    private boolean checkIncomeMode(Stay stay, IncomeMode incomeMode, List<Reason> reasons) {
         if(incomeMode != null) {
             return incomeMode.equals(stay.getEpisode().getIncomeMode());
         }
         return true;
     }
 
-    private boolean checkOutcomeMode(Stay stay, OutcomeMode outcomeMode) {
+    private boolean checkOutcomeMode(Stay stay, OutcomeMode outcomeMode, List<Reason> reasons) {
         if(outcomeMode != null) {
             return outcomeMode.equals(stay.getEpisode().getOutcomeMode());
         }
         return true;
     }
 
-    private boolean checkDepartment(Stay stay, JGP jgp) {
+    private boolean checkDepartment(Stay stay, JGP jgp, List<Reason> reasons) {
         if (stay.getDepartment() != null && !"111".equals(stay.getDepartment().getId())) {
             List<Department> departments = departmentDao.getByJGP(jgp);
             return departments.contains(stay.getDepartment());

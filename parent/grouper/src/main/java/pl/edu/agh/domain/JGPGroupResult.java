@@ -11,5 +11,11 @@ public class JGPGroupResult {
     private List<JGPResult> accepted = new ArrayList<JGPResult>();
     private List<JGPResult> notAccepted = new ArrayList<JGPResult>();
 
+    public List<JGPResult> accepted() {
+        return accepted;
+    }
 
+    public List<JGPResult> notAccepted() {
+        return notAccepted;
+    }
 }
