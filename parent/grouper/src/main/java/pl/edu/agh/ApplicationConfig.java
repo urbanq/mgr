@@ -25,6 +25,7 @@ import org.valkyriercp.text.TextCaretFormComponentInterceptorFactory;
 import org.valkyriercp.widget.WidgetViewDescriptor;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.dao.jdbc.*;
+import pl.edu.agh.dao.jdbc.mapper.JGPHospitalMapper;
 import pl.edu.agh.dao.jdbc.mapper.JGPParameterMapper;
 import pl.edu.agh.dao.jdbc.mapper.JGPValueMapper;
 import pl.edu.agh.domain.Department;
@@ -363,16 +364,16 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     }
 
     @Bean
+    public JGPHospitalMapper jgpHospitalMapper() {
+        return new JGPHospitalMapper();
+    }
+
+    @Bean
     public JGPValueDao jgpValueDao() {
         JdbcJGPValueDao dao = new JdbcJGPValueDao();
         dao.setDataSource(dataSource());
         return dao;
     }
-
-//    @Bean
-//    public ICD9ListMapper icd9ListMapper() {
-//        return new ICD9ListMapper();
-//    }
 
     @Bean
     public ICD9ListDao icd9ListDao() {

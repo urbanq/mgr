@@ -2,6 +2,7 @@ package pl.edu.agh.dao;
 
 import pl.edu.agh.domain.JGP;
 import pl.edu.agh.domain.JGPFilter;
+import pl.edu.agh.domain.JGPHospital;
 
 /**
  * User: mateusz
@@ -9,4 +10,5 @@ import pl.edu.agh.domain.JGPFilter;
  */
 public interface JGPDao extends FilterDao<JGP, JGPFilter> {
     JGP getByCode(String code);
+    JGPHospital getHospital(JGP jgp);
 }

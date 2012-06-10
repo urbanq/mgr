@@ -1,12 +1,15 @@
 package pl.edu.agh.dao.jdbc;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import pl.edu.agh.dao.JGPDao;
+import pl.edu.agh.dao.jdbc.mapper.JGPHospitalMapper;
 import pl.edu.agh.dao.jdbc.mapper.JGPMapper;
 import pl.edu.agh.domain.JGP;
 import pl.edu.agh.domain.JGPFilter;
+import pl.edu.agh.domain.JGPHospital;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,8 @@ public class JdbcJGPDao extends SimpleJdbcDaoSupport implements JGPDao {
     private final static String SELECT_BY_CODE_SQL = SELECT_SQL + " WHERE code = ?";
 
     private final static JGPMapper MAPPER = new JGPMapper();
+    @Autowired
+    private JGPHospitalMapper jgpHospitalMapper;
 
     @Override
     public List<JGP> getList(JGPFilter filter) {
@@ -44,6 +49,17 @@ public class JdbcJGPDao extends SimpleJdbcDaoSupport implements JGPDao {
     public JGP getByCode(String code) {
         try {
             return getJdbcTemplate().queryForObject(SELECT_BY_CODE_SQL, MAPPER, code);
+        } catch(EmptyResultDataAccessException emptyResultDataAccessException) {
+            return null;
+        }
+    }
+
+    private final static String SELECT_HOSPITAL_SQL = "SELECT * FROM jgp_hospital WHERE jgp_code = ?";
+
+    @Override
+    public JGPHospital getHospital(JGP jgp) {
+        try {
+            return getJdbcTemplate().queryForObject(SELECT_HOSPITAL_SQL, jgpHospitalMapper, jgp.getCode());
         } catch(EmptyResultDataAccessException emptyResultDataAccessException) {
             return null;
         }

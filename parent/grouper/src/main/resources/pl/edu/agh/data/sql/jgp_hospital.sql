@@ -18,7 +18,7 @@ CREATE TEMPORARY TABLE JGP_HOSPITAL_TMP(
 -- save data structure without duplicates etc.
 ------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE JGP_HOSPITAL(
-    JGP_CODE VARCHAR(5) NOT NULL,
+    JGP_CODE VARCHAR(5) NOT NULL UNIQUE,
     DAYS INT,
     VALUE_UNDER INT,
     VALUE_OVER INT,

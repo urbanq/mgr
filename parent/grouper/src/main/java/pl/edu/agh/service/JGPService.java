@@ -56,6 +56,9 @@ public class JGPService {
         } else {
             doByRecognitions(episode, jgpResultList);
         }
+        if(CollectionUtils.isNotEmpty(jgpResultList)) {
+            doManDays(episode, jgpResultList);
+        }
         return jgpResultList;
     }
 
@@ -66,7 +69,11 @@ public class JGPService {
                 List<JGPParameter> parameters = jgpParameterDao.getByProcedure(procedure.getIcd9());
                 if (CollectionUtils.isNotEmpty(parameters)) {
                     for (JGPParameter parameter : parameters) {
-                        if (checkDirectionalConditions(stay, parameter)) {
+                        if (checkDirectionalConditions(stay, parameter) &&
+                            checkSex(stay, parameter.getSexLimit()) &&
+                            checkIncomeMode(stay, parameter.getIncomeMode()) &&
+                            checkOutcomeMode(stay, parameter.getOutcomeMode()) &&
+                            checkDepartment(stay, parameter.getJgp())) {
                             JGP jgp = parameter.getJgp();
                             Double value = jgpValueDao.getByJGP(jgp).getValue(episode.getHospitalType());
 
@@ -90,7 +97,11 @@ public class JGPService {
                 List<JGPParameter> parameters = jgpParameterDao.getByRecognition(recognition.getIcd10());
                 if (CollectionUtils.isNotEmpty(parameters)) {
                     for (JGPParameter parameter : parameters) {
-                        if (checkDirectionalConditions(stay, parameter)) {
+                        if (checkDirectionalConditions(stay, parameter) &&
+                            checkSex(stay, parameter.getSexLimit()) &&
+                            checkIncomeMode(stay, parameter.getIncomeMode()) &&
+                            checkOutcomeMode(stay, parameter.getOutcomeMode()) &&
+                            checkDepartment(stay, parameter.getJgp())) {
                             JGP jgp = parameter.getJgp();
                             Double value = jgpValueDao.getByJGP(jgp).getValue(episode.getHospitalType());
 
@@ -104,6 +115,26 @@ public class JGPService {
                 }
             }
 
+        }
+    }
+
+    private void doManDays(Episode episode, List<JGPResult> jgpResultList) {
+        for (JGPResult jgpResult : jgpResultList) {
+            JGPHospital hospital = jgpDao.getHospital(jgpResult.getJgp());
+            if (hospital != null) {
+                if (episode.hospitalTime(TimeUnit.DAY) < 2) {
+                    if (hospital.getUnderValue() > 0.0) {
+                        jgpResult.setValue(hospital.getUnderValue());
+                    }
+                } else {
+                    if (hospital.getDays() > 0 &&
+                        episode.hospitalTime(TimeUnit.DAY) > hospital.getDays() &&
+                        hospital.getOverValue() > 0.0) {
+                        //log
+                        jgpResult.setValue(hospital.getOverValue());
+                    }
+                }
+            }
         }
     }
 
