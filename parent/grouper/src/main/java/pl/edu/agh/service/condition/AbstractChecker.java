@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.dao.ICD10ListDao;
 import pl.edu.agh.dao.ICD9ListDao;
 import pl.edu.agh.domain.*;
+import pl.edu.agh.service.reason.*;
 
 import java.util.List;
 
@@ -34,21 +35,13 @@ public abstract class AbstractChecker {
     }
 
     //helpers
-    protected boolean checkRangeGreaterThen(List<ICD9Wrapper> procedures, RangeCondition rangeCondition) {
-        for(ICD9Wrapper icd9Wrapper : procedures) {
-            if(rangeCondition.greaterThen(icd9Wrapper.getIcd9().getRange())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    protected boolean checkRangeEqualsTo(List<ICD9Wrapper> procedures, RangeCondition rangeCondition) {
+    protected boolean checkRangeEqualsTo(List<ICD9Wrapper> procedures, RangeCondition rangeCondition, List<Reason> reasons) {
         for(ICD9Wrapper icd9Wrapper : procedures) {
             if(rangeCondition.equalsTo(icd9Wrapper.getIcd9().getRange())) {
                 return true;
             }
         }
+        reasons.add(new RangeReason(RangeCondition.RANGE_2, condition()));
         return false;
     }
 
@@ -63,7 +56,10 @@ public abstract class AbstractChecker {
     /**
      * check if exist recognition with list code
      */
-    protected boolean checkExistRecognition(List<ICD10Wrapper> recognitions, String listCode) {
+    protected boolean checkExistRecognition(List<ICD10Wrapper> recognitions, String listCode, ICDCondition icdCondition, List<Reason> reasons) {
+        if (ListType.ICD10.equals(icdCondition.listType())) {
+            throw new IllegalArgumentException("icd condition must have list type: " + ListType.ICD10);
+        }
         if (StringUtils.isBlank(listCode)) {
             return false;
         }
@@ -73,13 +69,17 @@ public abstract class AbstractChecker {
                 return true;
             }
         }
+        reasons.add(new ICDReason(listCode, icdCondition, condition()));
         return false;
     }
 
     /**
      * check if exist procedure with list code
      */
-    protected boolean checkExistProcedure(List<ICD9Wrapper> procedures, String listCode) {
+    protected boolean checkExistProcedure(List<ICD9Wrapper> procedures, String listCode, ICDCondition icdCondition, List<Reason> reasons) {
+        if (ListType.ICD9.equals(icdCondition.listType())) {
+            throw new IllegalArgumentException("icd condition must have list type: " + ListType.ICD9);
+        }
         if (StringUtils.isBlank(listCode)) {
             return false;
         }
@@ -89,31 +89,44 @@ public abstract class AbstractChecker {
                 return true;
             }
         }
+        reasons.add(new ICDReason(listCode, icdCondition, condition()));
         return false;
     }
 
     /**
      * check if 2 procedures are on same/else lists
      */
-    protected boolean checkSameLists(ICD9Wrapper procedure1, ICD9Wrapper procedure2, boolean isSameList) {
+    protected boolean checkSameLists(ICD9Wrapper procedure1, ICD9Wrapper procedure2, boolean isSameList, List<Reason> reasons) {
         List<String> listCodes = icd9ListDao.getListCodes(procedure1.getIcd9(), procedure2.getIcd9());
-        return isSameList ? CollectionUtils.isNotEmpty(listCodes) : CollectionUtils.isEmpty(listCodes);
+        boolean result = isSameList ? CollectionUtils.isNotEmpty(listCodes) : CollectionUtils.isEmpty(listCodes);
+        if (!result) {
+            reasons.add(new ICDReason(procedure1.getIcd9().getCode() + " " + procedure2.getIcd9().getCode(),
+                                       isSameList ? ICDCondition.SAME_ICD9 : ICDCondition.ELSE_ICD9,
+                                        condition()));
+        }
+        return result;
     }
 
     /**
      * check if 2 recognitions are on same/else lists
      */
-    protected boolean checkSameLists(ICD10Wrapper recognition1, ICD10Wrapper recognition2, boolean isSameList) {
+    protected boolean checkSameLists(ICD10Wrapper recognition1, ICD10Wrapper recognition2, boolean isSameList, List<Reason> reasons) {
         List<String> listCodes = icd10ListDao.getListCodes(recognition1.getIcd10(), recognition2.getIcd10());
-        return isSameList ? CollectionUtils.isNotEmpty(listCodes) : CollectionUtils.isEmpty(listCodes);
+        boolean result = isSameList ? CollectionUtils.isNotEmpty(listCodes) : CollectionUtils.isEmpty(listCodes);
+        if (!result) {
+            reasons.add(new ICDReason(recognition1.getIcd10().getCode() + " " + recognition2.getIcd10().getCode(),
+                    isSameList ? ICDCondition.SAME_ICD10 : ICDCondition.ELSE_ICD10,
+                    condition()));
+        }
+        return result;
     }
 
-    protected boolean checkAgeLimit(Stay stay, AgeLimit ageLimit, List<Reason> reasons) {
+    protected boolean checkAgeLimit(Stay stay, AgeLimit ageLimit, List<pl.edu.agh.service.reason.Reason> reasons) {
         if(ageLimit != null) {
             int age = stay.getEpisode().age(ageLimit.getTimeUnit());
             boolean result = ageLimit.test(age);
             if (!result) {
-                reasons.add(new Reason(ageLimit));
+                reasons.add(new AgeReason(ageLimit, condition()));
             }
             return result;
         }
@@ -125,7 +138,7 @@ public abstract class AbstractChecker {
             int time = stay.getEpisode().hospitalTime(hospLimit.getTimeUnit());
             boolean result = hospLimit.test(time);
             if (!result) {
-                reasons.add(new Reason(hospLimit));
+                reasons.add(new HospitalReason(hospLimit, condition()));
             }
             return result;
         }

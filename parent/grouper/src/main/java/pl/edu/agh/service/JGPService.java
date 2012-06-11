@@ -9,13 +9,13 @@ import pl.edu.agh.dao.*;
 import pl.edu.agh.domain.*;
 import pl.edu.agh.service.condition.AbstractChecker;
 import pl.edu.agh.service.condition.RangeCondition;
+import pl.edu.agh.service.reason.*;
+import pl.edu.agh.service.reason.Reason;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
-
-import static pl.edu.agh.domain.JGPParameter.ICDCondition;
 
 /**
  * User: mateusz
@@ -150,7 +150,7 @@ public class JGPService {
         if(sex != null) {
             boolean result = sex.equals(stay.getEpisode().getSex());
             if (!result) {
-                reasons.add(new Reason(sex));
+                reasons.add(new SexReason(sex));
             }
             return result;
         }
@@ -161,7 +161,7 @@ public class JGPService {
         if(incomeMode != null) {
             boolean result = incomeMode.equals(stay.getEpisode().getIncomeMode());
             if (!result) {
-                reasons.add(new Reason(incomeMode));
+                reasons.add(new IncomeModeReason(incomeMode));
             }
             return result;
         }
@@ -172,7 +172,7 @@ public class JGPService {
         if(outcomeMode != null) {
             boolean result = outcomeMode.equals(stay.getEpisode().getOutcomeMode());
             if (!result) {
-                reasons.add(new Reason(outcomeMode));
+                reasons.add(new OutcomeModeReason(outcomeMode));
             }
             return result;
         }
@@ -184,7 +184,7 @@ public class JGPService {
             List<Department> departments = departmentDao.getByJGP(jgp);
             boolean result = departments.contains(stay.getDepartment());
             if (!result) {
-                reasons.add(new Reason(departments));
+                reasons.add(new DepartmentsReason(departments));
             }
             return result;
         }
@@ -232,7 +232,7 @@ public class JGPService {
 
     private boolean checkNegativeProcedure(List<ICD9Wrapper> procedures, String listCode, List<Reason> reasons) {
         if (checkExistProcedure(procedures, listCode)) {
-            reasons.add(new Reason(ICDCondition.NEGATIVE_ICD9, listCode));
+            reasons.add(new NegativeICDReason(listCode, ListType.ICD9));
             return false;
         }
         return true;
@@ -240,7 +240,7 @@ public class JGPService {
 
     private boolean checkNegativeRecognition(List<ICD10Wrapper> recognitions, String listCode, List<Reason> reasons) {
         if (checkExistRecognition(recognitions, listCode)) {
-            reasons.add(new Reason(ICDCondition.NEGATIVE_ICD10, listCode));
+            reasons.add(new NegativeICDReason(listCode, ListType.ICD10));
             return false;
         }
         return true;

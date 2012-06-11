@@ -1,6 +1,7 @@
 package pl.edu.agh.service.condition;
 
 import pl.edu.agh.domain.*;
+import pl.edu.agh.service.reason.Reason;
 
 import java.util.List;
 
@@ -20,10 +21,10 @@ public class W extends AbstractChecker {
 
         boolean procedures1Size = checkProceduresSize(procedures, 1);
         boolean recognitions1Size = checkRecognitionsSize(recognitions, 1);
-        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode());
+        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
 
         boolean procedures2Size = checkProceduresSize(procedures, 2);
-        boolean additionalProcedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode());
+        boolean additionalProcedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
 
         return (procedures1Size && recognitions1Size && mainRecognition) ||
                 (procedures2Size && additionalProcedure);

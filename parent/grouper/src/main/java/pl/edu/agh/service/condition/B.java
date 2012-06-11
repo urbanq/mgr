@@ -1,6 +1,7 @@
 package pl.edu.agh.service.condition;
 
 import pl.edu.agh.domain.*;
+import pl.edu.agh.service.reason.Reason;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class B extends AbstractChecker {
     public boolean checkCondition(Stay stay, JGPParameter parameter, List<Reason> reasons) {
         List<ICD9Wrapper> procedures = stay.getProcedures();
 
-        boolean range2Equal = checkRangeEqualsTo(procedures, RangeCondition.RANGE_2);
+        boolean range2Equal = checkRangeEqualsTo(procedures, RangeCondition.RANGE_2, reasons);
         boolean hospLimit   = checkHospitalLimit(stay, HospitalLimit.under2Days(), reasons);
         boolean ageLimit    = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
         return range2Equal && hospLimit && ageLimit;

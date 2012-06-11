@@ -170,29 +170,4 @@ public class JGPParameter {
     public void setNegativeICD10ListCode(String negativeRecognitionListCode) {
         this.negativeICD10ListCode = negativeRecognitionListCode;
     }
-
-    public static enum ListType {
-        ICD9,
-        ICD10;
-    }
-
-    public static enum ICDCondition {
-        MAIN_ICD10(ListType.ICD10),
-        FIRST_ICD10(ListType.ICD10),
-        SECOND_ICD10(ListType.ICD10),
-        FIRST_ICD9(ListType.ICD9),
-        SECOND_ICD9(ListType.ICD9),
-        NEGATIVE_ICD9(ListType.ICD9),
-        NEGATIVE_ICD10(ListType.ICD10);
-
-        private final ListType listType;
-
-        private ICDCondition(ListType listType) {
-            this.listType = listType;
-        }
-
-        public ListType listType() {
-            return listType;
-        }
-    }
 }

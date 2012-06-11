@@ -1,6 +1,7 @@
 package pl.edu.agh.service.condition;
 
 import pl.edu.agh.domain.*;
+import pl.edu.agh.service.reason.Reason;
 
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class N extends AbstractChecker {
 
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
         boolean proceduresSize = checkProceduresSize(procedures, 1);
-        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode());
-        boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode());
+        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
+        boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
         return recognitionsSize && proceduresSize && mainRecognition && coexistRecognition;
     }
 }

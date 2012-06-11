@@ -1,6 +1,7 @@
 package pl.edu.agh.service.condition;
 
 import pl.edu.agh.domain.*;
+import pl.edu.agh.service.reason.Reason;
 
 import java.util.List;
 
@@ -20,13 +21,13 @@ public class L extends AbstractChecker {
 
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 3);
         boolean proceduresSize = checkProceduresSize(procedures, 2);
-        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode());
-        boolean coexist1Recognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode());
-        boolean coexist2Recognition = checkExistRecognition(recognitions, parameter.getSecondICD10ListCode());
+        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
+        boolean coexist1Recognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
+        boolean coexist2Recognition = checkExistRecognition(recognitions, parameter.getSecondICD10ListCode(), ICDCondition.SECOND_ICD10, reasons);
         boolean elseLists = false;
         if(recognitionsSize && proceduresSize && mainRecognition && coexist1Recognition && coexist2Recognition) {
-            elseLists = checkSameLists(recognitions.get(0), recognitions.get(1), false)
-                    && checkSameLists(recognitions.get(0), recognitions.get(2), false);
+            elseLists = checkSameLists(recognitions.get(0), recognitions.get(1), false, reasons)
+                    && checkSameLists(recognitions.get(0), recognitions.get(2), false, reasons);
         }
         return recognitionsSize && proceduresSize && mainRecognition
                 && coexist1Recognition && coexist2Recognition && elseLists;

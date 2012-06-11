@@ -3,6 +3,7 @@ package pl.edu.agh.service.condition;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import pl.edu.agh.domain.*;
+import pl.edu.agh.service.reason.Reason;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,25 +26,25 @@ public class Z extends AbstractChecker {
 
         boolean proceduresSize = checkProceduresSize(procedures, 4);
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode());
-        boolean additional4Procedures = checkSameDateProcedure(procedures, parameter.getFirstICD9ListCode(), parameter.getSecondICD9ListCode());
+        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
+        boolean additional4Procedures = checkSameDateProcedure(procedures, parameter.getFirstICD9ListCode(), parameter.getSecondICD9ListCode(), reasons);
         return proceduresSize && recognitionsSize && mainRecognition && additional4Procedures;
     }
 
     /**
      * check if exist procedure with list code
      */
-    private boolean checkSameDateProcedure(List<ICD9Wrapper> procedures, String firstList, String secondList) {
+    private boolean checkSameDateProcedure(List<ICD9Wrapper> procedures, String firstList, String secondList, List<Reason> reasons) {
         if (StringUtils.isBlank(firstList) || StringUtils.isBlank(secondList)) {
             return false;
         }
         List<ICD9Wrapper> firstCode = new ArrayList<ICD9Wrapper>();
         List<ICD9Wrapper> secondCode = new ArrayList<ICD9Wrapper>();
         for (ICD9Wrapper icd9 : procedures) {
-            if (checkExistProcedure(Arrays.asList(icd9), firstList)) {
+            if (checkExistProcedure(Arrays.asList(icd9), firstList, ICDCondition.FIRST_ICD9, reasons)) {
                 firstCode.add(icd9);
             }
-            if (checkExistProcedure(Arrays.asList(icd9), secondList)) {
+            if (checkExistProcedure(Arrays.asList(icd9), secondList, ICDCondition.SECOND_ICD9, reasons)) {
                 secondCode.add(icd9);
             }
         }

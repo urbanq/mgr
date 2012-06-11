@@ -1,6 +1,7 @@
 package pl.edu.agh.service.condition;
 
 import pl.edu.agh.domain.*;
+import pl.edu.agh.service.reason.Reason;
 
 import java.util.List;
 
@@ -20,17 +21,17 @@ public class O extends AbstractChecker {
 
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
         boolean proceduresSize = checkProceduresSize(procedures, 2);
-        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode());
-        boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode());
-        boolean additional1Procedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode());
-        boolean additional2Procedure = checkExistProcedure(procedures, parameter.getSecondICD9ListCode());
+        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
+        boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
+        boolean additional1Procedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
+        boolean additional2Procedure = checkExistProcedure(procedures, parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
         boolean elseRecognitionsLists = false;
         if(recognitionsSize && mainRecognition && coexistRecognition) {
-            elseRecognitionsLists = checkSameLists(recognitions.get(0), recognitions.get(1), false);
+            elseRecognitionsLists = checkSameLists(recognitions.get(0), recognitions.get(1), false, reasons);
         }
         boolean sameProceduresLists = false;
         if(proceduresSize && additional1Procedure && additional2Procedure) {
-            sameProceduresLists = checkSameLists(procedures.get(0), procedures.get(1), true);
+            sameProceduresLists = checkSameLists(procedures.get(0), procedures.get(1), true, reasons);
         }
         boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
         return recognitionsSize && proceduresSize && mainRecognition

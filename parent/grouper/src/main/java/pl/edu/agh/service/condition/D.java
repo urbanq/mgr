@@ -1,10 +1,9 @@
 package pl.edu.agh.service.condition;
 
-import pl.edu.agh.domain.Condition;
-import pl.edu.agh.domain.JGPParameter;
-import pl.edu.agh.domain.Reason;
-import pl.edu.agh.domain.Stay;
+import pl.edu.agh.domain.*;
+import pl.edu.agh.service.reason.Reason;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,6 +17,20 @@ public class D extends AbstractChecker {
 
     @Override
     public boolean checkCondition(Stay stay, JGPParameter parameter, List<Reason> reasons) {
-        return false;
+        List<ICD9Wrapper> procedures = stay.getProcedures();
+        List<ICD10Wrapper> recognitions = stay.getRecognitions();
+
+        boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
+        boolean proceduresSize = checkProceduresSize(procedures, 2);
+        boolean sameLists = false;
+        if(recognitionsSize && proceduresSize) {
+            sameLists = checkExistProcedure(Arrays.asList(procedures.get(0)), parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons) &&
+                        checkExistProcedure(Arrays.asList(procedures.get(1)), parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
+            if (sameLists) {
+                sameLists = checkSameLists(procedures.get(0), procedures.get(1), true, reasons);
+            }
+        }
+        boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
+        return recognitionsSize && proceduresSize && sameLists && hospLimit;
     }
 }

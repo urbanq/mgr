@@ -1,6 +1,10 @@
 package pl.edu.agh.service.condition;
 
-import pl.edu.agh.domain.*;
+import pl.edu.agh.domain.Condition;
+import pl.edu.agh.domain.ICD9Wrapper;
+import pl.edu.agh.domain.JGPParameter;
+import pl.edu.agh.domain.Stay;
+import pl.edu.agh.service.reason.Reason;
 
 import java.util.List;
 
@@ -18,10 +22,10 @@ public class F extends AbstractChecker {
         List<ICD9Wrapper> procedures = stay.getProcedures();
 
         boolean proceduresSize = checkProceduresSize(stay.getProcedures(), 2);
-        boolean additionalProcedure = checkExistProcedure(stay.getProcedures(), parameter.getFirstICD9ListCode());
+        boolean additionalProcedure = checkExistProcedure(stay.getProcedures(), parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
         boolean elseLists = false;
         if(proceduresSize && additionalProcedure) {
-            elseLists = checkSameLists(procedures.get(0), procedures.get(1), false);
+            elseLists = checkSameLists(procedures.get(0), procedures.get(1), false, reasons);
         }
         return proceduresSize && additionalProcedure && elseLists;
     }

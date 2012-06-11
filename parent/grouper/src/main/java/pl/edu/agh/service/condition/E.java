@@ -1,6 +1,7 @@
 package pl.edu.agh.service.condition;
 
 import pl.edu.agh.domain.*;
+import pl.edu.agh.service.reason.Reason;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class E extends AbstractChecker {
 
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
         boolean proceduresSize = checkProceduresSize(procedures, 1);
-        boolean mainRecognition = checkExistRecognition(recognitions, parameter.getMainICD10ListCode());
+        boolean mainRecognition = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
         boolean ageLimit = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
         boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
         return recognitionsSize && proceduresSize && mainRecognition && ageLimit && hospLimit;
