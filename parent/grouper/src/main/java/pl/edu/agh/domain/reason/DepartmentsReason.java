@@ -1,4 +1,4 @@
-package pl.edu.agh.service.reason;
+package pl.edu.agh.domain.reason;
 
 import pl.edu.agh.domain.Department;
 

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.dao.ICD10ListDao;
 import pl.edu.agh.dao.ICD9ListDao;
 import pl.edu.agh.domain.*;
-import pl.edu.agh.service.reason.*;
+import pl.edu.agh.domain.condition.ICDCondition;
+import pl.edu.agh.domain.condition.RangeCondition;
+import pl.edu.agh.domain.reason.*;
 
 import java.util.List;
 
@@ -121,7 +123,7 @@ public abstract class AbstractChecker {
         return result;
     }
 
-    protected boolean checkAgeLimit(Stay stay, AgeLimit ageLimit, List<pl.edu.agh.service.reason.Reason> reasons) {
+    protected boolean checkAgeLimit(Stay stay, AgeLimit ageLimit, List<Reason> reasons) {
         if(ageLimit != null) {
             int age = stay.getEpisode().age(ageLimit.getTimeUnit());
             boolean result = ageLimit.test(age);

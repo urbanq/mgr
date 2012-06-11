@@ -7,7 +7,7 @@ import pl.edu.agh.dao.jdbc.mapper.JGPParameterMapper;
 import pl.edu.agh.domain.ICD10;
 import pl.edu.agh.domain.ICD9;
 import pl.edu.agh.domain.JGPParameter;
-import pl.edu.agh.domain.JGPParameter.ListType;
+import pl.edu.agh.domain.ListType;
 
 import java.util.List;
 

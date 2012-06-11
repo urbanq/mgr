@@ -1,7 +1,7 @@
 package pl.edu.agh.service.condition;
 
 import pl.edu.agh.domain.*;
-import pl.edu.agh.service.reason.Reason;
+import pl.edu.agh.domain.reason.*;
 
 import java.util.List;
 

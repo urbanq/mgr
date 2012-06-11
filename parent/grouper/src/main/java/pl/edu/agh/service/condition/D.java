@@ -1,7 +1,8 @@
 package pl.edu.agh.service.condition;
 
 import pl.edu.agh.domain.*;
-import pl.edu.agh.service.reason.Reason;
+import pl.edu.agh.domain.condition.ICDCondition;
+import pl.edu.agh.domain.reason.Reason;
 
 import java.util.Arrays;
 import java.util.List;

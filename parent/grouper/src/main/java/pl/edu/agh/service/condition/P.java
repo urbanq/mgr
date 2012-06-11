@@ -4,7 +4,8 @@ import pl.edu.agh.domain.Condition;
 import pl.edu.agh.domain.ICD10Wrapper;
 import pl.edu.agh.domain.JGPParameter;
 import pl.edu.agh.domain.Stay;
-import pl.edu.agh.service.reason.Reason;
+import pl.edu.agh.domain.condition.ICDCondition;
+import pl.edu.agh.domain.reason.Reason;
 
 import java.util.List;
 

@@ -8,9 +8,9 @@ import org.springframework.util.Assert;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.domain.*;
 import pl.edu.agh.service.condition.AbstractChecker;
-import pl.edu.agh.service.condition.RangeCondition;
-import pl.edu.agh.service.reason.*;
-import pl.edu.agh.service.reason.Reason;
+import pl.edu.agh.domain.condition.RangeCondition;
+import pl.edu.agh.domain.reason.*;
+import pl.edu.agh.domain.reason.Reason;
 
 import java.util.ArrayList;
 import java.util.Collections;

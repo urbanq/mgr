@@ -1,4 +1,4 @@
-package pl.edu.agh.service.condition;
+package pl.edu.agh.domain.condition;
 
 import pl.edu.agh.domain.ListType;
 

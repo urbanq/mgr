@@ -1,4 +1,4 @@
-package pl.edu.agh.service.condition;
+package pl.edu.agh.domain.condition;
 
 /**
  * @author mateusz

@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.RowMapper;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.domain.Condition;
 import pl.edu.agh.domain.JGPParameter;
+import pl.edu.agh.domain.ListType;
 import pl.edu.agh.domain.Sex;
 
 import java.sql.ResultSet;
@@ -30,7 +31,7 @@ public class JGPParameterMapper implements RowMapper<JGPParameter> {
     @Override
     public JGPParameter mapRow(ResultSet rs, int rowNum) throws SQLException {
         JGPParameter parameter = new JGPParameter();
-        parameter.setListType(JGPParameter.ListType.valueOf(rs.getString("list_type")));
+        parameter.setListType(ListType.valueOf(rs.getString("list_type")));
         parameter.setListCode(rs.getString("list_code"));
         parameter.setJgp(jgpDao.getByCode(rs.getString("jgp_code")));
         parameter.setCondition(Condition.valueOf(rs.getString("algorithm_code").charAt(0)));

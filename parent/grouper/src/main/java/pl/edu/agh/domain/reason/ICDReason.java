@@ -1,7 +1,7 @@
-package pl.edu.agh.service.reason;
+package pl.edu.agh.domain.reason;
 
 import pl.edu.agh.domain.Condition;
-import pl.edu.agh.service.condition.ICDCondition;
+import pl.edu.agh.domain.condition.ICDCondition;
 
 /**
  * @author mateusz

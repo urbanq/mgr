@@ -3,7 +3,8 @@ package pl.edu.agh.service.condition;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import pl.edu.agh.domain.*;
-import pl.edu.agh.service.reason.Reason;
+import pl.edu.agh.domain.condition.ICDCondition;
+import pl.edu.agh.domain.reason.Reason;
 
 import java.util.ArrayList;
 import java.util.Arrays;

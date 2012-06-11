@@ -1,7 +1,7 @@
 package pl.edu.agh.domain;
 
 import org.apache.commons.collections.CollectionUtils;
-import pl.edu.agh.service.reason.Reason;
+import pl.edu.agh.domain.reason.Reason;
 
 import java.util.ArrayList;
 import java.util.Collections;
