@@ -22,7 +22,7 @@ public class H extends AbstractChecker {
     public boolean checkCondition(Stay stay, JGPParameter parameter, List<Reason> reasons) {
         List<ICD9Wrapper> procedures = stay.getProcedures();
 
-        boolean proceduresSize = checkProceduresSize(procedures, 2);
+        boolean proceduresSize = checkProceduresSize(procedures, 2, reasons);
         boolean additionalProcedure = checkExistProcedure(stay.getProcedures(), parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
         return proceduresSize && additionalProcedure;
     }

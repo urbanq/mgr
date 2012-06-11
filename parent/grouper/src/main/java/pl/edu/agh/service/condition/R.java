@@ -22,8 +22,8 @@ public class R extends AbstractChecker {
     public boolean checkCondition(Stay stay, JGPParameter parameter, List<Reason> reasons) {
         List<ICD10Wrapper> recognitions = stay.getRecognitions();
 
-        boolean recognitions2Size = checkRecognitionsSize(recognitions, 2);
-        boolean recognitions3Size = checkRecognitionsSize(recognitions, 3);
+        boolean recognitions2Size = checkRecognitionsSize(recognitions, 2, reasons);
+        boolean recognitions3Size = checkRecognitionsSize(recognitions, 3, reasons);
         boolean coexistRecognition = false;
         if(recognitions2Size) {
             coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);

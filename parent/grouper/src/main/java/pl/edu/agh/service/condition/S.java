@@ -20,8 +20,8 @@ public class S extends AbstractChecker {
         List<ICD9Wrapper> procedures = stay.getProcedures();
         List<ICD10Wrapper> recognitions = stay.getRecognitions();
 
-        boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-        boolean proceduresSize = checkProceduresSize(procedures, 2);
+        boolean recognitionsSize = checkRecognitionsSize(recognitions, 1, reasons);
+        boolean proceduresSize = checkProceduresSize(procedures, 2, reasons);
         boolean coexistRecognition  = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
         return recognitionsSize && proceduresSize && coexistRecognition;
     }

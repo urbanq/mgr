@@ -47,19 +47,27 @@ public abstract class AbstractChecker {
         return false;
     }
 
-    protected boolean checkProceduresSize(List<ICD9Wrapper> procedures, int size) {
-        return size(procedures) == size;
+    protected boolean checkProceduresSize(List<ICD9Wrapper> procedures, int size, List<Reason> reasons) {
+        boolean result = size(procedures) == size;
+        if (!result) {
+            reasons.add(new ICDSizeReason(size, ListType.ICD9, condition()));
+        }
+        return result;
     }
 
-    protected boolean checkRecognitionsSize(List<ICD10Wrapper> recognitions, int size) {
-        return size(recognitions) == size;
+    protected boolean checkRecognitionsSize(List<ICD10Wrapper> recognitions, int size, List<Reason> reasons) {
+        boolean result = size(recognitions) == size;
+        if (!result) {
+            reasons.add(new ICDSizeReason(size, ListType.ICD10, condition()));
+        }
+        return result;
     }
 
     /**
      * check if exist recognition with list code
      */
     protected boolean checkExistRecognition(List<ICD10Wrapper> recognitions, String listCode, ICDCondition icdCondition, List<Reason> reasons) {
-        if (ListType.ICD10.equals(icdCondition.listType())) {
+        if (!ListType.ICD10.equals(icdCondition.listType())) {
             throw new IllegalArgumentException("icd condition must have list type: " + ListType.ICD10);
         }
         if (StringUtils.isBlank(listCode)) {
@@ -79,7 +87,7 @@ public abstract class AbstractChecker {
      * check if exist procedure with list code
      */
     protected boolean checkExistProcedure(List<ICD9Wrapper> procedures, String listCode, ICDCondition icdCondition, List<Reason> reasons) {
-        if (ListType.ICD9.equals(icdCondition.listType())) {
+        if (!ListType.ICD9.equals(icdCondition.listType())) {
             throw new IllegalArgumentException("icd condition must have list type: " + ListType.ICD9);
         }
         if (StringUtils.isBlank(listCode)) {

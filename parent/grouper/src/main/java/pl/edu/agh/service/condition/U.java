@@ -22,7 +22,7 @@ public class U extends AbstractChecker {
     public boolean checkCondition(Stay stay, JGPParameter parameter, List<Reason> reasons) {
         List<ICD10Wrapper> recognitions = stay.getRecognitions();
 
-        boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
+        boolean recognitionsSize = checkRecognitionsSize(recognitions, 2, reasons);
         boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
         boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
         boolean ageLimit = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);

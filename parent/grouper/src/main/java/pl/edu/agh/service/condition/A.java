@@ -20,8 +20,8 @@ public class A extends AbstractChecker {
         List<ICD9Wrapper> procedures = stay.getProcedures();
         List<ICD10Wrapper> recognitions = stay.getRecognitions();
 
-        boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-        boolean proceduresSize = checkProceduresSize(procedures, 1);
+        boolean recognitionsSize = checkRecognitionsSize(recognitions, 1, reasons);
+        boolean proceduresSize = checkProceduresSize(procedures, 1, reasons);
         return recognitionsSize || proceduresSize;
     }
 }
