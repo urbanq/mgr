@@ -28,20 +28,19 @@ import pl.edu.agh.dao.jdbc.*;
 import pl.edu.agh.dao.jdbc.mapper.JGPHospitalMapper;
 import pl.edu.agh.dao.jdbc.mapper.JGPParameterMapper;
 import pl.edu.agh.dao.jdbc.mapper.JGPValueMapper;
-import pl.edu.agh.domain.Department;
-import pl.edu.agh.domain.IncomeMode;
-import pl.edu.agh.domain.OutcomeMode;
-import pl.edu.agh.domain.ValidationRulesSource;
+import pl.edu.agh.domain.*;
 import pl.edu.agh.service.ICD10Service;
 import pl.edu.agh.service.ICD9Service;
 import pl.edu.agh.service.JGPService;
 import pl.edu.agh.service.PatientService;
+import pl.edu.agh.service.condition.*;
 import pl.edu.agh.ui.*;
 import pl.edu.agh.ui.binder.ICD10Binder;
 import pl.edu.agh.ui.binder.ICD9Binder;
 import pl.edu.agh.ui.binder.NameableBinder;
 
 import javax.sql.DataSource;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -188,27 +187,6 @@ public class ApplicationConfig extends AbstractApplicationConfig {
 //        view.setDescriptionTextPath(new ClassPathResource("/pl/edu/agh/ui/initialViewText.html"));
 //        return view.getDescriptor();
 //    }
-
-    // Services
-    @Bean
-    public PatientService patientService() {
-        return new PatientService();
-    }
-
-    @Bean
-    public ICD10Service icd10Service() {
-        return new ICD10Service();
-    }
-
-    @Bean
-    public ICD9Service icd9Service() {
-        return new ICD9Service();
-    }
-
-    @Bean
-    public JGPService jgpService() {
-        return new JGPService();
-    }
 
     // Binders
 
@@ -387,5 +365,85 @@ public class ApplicationConfig extends AbstractApplicationConfig {
         JdbcICD10ListDao dao = new JdbcICD10ListDao();
         dao.setDataSource(dataSource());
         return dao;
+    }
+
+    // Services
+    @Bean
+    public PatientService patientService() {
+        return new PatientService();
+    }
+
+    @Bean
+    public ICD10Service icd10Service() {
+        return new ICD10Service();
+    }
+
+    @Bean
+    public ICD9Service icd9Service() {
+        return new ICD9Service();
+    }
+
+    @Bean
+    public JGPService jgpService() {
+        return new JGPService();
+    }
+
+    @Bean A a() {return new A();}
+    @Bean B b() {return new B();}
+    @Bean C c() {return new C();}
+    @Bean D d() {return new D();}
+    @Bean E e() {return new E();}
+    @Bean F f() {return new F();}
+    @Bean G g() {return new G();}
+    @Bean H h() {return new H();}
+    @Bean I i() {return new I();}
+    @Bean J j() {return new J();}
+    @Bean K k() {return new K();}
+    @Bean L l() {return new L();}
+    @Bean M m() {return new M();}
+    @Bean N n() {return new N();}
+    @Bean O o() {return new O();}
+    @Bean P p() {return new P();}
+    @Bean Q q() {return new Q();}
+    @Bean R r() {return new R();}
+    @Bean S s() {return new S();}
+    @Bean T t() {return new T();}
+    @Bean U u() {return new U();}
+    @Bean V v() {return new V();}
+    @Bean W w() {return new W();}
+    @Bean X x() {return new X();}
+    @Bean Y y() {return new Y();}
+    @Bean Z z() {return new Z();}
+
+    @Bean
+    public EnumMap<Condition, AbstractChecker> conditionsMap() {
+        EnumMap<Condition, AbstractChecker> conditionsMap = new EnumMap<Condition, AbstractChecker>(Condition.class);
+        conditionsMap.put(a().condition(), a());
+        conditionsMap.put(b().condition(), b());
+        conditionsMap.put(c().condition(), c());
+        conditionsMap.put(d().condition(), d());
+        conditionsMap.put(e().condition(), e());
+        conditionsMap.put(f().condition(), f());
+        conditionsMap.put(g().condition(), g());
+        conditionsMap.put(h().condition(), h());
+        conditionsMap.put(i().condition(), i());
+        conditionsMap.put(j().condition(), j());
+        conditionsMap.put(k().condition(), k());
+        conditionsMap.put(l().condition(), l());
+        conditionsMap.put(m().condition(), m());
+        conditionsMap.put(n().condition(), n());
+        conditionsMap.put(o().condition(), o());
+        conditionsMap.put(p().condition(), p());
+        conditionsMap.put(q().condition(), q());
+        conditionsMap.put(r().condition(), r());
+        conditionsMap.put(s().condition(), s());
+        conditionsMap.put(t().condition(), t());
+        conditionsMap.put(u().condition(), u());
+        conditionsMap.put(v().condition(), v());
+        conditionsMap.put(w().condition(), w());
+        conditionsMap.put(x().condition(), x());
+        conditionsMap.put(y().condition(), y());
+        conditionsMap.put(z().condition(), z());
+        return conditionsMap;
     }
 }

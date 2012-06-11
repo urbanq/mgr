@@ -36,8 +36,9 @@ public class Reason {
     private List<Department> departments;
 
     /**
-     * required recognition or procedure
+     * required recognition or procedure (directional condition checkers)
      */
+    private Condition condition;
     private ICDCondition icdCondition;
     private String listCode;
 
@@ -70,6 +71,16 @@ public class Reason {
     }
 
     public Reason(ICDCondition icdCondition, String listCode) {
+        this.condition = condition;
+        this.icdCondition = icdCondition;
+        this.listCode = listCode;
+    }
+    public Reason(Condition condition) {
+        this.condition = condition;
+    }
+
+    public Reason(Condition condition, ICDCondition icdCondition, String listCode) {
+        this.condition = condition;
         this.icdCondition = icdCondition;
         this.listCode = listCode;
     }

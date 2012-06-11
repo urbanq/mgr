@@ -41,7 +41,4 @@ public enum Condition {
         }
         throw new IllegalArgumentException("code = " + code);
     }
-
-//    public abstract boolean test(Stay stay);
-//    public abstract boolean test(Episode hosp);
 }

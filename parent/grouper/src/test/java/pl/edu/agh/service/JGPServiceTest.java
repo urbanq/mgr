@@ -1,5 +1,6 @@
 package pl.edu.agh.service;
 
+import junit.framework.Assert;
 import org.joda.time.DateTime;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,11 @@ public class JGPServiceTest extends AbstractTest {
         stay.getRecognitions().add(icd10);
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
-        result.accepted();
+
+        //check accepted results
+        Assert.assertEquals(1, result.accepted().size());
+        JGPResult acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(31.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("F47", acceptedJGP.getJgp().getCode());
     }
 }

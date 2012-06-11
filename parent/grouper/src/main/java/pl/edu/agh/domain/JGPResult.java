@@ -61,6 +61,6 @@ public class JGPResult implements Comparable<JGPResult> {
 
     @Override
     public int compareTo(JGPResult o) {
-        return value.compareTo(o.value);
+        return o.value.compareTo(value);
     }
 }

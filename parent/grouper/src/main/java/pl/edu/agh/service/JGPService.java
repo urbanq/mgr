@@ -2,21 +2,26 @@ package pl.edu.agh.service;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.domain.*;
+import pl.edu.agh.service.condition.AbstractChecker;
+import pl.edu.agh.service.condition.RangeCondition;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.List;
 
-import static org.apache.commons.collections.CollectionUtils.size;
 import static pl.edu.agh.domain.JGPParameter.ICDCondition;
 
 /**
  * User: mateusz
  * Date: 14.05.12
  */
+@Service
 public class JGPService {
     @Autowired
     private DepartmentDao departmentDao;
@@ -30,6 +35,8 @@ public class JGPService {
     private ICD9ListDao icd9ListDao;
     @Autowired
     private ICD10ListDao icd10ListDao;
+    @Autowired
+    private EnumMap<Condition, AbstractChecker> conditionsMap;
 
 
     public List<JGP> findJGP(final JGPFilter filter) {
@@ -96,12 +103,12 @@ public class JGPService {
                 jgpResult.setJgp(jgp);
                 jgpResult.setValue(value);
 
-                if (checkDirectionalConditions(stay, parameter, jgpResult.reasons()) &&
-                        checkSex(stay, parameter.getSexLimit(), jgpResult.reasons()) &&
-                        checkIncomeMode(stay, parameter.getIncomeMode(), jgpResult.reasons()) &&
-                        checkOutcomeMode(stay, parameter.getOutcomeMode(), jgpResult.reasons()) &&
+                if (checkDirectional(stay, parameter, jgpResult.reasons()) &&
+                     checkSex(stay, parameter.getSexLimit(), jgpResult.reasons()) &&
+                      checkIncomeMode(stay, parameter.getIncomeMode(), jgpResult.reasons()) &&
+                       checkOutcomeMode(stay, parameter.getOutcomeMode(), jgpResult.reasons()) &&
                         checkDepartment(stay, parameter.getJgp(), jgpResult.reasons()) &&
-                        checkNegativeICDCode(stay, parameter, jgpResult.reasons())) {
+                         checkNegativeICDCode(stay, parameter, jgpResult.reasons())) {
                     jgpGroupResult.accepted().add(jgpResult);
                 } else {
                     jgpGroupResult.notAccepted().add(jgpResult);
@@ -132,280 +139,11 @@ public class JGPService {
         }
     }
 
-    private boolean checkDirectionalConditions(Stay stay, JGPParameter parameter, List<Reason> reasons) {
-        List<ICD9Wrapper> procedures = stay.getProcedures();
-        List<ICD10Wrapper> recognitions = stay.getRecognitions();
-
+    private boolean checkDirectional(Stay stay, JGPParameter parameter, List<Reason> reasons) {
         Condition condition = parameter.getCondition();
-        if(Condition.A.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize = checkProceduresSize(procedures, 1);
-            return recognitionsSize || proceduresSize;
-
-        } else if(Condition.B.equals(condition)) {
-            boolean range2Equal = checkRangeEqualsTo(procedures, RangeCondition.RANGE_2);
-            boolean hospLimit   = checkHospitalLimit(stay, HospitalLimit.under2Days(), reasons);
-            boolean ageLimit    = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
-            return range2Equal && hospLimit && ageLimit;
-
-        } else if(Condition.C.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
-            boolean proceduresSize   = checkProceduresSize(procedures, 2);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            return recognitionsSize && proceduresSize && mainRecognition && coexistRecognition;
-
-        } else if(Condition.D.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize   = checkProceduresSize(procedures, 2);
-            boolean sameLists = false;
-            if(recognitionsSize && proceduresSize) {
-                sameLists = checkSameLists(procedures.get(0), procedures.get(1), true);
-            }
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return recognitionsSize && proceduresSize && sameLists && hospLimit;
-
-        } else if(Condition.E.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize = checkProceduresSize(procedures, 1);
-            boolean mainRecognition = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean ageLimit = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return recognitionsSize && proceduresSize && mainRecognition && ageLimit && hospLimit;
-
-        } else if(Condition.F.equals(condition)) {
-            boolean proceduresSize = checkProceduresSize(stay.getProcedures(), 2);
-            boolean additionalProcedure = checkExistProcedure(stay.getProcedures(), parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
-            boolean elseLists = false;
-            if(proceduresSize && additionalProcedure) {
-                elseLists = checkSameLists(procedures.get(0), procedures.get(1), false);
-            }
-            return proceduresSize && additionalProcedure && elseLists;
-
-        } else if(Condition.G.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize = checkProceduresSize(procedures, 2);
-            boolean additionalProcedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
-            boolean mainRecognition = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean ageLimit = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return recognitionsSize && proceduresSize && additionalProcedure && mainRecognition && ageLimit && hospLimit;
-
-        } else if(Condition.H.equals(condition)) {
-            boolean proceduresSize = checkProceduresSize(procedures, 2);
-            boolean additionalProcedure = checkExistProcedure(stay.getProcedures(), parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
-            return proceduresSize && additionalProcedure;
-
-        } else if(Condition.I.equals(condition)) {
-            boolean proceduresSize = checkProceduresSize(procedures, 3);
-            boolean additional1Procedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
-            boolean additional2Procedure = checkExistProcedure(procedures, parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
-            boolean elseLists = false;
-            if(proceduresSize && additional1Procedure && additional2Procedure) {
-                elseLists = checkSameLists(procedures.get(0), procedures.get(1), false)
-                         && checkSameLists(procedures.get(0), procedures.get(2), false);
-            }
-            return proceduresSize && additional1Procedure && additional2Procedure && elseLists;
-
-        } else if(Condition.J.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize = checkProceduresSize(procedures, 3);
-            boolean mainRecognition = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean additional1Procedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
-            boolean additional2Procedure = checkExistProcedure(procedures, parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return recognitionsSize && proceduresSize && mainRecognition
-                    && additional1Procedure && additional2Procedure && hospLimit;
-
-        } else if(Condition.K.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
-            boolean proceduresSize = checkProceduresSize(procedures, 1);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean elseLists = false;
-            if(recognitionsSize && proceduresSize && mainRecognition && coexistRecognition) {
-                elseLists = checkSameLists(recognitions.get(0), recognitions.get(1), false);
-            }
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return recognitionsSize && proceduresSize && mainRecognition && coexistRecognition && elseLists && hospLimit;
-
-        } else if(Condition.L.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 3);
-            boolean proceduresSize = checkProceduresSize(procedures, 2);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean coexist1Recognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            boolean coexist2Recognition = checkExistRecognition(recognitions, parameter.getSecondICD10ListCode(), ICDCondition.SECOND_ICD10, reasons);
-            boolean elseLists = false;
-            if(recognitionsSize && proceduresSize && mainRecognition && coexist1Recognition && coexist2Recognition) {
-                elseLists = checkSameLists(recognitions.get(0), recognitions.get(1), false)
-                         && checkSameLists(recognitions.get(0), recognitions.get(2), false);
-            }
-            return recognitionsSize && proceduresSize && mainRecognition
-                    && coexist1Recognition && coexist2Recognition && elseLists;
-
-        } else if(Condition.M.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
-            boolean proceduresSize = checkProceduresSize(procedures, 3);
-            boolean additional1Procedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
-            boolean additional2Procedure = checkExistProcedure(procedures, parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            boolean elseProceduresLists = false;
-            if(proceduresSize && additional1Procedure && additional2Procedure) {
-                elseProceduresLists = checkSameLists(procedures.get(0), procedures.get(1), false)
-                         && checkSameLists(procedures.get(0), procedures.get(2), false);
-            }
-            boolean elseRecognitionsLists = false;
-            if(recognitionsSize && mainRecognition && coexistRecognition) {
-                elseRecognitionsLists = checkSameLists(recognitions.get(0), recognitions.get(1), false);
-            }
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return recognitionsSize && proceduresSize && additional1Procedure
-                    && additional2Procedure && mainRecognition && coexistRecognition
-                    && elseProceduresLists && elseRecognitionsLists && hospLimit;
-
-        } else if(Condition.N.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
-            boolean proceduresSize = checkProceduresSize(procedures, 1);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            return recognitionsSize && proceduresSize && mainRecognition && coexistRecognition;
-
-        } else if(Condition.O.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
-            boolean proceduresSize = checkProceduresSize(procedures, 2);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            boolean additional1Procedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
-            boolean additional2Procedure = checkExistProcedure(procedures, parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
-            boolean elseRecognitionsLists = false;
-            if(recognitionsSize && mainRecognition && coexistRecognition) {
-                elseRecognitionsLists = checkSameLists(recognitions.get(0), recognitions.get(1), false);
-            }
-            boolean sameProceduresLists = false;
-            if(proceduresSize && additional1Procedure && additional2Procedure) {
-                sameProceduresLists = checkSameLists(procedures.get(0), procedures.get(1), true);
-            }
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return recognitionsSize && proceduresSize && mainRecognition
-                    && coexistRecognition && additional1Procedure && additional2Procedure
-                    && sameProceduresLists && elseRecognitionsLists && hospLimit;
-
-        } else if(Condition.P.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean ageLimit = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
-            return recognitionsSize && mainRecognition && ageLimit;
-
-        } else if(Condition.Q.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize = checkProceduresSize(procedures, 1);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return recognitionsSize && proceduresSize && mainRecognition && hospLimit;
-
-        } else if(Condition.R.equals(condition)) {
-            boolean recognitions2Size = checkRecognitionsSize(recognitions, 2);
-            boolean recognitions3Size = checkRecognitionsSize(recognitions, 3);
-            boolean coexistRecognition = false;
-            if(recognitions2Size) {
-                coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            }
-            if (recognitions3Size) {
-                coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons)
-                                  && checkExistRecognition(recognitions, parameter.getSecondICD10ListCode(), ICDCondition.SECOND_ICD10, reasons);
-            }
-            return coexistRecognition && (recognitions2Size || recognitions3Size);
-
-        } else if(Condition.S.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize = checkProceduresSize(procedures, 2);
-            boolean coexistRecognition  = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            return recognitionsSize && proceduresSize && coexistRecognition;
-
-        } else if(Condition.T.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize = checkProceduresSize(procedures, 3);
-            boolean coexistRecognition  = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            return recognitionsSize && proceduresSize && coexistRecognition;
-
-        } else if(Condition.U.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            boolean ageLimit = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
-            return recognitionsSize && mainRecognition && coexistRecognition && ageLimit;
-
-        } else if(Condition.V.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize = checkProceduresSize(procedures, 1);
-            boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return recognitionsSize && proceduresSize && coexistRecognition && hospLimit;
-
-        } else if(Condition.W.equals(condition)) {
-            boolean procedures1Size = checkProceduresSize(procedures, 1);
-            boolean recognitions1Size = checkRecognitionsSize(recognitions, 1);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-
-            boolean procedures2Size = checkProceduresSize(procedures, 2);
-            boolean additionalProcedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
-
-            return (procedures1Size && recognitions1Size && mainRecognition) ||
-                   (procedures2Size && additionalProcedure);
-
-        } else if(Condition.X.equals(condition)) {
-            boolean procedures1Size = checkProceduresSize(procedures, 1);
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 2);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-            boolean additionalProcedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
-            boolean ageLimit = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return procedures1Size && recognitionsSize && mainRecognition &&
-                    coexistRecognition && additionalProcedure &&
-                     ageLimit && hospLimit;
-
-        } else if(Condition.Y.equals(condition)) {
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean proceduresSize = checkProceduresSize(procedures, 1);
-            boolean ageLimit = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
-            boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-            return (recognitionsSize || proceduresSize) && ageLimit && hospLimit;
-
-        } else if(Condition.Z.equals(condition)) {
-            boolean proceduresSize = checkProceduresSize(procedures, 4);
-            boolean recognitionsSize = checkRecognitionsSize(recognitions, 1);
-            boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-            boolean additional4Procedures = checkSameDateProcedure(procedures, parameter.getFirstICD9ListCode(), parameter.getSecondICD9ListCode());
-            return proceduresSize && recognitionsSize && mainRecognition && additional4Procedures;
-        }
-
-        throw new IllegalStateException("not implemented condition: " + condition);
-    }
-
-    private boolean checkAgeLimit(Stay stay, AgeLimit ageLimit, List<Reason> reasons) {
-        if(ageLimit != null) {
-            int age = stay.getEpisode().age(ageLimit.getTimeUnit());
-            boolean result = ageLimit.test(age);
-            if (!result) {
-                reasons.add(new Reason(ageLimit));
-            }
-            return result;
-        }
-        return true;
-    }
-
-    private boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Reason> reasons) {
-        if (hospLimit != null) {
-            int time = stay.getEpisode().hospitalTime(hospLimit.getTimeUnit());
-            boolean result = hospLimit.test(time);
-            if (!result) {
-                reasons.add(new Reason(hospLimit));
-            }
-            return result;
-        }
-        return true;
+        AbstractChecker checker = conditionsMap.get(condition);
+        Assert.notNull(checker, "not implemented checker for condition: " + condition);
+        return checker.checkCondition(stay, parameter, reasons);
     }
 
     private boolean checkSex(Stay stay, Sex sex, List<Reason> reasons) {
@@ -482,35 +220,6 @@ public class JGPService {
         return false;
     }
 
-    private boolean checkProceduresSize(List<ICD9Wrapper> procedures, int size) {
-        return size(procedures) == size;
-    }
-
-    private boolean checkRecognitionsSize(List<ICD10Wrapper> recognitions, int size) {
-        return size(recognitions) == size;
-    }
-
-    /**
-     * check if 2 procedures are on same/else lists
-     */
-    private boolean checkSameLists(ICD9Wrapper procedure1, ICD9Wrapper procedure2, boolean isSameList) {
-        List<String> listCodes = icd9ListDao.getListCodes(procedure1.getIcd9(), procedure2.getIcd9());
-        return isSameList ? CollectionUtils.isNotEmpty(listCodes) : CollectionUtils.isEmpty(listCodes);
-    }
-
-    /**
-     * check if 2 recognitions are on same/else lists
-     */
-    private boolean checkSameLists(ICD10Wrapper recognition1, ICD10Wrapper recognition2, boolean isSameList) {
-        List<String> listCodes = icd10ListDao.getListCodes(recognition1.getIcd10(), recognition2.getIcd10());
-        return isSameList ? CollectionUtils.isNotEmpty(listCodes) : CollectionUtils.isEmpty(listCodes);
-    }
-
-    private boolean checkExistRecognition(List<ICD10Wrapper> recognitions, String listCode, ICDCondition icdCondition, List<Reason> reasons) {
-        reasons.add(new Reason(icdCondition, listCode));
-        return checkExistRecognition(recognitions, listCode);
-    }
-
     private boolean checkNegativeICDCode(Stay stay, JGPParameter parameter, List<Reason> reasons) {
         if (StringUtils.isNotBlank(parameter.getNegativeICD10ListCode())) {
             return checkNegativeRecognition(stay.getRecognitions(), parameter.getNegativeICD10ListCode(), reasons);
@@ -556,11 +265,6 @@ public class JGPService {
     /**
      * check if exist procedure with list code
      */
-    private boolean checkExistProcedure(List<ICD9Wrapper> procedures, String listCode, ICDCondition icdCondition, List<Reason> reasons) {
-        reasons.add(new Reason(icdCondition, listCode));
-        return checkExistProcedure(procedures, listCode);
-    }
-
     private boolean checkExistProcedure(List<ICD9Wrapper> procedures, String listCode) {
         if (StringUtils.isBlank(listCode)) {
             return false;
@@ -572,58 +276,5 @@ public class JGPService {
             }
         }
         return false;
-    }
-
-    /**
-     * check if exist procedure with list code
-     */
-    private boolean checkSameDateProcedure(List<ICD9Wrapper> procedures, String firstList, String secondList) {
-        if (StringUtils.isBlank(firstList) || StringUtils.isBlank(secondList)) {
-            return false;
-        }
-        List<ICD9Wrapper> firstCode = new ArrayList<ICD9Wrapper>();
-        List<ICD9Wrapper> secondCode = new ArrayList<ICD9Wrapper>();
-        for (ICD9Wrapper icd9 : procedures) {
-            if (checkExistProcedure(Arrays.asList(icd9), firstList)) {
-                firstCode.add(icd9);
-            }
-            if (checkExistProcedure(Arrays.asList(icd9), secondList)) {
-                secondCode.add(icd9);
-            }
-        }
-        int occured = 0;
-        Iterator<ICD9Wrapper> firstIter = firstCode.iterator();
-        while (firstIter.hasNext()) {
-            ICD9Wrapper firstICD9 = firstIter.next();
-            Iterator<ICD9Wrapper> secondIter = secondCode.iterator();
-            while (secondIter.hasNext()) {
-                ICD9Wrapper secondICD9 = secondIter.next();
-                if(DateUtils.isSameDay(firstICD9.getProcedureDate(), secondICD9.getProcedureDate())) {
-                    occured++;
-                    firstIter.remove();
-                    secondIter.remove();
-                }
-            }
-        }
-        return occured > 1;
-    }
-
-    private enum RangeCondition {
-        RANGE_0(0),
-        RANGE_2(2);
-
-        private final Integer range;
-
-        private RangeCondition(Integer range) {
-            this.range = range;
-        }
-
-        public boolean greaterThen(Integer rangeToCheck) {
-            return rangeToCheck > range;
-        }
-
-        public boolean equalsTo(Integer rangeToCheck) {
-            return rangeToCheck == range;
-        }
     }
 }
