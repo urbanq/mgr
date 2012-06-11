@@ -23,7 +23,8 @@ public class D extends AbstractChecker {
 
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 1, reasons);
         boolean proceduresSize = checkProceduresSize(procedures, 2, reasons);
-        boolean sameLists = false;
+        boolean sameLists = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons) &&
+                            checkExistProcedure(procedures, parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
         if(recognitionsSize && proceduresSize) {
             sameLists = checkExistProcedure(Arrays.asList(procedures.get(0)), parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons) &&
                         checkExistProcedure(Arrays.asList(procedures.get(1)), parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
