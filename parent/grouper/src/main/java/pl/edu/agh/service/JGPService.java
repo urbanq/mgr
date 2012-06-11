@@ -73,7 +73,7 @@ public class JGPService {
             List<ICD9Wrapper> procedures = stay.getProcedures();
             for (ICD9Wrapper procedure : procedures) {
                 List<JGPParameter> parameters = jgpParameterDao.getByProcedure(procedure.getIcd9());
-                resolveResultsByJGP(episode, stay, parameters, jgpGroupResult);
+                resolveResultsByJGP(stay, parameters, jgpGroupResult);
             }
 
         }
@@ -86,17 +86,17 @@ public class JGPService {
             List<ICD10Wrapper> recognitions = stay.getRecognitions();
             for (ICD10Wrapper recognition : recognitions) {
                 List<JGPParameter> parameters = jgpParameterDao.getByRecognition(recognition.getIcd10());
-                resolveResultsByJGP(episode, stay, parameters, jgpGroupResult);
+                resolveResultsByJGP(stay, parameters, jgpGroupResult);
             }
         }
         return jgpGroupResult;
     }
 
-    private void resolveResultsByJGP(Episode episode, Stay stay, List<JGPParameter> parameters, JGPGroupResult jgpGroupResult) {
+    private void resolveResultsByJGP(Stay stay, List<JGPParameter> parameters, JGPGroupResult jgpGroupResult) {
         if (CollectionUtils.isNotEmpty(parameters)) {
             for (JGPParameter parameter : parameters) {
                 JGP jgp = parameter.getJgp();
-                Double value = jgpValueDao.getByJGP(jgp).getValue(episode.getHospitalType());
+                Double value = jgpValueDao.getByJGP(jgp).getValue(stay.getEpisode().getHospitalType());
 
                 JGPResult jgpResult = new JGPResult();
                 jgpResult.setStay(stay);
