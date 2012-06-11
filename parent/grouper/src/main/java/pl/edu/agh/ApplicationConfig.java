@@ -273,7 +273,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     public DataSource dataSource() {
         SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:database;AUTO_RECONNECT=TRUE");
+        dataSource.setUrl("jdbc:h2:database/database;AUTO_RECONNECT=TRUE");
         dataSource.setUsername("sa");
         dataSource.setPassword("");
         dataSource.setAutoCommit(true);

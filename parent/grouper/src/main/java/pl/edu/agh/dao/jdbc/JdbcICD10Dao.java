@@ -13,6 +13,7 @@ import java.util.List;
 
 public class JdbcICD10Dao extends SimpleJdbcDaoSupport implements ICD10Dao {
     private final static String SELECT_SQL = "SELECT code,name FROM icd10";
+    private final static String SELECT_BY_CODE_SQL = SELECT_SQL + " WHERE code = ?";
 
     private final static ICD10Mapper MAPPER = new ICD10Mapper();
 
@@ -33,5 +34,10 @@ public class JdbcICD10Dao extends SimpleJdbcDaoSupport implements ICD10Dao {
             or = true;
         }
         return getJdbcTemplate().query(sql.toString(), args.toArray(), MAPPER);
+    }
+
+    @Override
+    public ICD10 getByCode(String code) {
+        return getJdbcTemplate().queryForObject(SELECT_BY_CODE_SQL, new Object[]{code}, MAPPER);
     }
 }

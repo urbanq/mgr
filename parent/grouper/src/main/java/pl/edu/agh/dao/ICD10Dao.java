@@ -4,4 +4,5 @@ import pl.edu.agh.domain.ICD10;
 import pl.edu.agh.domain.ICD10Filter;
 
 public interface ICD10Dao extends FilterDao<ICD10, ICD10Filter> {
+    ICD10 getByCode(String code);
 }

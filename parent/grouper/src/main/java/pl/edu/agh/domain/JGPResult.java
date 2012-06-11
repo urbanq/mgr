@@ -11,7 +11,7 @@ import java.util.List;
  * User: mateusz
  * Date: 21.05.12
  */
-public class JGPResult {
+public class JGPResult implements Comparable<JGPResult> {
     private JGP jgp;
     private Double value;
     private Stay stay;
@@ -57,5 +57,10 @@ public class JGPResult {
             });
             return maxValue;
         }
+    }
+
+    @Override
+    public int compareTo(JGPResult o) {
+        return value.compareTo(o.value);
     }
 }

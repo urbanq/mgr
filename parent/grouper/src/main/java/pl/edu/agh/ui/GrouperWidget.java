@@ -15,13 +15,12 @@ import org.valkyriercp.util.ObjectUtils;
 import org.valkyriercp.widget.AbstractTitledWidget;
 import org.valkyriercp.widget.editor.AbstractDataEditorWidget;
 import pl.edu.agh.domain.Episode;
-import pl.edu.agh.domain.JGPResult;
+import pl.edu.agh.domain.JGPGroupResult;
 import pl.edu.agh.domain.Service;
 import pl.edu.agh.service.JGPService;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
-import java.util.List;
 
 /**
  * User: mateusz
@@ -60,7 +59,7 @@ public class GrouperWidget extends AbstractTitledWidget {
 
     @Override
     public JComponent createWidgetContent() {
-        return getDetailPanel();  //To change body of implemented methods use File | Settings | File Templates.
+        return getDetailPanel();
     }
 
     protected JComponent getDetailPanel()
@@ -149,7 +148,7 @@ public class GrouperWidget extends AbstractTitledWidget {
     protected void doGrouping()
     {
         getDetailForm().commit();
-        List<JGPResult> result = null;
+        JGPGroupResult result = null;
         try
         {
             result = executeGrouper((Episode) getDetailForm().getFormObject());
@@ -165,7 +164,7 @@ public class GrouperWidget extends AbstractTitledWidget {
         }
     }
 
-    private List<JGPResult> executeGrouper(Episode episode) {
+    private JGPGroupResult executeGrouper(Episode episode) {
         //TODO start glasspane?
         return service.group(episode);
     }

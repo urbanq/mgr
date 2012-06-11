@@ -8,10 +8,7 @@ import org.springframework.util.Assert;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.domain.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import static org.apache.commons.collections.CollectionUtils.size;
 import static pl.edu.agh.domain.JGPParameter.ICDCondition;
@@ -110,6 +107,8 @@ public class JGPService {
                     jgpGroupResult.notAccepted().add(jgpResult);
                 }
             }
+            Collections.sort(jgpGroupResult.accepted());
+            Collections.sort(jgpGroupResult.notAccepted());
         }
     }
 
