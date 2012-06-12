@@ -62,7 +62,7 @@ public class JGPService {
             jgpGroupResult = doByRecognitions(episode);
         }
         if(CollectionUtils.isNotEmpty(jgpGroupResult.accepted())) {
-            doManDays(episode, jgpGroupResult.accepted());
+            recountManDay(episode, jgpGroupResult.accepted());
         }
         return jgpGroupResult;
     }
@@ -119,7 +119,10 @@ public class JGPService {
         }
     }
 
-    private void doManDays(Episode episode, List<JGPResult> jgpResultList) {
+    /**
+     * recount values using man-day mechanism
+     */
+    public void recountManDay(Episode episode, List<JGPResult> jgpResultList) {
         for (JGPResult jgpResult : jgpResultList) {
             JGPHospital hospital = jgpDao.getHospital(jgpResult.getJgp());
             if (hospital != null) {
