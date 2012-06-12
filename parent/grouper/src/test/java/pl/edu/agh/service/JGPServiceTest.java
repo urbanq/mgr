@@ -172,17 +172,126 @@ public class JGPServiceTest extends AbstractTest {
         Assert.assertEquals("E4", icdReason.required());
     }
 
-    //helpers
-    private Episode createTestEpisode(String[] icd10Codes, String[] icd9Codes, int days, int age) {
-        Episode episode = new Episode();
-        episode.setDateOfBirth(new DateTime().minusYears(age).toDate());
-        episode.setIncomeDate(INCOME_DATE.toDate());
-        episode.setOutcomeDate(INCOME_DATE.plusDays(days).toDate());
+    @Test
+    public void testGrouperI() {
+        Episode episode = createTestEpisode(null, new String[]{"00.611", "00.45", "00.42"}, 8, 18);
+        //run grouper
+        JGPGroupResult result = jgpService.group(episode);
+        //test accepted
+        Assert.assertEquals(1, result.accepted().size());
+        JGPResult acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(180.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("Q43", acceptedJGP.getJgp().getCode());
+        //test NOT accepted
+        Assert.assertEquals(8, result.notAccepted().size());
+        JGPResult notAcceptedJGP = result.notAccepted().get(0);
+        Assert.assertEquals(289.0, notAcceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("E11", notAcceptedJGP.getJgp().getCode());
+        ICDReason icdReason = notAcceptedJGP.reasons(ICDReason.class).get(0);
+        Assert.assertEquals(ICDCondition.MAIN_ICD10, icdReason.icdCondition());
+        Assert.assertEquals("E14", icdReason.required());
+    }
 
+    @Test
+    public void testGrouperJ() {
+        Episode episode = createTestEpisode(new String[]{"G24.0"}, new String[]{"02.931", "03.93", "00.36"}, 8, 18);
+        //run grouper
+        JGPGroupResult result = jgpService.group(episode);
+        //test accepted
+        Assert.assertEquals(2, result.accepted().size());
+        JGPResult acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(940.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("A03", acceptedJGP.getJgp().getCode());
+        //test NOT accepted
+        Assert.assertEquals(3, result.notAccepted().size());
+        JGPResult notAcceptedJGP = result.notAccepted().get(0);
+        Assert.assertEquals(940.0, notAcceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("A03", notAcceptedJGP.getJgp().getCode());
+        ICDReason icdReason = notAcceptedJGP.reasons(ICDReason.class).get(0);
+        Assert.assertEquals(ICDCondition.FIRST_ICD10, icdReason.icdCondition());
+        Assert.assertEquals("A5", icdReason.required());
+    }
+
+    @Test
+    public void testGrouperK() {
+        Episode episode = createTestEpisode(new String[]{"T31.2", "T20.0"}, new String[]{"86.601"}, 11, 18);
+        //run grouper
+        JGPGroupResult result = jgpService.group(episode);
+        //test accepted
+        Assert.assertEquals(2, result.accepted().size());
+        JGPResult acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(844.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("J11", acceptedJGP.getJgp().getCode());
+        //test NOT accepted
+        Assert.assertEquals(14, result.notAccepted().size());
+        JGPResult notAcceptedJGP = result.notAccepted().get(0);
+        Assert.assertEquals(844.0, notAcceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("J11", notAcceptedJGP.getJgp().getCode());
+        ICDSizeReason sizeReason = notAcceptedJGP.reasons(ICDSizeReason.class).get(0);
+        Assert.assertEquals(1, sizeReason.required().intValue());
+        Assert.assertEquals(ListType.ICD10, sizeReason.listType());
+    }
+
+    @Test
+    public void testGrouperL() {
+        Episode episode = createTestEpisode(new String[]{"P24.0", "B25.8", "G00.0"}, new String[]{"42.85", "34.041"}, new TimeValue(31, TimeUnit.DAY), new TimeValue(12, TimeUnit.WEEK));
+        //run grouper
+        JGPGroupResult result = jgpService.group(episode);
+        //test accepted
+        Assert.assertEquals(4, result.accepted().size());
+        JGPResult acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(18.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("N21", acceptedJGP.getJgp().getCode());
+        //test NOT accepted
+        Assert.assertEquals(10, result.notAccepted().size());
+        JGPResult notAcceptedJGP = result.notAccepted().get(0);
+        Assert.assertEquals(1000.0, notAcceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("N21", notAcceptedJGP.getJgp().getCode());
+        ICDReason icdReason = notAcceptedJGP.reasons(ICDReason.class).get(0);
+        Assert.assertEquals(ICDCondition.MAIN_ICD10, icdReason.icdCondition());
+        Assert.assertEquals("N7A", icdReason.required());
+    }
+
+    //helpers
+    private Episode createTestEpisode(String[] icd10Codes, String[] icd9Codes, TimeValue hospital, TimeValue age) {
+        Episode episode = new Episode();
+        switch (age.unit) {
+           case YEAR:
+               episode.setDateOfBirth(new DateTime().minusYears(age.value).toDate());
+               break;
+           case WEEK:
+               episode.setDateOfBirth(new DateTime().minusWeeks(age.value).toDate());
+               break;
+           case DAY:
+               episode.setDateOfBirth(new DateTime().minusDays(age.value).toDate());
+               break;
+        }
+        episode.setIncomeDate(INCOME_DATE.toDate());
+        switch (hospital.unit) {
+            case YEAR:
+                episode.setOutcomeDate(INCOME_DATE.plusYears(hospital.value).toDate());
+                break;
+            case WEEK:
+                episode.setOutcomeDate(INCOME_DATE.plusWeeks(hospital.value).toDate());
+                break;
+            case DAY:
+                episode.setOutcomeDate(INCOME_DATE.plusDays(hospital.value).toDate());
+                break;
+        }
         Stay stay = new Stay();
         episode.getStays().add(stay);
         stay.setIncomeDate(INCOME_DATE.toDate());
-        stay.setOutcomeDate(INCOME_DATE.plusDays(days).toDate());
+        switch (hospital.unit) {
+            case YEAR:
+                stay.setOutcomeDate(INCOME_DATE.plusYears(hospital.value).toDate());
+                break;
+            case WEEK:
+                stay.setOutcomeDate(INCOME_DATE.plusWeeks(hospital.value).toDate());
+                break;
+            case DAY:
+                stay.setOutcomeDate(INCOME_DATE.plusDays(hospital.value).toDate());
+                break;
+        }
         stay.setEpisode(episode);
         stay.setDepartment(departmentDao.get("111"));
         stay.setService(Service.BASE_HOSPITAL);
@@ -202,5 +311,27 @@ public class JGPServiceTest extends AbstractTest {
             }
         }
         return episode;
+    }
+
+    private Episode createTestEpisode(String[] icd10Codes, String[] icd9Codes, int hospitalDays, int ageYears) {
+        return createTestEpisode(icd10Codes, icd9Codes, new TimeValue(hospitalDays, TimeUnit.DAY), new TimeValue(ageYears, TimeUnit.YEAR));
+    }
+
+    private class TimeValue {
+        private int value;
+        private TimeUnit unit;
+
+        private TimeValue(int value, TimeUnit unit) {
+            this.value = value;
+            this.unit = unit;
+        }
+
+        public int value() {
+            return value;
+        }
+
+        public TimeUnit unit() {
+            return unit;
+        }
     }
 }

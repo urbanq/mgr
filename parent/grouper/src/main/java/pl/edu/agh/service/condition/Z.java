@@ -28,7 +28,10 @@ public class Z extends AbstractChecker {
         boolean proceduresSize = checkProceduresSize(procedures, 4, reasons);
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 1, reasons);
         boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
-        boolean additional4Procedures = checkSameDateProcedure(procedures, parameter.getFirstICD9ListCode(), parameter.getSecondICD9ListCode(), reasons);
+        boolean additional4Procedures = false;
+        if (proceduresSize) {
+            additional4Procedures = checkSameDateProcedure(procedures, parameter.getFirstICD9ListCode(), parameter.getSecondICD9ListCode(), reasons);
+        }
         return proceduresSize && recognitionsSize && mainRecognition && additional4Procedures;
     }
 
