@@ -16,8 +16,8 @@ public class HospitalLimitMapper implements RowMapper<HospitalLimit> {
     public HospitalLimit mapRow(ResultSet rs, int rowNum) throws SQLException {
         HospitalLimit hospitalLimit = new HospitalLimit();
         hospitalLimit.setId(rs.getInt("id"));
-        hospitalLimit.setUnder(rs.getInt("under"));
-        hospitalLimit.setOver(rs.getInt("over"));
+        hospitalLimit.setUnder(rs.getObject("under") != null ? (Integer)rs.getObject("under") : null);
+        hospitalLimit.setOver(rs.getObject("over") != null ? (Integer)rs.getObject("over") : null);
         hospitalLimit.setTimeUnit(TimeUnit.valueOf(rs.getString("time_unit").charAt(0)));
         return hospitalLimit;
     }

@@ -46,6 +46,16 @@ public class JGPResult implements Comparable<JGPResult> {
         return reasons;
     }
 
+    public <T extends Reason> List<T> reasons(Class<T> reasonClass) {
+        List<T> result = new ArrayList<T>();
+        for(Reason reason : reasons) {
+            if(reasonClass.equals(reason.getClass())) {
+                result.add((T) reason);
+            }
+        }
+        return result;
+    }
+
     public static JGPResult max(List<JGPResult> jgpResultList) {
         if(CollectionUtils.isEmpty(jgpResultList)) {
             return null;

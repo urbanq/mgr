@@ -24,6 +24,7 @@ public class C extends AbstractChecker {
         boolean proceduresSize   = checkProceduresSize(procedures, 2, reasons);
         boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
         boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-        return recognitionsSize && proceduresSize && mainRecognition && coexistRecognition;
+        boolean additionalProcedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
+        return recognitionsSize && proceduresSize && mainRecognition && coexistRecognition && additionalProcedure;
     }
 }

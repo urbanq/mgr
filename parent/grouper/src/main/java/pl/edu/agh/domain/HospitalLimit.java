@@ -22,7 +22,7 @@ public class HospitalLimit {
         return under;
     }
 
-    public void setUnder(int under) {
+    public void setUnder(Integer under) {
         this.under = under;
     }
 
@@ -30,7 +30,7 @@ public class HospitalLimit {
         return over;
     }
 
-    public void setOver(int over) {
+    public void setOver(Integer over) {
         this.over = over;
     }
 

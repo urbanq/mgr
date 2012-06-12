@@ -18,7 +18,7 @@ import java.util.List;
  * Date: 27.05.12
  */
 public class JdbcHospitalLimitDao extends SimpleJdbcDaoSupport implements HospitalLimitDao {
-    private final static String SELECT_SQL = "SELECT id,under,over,time_unit FROM age_limit";
+    private final static String SELECT_SQL = "SELECT id,under,over,time_unit FROM hospital_limit";
     private final static String SELECT_BY_ID_SQL = SELECT_SQL + " WHERE id = ?";
     private final static HospitalLimitMapper MAPPER = new HospitalLimitMapper();
 
