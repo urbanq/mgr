@@ -4,7 +4,6 @@ import pl.edu.agh.domain.Condition;
 import pl.edu.agh.domain.ICD10Wrapper;
 import pl.edu.agh.domain.JGPParameter;
 import pl.edu.agh.domain.Stay;
-import pl.edu.agh.domain.condition.ICDCondition;
 import pl.edu.agh.domain.reason.Reason;
 
 import java.util.List;
@@ -23,8 +22,7 @@ public class P extends AbstractChecker {
         List<ICD10Wrapper> recognitions = stay.getRecognitions();
 
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 1, reasons);
-        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
         boolean ageLimit = checkAgeLimit(stay, parameter.getAgeLimit(), reasons);
-        return recognitionsSize && mainRecognition && ageLimit;
+        return recognitionsSize && ageLimit;
     }
 }

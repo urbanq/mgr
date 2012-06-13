@@ -48,7 +48,7 @@ public abstract class AbstractChecker {
     }
 
     protected boolean checkProceduresSize(List<ICD9Wrapper> procedures, int size, List<Reason> reasons) {
-        boolean result = size(procedures) == size;
+        boolean result = size(procedures) >= size;
         if (!result) {
             reasons.add(new ICDSizeReason(size, ListType.ICD9, condition()));
         }
@@ -56,7 +56,7 @@ public abstract class AbstractChecker {
     }
 
     protected boolean checkRecognitionsSize(List<ICD10Wrapper> recognitions, int size, List<Reason> reasons) {
-        boolean result = size(recognitions) == size;
+        boolean result = size(recognitions) >= size;
         if (!result) {
             reasons.add(new ICDSizeReason(size, ListType.ICD10, condition()));
         }

@@ -118,12 +118,12 @@ public class JGPServiceTest extends AbstractTest {
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
         //test accepted
-        Assert.assertEquals(1, result.accepted().size());
+        Assert.assertEquals(2, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
         Assert.assertEquals(172.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("B04", acceptedJGP.getJgp().getCode());
         //test NOT accepted
-        Assert.assertEquals(2, result.notAccepted().size());
+        Assert.assertEquals(1, result.notAccepted().size());
         JGPResult notAcceptedJGP = result.notAccepted().get(0);
         Assert.assertEquals(136.0, notAcceptedJGP.getValue(), 0.0);
         Assert.assertEquals("B05", notAcceptedJGP.getJgp().getCode());
@@ -138,18 +138,12 @@ public class JGPServiceTest extends AbstractTest {
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
         //test accepted
-        Assert.assertEquals(1, result.accepted().size());
+        Assert.assertEquals(2, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
         Assert.assertEquals(162.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("A48", acceptedJGP.getJgp().getCode());
         //test NOT accepted
-        Assert.assertEquals(1, result.notAccepted().size());
-        JGPResult notAcceptedJGP = result.notAccepted().get(0);
-        Assert.assertEquals(77.0, notAcceptedJGP.getValue(), 0.0);
-        Assert.assertEquals("A49", notAcceptedJGP.getJgp().getCode());
-        ICDSizeReason sizeReason = notAcceptedJGP.reasons(ICDSizeReason.class).get(0);
-        Assert.assertEquals(1, sizeReason.required().intValue());
-        Assert.assertEquals(ListType.ICD9, sizeReason.listType());
+        Assert.assertEquals(0, result.notAccepted().size());
     }
 
     @Test
@@ -158,12 +152,12 @@ public class JGPServiceTest extends AbstractTest {
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
         //test accepted
-        Assert.assertEquals(1, result.accepted().size());
+        Assert.assertEquals(2, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
         Assert.assertEquals(170.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("E24", acceptedJGP.getJgp().getCode());
         //test NOT accepted
-        Assert.assertEquals(8, result.notAccepted().size());
+        Assert.assertEquals(7, result.notAccepted().size());
         JGPResult notAcceptedJGP = result.notAccepted().get(0);
         Assert.assertEquals(295.0, notAcceptedJGP.getValue(), 0.0);
         Assert.assertEquals("E23", notAcceptedJGP.getJgp().getCode());
@@ -178,12 +172,12 @@ public class JGPServiceTest extends AbstractTest {
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
         //test accepted
-        Assert.assertEquals(1, result.accepted().size());
+        Assert.assertEquals(4, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
         Assert.assertEquals(180.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("Q43", acceptedJGP.getJgp().getCode());
         //test NOT accepted
-        Assert.assertEquals(8, result.notAccepted().size());
+        Assert.assertEquals(5, result.notAccepted().size());
         JGPResult notAcceptedJGP = result.notAccepted().get(0);
         Assert.assertEquals(289.0, notAcceptedJGP.getValue(), 0.0);
         Assert.assertEquals("E11", notAcceptedJGP.getJgp().getCode());
@@ -218,18 +212,18 @@ public class JGPServiceTest extends AbstractTest {
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
         //test accepted
-        Assert.assertEquals(2, result.accepted().size());
+        Assert.assertEquals(4, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
         Assert.assertEquals(844.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("J11", acceptedJGP.getJgp().getCode());
         //test NOT accepted
-        Assert.assertEquals(14, result.notAccepted().size());
+        Assert.assertEquals(12, result.notAccepted().size());
         JGPResult notAcceptedJGP = result.notAccepted().get(0);
         Assert.assertEquals(844.0, notAcceptedJGP.getValue(), 0.0);
         Assert.assertEquals("J11", notAcceptedJGP.getJgp().getCode());
-        ICDSizeReason sizeReason = notAcceptedJGP.reasons(ICDSizeReason.class).get(0);
-        Assert.assertEquals(1, sizeReason.required().intValue());
-        Assert.assertEquals(ListType.ICD10, sizeReason.listType());
+        ICDReason icdReason = notAcceptedJGP.reasons(ICDReason.class).get(0);
+        Assert.assertEquals(ICDCondition.MAIN_ICD10, icdReason.icdCondition());
+        Assert.assertEquals("J4", icdReason.required());
     }
 
     @Test
@@ -238,12 +232,12 @@ public class JGPServiceTest extends AbstractTest {
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
         //test accepted
-        Assert.assertEquals(4, result.accepted().size());
+        Assert.assertEquals(7, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
         Assert.assertEquals(18.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("N21", acceptedJGP.getJgp().getCode());
         //test NOT accepted
-        Assert.assertEquals(10, result.notAccepted().size());
+        Assert.assertEquals(7, result.notAccepted().size());
         JGPResult notAcceptedJGP = result.notAccepted().get(0);
         Assert.assertEquals(1000.0, notAcceptedJGP.getValue(), 0.0);
         Assert.assertEquals("N21", notAcceptedJGP.getJgp().getCode());
@@ -258,12 +252,12 @@ public class JGPServiceTest extends AbstractTest {
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
         //test accepted
-        Assert.assertEquals(1, result.accepted().size());
+        Assert.assertEquals(2, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
         Assert.assertEquals(6.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("N03", acceptedJGP.getJgp().getCode());
         //test NOT accepted
-        Assert.assertEquals(5, result.notAccepted().size());
+        Assert.assertEquals(4, result.notAccepted().size());
         JGPResult notAcceptedJGP = result.notAccepted().get(0);
         Assert.assertEquals(164.0, notAcceptedJGP.getValue(), 0.0);
         Assert.assertEquals("N11", notAcceptedJGP.getJgp().getCode());
@@ -278,18 +272,12 @@ public class JGPServiceTest extends AbstractTest {
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
         //test accepted
-        Assert.assertEquals(1, result.accepted().size());
+        Assert.assertEquals(2, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
         Assert.assertEquals(361.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("H60", acceptedJGP.getJgp().getCode());
         //test NOT accepted
-        Assert.assertEquals(1, result.notAccepted().size());
-        JGPResult notAcceptedJGP = result.notAccepted().get(0);
-        Assert.assertEquals(260.0, notAcceptedJGP.getValue(), 0.0);
-        Assert.assertEquals("H61", notAcceptedJGP.getJgp().getCode());
-        ICDSizeReason sizeReason = notAcceptedJGP.reasons(ICDSizeReason.class).get(0);
-        Assert.assertEquals(ListType.ICD10, sizeReason.listType());
-        Assert.assertEquals(1, sizeReason.required().intValue());
+        Assert.assertEquals(0, result.notAccepted().size());
     }
 
     @Test
@@ -298,18 +286,32 @@ public class JGPServiceTest extends AbstractTest {
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
         //test accepted
-        Assert.assertEquals(1, result.accepted().size());
+        Assert.assertEquals(3, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
         Assert.assertEquals(63.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("C48", acceptedJGP.getJgp().getCode());
         //test NOT accepted
-        Assert.assertEquals(2, result.notAccepted().size());
+        Assert.assertEquals(0, result.notAccepted().size());
+    }
+
+    @Test
+    public void testGrouperP() {
+        Episode episode = createTestEpisode(new String[]{"A15.9"}, null, 14, 16);
+        //run grouper
+        JGPGroupResult result = jgpService.group(episode);
+        //test accepted
+        Assert.assertEquals(2, result.accepted().size());
+        JGPResult acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(60.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("P04", acceptedJGP.getJgp().getCode());
+        //test NOT accepted
+        Assert.assertEquals(40, result.notAccepted().size());
         JGPResult notAcceptedJGP = result.notAccepted().get(0);
-        Assert.assertEquals(42.0, notAcceptedJGP.getValue(), 0.0);
-        Assert.assertEquals("B98", notAcceptedJGP.getJgp().getCode());
+        Assert.assertEquals(235.0, notAcceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("E78", notAcceptedJGP.getJgp().getCode());
         ICDSizeReason sizeReason = notAcceptedJGP.reasons(ICDSizeReason.class).get(0);
         Assert.assertEquals(ListType.ICD10, sizeReason.listType());
-        Assert.assertEquals(1, sizeReason.required().intValue());
+        Assert.assertEquals(2, sizeReason.required().intValue());
     }
 
     //helpers
