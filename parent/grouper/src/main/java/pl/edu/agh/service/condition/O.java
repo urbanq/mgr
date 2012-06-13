@@ -22,12 +22,11 @@ public class O extends AbstractChecker {
 
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 2, reasons);
         boolean proceduresSize = checkProceduresSize(procedures, 2, reasons);
-        boolean mainRecognition  = checkExistRecognition(recognitions, parameter.getMainICD10ListCode(), ICDCondition.MAIN_ICD10, reasons);
         boolean coexistRecognition = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
         boolean additional1Procedure = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
         boolean additional2Procedure = checkExistProcedure(procedures, parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
         boolean elseRecognitionsLists = false;
-        if(recognitionsSize && mainRecognition && coexistRecognition) {
+        if(recognitionsSize && coexistRecognition) {
             elseRecognitionsLists = checkSameLists(recognitions.get(0), recognitions.get(1), false, reasons);
         }
         boolean sameProceduresLists = false;
@@ -35,7 +34,7 @@ public class O extends AbstractChecker {
             sameProceduresLists = checkSameLists(procedures.get(0), procedures.get(1), true, reasons);
         }
         boolean hospLimit = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
-        return recognitionsSize && proceduresSize && mainRecognition
+        return recognitionsSize && proceduresSize
                 && coexistRecognition && additional1Procedure && additional2Procedure
                 && sameProceduresLists && elseRecognitionsLists && hospLimit;
     }

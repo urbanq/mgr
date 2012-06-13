@@ -58,6 +58,9 @@ public class JGPService {
             (checkRangeGreaterThen(procedures, RangeCondition.RANGE_2) ||
             (checkRangeEqualsTo(procedures, RangeCondition.RANGE_2) && episode.hospitalTime(TimeUnit.DAY) < 2))) {
             jgpGroupResult = doByProcedures(episode);
+            if (CollectionUtils.isEmpty(jgpGroupResult.accepted())) {
+                jgpGroupResult = doByRecognitions(episode);
+            }
         } else {
             jgpGroupResult = doByRecognitions(episode);
         }
