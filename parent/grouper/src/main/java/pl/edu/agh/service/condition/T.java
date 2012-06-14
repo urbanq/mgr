@@ -23,6 +23,8 @@ public class T extends AbstractChecker {
         boolean recognitionsSize = checkRecognitionsSize(recognitions, 1, reasons);
         boolean proceduresSize = checkProceduresSize(procedures, 3, reasons);
         boolean coexistRecognition  = checkExistRecognition(recognitions, parameter.getFirstICD10ListCode(), ICDCondition.FIRST_ICD10, reasons);
-        return recognitionsSize && proceduresSize && coexistRecognition;
+        boolean additionalProcedure1 = checkExistProcedure(procedures, parameter.getFirstICD9ListCode(), ICDCondition.FIRST_ICD9, reasons);
+        boolean additionalProcedure2 = checkExistProcedure(procedures, parameter.getSecondICD9ListCode(), ICDCondition.SECOND_ICD9, reasons);
+        return recognitionsSize && proceduresSize && coexistRecognition && additionalProcedure1 && additionalProcedure2;
     }
 }
