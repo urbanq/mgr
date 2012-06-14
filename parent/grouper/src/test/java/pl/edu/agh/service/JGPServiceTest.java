@@ -234,7 +234,7 @@ public class JGPServiceTest extends AbstractTest {
         //test accepted
         Assert.assertEquals(7, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
-        Assert.assertEquals(18.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals(1018.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("N21", acceptedJGP.getJgp().getCode());
         //test NOT accepted
         Assert.assertEquals(7, result.notAccepted().size());
@@ -254,7 +254,7 @@ public class JGPServiceTest extends AbstractTest {
         //test accepted
         Assert.assertEquals(2, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
-        Assert.assertEquals(6.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals(62.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("N03", acceptedJGP.getJgp().getCode());
         //test NOT accepted
         Assert.assertEquals(4, result.notAccepted().size());
@@ -495,7 +495,7 @@ public class JGPServiceTest extends AbstractTest {
         //test accepted
         Assert.assertEquals(8, result.accepted().size());
         JGPResult acceptedJGP = result.accepted().get(0);
-        Assert.assertEquals(6.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals(295.0, acceptedJGP.getValue(), 0.0);
         Assert.assertEquals("E11", acceptedJGP.getJgp().getCode());
         //test NOT accepted
         Assert.assertEquals(5, result.notAccepted().size());

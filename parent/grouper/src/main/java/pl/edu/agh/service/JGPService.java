@@ -138,7 +138,9 @@ public class JGPService {
                         episode.hospitalTime(TimeUnit.DAY) > hospital.getDays() &&
                         hospital.getOverValue() > 0.0) {
                         //log
-                        jgpResult.setValue(hospital.getOverValue());
+                        Double oldValue = jgpResult.getValue();
+                        Double newValue = oldValue + (episode.hospitalTime(TimeUnit.DAY) - hospital.getDays()) * hospital.getOverValue();
+                        jgpResult.setValue(newValue);
                     }
                 }
             }
