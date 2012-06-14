@@ -32,7 +32,9 @@ public class Z extends AbstractChecker {
         if (proceduresSize) {
             additional4Procedures = checkSameDateProcedure(procedures, parameter.getFirstICD9ListCode(), parameter.getSecondICD9ListCode(), reasons);
         }
-        return proceduresSize && recognitionsSize && mainRecognition && additional4Procedures;
+        boolean hospCond = checkHospitalLimit(stay, parameter.getHospitalLimit(), reasons);
+        return proceduresSize && recognitionsSize && mainRecognition &&
+                additional4Procedures && hospCond;
     }
 
     /**
@@ -63,6 +65,7 @@ public class Z extends AbstractChecker {
                     occured++;
                     firstIter.remove();
                     secondIter.remove();
+                    break;
                 }
             }
         }
