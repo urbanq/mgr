@@ -28,6 +28,7 @@ public class JGPServiceTest extends AbstractTest {
 
     @Test
     public void testGrouperA() {
+        //test recognition
         Episode episode = createTestEpisode(new String[]{"A01.0"}, null, 7, 18);
         //run grouper
         JGPGroupResult result = jgpService.group(episode);
@@ -44,6 +45,24 @@ public class JGPServiceTest extends AbstractTest {
         JGPResult notAcceptedJGP2 = result.notAccepted().get(2);
         Assert.assertEquals(110.0, notAcceptedJGP2.getValue(), 0.0);
         Assert.assertEquals("A30", notAcceptedJGP2.getJgp().getCode());
+
+        //test procedure
+        episode = createTestEpisode(null, new String[]{"04.12"}, 1, 18);
+        //run grouper
+        result = jgpService.group(episode);
+        //test accepted
+        Assert.assertEquals(1, result.accepted().size());
+        acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(24.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("A13", acceptedJGP.getJgp().getCode());
+        //test NOT accepted
+        Assert.assertEquals(1, result.notAccepted().size());
+        JGPResult notAcceptedJGP = result.notAccepted().get(0);
+        Assert.assertEquals(94.0, notAcceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("A25", notAcceptedJGP.getJgp().getCode());
+        ICDReason icdReason = notAcceptedJGP.reasons(ICDReason.class).get(0);
+        Assert.assertEquals(ICDCondition.MAIN_ICD10, icdReason.icdCondition());
+        Assert.assertEquals("A31", icdReason.required());
     }
 
     @Test
