@@ -414,6 +414,65 @@ public class JGPServiceTest extends AbstractTest {
         Assert.assertEquals("E79r", icdReason.required());
     }
 
+    @Test
+    public void testGrouperV() {
+        Episode episode = createTestEpisode(new String[]{"N29.0"}, new String[]{"55.41"}, 14, 16);
+        //run grouper
+        JGPGroupResult result = jgpService.group(episode);
+        //test accepted
+        Assert.assertEquals(1, result.accepted().size());
+        JGPResult acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(115.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("L02", acceptedJGP.getJgp().getCode());
+        //test NOT accepted
+        Assert.assertEquals(2, result.notAccepted().size());
+        JGPResult notAcceptedJGP = result.notAccepted().get(0);
+        Assert.assertEquals(115.0, notAcceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("L02", notAcceptedJGP.getJgp().getCode());
+        ICDReason icdReason = notAcceptedJGP.reasons(ICDReason.class).get(0);
+        Assert.assertEquals(ICDCondition.MAIN_ICD10, icdReason.icdCondition());
+        Assert.assertEquals("L02", icdReason.required());
+    }
+
+    @Test
+    public void testGrouperW() {
+        //test 2 procedures
+        Episode episode = createTestEpisode(null, new String[]{"38.014", "39.491"}, 14, 16);
+        //run grouper
+        JGPGroupResult result = jgpService.group(episode);
+        //test accepted
+        Assert.assertEquals(3, result.accepted().size());
+        JGPResult acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(264.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("Q02", acceptedJGP.getJgp().getCode());
+        //test NOT accepted
+        Assert.assertEquals(1, result.notAccepted().size());
+        JGPResult notAcceptedJGP = result.notAccepted().get(0);
+        Assert.assertEquals(264.0, notAcceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("Q02", notAcceptedJGP.getJgp().getCode());
+        ICDSizeReason sizeReason = notAcceptedJGP.reasons(ICDSizeReason.class).get(0);
+        Assert.assertEquals(ListType.ICD10, sizeReason.listType());
+        Assert.assertEquals(1, sizeReason.required().intValue());
+
+        //test 1 procedure, 1 recognition
+        episode = createTestEpisode(new String[]{"E11.5"}, new String[]{"38.014"}, 14, 16);
+        //run grouper
+        result = jgpService.group(episode);
+        //test accepted
+        Assert.assertEquals(2, result.accepted().size());
+        acceptedJGP = result.accepted().get(0);
+        Assert.assertEquals(264.0, acceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("Q02", acceptedJGP.getJgp().getCode());
+        //test NOT accepted
+        Assert.assertEquals(1, result.notAccepted().size());
+        notAcceptedJGP = result.notAccepted().get(0);
+        Assert.assertEquals(264.0, notAcceptedJGP.getValue(), 0.0);
+        Assert.assertEquals("Q02", notAcceptedJGP.getJgp().getCode());
+        ICDReason icdReason = notAcceptedJGP.reasons(ICDReason.class).get(0);
+        Assert.assertEquals(ICDCondition.FIRST_ICD9, icdReason.icdCondition());
+        Assert.assertEquals("Q2", icdReason.required());
+    }
+
     //helpers
     private Episode createTestEpisode(String[] icd10Codes, String[] icd9Codes, TimeValue hospital, TimeValue age) {
         Episode episode = new Episode();
