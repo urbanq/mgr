@@ -1,6 +1,7 @@
 package pl.edu.agh.ui.binder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.valkyriercp.binding.form.FormModel;
 import org.valkyriercp.form.AbstractForm;
 import org.valkyriercp.form.binding.swing.AbstractGlazedListsBinding;
@@ -10,6 +11,8 @@ import pl.edu.agh.dao.DepartmentDao;
 import pl.edu.agh.domain.Episode;
 import pl.edu.agh.domain.Stay;
 import pl.edu.agh.ui.StayForm;
+
+import java.util.Date;
 
 /**
  * User: mateusz
@@ -43,7 +46,12 @@ public class StayListBinding extends AbstractGlazedListsBinding {
     protected Object getNewFormObject() {
         Stay stay = new Stay();
         stay.setDepartment(departmentDao.get("111"));
-        stay.setEpisode((Episode) getFormModel().getFormObject());
+        Episode episode = (Episode) getFormModel().getFormObject();
+        stay.setEpisode(episode);
+        if (CollectionUtils.isEmpty(episode.getStays())) {
+            stay.setIncomeDate((Date) getFormModel().getValueModel("incomeDate").getValue());
+            stay.setOutcomeDate((Date) getFormModel().getValueModel("outcomeDate").getValue());
+        }
         return stay;
     }
 

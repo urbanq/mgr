@@ -145,29 +145,36 @@ public class GrouperWidget extends AbstractTitledWidget {
         return command;
     }
 
-    protected void doGrouping()
-    {
+    protected void doGrouping() {
         getDetailForm().commit();
         JGPGroupResult result = null;
-        try
-        {
+        try {
             result = executeGrouper((Episode) getDetailForm().getFormObject());
-            //TODO visualize result on dialog?
-        }
-        catch (RuntimeException e)
-        {
+            result.execute();
+            new JGPGRoupResultDialog(result).showDialog();
+        } catch (RuntimeException e) {
             Object changedFormObject = getDetailForm().getFormObject();
-//            newRow(null);
             ObjectUtils.mapObjectOnFormModel(getDetailForm().getFormModel(), changedFormObject);
             throw e;
-            // make form dirty, show error in messagepane and throw exception to display error dialog
         }
     }
 
     private JGPGroupResult executeGrouper(Episode episode) {
-        //TODO start glasspane?
         return service.group(episode);
     }
+
+//    private Object executeBlockingJobInBackground(String description, Job job) {
+//        ProgressMonitor progressMonitor = getStatusBar().getProgressMonitor();
+//        BusyIndicator.showAt(getWindowControl());
+//        progressMonitor.taskStarted(description, StatusBar.UNKNOWN);
+//
+//        Object result = Worker.post(job);
+//
+//        BusyIndicator.clearAt(getWindowControl());
+//        progressMonitor.done();
+//
+//        return result;
+//    }
 
 
     public ValidationResultsReporter newSingleLineResultsReporter(Messagable messagable)

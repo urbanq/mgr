@@ -7,10 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.valkyriercp.application.ApplicationWindow;
+import org.valkyriercp.application.ApplicationWindowConfigurer;
 import org.valkyriercp.application.ApplicationWindowFactory;
 import org.valkyriercp.application.config.ApplicationLifecycleAdvisor;
 import org.valkyriercp.application.config.support.AbstractApplicationConfig;
 import org.valkyriercp.application.config.support.UIManagerConfigurer;
+import org.valkyriercp.application.support.DefaultApplicationWindowConfigurer;
 import org.valkyriercp.application.support.SingleViewPageDescriptor;
 import org.valkyriercp.form.binding.Binder;
 import org.valkyriercp.form.binding.BinderSelectionStrategy;
@@ -19,6 +22,7 @@ import org.valkyriercp.form.builder.ChainedInterceptorFactory;
 import org.valkyriercp.form.builder.FormComponentInterceptorFactory;
 import org.valkyriercp.form.builder.ToolTipInterceptorFactory;
 import org.valkyriercp.rules.RulesSource;
+import org.valkyriercp.taskpane.TaskPaneNavigatorApplicationWindow;
 import org.valkyriercp.taskpane.TaskPaneNavigatorApplicationWindowFactory;
 import org.valkyriercp.text.SelectAllFormComponentInterceptorFactory;
 import org.valkyriercp.text.TextCaretFormComponentInterceptorFactory;
@@ -40,6 +44,7 @@ import pl.edu.agh.ui.binder.ICD9Binder;
 import pl.edu.agh.ui.binder.NameableBinder;
 
 import javax.sql.DataSource;
+import java.awt.*;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +56,7 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     public ApplicationLifecycleAdvisor applicationLifecycleAdvisor() {
         ApplicationLifecycleAdvisor lifecycleAdvisor =  super.applicationLifecycleAdvisor();
         lifecycleAdvisor.setStartingPageDescriptor(new SingleViewPageDescriptor(grouperView()));
+        lifecycleAdvisor.onPreStartup();
         return lifecycleAdvisor;
     }
 
@@ -81,7 +87,24 @@ public class ApplicationConfig extends AbstractApplicationConfig {
 
     @Override
     public ApplicationWindowFactory applicationWindowFactory() {
-        return new TaskPaneNavigatorApplicationWindowFactory();
+        return new TaskPaneNavigatorApplicationWindowFactory() {
+            @Override
+            public ApplicationWindow createApplicationWindow() {
+                TaskPaneNavigatorApplicationWindow window = new TaskPaneNavigatorApplicationWindow(ApplicationConfig.this) {
+                    @Override
+                    protected ApplicationWindowConfigurer initWindowConfigurer() {
+                        DefaultApplicationWindowConfigurer configurer = new DefaultApplicationWindowConfigurer(this);
+                        Toolkit tk = Toolkit.getDefaultToolkit();
+                        int xSize = ((int) tk.getScreenSize().getWidth());
+                        int ySize = ((int) tk.getScreenSize().getHeight());
+                        configurer.setInitialSize(new Dimension(xSize, ySize));
+                        return configurer;
+                    }
+                };
+                window.setTaskPaneIconGenerator(getTaskPaneIconGenerator());
+                return window;
+            }
+        };
     }
 
     @Override

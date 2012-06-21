@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Stay implements Comparable<Stay> {
     private Department department;
-    private Service service;
+    private Service service = Service.BASE_HOSPITAL;
 
     private Date incomeDate;
     private Date outcomeDate;
