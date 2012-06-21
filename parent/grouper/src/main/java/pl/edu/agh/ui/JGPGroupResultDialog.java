@@ -13,10 +13,10 @@ import java.awt.*;
  * @author mateusz
  * @date 14.06.12
  */
-public class JGPGRoupResultDialog extends TitledPageApplicationDialog {
+public class JGPGroupResultDialog extends TitledPageApplicationDialog {
     private Form form;
 
-    public JGPGRoupResultDialog(JGPGroupResult result) {
+    public JGPGroupResultDialog(JGPGroupResult result) {
         setCloseAction(CloseAction.DISPOSE);
         form = new JGPGroupResultForm(result);
         setDialogPage(new FormBackedDialogPage(form));
@@ -38,7 +38,7 @@ public class JGPGRoupResultDialog extends TitledPageApplicationDialog {
             String title = getApplicationConfig().messageResolver().getMessage("jgpGroupResultDialog.dirtyCancel.title");
             ConfirmationDialog dlg = new ConfirmationDialog(title, msg) {
                 protected void onConfirm() {
-                    JGPGRoupResultDialog.super.onCancel();
+                    JGPGroupResultDialog.super.onCancel();
                 }
             };
             dlg.showDialog();

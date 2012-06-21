@@ -1,6 +1,7 @@
 package pl.edu.agh.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -64,5 +65,13 @@ public class JGPGroupResult {
 
     public void setExpensive(List<JGPResult> expensive) {
         this.expensive = expensive;
+    }
+
+    public List<JGPResult> getBest() {
+        return Collections.singletonList(best);
+    }
+
+    public void setBest(List<JGPResult> best) {
+        this.best = best.get(0);
     }
 }

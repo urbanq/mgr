@@ -35,12 +35,13 @@ public class JGPResultListBinding extends AbstractGlazedListsBinding {
         PropertyColumnTableDescription desc = new PropertyColumnTableDescription("jgpResultListBinding", JGPResult.class);
         desc.addPropertyColumn("jgp.code").withFixedWidth(70);
         desc.addPropertyColumn("jgp.name");
+        desc.addPropertyColumn("jgp.productCode").withFixedWidth(120);
         desc.addPropertyColumn("value").withFixedWidth(100).withRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
                                                            boolean isSelected, boolean hasFocus, int row, int column) {
                 Font font = super.getFont();
-                super.setFont(new Font(font.getName(), Font.BOLD, font.getSize() + 1));
+                super.setFont(new Font(font.getFontName(), Font.BOLD, font.getSize() + 3));
                 return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             };
             @Override

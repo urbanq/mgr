@@ -151,7 +151,13 @@ public class GrouperWidget extends AbstractTitledWidget {
         try {
             result = executeGrouper((Episode) getDetailForm().getFormObject());
             result.execute();
-            new JGPGRoupResultDialog(result).showDialog();
+            new JGPGroupResultDialog(result) {
+                @Override
+                protected boolean onFinish() {
+                    groupCommand.setEnabled(true);
+                    return true;
+                }
+            }.showDialog();
         } catch (RuntimeException e) {
             Object changedFormObject = getDetailForm().getFormObject();
             ObjectUtils.mapObjectOnFormModel(getDetailForm().getFormModel(), changedFormObject);
