@@ -8,6 +8,7 @@ import org.valkyriercp.form.binding.swing.AbstractGlazedListsBinding;
 import org.valkyriercp.widget.table.PropertyColumnTableDescription;
 import org.valkyriercp.widget.table.TableDescription;
 import pl.edu.agh.domain.JGPResult;
+import pl.edu.agh.ui.JGPResultForm;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -66,9 +67,8 @@ public class JGPResultListBinding extends AbstractGlazedListsBinding {
 
     @Override
     protected AbstractForm createDetailForm() {
-//        AbstractForm f = new ICD10WrapperForm();
-//        f.getFormModel().setReadOnly(true);
-//        return f;
-        return null;
+        AbstractForm form= new JGPResultForm();
+        form.getFormModel().setReadOnly(true);
+        return form;
     }
 }
