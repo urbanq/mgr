@@ -141,7 +141,7 @@ public class GrouperWidget extends AbstractTitledWidget {
         };
         command.setSecurityControllerId(getId() + "." + GROUP_COMMAND_ID);
         applicationConfig.commandConfigurer().configure(command);
-        getDetailForm().addGuarded(command, FormGuard.LIKE_COMMITCOMMAND);
+        getDetailForm().addGuarded(command, FormGuard.FORMERROR_GUARDED);
         return command;
     }
 
