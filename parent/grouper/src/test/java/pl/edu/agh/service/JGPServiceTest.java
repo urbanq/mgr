@@ -127,7 +127,7 @@ public class JGPServiceTest extends AbstractTest {
         Assert.assertEquals(162.0, notAcceptedJGP.getValue(), 0.0);
         Assert.assertEquals("A48", notAcceptedJGP.getJgp().getCode());
         HospitalReason hospReason = notAcceptedJGP.reasons(HospitalReason.class).get(0);
-        Assert.assertEquals(7, hospReason.required().getOver());
+        Assert.assertEquals(7, hospReason.required().getOver().intValue());
         Assert.assertEquals(TimeUnit.DAY, hospReason.required().getTimeUnit());
     }
 

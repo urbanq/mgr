@@ -18,7 +18,7 @@ public class HospitalLimit {
         this.id = id;
     }
 
-    public int getUnder() {
+    public Integer getUnder() {
         return under;
     }
 
@@ -26,7 +26,7 @@ public class HospitalLimit {
         this.under = under;
     }
 
-    public int getOver() {
+    public Integer getOver() {
         return over;
     }
 

@@ -20,7 +20,7 @@ import java.awt.*;
  */
 public class JGPResultListBinding extends AbstractGlazedListsBinding {
     @Autowired
-    private MessageSourceAccessor messageSourceAccessor;
+    private MessageSourceAccessor messages;
 
     public JGPResultListBinding(FormModel formModel, String formPropertyPath) {
         super(formModel, formPropertyPath);
@@ -47,24 +47,13 @@ public class JGPResultListBinding extends AbstractGlazedListsBinding {
             };
             @Override
             protected void setValue(Object value) {
-                setText((value == null) ? "" : value.toString() + " " + messageSourceAccessor.getMessage("jgpResultListBinding.value.postfix", ""));
+                setText((value == null) ? "" : value.toString() + " " + messages.getMessage("jgpResultListBinding.value.postfix", ""));
             }
         });
         return desc;
     }
 
     // detail form behavior
-
-    @Override
-    protected Object getNewFormObject() {
-        return null;//new ICD10Wrapper();
-    }
-
-    @Override
-    protected AbstractForm createAddEditForm() {
-        return null;//new ICD10WrapperForm();
-    }
-
     @Override
     protected AbstractForm createDetailForm() {
         AbstractForm form= new JGPResultForm();

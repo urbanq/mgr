@@ -42,6 +42,14 @@ public class JGPResult implements Comparable<JGPResult> {
         this.jgp = jgp;
     }
 
+    public List<Reason> getReasons() {
+        return reasons;
+    }
+
+    public void setReasons(List<Reason> reasons) {
+        this.reasons = reasons;
+    }
+
     public List<Reason> reasons() {
         return reasons;
     }

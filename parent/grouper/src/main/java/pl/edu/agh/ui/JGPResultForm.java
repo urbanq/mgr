@@ -5,6 +5,7 @@ import org.valkyriercp.binding.form.FormModel;
 import org.valkyriercp.form.builder.FormLayoutFormBuilder;
 import org.valkyriercp.widget.AbstractFocussableWidgetForm;
 import pl.edu.agh.domain.JGPResult;
+import pl.edu.agh.ui.binder.ReasonListBinding;
 
 import javax.swing.*;
 
@@ -36,8 +37,8 @@ public class JGPResultForm extends AbstractFocussableWidgetForm {
         builder.nextRow();
         builder.addHorizontalSeparator("jgpResultForm.reasonsSeparator", 3);
         builder.nextRow("fill:default:grow");
-//        ICD10ListBinding icd10ListBinding = new ICD10ListBinding(getFormModel(), "recognitions");
-//        builder.addBinding(icd10ListBinding, 1, builder.getRow(), 3, 1);
+        ReasonListBinding reasonsListBinding = new ReasonListBinding(getFormModel(), "reasons");
+        builder.addBinding(reasonsListBinding, 1, builder.getRow(), 3, 1);
 
         return builder.getPanel();
     }
