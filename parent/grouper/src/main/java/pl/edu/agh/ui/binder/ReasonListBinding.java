@@ -89,6 +89,24 @@ public class ReasonListBinding extends AbstractGlazedListsBinding {
                 ICDSizeReason icdSizeReason = (ICDSizeReason) value;
                 setText(messages.getMessage("reason.icdSize." + icdSizeReason.listType().name(),
                                             new Object[]{icdSizeReason.required()}));
+            } else if(value instanceof IncomeModeReason) {
+                IncomeModeReason incomeModeReason = (IncomeModeReason) value;
+                setText(messages.getMessage("reason.incomeMode",
+                                            new Object[]{incomeModeReason.required().getName()}));
+            } else if(value instanceof NegativeICDReason) {
+                NegativeICDReason negativeICDReason = (NegativeICDReason) value;
+                setText(messages.getMessage("reason.negative.icd." + negativeICDReason.listType().name(),
+                                            new Object[]{negativeICDReason.required()}));
+            } else if(value instanceof OutcomeModeReason) {
+                OutcomeModeReason outcomeModeReason = (OutcomeModeReason) value;
+                setText(messages.getMessage("reason.outcomeMode",
+                                            new Object[]{outcomeModeReason.required().getName()}));
+            } else if(value instanceof RangeReason) {
+                RangeReason rangeReason = (RangeReason) value;
+                setText(messages.getMessage("reason.range." + rangeReason.required().name()));
+            } else if(value instanceof SexReason) {
+                SexReason sexReason = (SexReason) value;
+                setText(messages.getMessage("reason.sex." + sexReason.required().name()));
             } else {
                 setText((value == null) ? "" : value.toString());
             }

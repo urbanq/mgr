@@ -41,9 +41,10 @@ public class JGPResultListBinding extends AbstractGlazedListsBinding {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
                                                            boolean isSelected, boolean hasFocus, int row, int column) {
+                Component result = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 Font font = super.getFont();
                 super.setFont(new Font(font.getFontName(), Font.BOLD, font.getSize() + 3));
-                return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                return result;
             };
             @Override
             protected void setValue(Object value) {
