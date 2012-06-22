@@ -42,8 +42,7 @@ public class ReasonListBinding extends AbstractGlazedListsBinding {
             if (value instanceof AgeReason) {
                 AgeReason ageReason = (AgeReason) value;
                 AgeLimit ageLimit = ageReason.required();
-                StringBuilder builder = new StringBuilder(messages.getMessage("reason.age"));
-                builder.append(" ");
+                StringBuilder builder = new StringBuilder();
                 if (ageLimit.getUnder() != null) {
                     builder.append(messages.getMessage("reason.age.under", new Object[]{ageLimit.getUnder()}));
                 }
@@ -53,7 +52,9 @@ public class ReasonListBinding extends AbstractGlazedListsBinding {
                     }
                     builder.append(messages.getMessage("reason.age.over", new Object[]{ageLimit.getOver()}));
                 }
+                builder.append(" (");
                 builder.append(messages.getMessage("pl.edu.agh.domain.TimeUnit." + ageLimit.getTimeUnit().name()));
+                builder.append(")");
                 setText(builder.toString());
             } else if(value instanceof DepartmentsReason) {
                 DepartmentsReason departmentsReason = (DepartmentsReason) value;
@@ -67,8 +68,7 @@ public class ReasonListBinding extends AbstractGlazedListsBinding {
                 setText(builder.toString());
             } else if(value instanceof HospitalReason) {
                 HospitalReason hospitalReason = (HospitalReason) value;
-                StringBuilder builder = new StringBuilder(messages.getMessage("reason.hospital"));
-                builder.append(" ");
+                StringBuilder builder = new StringBuilder();
                 HospitalLimit hospLimit = hospitalReason.required();
                 if (hospLimit.getUnder() != null) {
                     builder.append(messages.getMessage("reason.hospital.under", new Object[]{hospLimit.getUnder()}));
@@ -79,7 +79,9 @@ public class ReasonListBinding extends AbstractGlazedListsBinding {
                     }
                     builder.append(messages.getMessage("reason.hospital.over", new Object[]{hospLimit.getOver()}));
                 }
+                builder.append(" (");
                 builder.append(messages.getMessage("pl.edu.agh.domain.TimeUnit." + hospLimit.getTimeUnit().name()));
+                builder.append(")");
                 setText(builder.toString());
             } else if(value instanceof ICDReason) {
                 ICDReason icdReason = (ICDReason) value;
