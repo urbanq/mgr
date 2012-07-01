@@ -1,0 +1,19 @@
+\begin{thebibliography}{Lam92}
+
+\bibitem[Dil00]{Dil00}
+A.~Diller.
+\newblock {\em LaTeX wiersz po wierszu}.
+\newblock Wydawnictwo Helion, Gliwice, 2000.
+
+\bibitem[Lam92]{Lam92}
+L.~Lamport.
+\newblock {\em LaTeX system przygotowywania dokumentów}.
+\newblock Wydawnictwo Ariel, Krakow, 1992.
+
+\bibitem[Szp11]{Alvis2011}
+M.~Szpyrka.
+\newblock {\em {On Line Alvis Manual}}.
+\newblock AGH University of Science and Technology, 2011.
+\newblock \\\texttt{http://fm.ia.agh.edu.pl/alvis:manual}.
+
+\end{thebibliography}
