@@ -4,7 +4,7 @@
 %          
 % Author:  Marcin Szpyrka     (mszpyrka@agh.edu.pl)
 %          Grzegorz J. Nalepa (gjn@agh.edu.pl)
-%          AGH University of Science and Technology, Kraków, POLAND
+%          AGH University of Science and Technology, Krakï¿½w, POLAND
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -69,8 +69,8 @@ im. Stanis\l{}awa Staszica w Krakowie}}}
 {\large \@facultyPL}}\\\vspace*{2mm}
 {\large\textsc{\@departmentPL}}\vspace*{1cm}
 
-\ifpdflatex\includegraphics[scale=0.3]{images/agh}
-\else\includegraphics[scale=0.7]{images/agh}
+\ifpdflatex\includegraphics[scale=0.3]{agh}
+\else\includegraphics[scale=0.7]{agh}
 \fi
 \vspace*{1cm}
 
@@ -184,13 +184,13 @@ University of Science and Technology in Krakow}}}
 \flushbottom
 
 %---------------------------------------------------------------------------
-% Ustawienia parametrów dla tytu³ów rozdzia³ów, podrozdzia³ów, itd.
+% Ustawienia parametrï¿½w dla tytuï¿½ï¿½w rozdziaï¿½ï¿½w, podrozdziaï¿½ï¿½w, itd.
 %---------------------------------------------------------------------------
 
 
 \titleformat{\chapter}[block]
 {\bfseries\LARGE}{\filright \LARGE\thechapter. }{0ex}{}
-%odstêpy: lewy, góra, dó³
+%odstï¿½py: lewy, gï¿½ra, dï¿½
 \titlespacing{\chapter}{0pt}{17mm}{19mm}
 \titleformat{\section}[block]
 {\bfseries\Large}{\filright \Large\thesection. }{0ex}{}
@@ -203,7 +203,7 @@ University of Science and Technology in Krakow}}}
 \titlespacing{\subsubsection}{7mm}{3mm}{1.5mm}
 
 %---------------------------------------------------------------------------
-% Ustawienia parametrów generowania spisu tre¶ci i spisu rysunków
+% Ustawienia parametrï¿½w generowania spisu treï¿½ci i spisu rysunkï¿½w
 %---------------------------------------------------------------------------
 
 \renewcommand{\cfttoctitlefont}{\bfseries\Large}
