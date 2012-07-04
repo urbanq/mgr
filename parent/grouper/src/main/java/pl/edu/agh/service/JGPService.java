@@ -2,15 +2,16 @@ package pl.edu.agh.service;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import pl.edu.agh.dao.*;
 import pl.edu.agh.domain.*;
-import pl.edu.agh.service.condition.AbstractChecker;
 import pl.edu.agh.domain.condition.RangeCondition;
 import pl.edu.agh.domain.reason.*;
-import pl.edu.agh.domain.reason.Reason;
+import pl.edu.agh.service.condition.AbstractChecker;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,6 +39,7 @@ public class JGPService {
     @Autowired
     private EnumMap<Condition, AbstractChecker> conditionsMap;
 
+    private static final Log log = LogFactory.getLog(JGPService.class);
 
     public List<JGP> findJGP(final JGPFilter filter) {
         return jgpDao.getList(filter);
@@ -131,7 +133,10 @@ public class JGPService {
             if (hospital != null) {
                 if (episode.hospitalTime(TimeUnit.DAY) < 2) {
                     if (hospital.getUnderValue() > 0.0) {
-                        jgpResult.setValue(hospital.getUnderValue());
+                        Double oldValue = jgpResult.getValue();
+                        Double newValue = hospital.getUnderValue();
+                        log.info("man-day mechanism is changing value for jgp code = " + jgpResult.getJgp().getCode() + " old = " + oldValue + " new = " + newValue);
+                        jgpResult.setValue(newValue);
                     }
                 } else {
                     if (hospital.getDays() > 0 &&
@@ -140,6 +145,7 @@ public class JGPService {
                         //log
                         Double oldValue = jgpResult.getValue();
                         Double newValue = oldValue + (episode.hospitalTime(TimeUnit.DAY) - hospital.getDays()) * hospital.getOverValue();
+                        log.info("man-day mechanism is changing value for jgp code = " + jgpResult.getJgp().getCode() + " old = " + oldValue + " new = " + newValue);
                         jgpResult.setValue(newValue);
                     }
                 }
