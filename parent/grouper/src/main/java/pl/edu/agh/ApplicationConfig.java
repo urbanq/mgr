@@ -38,6 +38,10 @@ import pl.edu.agh.service.ICD9Service;
 import pl.edu.agh.service.JGPService;
 import pl.edu.agh.service.PatientService;
 import pl.edu.agh.service.condition.*;
+import pl.edu.agh.service.impl.ICD10ServiceImpl;
+import pl.edu.agh.service.impl.ICD9ServiceImpl;
+import pl.edu.agh.service.impl.JGPServiceImpl;
+import pl.edu.agh.service.impl.PatientServiceImpl;
 import pl.edu.agh.ui.*;
 import pl.edu.agh.ui.binder.ICD10Binder;
 import pl.edu.agh.ui.binder.ICD9Binder;
@@ -393,22 +397,22 @@ public class ApplicationConfig extends AbstractApplicationConfig {
     // Services
     @Bean
     public PatientService patientService() {
-        return new PatientService();
+        return new PatientServiceImpl();
     }
 
     @Bean
     public ICD10Service icd10Service() {
-        return new ICD10Service();
+        return new ICD10ServiceImpl();
     }
 
     @Bean
     public ICD9Service icd9Service() {
-        return new ICD9Service();
+        return new ICD9ServiceImpl();
     }
 
     @Bean
     public JGPService jgpService() {
-        return new JGPService();
+        return new JGPServiceImpl();
     }
 
     @Bean A a() {return new A();}
