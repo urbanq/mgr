@@ -150,7 +150,6 @@ public class GrouperWidget extends AbstractTitledWidget {
         JGPGroupResult result = null;
         try {
             result = executeGrouper((Episode) getDetailForm().getFormObject());
-            result.execute();
             new JGPGroupResultDialog(result) {
                 @Override
                 protected boolean onFinish() {
@@ -166,7 +165,9 @@ public class GrouperWidget extends AbstractTitledWidget {
     }
 
     private JGPGroupResult executeGrouper(Episode episode) {
-        return service.group(episode);
+        JGPGroupResult result = service.group(episode);
+        result.execute();
+        return result;
     }
 
 //    private Object executeBlockingJobInBackground(String description, Job job) {

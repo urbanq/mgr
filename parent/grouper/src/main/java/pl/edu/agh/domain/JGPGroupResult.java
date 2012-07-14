@@ -1,5 +1,7 @@
 package pl.edu.agh.domain;
 
+import org.valkyriercp.command.ActionCommandExecutor;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.List;
  * @author mateusz
  * @date 07.06.12
  */
-public class JGPGroupResult {
+public class JGPGroupResult implements ActionCommandExecutor {
     private List<JGPResult> accepted = new ArrayList<JGPResult>();
     private List<JGPResult> notAccepted = new ArrayList<JGPResult>();
 
@@ -26,6 +28,10 @@ public class JGPGroupResult {
         return notAccepted;
     }
 
+    /**
+     * sort result, count max
+     */
+    @Override
     public void execute() {
         if (!accepted.isEmpty()) {
             best = JGPResult.max(accepted);
