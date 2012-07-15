@@ -14,5 +14,11 @@ public interface JGPService {
 
     public JGPGroupResult group(Episode episode);
 
+    public JGPGroupResult doByProcedures(Episode episode);
+
+    public JGPGroupResult doByRecognitions(Episode episode);
+
+    public void resolveResultsByJGP(Stay stay, List<JGPParameter> parameters, JGPGroupResult jgpGroupResult);
+
     public void recountManDay(Episode episode, List<JGPResult> jgpResultList);
 }

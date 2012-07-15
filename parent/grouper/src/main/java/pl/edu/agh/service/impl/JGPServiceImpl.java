@@ -73,7 +73,7 @@ public class JGPServiceImpl implements JGPService {
         return jgpGroupResult;
     }
 
-    private JGPGroupResult doByProcedures(Episode episode) {
+    public JGPGroupResult doByProcedures(Episode episode) {
         JGPGroupResult jgpGroupResult = new JGPGroupResult();
         for (Stay stay : episode.getStays()) {
             List<ICD9Wrapper> procedures = stay.getProcedures();
@@ -86,7 +86,7 @@ public class JGPServiceImpl implements JGPService {
         return jgpGroupResult;
     }
 
-    private JGPGroupResult doByRecognitions(Episode episode) {
+    public JGPGroupResult doByRecognitions(Episode episode) {
         JGPGroupResult jgpGroupResult = new JGPGroupResult();
         for (Stay stay : episode.getStays()) {
             List<ICD10Wrapper> recognitions = stay.getRecognitions();
@@ -98,7 +98,7 @@ public class JGPServiceImpl implements JGPService {
         return jgpGroupResult;
     }
 
-    private void resolveResultsByJGP(Stay stay, List<JGPParameter> parameters, JGPGroupResult jgpGroupResult) {
+    public void resolveResultsByJGP(Stay stay, List<JGPParameter> parameters, JGPGroupResult jgpGroupResult) {
         if (CollectionUtils.isNotEmpty(parameters)) {
             for (JGPParameter parameter : parameters) {
                 JGP jgp = parameter.getJgp();
