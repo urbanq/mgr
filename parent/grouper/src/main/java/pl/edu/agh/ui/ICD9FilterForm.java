@@ -37,6 +37,8 @@ public class ICD9FilterForm extends FilterForm {
         builder.addPropertyAndLabel("code");
         builder.nextRow();
         builder.addPropertyAndLabel("name");
+        builder.nextRow();
+        builder.addPropertyAndLabel("listCode");
         return builder.getPanel();
     }
 }

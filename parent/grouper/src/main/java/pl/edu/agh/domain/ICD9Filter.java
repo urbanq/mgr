@@ -9,6 +9,7 @@ import pl.edu.agh.dao.GenericFilter;
 public class ICD9Filter implements GenericFilter<ICD9> {
     private String code;
     private String name;
+    private String listCode;
 
     public String getCode() {
         return code;
@@ -24,6 +25,14 @@ public class ICD9Filter implements GenericFilter<ICD9> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getListCode() {
+        return listCode;
+    }
+
+    public void setListCode(String listCode) {
+        this.listCode = listCode;
     }
 
     public static ICD9Filter fromICD9(ICD9 icd9) {

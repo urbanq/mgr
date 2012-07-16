@@ -11,12 +11,18 @@ import java.util.List;
  * @date 03.06.12
  */
 public class JdbcICD9ListDao extends SimpleJdbcDaoSupport implements ICD9ListDao {
-    private final static String SELECT_SQL = "SELECT list_code FROM icd9_list_code";
-    private final static String SELECT_BY_CODE_SQL = SELECT_SQL + " WHERE icd9_code = ?";
+    private final static String SELECT_BY_ICD9_CODE = "SELECT list_code FROM icd9_list_code WHERE icd9_code = ?";
 
     @Override
     public List<String> getListCodes(ICD9 icd9) {
-        return getJdbcTemplate().queryForList(SELECT_BY_CODE_SQL, String.class, icd9.getCode());
+        return getJdbcTemplate().queryForList(SELECT_BY_ICD9_CODE, String.class, icd9.getCode());
+    }
+
+    private final static String SELECT_BY_LIST_CODE = "SELECT icd9_code FROM icd9_list_code WHERE list_code = ?";
+
+    @Override
+    public List<String> getICD9Codes(String listCode) {
+        return getJdbcTemplate().queryForList(SELECT_BY_LIST_CODE, String.class, listCode);
     }
 
     private final static String SELECT_LIST_CODES_SQL = "SELECT lc1.list_code FROM icd9_list_code lc1 " +
