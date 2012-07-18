@@ -467,7 +467,7 @@ public interface JGPService {
 Metoda ,,group'' sprawdza którą ścieżkę wnioskowania obiera system - 2 opcje: wg. rozpoznania głównego lub wg. procedur zasadniczych. Metody ,,doByRecognitions'' oraz ,,doByProcedures'' wyznaczają zbiór warunków z charakterystyki JGP do przeanalizowania. metoda ,,resolveResultsByJGP'' wykonuje zasadnicze wnioskowanie:
 \begin{itemize}
 \item Sprawdza warunki określone w obiekcie parameters i jeśli zostaną zaakceptowane zapisuje je na liście accepted.
-\item Warunki niespełnione(wraz z powodami niezaakceptowania!) zapisuje na liście notAccepted, tworząc w ten spsób alternatywny sposób dojścia do lepszego rozwiązania.
+% \item Warunki niespełnione(wraz z powodami niezaakceptowania!) zapisuje na liście notAccepted, tworząc w ten spsób alternatywny sposób dojścia do lepszego rozwiązania.
 \item Metoda sprawdza warunki kierunkowe, warunek na płeć, warunek na tryb przyjęcia i wypisu, warunek na leczenie w danym oddziale, warunki na współisteniejące i zasadnicze kody ICD , warunki na kody ICD wykluczające się(negatywne).
 \end{itemize}
 
@@ -479,6 +479,31 @@ Podusmowując maszyna wnioskująca dla poszukiwania optymalnej grupy JGP realizu
 \section{Optymalizacja JGP}
 \label{sec:optymalizacjaJGP}
 
-%---------------------------------------------------------------------------
-\subsection{Powody niezaakceptowania do grupy}
-\label{sec:powodyNiezaakceptowaniaDoGrupy}
+W tym podrozdziale opisane zostanie zagadanienie optymalizacji kosztów leczenia pacjenta. W poprzednim podrozdziale ustaliliśmy, że maszyna wnioskująca wybiera zbiór parametrów do przetestowania. Następnie dla grup JGP spełniających warunki zapisuje je na liście ,,zaakceptowane''. W tym miejscu nasunęła się pewna myśl: A może by tak spróbować zapisać grupy JGP, które były testowane a odrzucone przez algorytm na listę grup niezaakceptowanych? Może dla każdej niezaakceptowanej grupy JGP obliczyć jaką wartość punktową mogłaby przyjąć gdyby była zaliczona. Oraz usprawnienie/ idea: dla każdej niezaakceptwanej grupy zapisać na liście powód -> dlaczego została ona niezaakceptowana - jakich warunków nie spełniła?
+
+REALIZACJA: Aby zrealizować założenia, należało rozwinąć istniejący algorytm. Do obiektu klasy JGPResult dodałem listę niezaakceptowanych grup. Każda niezaakceptwana grupa będzie posiadać dodatkowo listę powodów niezaakceptowania - lista obiektów klasy Reason. W ten sposób, system będzie wiedział jakie warunki były testowane dla konkretnego rozwiązania oraz dlaczego nie zostały one zaakceptowane. 
+Stworzyłem hierarchię klas dla powodów niezaakcpetowania:
+
+\includegraphics[scale=0.4]{images/reason-classes2}
+
+Rozszerzyłem listę argumentów każdej z metod checkerów o argument: lista powodów niezaakceptowania: List<Reason> reasons. 
+Po sprawdzeniu konkretnego warunku, w przypadku jego niezaakceptowania tworzona jest odpowiednia instancja obiektu Reason, a następnie jest ona  dodawana do listy. Np:
+\begin{verbatim}
+protected boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Reason> reasons) {
+     if (hospLimit != null) {
+         int time = stay.getEpisode().hospitalTime(hospLimit.getTimeUnit());
+         boolean result = hospLimit.test(time);
+         if (!result) {
+             reasons.add(new HospitalReason(hospLimit, condition()));
+         }
+         return result;
+     }
+     return true;
+}
+\end{verbatim}
+
+Np: Powodem niezaakceptowania grupy systemu JGP może być niespełnienie warunku: czas hospitalizacji dla grupy JGP musi być większy niż 7 dni, a zdefiniowany czas leczenia jest równy 5 dni.
+
+Takie podejście pozwala na stworzenie funkocjonalności, która będzie podpowiadać lekarzowi jakie może uzyskać grupy JGP z większą wartości punktową, czyli jak zmaksymalizować koszty leczenia pacjenta. Program podpowiadałby również jakie konkretnie warunki musi spełnić hospitalizacja, aby zaliczyć ją do droższej grupy (wybranej przez lekarza).
+
+Zaimplementowanie mechanizmu ,,Reasons - powody niezaakceptowania do grupy'' odpowiada w systemie ekspertowym modułowi objaśniająco-wyjąśniającemu(ang. Explanation Facility). Jest to część systemu odpowiedzialna za wyprowadzanie na zewnątrz wniosków systemu. Moduł ten daje użytkownikowi radę, sugestię, ale nie podejmuje decyzji. Zwróćmy uwagę, że zapis historii niespełnionych warunków pozwala odtworzyć część ścieżki poszukiwania rozwiązania dla rozwiązań niespełniających warunków.

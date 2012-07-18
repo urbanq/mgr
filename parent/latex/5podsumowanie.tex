@@ -1,22 +1,64 @@
 \chapter{Podsumowanie i wnioski}
 \label{cha:podsumowanie}
 
-%---------------------------------------------------------------------------
+Celem niniejszej pracy stworzenie było aplikacji gruper zgodnie ze specyfikacją NFZ. Aplikacja miała zostać dostosowana tak, aby spełniała ona założenia systemu ekspertowego. Następnie miała zostać rozszerzona tak, aby wspomóc proces optymalizacji kosztów leczenia pacjetna - podpowiadając lekarzowi rozwiązania lepsze dla stawianego problemu. Zadanie jest trudne gdyż wymaga zdobycia i zrozumienia wiedzy z zakresu medycznegeo. Interpretacja dokumentacji, tak zwanych wskazówek do napisania aplikacji typu gruper był również wyzwaniem. Dostosowanie systemu tak, aby był on systemem ekspertowym wymagał również odpowiedniego podejścia, ponieważ system powinien dalej w 100\% zachowywać się tak jak zdefiniował to NFZ.
 
-\section{Podsumowanie}
-\label{sec:podsumowanie}
+System, który stworzyłem jest zgodny z wszystkimi stawianymi na początku założeniami projektowymi. Jest zalążkiem systemu ekspertowego, ponieważ nie wszystkie reguły może zdefiniwoać inżynier. W możliwosciach rozwoju zostalo opisane rozszerzenie tego podejscia.
 
 %---------------------------------------------------------------------------
 
 \section{Możliwość rozwoju}
 \label{sec:mozliwoscRozwoju}
 
+Ze wględu na fakt, że aplikacja została napisana w modelu architektury 3-warstowej, bardzo dobrym rozwinięciem istniejącego rozwiązania byłoby: uruchomienie części odpowiadającej za logikę biznesową i za dostęp do danych na serwerze aplikacyjnym. Warstwę prezentacji możnaby zaimplementować jako webową. Tak, żeby stworzyć system on-line z gruperem. Na pewno dużymi możliwościami rozwoju projekt by siezainteresował gdyby zainteresowali sie nim ludzie  z branzy, programisci z branzy medycznej - ktorzy dzieki temu ze jest to rozwiazanie openSource - mogliby uzywac grupera - czesci serwerowej jako jednego z modulow swoich poteznych aplikacji do obslugi szpitala. Wtedy nie spada odpowiedzialnosc na kazda z osobna aplikacje w Polsce(jest ich kilkadziesiat) do obslugi przychodni spzitala tworzenie grupera. - ZAZnaczam ze jak nie ma takiej aplikacj to obowiazkiem lekarza jest siedzenie w arkuszu EXcel i 'wyszukiwanie' grup JGP. Jesli juz istnialby/powstalby jeden pewny modul, moglby byc on uzywany przez wszystkie istniejace aplikacje - wystarczyloby si epodpiac pod zewnetrrzne servicy. Projektanci architekci i developrzy mieliby dostep do pelnej dokumentacji tego modulu i mogliby go uzywac. poniewaz jest to rozwiazanie opensource - ci specjalisci - mogliby miec rowniez wplyw na cykl zyci aoprogramowania: zglaszac bledy - stworzyc bug-report - stworzyc system z taskami - ktore mogliby tworzyc proponujac ulepszenia - featury. 
+rozwoj systemu w kierunku EKSPERTOWYM:
+Pracownicy produkujacy dokumentacje w formie MS-Word - algorytm i w MS-Excel baza wiedzy, mogliby po zapoznaniu sie z systemem usprawniac go. Wprowadzac dane jako inzynierowie wiedzy - fakty takie jak procedury, rozpoznania kody jgp. warunki czyli obiekty klasy jgp parameters - oraz powiazane z nimi obiekty agelimit - hosplimit - to wszystko mogliby edytowac z poziomu dostepu experta do systemu.
+A wiec podejscie i rozwoj aplikacji w kierunku systemu ekspertowego jest idealnym rozwiazaniem.
+W takim podejsciu wyroznione zostaly na poczatku 2 role: EXPERT i USER.
+EXPERT mialby dostpe do edycji faktow procedury warunki. USER do wykonania apliakcji gruper. ale co z zapisem algorytmu - ktory jest jadrem systemu. Aktualne rozwiazanie gdzie warunki kierunkowe zapisane sa jako literki alfabetu - jest krokiem w kierunku zapisywania - regul w bazie danych. Moznaby to rozwinac w tym kierunku ze kazda klasa warunku oznaczona od A-Z, zamiast w kodzie bylaby zapisana jako skrypt grooviego w bazie danych - pobierana i odpalana przez silnik. inzynier wiedzy bedzie mmogl wtedy edytowac warunki kierunkowe - ktore decyduja o przebiegu grupowania. Kolejnym rozwinieciem byloby umieszczenie odpowiednich skryptow grooviego - w bazie danych: np wyliczanie wartosci dla mechanizmu osobodni. Skryptem Grooviego moglby tez byc kawalek kodu wybierajacy odpowiednia sciezke poszukiwania. Dzieki takiemu podejsciu mielibysmy uniwersalny system regułowy - ktory moznaby edytowac bez ingerencji w kod javy. inzynierowie wiedzy, jesi nie pracownicy nfz to np lekarze maniacy komputerowi raz na rok - wprowadzali by poprawki w kluczowych dla algorytmu wycinkach kodu w GROOVYM ktory bylby dla nich czytelny i przejrzysty. W ten sposob otrzymalibysmy machinę - usprawniającą wszystkie aplikacje medyczne w Polsce z bardzo sprawnym feedbackiem z NFZ, ktory wprowadzalby poprawki do systemu na biezaco. kazda aplikacja moglaby podpiac sie do naszych serwerow i uzywac grupwoania zgodnego z nfz. A zarazem wykorzystywac algorytm optymalizacji kosztow leczenia.
+
+Jeszcze jedna mysl to uzywanie aspektow dla metod checkerow - tzn zapisywanie resons nie recznie ale aspektowo. Dla kazdego sprawdzanego warunku bylaby zapisywana PEŁNA lista reasons. co daloby pelny obraz sciezki wyszukiwania dla wszystkich sprawdzanych rozwiazan - rowniez tych spelnionych.
+
+Jak wiemy wdyanych zostalo ponad 10 wersji algorymtu, ale przedmiotem tej pracy nie bylo wyszukiwanie drobnych roznic miedzy nimi. Moznaby rozwianac system wprowadzajac wersjonowanie algorytmow i tworzac wszystkie instancje algorytmu - ktore uruchamiane by byly w zaleznosci od czasu leczenia - kiedy algorytm byl aktualny.
+
+
 %---------------------------------------------------------------------------
 
 \section{Porównanie z innymi istniejącymi rozwiązaniami}
 \label{sec:porownanieZinnymiRozwiazaniami}
 
+MP-System - potezny system do kompleksowej oblsugi szpitali - nie udalo mi sie zainstalowac wersji DEMO - problemy z systemem windows+ jakas stara wersja ms-sql
+
+Internetowy OPTYALIZATOR JGP -http://jgp.uhc.com.pl/jgpgrouper/ - CompuGroup Medical Polska - Lublin
+rozwiazanie z puntu iwdzenia uzytkownika koncowego - podobne do mojego - 5 darmowych grupowan - platny. Firma posiada osobnych ekspeertow do aktualizacji bazy wiedzy. przeporwadzali 4mln grupowan dla klikuset szpitali. jest to rozwiazanie - bardzo bardzo dobre jakosciowo - ale platne.
+w tym systemi jest rozwieniez optymalizacja: z ktorej korzysta 58\% uzytkownikow a 42\5 korzysta z samego grupowania. czyli zapotrzebowanie na optymalizator istnieje. moje rozwiazanie jest typu openSource - i sklania sie ku profesjonalnemu systemowi eksperckiemu - anie zwyklej aplikacji typu serwer-klient.
+
+
+http://smartgruper.pl - plante rozwiazanie - gruper platny i nie dostepna wersja demo. zopisu wynika ze jest to wysokiej jakosci oprogramowanie ktore udstepnia wiele funkcjonalnosci. dostepne 3 wersje:
+Wersja On-line. Dostęp indywidualny oraz dla małych placówek medycznych. Dostęp do systemu Smart Gruper on-line.
+Wersja Professional. Rozwiązanie dla szpitala bez integracji. Instalacja na serwerze w szpitalu.
+Wersja Enterprise. Rozwiązanie dla szpitala z integracją. Instalacja na serwerze w szpitalu oraz integracja z istniejącym systemem informatycznym szpitala. Apliakcja udostpenia rowniez optymalizacje - zapisywanie grupwoan itp funkcjonalnosci.
+
+Zadna z aplikacji nie jest rozwiazaniem typu openSource. Integracja z nfz odbywa sie tylko przez ekspertow przepisujacych dane z komunikatow nfz. 
+
+Przyszłością jest powstajacy system Euro-DRG 7, który docelowo stanowiłby jednolity system JGP dla całej Unii Europejskiej.
+http://www.eurodrg.eu/
+
+Nfz stal sie prtnerem systemu eurodrg- i pomgaa przy jego tworzeniu. Byc moze stworzenie platformu systemu ekspertowego dla systemu euro-drg bylaby dobrym kierunkiem rozwoju tego typu rozwiazania, takie rozwiazanie typu opensource- mialoby swoich developelrow nie tylko w poslce. niestety nie okreslona zostala jeszcze specyfikacja systemu. Problemem jest jak zwykle fakt ze kazda firma chce miec monopol na caly kraj lub caly kontynent. co jest przeszkoda w tworzeniu najlepszej jakosci orpogramowania, powstaja systemy skomplikowane, ktorych sie uzywa poniewaz nie ma innej alternatywy. Podobnie jak linux jest ciagle ,,konkurencja''dla winodws tak samo oprogramowanie openSource bedzie uczestniczyc w nieustajacym wsycigu z oprogramowaniem komercyjnym. 
+
 %---------------------------------------------------------------------------
 
 \section{Wykorzystane biblioteki}
 \label{sec:wykorzystaneBiblioteki}
+GIT - repozytorium kod źródłowy- openSource - historia commitow
+
+JAVA -
+commons-collections-3.2.1	Pomocnicze metody dla operacji na kolekcjach
+aspectj-1.6.10			Aspekty dla JAVY
+h2database-1.3.166		Silnik bazodanowy H2
+junit-4.10			Środowisko testowe
+jgoodies-2.2.0 			GUI narzędzia pomocnicze
+jodatime-2.1			Najlepsza biblioteka do wykonywania obliczeń datowo/czasowych 
+spring-framework-3.0.5		Spring framework z komponentami Core, JDBC, Security, Beans, Aspects, ORM, Test, TX, 
+valkyriercp-1.0			Biblioteka pozwalająca na wysokopozimowe programowanie GUI
+
