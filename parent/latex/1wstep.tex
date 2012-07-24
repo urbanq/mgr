@@ -1,9 +1,9 @@
 \chapter{Wstęp}
 \label{cha:wstep}
 
-\LaTeX~jest systemem składu umożliwiającym tworzenie dowolnego typu dokumentów (w~szczególności naukowych i technicznych) o wysokiej jakości typograficznej (\cite{Dil00}, \cite{Lam92}). Wysoka jakość składu jest niezależna od rozmiaru dokumentu -- zaczynając od krótkich listów do bardzo grubych książek. \LaTeX~automatyzuje wiele prac związanych ze składaniem dokumentów np.: referencje, cytowania, generowanie spisów (treśli, rysunków, symboli itp.) itd.
+Rozliczanie kosztów leczenia pacjenta jest problemem skomplikowanym. Z jednej strony dążymy do rozwiązania, w którym kluczowym czynnikiem jest zdrowie pacjenta. Aspekt medyczny brany jest pod uwagę na pierwszym miejscu. Jednak z drugiej strony równie ważnym jest aspekt finansowy. Nieprawidłowo działający system rozliczeń ma bezpośredni wpływ na aspekt medyczny, co przekłada się na niską jakość świadczonych usług. Należy więc oczekiwać, że przyjęta przez płatnika metoda finansowania świadczeń opieki zdrowotnej powinna dążyć do zapewnienia obiektywnego pomiaru jakości oraz kosztów leczenia w jednostkach szpitalnych. Jednocześnie powinna motywować świadczeniodawców do zwiększania dostępności do odpowiedniej jakości świadczeń, jak również ograniczać nieuzasadniony wzrost kosztów opieki zdrowotnej.
 
-\LaTeX~jest zestawem instrukcji umożliwiających autorom skład i wydruk ich prac na najwyższym poziomie typograficznym. Do formatowania dokumentu \LaTeX~stosuje \TeX a (wymiawamy 'tech' -- greckie litery $\tau$, $\epsilon$, $\chi$). Korzystając z~systemu składu \LaTeX~mamy za zadanie przygotować jedynie tekst źródłowy, cały ciężar składania, formatowania dokumentu przejmuje na siebie system.
+Dotychczasowe doświadczenia światowe wskazują, że najlepszą metodą finansowania świadczeń medycznych jest system Jednorodnych Grup Pacjentów. Łączy on zarówno aspekt medyczny jak i finansowy. Istotnym założeniem tego systemu jest jego otwarty charakter. Corocznie każdy z krajów, w których obowiązuje system JGP przyjmuje nową wersję systemu, który jest ciągle doskonalony i rozwijany.
 
 %---------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@
 \label{sec:celePracy}
 
 Celem poniższej pracy jest stworzenie aplikacji typu gruper według wytycznych Narodowego Funduszu Zdrowia. Aplikacja będzie systemem ekspertowym opartym na bazie wiedzy dostarczonej przez NFZ. Algorytm grupowania będzie własną implementacją systemu regułowego w języku JAVA, który będzie odpowiadał algorytmowi zapropowanemu przez NFZ. Program będzie jedynym rozwiązaniem typu OpenSource na rynku. Poruszony zostanie również problem optymalizacji procesu grupowania, czyli maksymalizacji kosztów leczenia pacjenta. Oczywistym faktem jest, że każda placówka medyczna chce dostać jak największy zwrot poniesionych środków od płatnika. Na końcu przedstawione zostaną realne przypadki dla konkretnych placówek oraz konkretnych przypadków leczenia dla których użyto aplikacji. Napisane zostaną testy integracyjne, sprawdzające poprawność działania algorytmu grupera dla wszystkich zdefiniowanych reguł. 
-Podsumowując:
+Podsumowując stawiane tezy:
 \begin{enumerate}
 \item Implementacja algorytmu grupera NFZ
 \item Stworzenie własnego systemu ekspertowego dla rozwiązania
@@ -28,9 +28,9 @@ Podsumowując:
 
 W rodziale~\ref{cha:wprowadzenie} przedstawiono wszystkie podstawowe informacje oraz zdefiniowano słownik podstawowych pojęć. Wyjaśniona została istota aplikacji grupera oraz powszechnego na całym świecie systemu Jednorodnych Grup Pacjentów. Przedstawiona została również bardzo skrócona wersja historii powstania systemu JGP.
 
-W rodziale~\ref{cha:rozwiazanie} mamy program
+W rodziale~\ref{cha:rozwiazanie} został szczegółowo opisany system, który został stworzony w ramach tej pracy. W tym rozdziale znajduje się opis architektury systemu, modelu danych, następnie wyjaśniony został szczegółowo algorytm grupowania. Stworzenie systemu ekspertowego własnej implementacji odpowiadającego algorytmowi grupowania znajduje się w podrozdziale~\ref{sec:systemEkspertowy}.
 
-W rodziale~\ref{cha:prezentacja} mamy prezentacje programu
+Rozdział~\ref{cha:prezentacja} zawiera prezentację działania systemu na konkretnym przykładzie. Przedstawiony został przypadek użycia aplikacji - rozliczenie kosztów leczenia oraz przeprowadzona została optymalizacja otrzymanych wyników.
 
-Podsumowanie pracy znajduje się w rozdziale ~\ref{cha:podsumowanie} - są tam....
+Podsumowanie pracy znajduje się w rozdziale ~\ref{cha:podsumowanie} - są tam informacje o możliwościach rozwoju aplikacji; porównanie z istniejącymi na rynku rozwiązaniami oraz zestawienie wszystkich użytych narzędzi i bibliotek.
 
