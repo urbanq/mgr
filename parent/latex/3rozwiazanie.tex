@@ -1,27 +1,40 @@
 \chapter{Opis stworzonego rozwiązania}
 \label{cha:rozwiazanie}
 
-Niniejszy rozdział zawiera opis aplikacji, która została stworzona na potrzeby tej pracy. Krótki opis co zawieraja kolejne podrozdzialy/// TODO
+Niniejszy rozdział zawiera opis systemu, który został stworzony na potrzeby tej pracy. W rozdziale~\ref{sec:zalozeniaProjektowe} zostały krótko przedstawione najważniejsze założenia, na których opiera się realizacja projektu. Następnie rozdział~\ref{sec:architekturaSystemu} opisuje architekturę stworzonego rozwiązania. Rozdział~\ref{sec:modelDanych} zawiera szczegółowy opis w jaki sposób został określony model danych. Sposób działania algorytmu grupowania został zaprezentowany w rozdziale~\ref{sec:gruperNFZ}. Spojrzenie na system z punktu widzenia systemu ekspertowego został zawarty w sekcji~\ref{sec:systemEkspertowy}. Rozdział~\ref{sec:optymalizacjaJGP} przedstawia realizację maszyny wyjąśniającej, która jest narzędziem umożliwiającym przeprowadzenie optymalizacji JGP w systemie.
+%Na końcu rozdział {sec:} opisuje szczegółowo przepływ danych oraz sterowania w systemie.
 
 %---------------------------------------------------------------------------
 %---------------------------------------------------------------------------
 \section{Założenia projektowe}
 \label{sec:zalozeniaProjektowe}
-Swtorzyć aplikację typu guper spełniającą wszystkie wymagania stawiane przez NFZ. Implementującą dokładnie algorytm grupera według wytycznych.
-Określić model danych oraz zdefiniować algorytm.
 
-Aplikacja zostanie napisana w języku JAVA jako aplikacja stand-alone z dostępem do swojej bazy wiedzy zapisanej w pliku. 
-Użyty zostanie najnowszy framework do tworzenia GUI w JAVIE, najnowszy framework i metodologia Spring 3. Zastosowanie warstwowej architekury systemu.
+Na kształt aplikacji bezpośredni wpływ miały założenia projektowe postawione na początku pracy. Od nich zależały decyzje podejmowane na kolejnych etapach tworzenia systemu.
 
-Zaimplemnentowane zostanioe wszystko pod kątem systemu ekspertowego - tzn osobno baza wiedzy - osobno fakty - osobno reguły. Zaimplementowany zostanie własny mechanizm wnioskowania dostosowany do aktualnego rozwiązania.
-Neiktóre warunki da sie zapisac w bazie danych. reguly mozna zaimplementowac w grovym - stworzyc interface. warunki kierunkowe - rowniez moga byc zapisane w bazie wiedzy - jako: nazwa - opis - skrypt groovy-iego.
+\begin{itemize}
+ \item Swtorzyć aplikację typu ,,gruper'' spełniającą wszystkie wymagania stawiane przez NFZ.
+ \item Określić model danych, ustalić bazę wiedzy.
+ \item System zostanie napisany w języku JAVA, będzie to aplikacja desktopowa z dostępem do bazy wiedzy, zapisanej w jednym pliku.
+ \item Zastosować architekturę warstwową dla systemu
+ \item Użyć najnowszych i najlepszych narzędzi do tworzenia przyjaznego dla użytkownika GUI.
+ \item Projekt architektury oprzeć na metodologii Spring.
+ \item W trakcie fazy implementacji zwrócić szczególną uwagę na to, aby system spełniał założenia systemu ekspertowego. Implementacja systemu będzie zalążkiem do stworzenia bardziej rozbudowanego systemu ekspertowego dla tego rozwiązania.
+ \item Używać tylko narzędzi dostępnych na licencji wolnego oprogramowania.
+ \item Wykonać solidne testy dla wszystkich głównych ścieżek poszukiwań rozwiązania.
+\end{itemize}
+
+Stworzenie aplikacji typu ,,gruper'' oznacza, że musi zostać zaimplementowany algorytm grupera zgodnie z wytycznymi narzuconymi przez NFZ. Precyzyjne określelnie modelu danych jest podstawowym założeniem, bez którego niemożliwa jest dalsza praca na projektem. Zastosowanie architektury warstwowej dla systemu zwiększa elastyczność rozwiązania i pozwala na łatwe modyfikowanie i skalowalność systemu.
+
+Implementacja całego systemu tylko w języku JAVA umożliwia rozwijanie projektu przez osoby nie znające składni oraz zasad jakimi kierują się inne języki dedykowane dla systemów ekspertowych takie jak Prolog czy Drools. Wszystkie założenia systemu ekspertowego zostają spełnione, ale implementacja będzie w 100\% autorska w czystej JAVIE. Fakty i reguły będą obiektami JAVY. Unikalność, innowacyjność i łatwość wdrożenia się w projekt dla tego rozwiązania mają być jego największymi atutami.
+
 
 
 %---------------------------------------------------------------------------
 %---------------------------------------------------------------------------
 \section{Architektura systemu}
 \label{sec:architekturaSystemu}
-kilka slow o architekturze systemu co to jest itp pierdu pierdu
+
+Wybór architektury systemu to decyzja podejmowana w początkowej fazie powstawania systemu. Często okazuję się ona najważniejszą decyzją, która ma ogromny wpływ na rozwój oprogramowania. Kierując się wyborem architektury, stawiałem na jej elastyczność oraz modularność. Obrazując system jako maszynę złożoną z wielu rożnorodnych elementów, chciałem stworzyć taką, którą można w łatwy sposób ulepszać poprzez dokładanie nowych oraz naprawiać poprzez podmianę starych części nowymi, lepszymi.
 
 %---------------------------------------------------------------------------
 \subsection{Model 3-warstwowy}
@@ -30,7 +43,7 @@ Architektura systemu odzwierciedla jego logiczny podział. Standardem w praktycz
 \begin{itemize}
  \item Fizyczną implementację systemu
  \item Abstrakcyjny model wycinka rzeczywistości odzwierceidlany przez system
- \item Sposób w jaki jest postrzegany z zewnatrz - spojrzenie z punktu widzenia użytkownika końcowego
+ \item Sposób w jaki jest postrzegany z zewnątrz - spojrzenie z punktu widzenia użytkownika końcowego
 \end{itemize}
 
 Jeżeli odniesiemy architekurę trójwarstwową do systemów informatycznych to odpowiednikiem schematu wewnętrznego jest warstwa bazy danych, schematu konceptualnego - warstwa biznesowa, a schematu zewnętrznego warstwa aplikacji. Architekturę przedstawia rysunek:
@@ -42,7 +55,9 @@ Wybrałem ten model do zastosowania przy tworzeniu aplikacji ze względu na jego
 \subsection{Model architektury Spring}
 \label{sec:modelArchitekturySpring}
 Bardzo popularnym i nowoczesnym środowiskiem, które wprowadza zestaw narzędzi, wzorców oraz bibliotek potrzebnych do stworzenia nowoczesnych aplikacji serwerowych(i nie tylko) jest Springframework. Architektura Spring jest niesłusznie uważana za skomplikowaną, bardzo złożoną i niemożliwą do opanowania. W rzeczywistości architektura Spring stanowi zaawansowany przykład architektury szkieletowej umożliwiającej szybkie rozwijanie dowolnie złożonych aplikacji, niekoniecznie webowych. Konstrukcja szkieletu architektury Spring powoduje, że jest ona typem tzw. lekkiej infrastruktury, w której występuje bardzo niewielki stopień zależności od interfejsów Spring API. Architektura Spring obejmuje wszystkie warstwy aplikacji i podsuwa rozwiązania, które mogą być stosowane zarówno w warstwie prezentacji, jak i w warstwie integracji i warstwie danych. Architektura Spring jest rozwijana na licencji ,,open sourc'' od roku 2003 i od tego czasu zdobyła sobie dużą popularność i spore grono osób programujących. Poniższy rysunek ilustruje schemat architektury Spring:
+
 \includegraphics[scale=0.31]{images/spring-modules}
+
 Architektura Spring składa się z kilku modułów, z których każdy może być wykorzystywany niezależnie w aplikacji. Oznacza to, że aplikacja może wykorzystywać całą moc architektury Spring, ale może także korzystać z fragmentu architektury, np. z modułu ułatwiającego dostęp do danych. Najważniejszym modułem architektury jest Spring Core, moduł oferujący zaawansowane opcje konfiguracji komponentów JavaBean oraz klas POJO(ang. Plain Old Java Object) i wykorzystujący technikę wstrzykiwania zależności.
 Dla mojego rozwiązania postanowiłem skorzystać właśnie z tych dwóch fragmentów architektury Spring, tj dostęp do danych oraz Core dla warstwy serwisowej. Oto listing modułów Spring wykorzystywanych w projekcie:
 \begin{itemize}
@@ -57,7 +72,8 @@ Dla warstwy prezentacji wykorzystałem również wsparcie Spring. W 2008 roku zo
  \item DataProvider - fasada danych dla komponentów UI.
 \end{itemize}
 Poniższy schemat przedstawia architekturę systemu jaki został zaimplementowany:
-\includegraphics[scale=0.31]{images/spring-layers2}
+
+\includegraphics[scale=0.4]{images/spring-layers2}
 
 Należy zaznaczyć, że model architektury spełnia założenia architekty trójwarstwowej:
 \begin{table}[h]
@@ -106,7 +122,7 @@ Architekturę systemu regułowego przedstawia poniższy schemat:
 \includegraphics[scale=0.5]{images/expert-system}
 
 %---------------------------------------------------------------------------
-\subsection{System ekpertowy w architekturze Spring TODO ten podrozdzial poprawic na swiezo}
+\subsection{System ekpertowy w architekturze Spring TODO ten podrozdzial poprawic na swiezo/ dlaczego nie Drools? lub inne Prologi}
 \label{sec:systemEkpertowyArchitekturaSpring}
 
 Na pocztąku pracy postanwiona została teza: realizacja systemu ekspertowego w architekturze spring dla aplikacji grupera oraz jej optymalizacja.
@@ -185,7 +201,7 @@ Ważną decyzją jest również wybór silnika bazy danych. Ponieważ jednym z z
  \end{tabular}
 \end{table}
 
-W końcu udało mi się znaleść silnik bazodanowy spełniający postawione przeze mnie wymagania. H2-database jest to rozwiązanie typu openSource, napisane w 100\% przez 1 osobę(Thomas'a Mueller'a). Zaletą silnika H2 jest jego innowacyjność. Autor stawia na łatwość użytkowania silnika bazy. Co objawia się bardzo łatwą konfiguracją, szybkim i prostym dostępem do administracji przez consolę H2, która jest uruchamiana w oknie przeglądarki. Funkcje importowania i eksportowania danych do/z plików zewnętrznych są wręcz intuicyjne. Dokumentacja do silnika jest przejrzysta spójna, cały czas na bieżąco aktualizowana. Chociaż rozwiązanie nie jest powszechnie znane, jednak tak duża firma jak Google stosuje go w niektórych swoich serwerowych rozwiązaniach.
+W końcu udało mi się znaleść silnik bazodanowy spełniający postawione przeze mnie wymagania. H2-database jest to rozwiązanie typu openSource, napisane w 100\% przez 1 osobę(Thomas'a Mueller'a). Zaletą silnika H2 jest jego innowacyjność. Autor stawia na łatwość użytkowania silnika bazy. Co objawia się bardzo łatwą konfiguracją, szybkim i prostym dostępem do administracji przez consolę H2, która jest uruchamiana w oknie przeglądarki. Brak potrzeby instalowania bazy danych w systemie operacyjnym jest kolejnym atutem tego rozwiązania. Funkcje importowania i eksportowania danych do/z plików zewnętrznych są wręcz intuicyjne. Dokumentacja do silnika jest przejrzysta spójna, cały czas na bieżąco aktualizowana. Chociaż rozwiązanie nie jest powszechnie znane, jednak tak duża firma jak Google stosuje go w niektórych swoich serwerowych rozwiązaniach.
 
 %---------------------------------------------------------------------------
 \subsection{Normalizacja danych}
@@ -465,10 +481,9 @@ public interface JGPService {
 \end{verbatim}
 
 Metoda ,,group'' sprawdza którą ścieżkę wnioskowania obiera system - 2 opcje: wg. rozpoznania głównego lub wg. procedur zasadniczych. Metody ,,doByRecognitions'' oraz ,,doByProcedures'' wyznaczają zbiór warunków z charakterystyki JGP do przeanalizowania. metoda ,,resolveResultsByJGP'' wykonuje zasadnicze wnioskowanie:
-\begin{itemize}
-\item Sprawdza warunki określone w obiekcie parameters i jeśli zostaną zaakceptowane zapisuje je na liście accepted.
-% \item Warunki niespełnione(wraz z powodami niezaakceptowania!) zapisuje na liście notAccepted, tworząc w ten spsób alternatywny sposób dojścia do lepszego rozwiązania.
-\item Metoda sprawdza warunki kierunkowe, warunek na płeć, warunek na tryb przyjęcia i wypisu, warunek na leczenie w danym oddziale, warunki na współisteniejące i zasadnicze kody ICD , warunki na kody ICD wykluczające się(negatywne).
+\begin{itemize}\itemsep1pt
+ \item Sprawdza warunki określone w obiekcie klasy JGPParameter i jeśli zostaną zaakceptowane zapisuje je na liście accepted.
+ \item Metoda sprawdza warunki kierunkowe, warunek na płeć, warunek na tryb przyjęcia i wypisu, warunek na leczenie w danym oddziale, warunki na współisteniejące i zasadnicze kody ICD , warunki na kody ICD wykluczające się(negatywne).
 \end{itemize}
 
 Podusmowując maszyna wnioskująca dla poszukiwania optymalnej grupy JGP realizuje proces wnioskowania w następujących krokach. Przyjmuje zbiór faktów wejściowych w postaci obiektu klasy Episode. Następnie wybiera ścieżkę według, której mają zostać ustalone parametry JGP(ICD9 lub ICD10). Po ustaleniu ścieżki - wyciągane są z bazy reguły które mają zostać sprawdzone w postaci obiektu klasy JGPParameter. Następuje sprawdzenie warunków i w przypadku spełnienia wszystkich grupa zostaje zapisana na liście zaakceptowanych grup.
