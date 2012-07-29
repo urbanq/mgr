@@ -1,17 +1,16 @@
 \chapter{Prezentacja działania aplikacji}
 \label{cha:prezentacja}
 
-W tej części pracy znajduje się opis aplikacji widzianej oczami użytkownika. W rozdziale 4.1 został
-opisany graficzny interfejs. Następnie rozdział 4.2 prezentuje działanie aplikacji wykorzystując przykładowe
-rozmowy z chatbotem. Rozdział 4.3 przedstawia ocenę funkcjonowania stworzonego. ble ble ble ble sre sru sru sru
+W tej części pracy znajduje się opis aplikacji widzianej oczami użytkownika. W rozdziale~\ref{sec:interfejsUzytkownika} został
+przedstawiony interfejs graficzny użytkownika. Następnie rozdział~\ref{sec:praktyczneUzycieSystemu} prezentuje działanie aplikacji wykorzystując przykładowe dane hospitalizacji. W rozdziale tym znajduje się opis praktycznego użycia systemu dla realnych danych. Sekcja~\ref{sec:testyIntegracyjne} zawiera przykładowy test integracyjny jednej ze ścieżek poszukiwania rozwiązania.
 
 %---------------------------------------------------------------------------
 
 \section{Interfejs użytkownika}
 \label{sec:interfejsUzytkownika}
-Aplikacja ma standardowy interfejs desktopowej aplikacji napisanej w Javie. Zdefiniowany typ wyglądu /LookAndFeel jest ustawiony na przyjazny ,,PlasticXPLookAndFeel''.
+Aplikacja ma standardowy interfejs aplikacji desktopowej napisanej w języku JAVA. Skórka aplikacji jest ustawiona na przyjazny ,,PlasticXPLookAndFeel''.
 
-Jeden z szablonowych widoków, który chciałem zaprezentować w tej pracy to widok bazy pacjentów. Warto zaznaczyć, że wszystkie funkcjonalności, takie jak dodawanie, usuwanie, filtrowanie oraz cały widoczny interfejs graficzny dostarcza framework Valkyrie-RCP. Realizuje je klasa DataEditor, która jest komponentem graficznym(Widgetem), do którego wstrzykujemy DataProvider - fasadę danych dla interfejsu użytkownika, DetailForm - formę do dodawania/usuwania danych, FilterForm formę dla dodatkowego filtrowania oraz TableWidget - obiekt definiujący wyświetlaną tabelkę danych.
+Jeden z szablonowych widoków, który chciałem zaprezentować w tej pracy to widok bazy pacjentów. Warto zaznaczyć, że wszystkie funkcjonalności, takie jak dodawanie, usuwanie, filtrowanie oraz cały widoczny układ komponentów graficznych dostarcza framework Valkyrie-RCP. Realizuje je klasa DataEditor, która jest komponentem graficznym(Widgetem), do którego wstrzykujemy DataProvider - fasadę danych dla interfejsu użytkownika, DetailForm - formę do dodawania/usuwania danych, FilterForm formę dla dodatkowego filtrowania oraz TableWidget - obiekt definiujący wyświetlaną tabelkę danych. Poniższy rysunek ilutruje widok bazy pacjetnów:
 
 \includegraphics[scale=0.4]{images/patient} 
 
@@ -91,13 +90,13 @@ Wybrana zostaje grupa A48 - Kompleksowe leczenie udarów mózgu > 7 dni w oddzia
 
 %---------------------------------------------------------------------------
 
-\section{Testy jednostkowe i integracyjne}
-\label{sec:testyJednostkoweIntegracyjne}
+\section{Testy integracyjne}
+\label{sec:testyIntegracyjne}
 
-Takich przypadków użycia aplikacji jest na prawdę bardzo wiele. Dobra aplikacja charakteryzuje się jednak wysokim pokryciem kodu w testach. Postanowiłem zatem napisać testy integracyjne klasy JGPService. Stworzyłem klasę JGPServiceTest, której zadaniem jest przetestowanie 26 przypadków użycia algorytmu grupowania, gdzie grupa wynikowa będzie pochodzić z konkretnego warunku kierunkowego. A wieć poszczególne testy są napisane w ten sposób, aby przetestować każdy z możliwych 26 warunków kierunkowcyh A-Z.
+Takich przypadków użycia aplikacji jest na prawdę bardzo wiele. Aplikacje wysokiej jakości charakteryzują się wysokim pokryciem kodu w testach. Postanowiłem zatem napisać testy integracyjne klasy JGPService. Stworzyłem klasę JGPServiceTest, której zadaniem jest przetestowanie 26 przypadków użycia algorytmu grupowania, gdzie grupa wynikowa będzie pochodzić z konkretnego warunku kierunkowego. A wieć poszczególne testy są napisane w ten sposób, aby przetestować każdy z możliwych 26 warunków kierunkowcyh A-Z.
 Przykład przedstawiony powyżej został również zaimplementwoany w testach. Jest to test sprawdzający poprawność działania warunku kierunkowego E - grupa zdefiniowana procedurą i rozpoznaniem zasadniczym; może mieć dodatkowe warunki (czas hospitalizacji, wiek).
 Dla testów integracyjnych przygotowana jest baza wiedzy. Ustalane są dane epizodu, uruchamiany jest mechanizm wnioskowania. A następnie sprawdzane są wyniki. Testowana jest poprawność wyników z listy zaakceptowanych kodów oraz z listy niezaakceptowanych kodów, wraz z testami powodów niezaakceptowania.
-Kod pojedyńczego testu:
+Kod przykładowego testu integracyjnego:
 \begin{verbatim}
 @Test
 public void testGrouperE() {
