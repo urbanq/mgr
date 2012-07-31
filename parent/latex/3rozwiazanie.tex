@@ -2,7 +2,6 @@
 \label{cha:rozwiazanie}
 
 Niniejszy rozdział zawiera opis systemu, który został stworzony na potrzeby tej pracy. W rozdziale~\ref{sec:zalozeniaProjektowe} zostały krótko przedstawione najważniejsze założenia, na których opiera się realizacja projektu. Następnie rozdział~\ref{sec:architekturaSystemu} opisuje architekturę stworzonego rozwiązania. Rozdział~\ref{sec:modelDanych} zawiera szczegółowy opis w jaki sposób został określony model danych. Sposób działania algorytmu grupowania został zaprezentowany w rozdziale~\ref{sec:gruperNFZ}. Spojrzenie na system z punktu widzenia systemu ekspertowego został zawarty w sekcji~\ref{sec:systemEkspertowy}. Rozdział~\ref{sec:optymalizacjaJGP} przedstawia realizację maszyny wyjąśniającej, która jest narzędziem umożliwiającym przeprowadzenie optymalizacji JGP w systemie.
-%Na końcu rozdział {sec:} opisuje szczegółowo przepływ danych oraz sterowania w systemie.
 
 %---------------------------------------------------------------------------
 %---------------------------------------------------------------------------
@@ -47,6 +46,7 @@ Architektura systemu odzwierciedla jego logiczny podział. Standardem w praktycz
 \end{itemize}
 
 Jeżeli odniesiemy architekurę trójwarstwową do systemów informatycznych to odpowiednikiem schematu wewnętrznego jest warstwa bazy danych, schematu konceptualnego - warstwa biznesowa, a schematu zewnętrznego warstwa aplikacji. Architekturę przedstawia rysunek:
+
 \includegraphics[scale=0.31]{images/3layer-architect}
 
 Wybrałem ten model do zastosowania przy tworzeniu aplikacji ze względu na jego logiczną i zrozumiałą dla każdego informatyka modularność. Każda z warstw może zostać zaimplementowana w innym języku programowania, a łączą się one poprzez interfejsy. Dużym plusem tego rozwiązania jest łatwa możliwość zmiany pewnej części systemu bez zmian w innych częściach systemu. Dla przykładu, jeśli chcielibyśmy stworzyć GUI webowe to wystraczy tylko zaimplementować warstwę prezentacji i podpiąć się do warstwy logiki biznesowej.
@@ -54,9 +54,11 @@ Wybrałem ten model do zastosowania przy tworzeniu aplikacji ze względu na jego
 %---------------------------------------------------------------------------
 \subsection{Model architektury Spring}
 \label{sec:modelArchitekturySpring}
-Bardzo popularnym i nowoczesnym środowiskiem, które wprowadza zestaw narzędzi, wzorców oraz bibliotek potrzebnych do stworzenia nowoczesnych aplikacji serwerowych(i nie tylko) jest Springframework. Architektura Spring jest niesłusznie uważana za skomplikowaną, bardzo złożoną i niemożliwą do opanowania. W rzeczywistości architektura Spring stanowi zaawansowany przykład architektury szkieletowej umożliwiającej szybkie rozwijanie dowolnie złożonych aplikacji, niekoniecznie webowych. Konstrukcja szkieletu architektury Spring powoduje, że jest ona typem tzw. lekkiej infrastruktury, w której występuje bardzo niewielki stopień zależności od interfejsów Spring API. Architektura Spring obejmuje wszystkie warstwy aplikacji i podsuwa rozwiązania, które mogą być stosowane zarówno w warstwie prezentacji, jak i w warstwie integracji i warstwie danych. Architektura Spring jest rozwijana na licencji ,,open sourc'' od roku 2003 i od tego czasu zdobyła sobie dużą popularność i spore grono osób programujących. Poniższy rysunek ilustruje schemat architektury Spring:
+Bardzo popularnym i nowoczesnym środowiskiem, które wprowadza zestaw narzędzi, wzorców oraz bibliotek potrzebnych do stworzenia nowoczesnych aplikacji serwerowych(i nie tylko) jest Springframework. Architektura Spring jest niesłusznie uważana za skomplikowaną, bardzo złożoną i niemożliwą do opanowania. W rzeczywistości architektura Spring stanowi zaawansowany przykład architektury szkieletowej umożliwiającej szybkie rozwijanie dowolnie złożonych aplikacji, niekoniecznie webowych. Konstrukcja szkieletu architektury Spring powoduje, że jest ona typem tzw. lekkiej infrastruktury, w której występuje bardzo niewielki stopień zależności od interfejsów Spring API. Architektura Spring obejmuje wszystkie warstwy aplikacji i podsuwa rozwiązania, które mogą być stosowane zarówno w warstwie prezentacji, jak i w warstwie integracji i warstwie danych. Architektura Spring jest rozwijana na licencji ,,open source'' od roku 2003 i od tego czasu zdobyła sobie dużą popularność i spore grono osób programujących. Poniższy rysunek ilustruje schemat architektury Spring:
 
+\vspace*{0.1cm}
 \includegraphics[scale=0.31]{images/spring-modules}
+\vspace*{0.1cm}
 
 Architektura Spring składa się z kilku modułów, z których każdy może być wykorzystywany niezależnie w aplikacji. Oznacza to, że aplikacja może wykorzystywać całą moc architektury Spring, ale może także korzystać z fragmentu architektury, np. z modułu ułatwiającego dostęp do danych. Najważniejszym modułem architektury jest Spring Core, moduł oferujący zaawansowane opcje konfiguracji komponentów JavaBean oraz klas POJO(ang. Plain Old Java Object) i wykorzystujący technikę wstrzykiwania zależności.
 Dla mojego rozwiązania postanowiłem skorzystać właśnie z tych dwóch fragmentów architektury Spring, tj dostęp do danych oraz Core dla warstwy serwisowej. Oto listing modułów Spring wykorzystywanych w projekcie:
