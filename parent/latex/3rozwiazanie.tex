@@ -198,8 +198,7 @@ W końcu udało mi się znaleść silnik bazodanowy spełniający postawione prz
 
 Dostarczony przez NFZ plik parametryzujący musi zostać poddany 'obróbce'. Każdy z arkuszy z pliku parametryzującego zapisałem w osobnym pliku CSV. Każdy z plików csv zaimportowalem(używając funkcji CSVREAD silnika H2) do osobnej tabeli tymczasowej.
 
-\scriptsize
-\begin{verbatim}
+\begin{lstlisting}[language=SQL]
 CREATE TEMPORARY TABLE ICD9_TMP(
     LIST_CODE_ID VARCHAR(5) NOT NULL, -- Kod listy
     LIST_TYPE_ID CHAR(1) NOT NULL,    -- Typ listy
@@ -207,13 +206,11 @@ CREATE TEMPORARY TABLE ICD9_TMP(
     RANGE INT,                        -- Ranga procedury ICD-9
     NAME VARCHAR(255) NOT NULL        -- Nazwa procedury ICD-9
 ) AS SELECT LIST_CODE_ID, LIST_TYPE_ID, CODE, RANGE, NAME FROM CSVREAD('icd9.csv');
-\end{verbatim}
-\normalsize
+\end{lstlisting}
 
 Po zaimportowaniu wszystkich tabel, następnym krokiem jest normalizacja bazy danych. Wprowadzenie kluczy publicznych i obcych, usunięcie zwielokrotnionych wierszy. Normalizaca według wykonywana była według 1PN, 2PN oraz 3PN. Kontynuując przykład z arkuszem 'icd9' napisałem skrypt SQL tworzący nowe tabele:
 
-\scriptsize
-\begin{verbatim}
+\begin{lstlisting}[language=SQL]
 CREATE TABLE ICD_LIST_TYPE(
     ID CHAR(1) PRIMARY KEY,
     NAME VARCHAR(10) NOT NULL
@@ -238,12 +235,11 @@ CREATE TABLE ICD9_LIST_CODE(
     FOREIGN KEY(LIST_TYPE) REFERENCES ICD_LIST_TYPE(ID),
     FOREIGN KEY(LIST_CODE) REFERENCES ICD9_LIST(CODE)
 );
-\end{verbatim}
-\normalsize
+\end{lstlisting}
+
 Po utworzeniu poprawnego schematu danych importujemy dane z tabel tymczasowych:
 
-\scriptsize
-\begin{verbatim}
+\begin{lstlisting}[language=SQL]
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('G', 'globalna');
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('U', 'do sekcji');
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('H', 'do grupy');
@@ -257,8 +253,7 @@ INSERT INTO ICD9_LIST (CODE)
 
 INSERT INTO ICD9_LIST_CODE (ICD9_CODE, LIST_CODE, LIST_TYPE)
  SELECT CODE, LIST_CODE_ID, LIST_TYPE_ID FROM ICD9_TMP ORDER BY CODE;
-\end{verbatim}
-\normalsize
+\end{lstlisting}
 
 Postępując podobnie udało mi się przenieść wszystkie potrzebne dane z arkuszy kalkulacyjnych do tabel bazy danych SQL. Wprowadziłem relacje poprzez ustalenie kluczy publicznych oraz obcych. Dla kolumn wymagających wprowadzenia ograniczenia unikalności, zostało ono dodane. W miejscach gdzie spodziewałem się bardzo dużej ilości zapytań wyciągających dane po kolumnie wprowadziłem indeksację kolumny w celu szybszego działania instrukcji SELECT.
 Wynikiem działania mojej pracy jest 16 plików SQL. Skrypty importują dane do tabel tymczasowych, następnie wykonują operacje tworzące tabele spełniając warunek spójności oraz zabiegające anomaliom bazo-danowym. Na samym końcu przepisujące dane. Skrypty zostały uporządkowane w kolejności, w której muszą zostać wykonane, aby stworzyć model bazy danych wypełniony danymi wejściowymi NFZ. Poniższy listing zawiera wszystkie wyróżnione tabele:
@@ -371,19 +366,19 @@ Sposób w jaki zdecydowałem się zaimplementować warunki kierunkowe:
 \item Utworzona została enum-mapa, w której kluczem jest enum(sygnatura warunku kierunkowego), a wartością obiekt(singleton) przypisanego do niej 'sprawdzacza' warunków
 \end{itemize}
 Zaletą tego podejścia jest możliwość implementacji w miarę uniwersalnego silnika do sprawdzania warunków kierunkowych. Działa on na zasadzie: dla każdego wybranego obiektu klasy JGPParameter(warunki które mają zostać sprawdzone) na podstawie odczytanej sygnatury warunku kierunkowego zostaje uruchamiany odpowiedni kawałek kodu JAVY sprawdzający warunki dla pobytu. A oto kawłek kodu realizujący tą funkcjonalność:
-\scriptsize
-\begin{verbatim}
+
+\begin{lstlisting}[language=Java]
 private boolean checkDirectional(Stay stay, JGPParameter parameter, List<Reason> reasons) {
-  //pobranie sygnatury(A-Z) warunku który powinien zostać sprawdzony
+  //pobranie sygnatury(A-Z) warunku ktory powinien zostac sprawdzony
   Condition condition = parameter.getCondition();
   //pobranie checkera dla warunku z mapy
   AbstractChecker checker = conditionsMap.get(condition);
   Assert.notNull(checker, "not implemented checker for condition: " + condition);
-  //uruchomienie odpowiedniego checkera i zwrócenie wyniku badania warunku
+  //uruchomienie odpowiedniego checkera i zwrocenie wyniku badania warunku
   return checker.checkCondition(stay, parameter, reasons);
 }
-\end{verbatim}
-\normalsize
+\end{lstlisting}
+
 W ten sposób udało mi się zapisać bardziej skomplikowane warunki w bazie danych. Tak naprawdę zapisana jest sygnatura checkera, a niestety dalej ważna część logiki jest zapisana w kodzie. Ale o rozszerzeniu tego rozwiązania  i zapisaniu całej logiki checkera do bazy danych napiszę więcej w rozdziale system ekspertowy.
 
 %---------------------------------------------------------------------------
@@ -455,9 +450,9 @@ Sprawdzane są warunki na czas hospitalizacji i jeśli są one spełnione wyznac
 \subsection{Maszyna wnioskująca}
 \label{sec:maszynaWnioskujaca}
 Realizacja maszyny wnioskującej w języku JAVA odbywa się przy użyciu Spring 3 na poziomie warstwy biznesowej. Klasa serwisowa przeprowadzająca proces wnioskowania zgodnie z wymaganiami systemu JGP to JGPService:
-\begin{verbatim}
-public interface JGPService {
 
+\begin{lstlisting}[language=Java]
+public interface JGPService {
     public List<JGP> findJGP(final JGPFilter filter);
 
     public JGPGroupResult group(Episode episode);
@@ -469,8 +464,9 @@ public interface JGPService {
     public void resolveResultsByJGP(Stay stay, List<JGPParameter> parameters, JGPGroupResult jgpGroupResult);
 
     public void recountManDay(Episode episode, List<JGPResult> jgpResultList);
+
 }
-\end{verbatim}
+\end{lstlisting}
 
 Metoda ,,group'' sprawdza którą ścieżkę wnioskowania obiera system - 2 opcje: wg. rozpoznania głównego lub wg. procedur zasadniczych. Metody ,,doByRecognitions'' oraz ,,doByProcedures'' wyznaczają zbiór warunków z charakterystyki JGP do przeanalizowania. metoda ,,resolveResultsByJGP'' wykonuje zasadnicze wnioskowanie:
 \begin{itemize}\itemsep1pt
@@ -495,7 +491,8 @@ Stworzyłem hierarchię klas dla powodów niezaakcpetowania:
 
 Rozszerzyłem listę argumentów każdej z metod checkerów o argument: lista powodów niezaakceptowania: List<Reason> reasons. 
 Po sprawdzeniu konkretnego warunku, w przypadku jego niezaakceptowania tworzona jest odpowiednia instancja obiektu Reason, a następnie jest ona  dodawana do listy. Np:
-\begin{verbatim}
+
+\begin{lstlisting}[language=Java]
 protected boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Reason> reasons) {
      if (hospLimit != null) {
          int time = stay.getEpisode().hospitalTime(hospLimit.getTimeUnit());
@@ -507,7 +504,7 @@ protected boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Re
      }
      return true;
 }
-\end{verbatim}
+\end{lstlisting}
 
 Np: Powodem niezaakceptowania grupy systemu JGP może być niespełnienie warunku: czas hospitalizacji dla grupy JGP musi być większy niż 7 dni, a zdefiniowany czas leczenia jest równy 5 dni.
 

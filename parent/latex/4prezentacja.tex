@@ -97,7 +97,8 @@ Takich przypadków użycia aplikacji jest na prawdę bardzo wiele. Aplikacje wys
 Przykład przedstawiony powyżej został również zaimplementwoany w testach. Jest to test sprawdzający poprawność działania warunku kierunkowego E - grupa zdefiniowana procedurą i rozpoznaniem zasadniczym; może mieć dodatkowe warunki (czas hospitalizacji, wiek).
 Dla testów integracyjnych przygotowana jest baza wiedzy. Ustalane są dane epizodu, uruchamiany jest mechanizm wnioskowania. A następnie sprawdzane są wyniki. Testowana jest poprawność wyników z listy zaakceptowanych kodów oraz z listy niezaakceptowanych kodów, wraz z testami powodów niezaakceptowania.
 Kod przykładowego testu integracyjnego:
-\begin{verbatim}
+
+\begin{lstlisting}[language=Java]
 @Test
 public void testGrouperE() {
     Episode episode = createTestEpisode(new String[]{"G08"}, new String[]{"88.714"}, 7, 75);
@@ -117,5 +118,5 @@ public void testGrouperE() {
     Assert.assertEquals(7, hospReason.required().getOver().intValue());
     Assert.assertEquals(TimeUnit.DAY, hospReason.required().getTimeUnit());
 }
-\end{verbatim}
+\end{lstlisting}
 
