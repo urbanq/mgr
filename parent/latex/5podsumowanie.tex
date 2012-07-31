@@ -31,32 +31,32 @@ Wydanych zostało ponad 10 wersji algorymtu grupera, ale przedmiotem tej pracy n
 \section{Porównanie z innymi istniejącymi rozwiązaniami}
 \label{sec:porownanieZinnymiRozwiazaniami}
 
-Przeanalizowałem konkurencyjne rozwiązania na rynku.
+Przeanalizowałem konkurencyjne rozwiązania na rynku. Najpopularniejsze aplikacje, postanowiłem zainstalować, uruchomić i porównać z moim rozwiązaniem. A oto listing systemów medycznych zawierających algorytm grupera:
 
-MP-System - potezny system do kompleksowej oblsugi szpitali - nie udalo mi sie zainstalowac wersji DEMO - problemy z systemem windows+ jakas stara wersja ms-sql.
+\textbf{MP-System} - złożony system do kompleksowej obsługi szpitali. Już w trakcie instalacji wersji demo pojawiły się błędy dotyczące starej wersji serwera MS-SQL(dostarczanej wraz z aplikacją). Niestety nawet po kilku-godzinnych trudach nie udało mi się zainstalować i uruchomić aplikacji. Skomplikowany proces instalacji przez, który ciężko przebrnąć skutecznie odstrasza przeciętnych użytkowników aplikacji jakimi są lekarze.
 
-Internetowy OPTYALIZATOR JGP -http://jgp.uhc.com.pl/jgpgrouper/ - CompuGroup Medical Polska - Lublin
-rozwiazanie z puntu iwdzenia uzytkownika koncowego - podobne do mojego - 5 darmowych grupowan - platny. Firma posiada osobnych ekspeertow do aktualizacji bazy wiedzy. przeporwadzali 4mln grupowan dla klikuset szpitali. jest to rozwiazanie - bardzo bardzo dobre jakosciowo - ale platne.
-w tym systemi jest rozwieniez optymalizacja: z ktorej korzysta 58\% uzytkownikow a 42\% korzysta z samego grupowania. czyli zapotrzebowanie na optymalizator istnieje. moje rozwiazanie jest typu openSource - i sklania sie ku profesjonalnemu systemowi eksperckiemu - anie zwyklej aplikacji typu serwer-klient.
+\textbf{Internetowy OPTYMALIZATOR JGP} CompuGroup Medical Polska Lublin - wersja demo dostępna pod adresem http://jgp.uhc.com.pl/jgpgrouper.
+Rozwiązanie z punktu widzenia użytkownika końcowego podobne do mojego. Aplikacja posiada 5 darmowych grupowań na dzień, powyżej tej liczby jest płatne. Według statystyk zamieszonych na stronie przy użyciu aplikacji przeporwadzono 4mln grupowań dla kilkuset szpitali. Jest to rozwiązanie wysokiej jakości, ale płatne.
+System ten posiada również moduł do optymalizacji, z którego korzysta 58\% użytkowników(pozostałe 42\% korzysta z samego algorytmu grupowania).
 
+\textbf{SMARTGRUPER} - http://smartgruper.pl - jest to rozwiązanie płatne, nie posiadające wersji demo. Z opisu na stronie projektu wynika, że jest to wysokiej jakości oprogramowanie, które udostępnia wiele funkcjonalności poza standardowym gruperem. Aplikacja udostępnia również optymalizacje JGP, zapisywanie grupowań itp funkcjonalnosci. Dostępne są 3 wersje produktu:
+\begin{itemize}
+ \item Wersja On-line. Dostęp indywidualny oraz dla małych placówek medycznych. Dostęp do systemu Smart Gruper on-line.
+ \item Wersja Professional. Rozwiązanie dla szpitala bez integracji. Instalacja na serwerze w szpitalu.
+ \item Wersja Enterprise. Rozwiązanie dla szpitala z integracją. Instalacja na serwerze w szpitalu oraz integracja z istniejącym systemem informatycznym szpitala.
+\end{itemize}
 
-http://smartgruper.pl - plante rozwiazanie - gruper platny i nie dostepna wersja demo. zopisu wynika ze jest to wysokiej jakosci oprogramowanie ktore udstepnia wiele funkcjonalnosci. dostepne 3 wersje:
-Wersja On-line. Dostęp indywidualny oraz dla małych placówek medycznych. Dostęp do systemu Smart Gruper on-line.
-Wersja Professional. Rozwiązanie dla szpitala bez integracji. Instalacja na serwerze w szpitalu.
-Wersja Enterprise. Rozwiązanie dla szpitala z integracją. Instalacja na serwerze w szpitalu oraz integracja z istniejącym systemem informatycznym szpitala. Apliakcja udostpenia rowniez optymalizacje - zapisywanie grupwoan itp funkcjonalnosci.
+Każdy z powyżej wymienionych systemów jest rozwiązaniem komercyjnym. System stworzony w ramach tej pracy jest aktualnie jedynym rozwiązaniem typu openSource na rynku oraz jedynym rozwiązaniem, które wnosi możliwości jakie daje profesjonalny system ekspertowy.
 
-Zadna z aplikacji nie jest rozwiazaniem typu openSource. Integracja z nfz odbywa sie tylko przez ekspertow przepisujacych dane z komunikatow nfz. 
-
-Przyszłością jest powstajacy system Euro-DRG 7, który docelowo stanowiłby jednolity system JGP dla całej Unii Europejskiej.
-http://www.eurodrg.eu/
-
-Nfz stal sie prtnerem systemu eurodrg- i pomgaa przy jego tworzeniu. Byc moze stworzenie platformu systemu ekspertowego dla systemu euro-drg bylaby dobrym kierunkiem rozwoju tego typu rozwiazania, takie rozwiazanie typu opensource- mialoby swoich developelrow nie tylko w poslce. niestety nie okreslona zostala jeszcze specyfikacja systemu. Problemem jest jak zwykle fakt ze kazda firma chce miec monopol na caly kraj lub caly kontynent. co jest przeszkoda w tworzeniu najlepszej jakosci orpogramowania, powstaja systemy skomplikowane, ktorych sie uzywa poniewaz nie ma innej alternatywy. Podobnie jak linux jest ciagle ,,konkurencja''dla winodws tak samo oprogramowanie openSource bedzie uczestniczyc w nieustajacym wsycigu z oprogramowaniem komercyjnym. 
+Co dalej?
+Przyszłością jest powstający system Euro-DRG 7, który docelowo stanowiłby jednolity system JGP dla całej Unii Europejskiej(http://www.eurodrg.eu).
+NFZ stał się partnerem systemu Euro-DRG i aktywnie uczestniczy w jego tworzeniu. Być może stworzenie platformy systemu ekspertowego dla systemu Euro-DRG byłaby dobrym kierunkiem rozwoju tego typu rozwiązania. Takie rozwiązanie typu openSource miałoby swoich uczestników nie tylko w Polsce, ale w całej Unii Europejskiej. Niestety nie określona została jeszcze specyfikacja systemu. Problematyczne jest podejście wszystkich firm startujących w przetargach, ponieważ każda z nich chce mieć monopol na cały obszar zastosowania systemu. Jest to w mojej opinii poważna przeszkoda w tworzeniu najlepszej jakości oprogramowania, ponieważ w jej wyniku powstają systemy skomplikowane, ktorych używa się tylko dlatego, że nie ma innej alternatywy. Podobnie jak system operacyjny Linux jest ciągle ,,konkurencją'' dla systemu Winodws, tak samo oprogramowanie openSource w każdej dziedzinie będzie uczestniczyć w nieustającym wyścigu z oprogramowaniem komercyjnym. 
 
 %---------------------------------------------------------------------------
 
 \section{Wykorzystane biblioteki}
 \label{sec:wykorzystaneBiblioteki}
-Oto listing narzędzi wyjkorzystanych do stworzenia systemu open-grupera:
+Oto listing narzędzi wykorzystanych do stworzenia systemu open-grupera:
 \begin{table}[h]
  \caption{Wykorzystane narzędzia}
  \small\tt
