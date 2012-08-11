@@ -8,23 +8,23 @@ Niniejszy rozdział zawiera opis systemu, który został stworzony na potrzeby t
 \section{Założenia projektowe}
 \label{sec:zalozeniaProjektowe}
 
-Na kształt aplikacji bezpośredni wpływ miały założenia projektowe postawione na początku pracy. Od nich zależały decyzje podejmowane na kolejnych etapach tworzenia systemu.
+Na kształt aplikacji bezpośredni wpływ miały założenia projektowe postawione na początku pracy. Od nich zależały decyzje podejmowane na kolejnych etapach tworzenia systemu. Lista założeń projektowych przedstawia się następująco:
 
-\begin{itemize}
- \item Swtorzyć aplikację typu ,,gruper'' spełniającą wszystkie wymagania stawiane przez NFZ.
+\begin{enumerate}
+ \item Swtorzyć aplikację typu ,,Gruper'' spełniającą wszystkie wymagania stawiane przez NFZ.
  \item Określić model danych, ustalić bazę wiedzy.
  \item System zostanie napisany w języku JAVA, będzie to aplikacja desktopowa z dostępem do bazy wiedzy, zapisanej w jednym pliku.
- \item Zastosować architekturę warstwową dla systemu
+ \item Zastosować architekturę warstwową.
  \item Użyć najnowszych i najlepszych narzędzi do tworzenia przyjaznego dla użytkownika GUI.
  \item Projekt architektury oprzeć na metodologii Spring.
  \item W trakcie fazy implementacji zwrócić szczególną uwagę na to, aby system spełniał założenia systemu ekspertowego. Implementacja systemu będzie zalążkiem do stworzenia bardziej rozbudowanego systemu ekspertowego dla tego rozwiązania.
  \item Używać tylko narzędzi dostępnych na licencji wolnego oprogramowania.
- \item Wykonać solidne testy dla wszystkich głównych ścieżek poszukiwań rozwiązania.
-\end{itemize}
+ \item Wykonać testy dla wszystkich głównych ścieżek poszukiwań rozwiązania.
+\end{enumerate}
 
-Stworzenie aplikacji typu ,,gruper'' oznacza, że musi zostać zaimplementowany algorytm grupera zgodnie z wytycznymi narzuconymi przez NFZ. Precyzyjne określelnie modelu danych jest podstawowym założeniem, bez którego niemożliwa jest dalsza praca na projektem. Zastosowanie architektury warstwowej dla systemu zwiększa elastyczność rozwiązania i pozwala na łatwe modyfikowanie i skalowalność systemu.
+Stworzenie aplikacji typu ,,Gruper'' oznacza, że musi zostać zaimplementowany algorytm ,,Grupera'' zgodnie z wytycznymi narzuconymi przez NFZ. Precyzyjne określelnie modelu danych jest podstawowym założeniem, bez którego niemożliwa jest dalsza praca nad projektem. Zastosowanie architektury warstwowej dla systemu zwiększa elastyczność rozwiązania i pozwala na łatwe modyfikowanie i skalowalność systemu.
 
-Implementacja całego systemu tylko w języku JAVA umożliwia rozwijanie projektu przez osoby nie znające składni oraz zasad jakimi kierują się inne języki dedykowane dla systemów ekspertowych takie jak Prolog czy Drools. Wszystkie założenia systemu ekspertowego zostają spełnione, ale implementacja będzie w 100\% autorska w czystej JAVIE. Fakty i reguły będą obiektami JAVY. Unikalność, innowacyjność i łatwość wdrożenia się w projekt dla tego rozwiązania mają być jego największymi atutami.
+Implementacja całego systemu tylko w języku JAVA umożliwia rozwijanie projektu przez osoby nie znające składni oraz zasad jakimi kierują się inne języki dedykowane dla systemów ekspertowych takie jak Prolog czy Drools. Wszystkie założenia systemu ekspertowego zostają spełnione, a implementacja będzie w 100\% autorska. Fakty i reguły będą obiektami JAVY. Unikalność, innowacyjność i łatwość wdrożenia się w projekt dla tego rozwiązania mają być jego największymi atutami.
 
 
 
@@ -33,49 +33,60 @@ Implementacja całego systemu tylko w języku JAVA umożliwia rozwijanie projekt
 \section{Architektura systemu}
 \label{sec:architekturaSystemu}
 
-Wybór architektury systemu to decyzja podejmowana w początkowej fazie powstawania systemu. Często okazuję się ona najważniejszą decyzją, która ma ogromny wpływ na rozwój oprogramowania. Kierując się wyborem architektury, stawiałem na jej elastyczność oraz modularność. Obrazując system jako maszynę złożoną z wielu rożnorodnych elementów, chciałem stworzyć taką, którą można w łatwy sposób ulepszać poprzez dokładanie nowych oraz naprawiać poprzez podmianę starych części nowymi, lepszymi.
+Wybór architektury systemu to decyzja podejmowana w początkowej fazie tworzenia systemu. Często okazuję się ona najważniejszą decyzją, która ma ogromny wpływ na rozwój oprogramowania. Kierując się wyborem architektury postawiono na jej elastyczność oraz modularność. Obrazując system jako maszynę złożoną z wielu rożnorodnych elementów dążono do stworzenia takiej, którą można w łatwy sposób ulepszać poprzez dokładanie nowych klocków oraz naprawiać poprzez podmianę starych części nowymi i lepszymi.
 
 %---------------------------------------------------------------------------
 \subsection{Model 3-warstwowy}
 \label{sec:model3warstwowy}
-Architektura systemu odzwierciedla jego logiczny podział. Standardem w praktycznie każdej aplikacji jest zastosowanie architektury trójwarstwowej. Jest to bardzo stara idea i sięga roku 1978. Kiedy to komitet ANSI/SPARC wprowadził podział na trzy warstwy:
-\begin{itemize}
- \item Fizyczną implementację systemu
- \item Abstrakcyjny model wycinka rzeczywistości odzwierceidlany przez system
- \item Sposób w jaki jest postrzegany z zewnątrz - spojrzenie z punktu widzenia użytkownika końcowego
-\end{itemize}
+Architektura systemu odzwierciedla jego logiczny podział. Standardem w praktycznie każdej aplikacji jest zastosowanie modelu architektury trójwarstwowej. Model wprowadza podział aplikacji na trzy warstwy:
+\begin{enumerate}
+ \item \textbf{Warstwę danych} odpowiedzialną za poprawne przechowywanie, zapis oraz odczyt danych.
+ \item \textbf{Warstwę logiki biznesowej}, której zadaniem jest koordynacja pracy aplikacji, przetwrzanie żądań użytkownika, aplikacja reguł logicznych, dokonywanie obliczeń.
+ \item \textbf{Warstwa prezentacji} wykonyjącą tłumaczenie żądań i wyników działania aplikacji do i z języka zrozumiałego dla użytkownika.
+\end{enumerate}
 
-Jeżeli odniesiemy architekurę trójwarstwową do systemów informatycznych to odpowiednikiem schematu wewnętrznego jest warstwa bazy danych, schematu konceptualnego - warstwa biznesowa, a schematu zewnętrznego warstwa aplikacji. Architekturę przedstawia rysunek:
+Wybrałem ten model do zastosowania przy tworzeniu aplikacji ze względu na jego logiczną i zrozumiałą dla każdego informatyka modularność. Każda z warstw może zostać zaimplementowana w innym języku programowania, a komunikują się one poprzez interfejsy. Dużym plusem tego rozwiązania jest łatwa możliwość zmiany pewnej części systemu bez zmian w innych częściach systemu. Dla przykładu, jeśli chcielibyśmy stworzyć webowy interfejs użytkownika to wystraczy tylko zaimplementować warstwę prezentacji i podpiąć ją do warstwy logiki biznesowej.
 
-\includegraphics[scale=0.31]{images/3layer-architect}
-
-Wybrałem ten model do zastosowania przy tworzeniu aplikacji ze względu na jego logiczną i zrozumiałą dla każdego informatyka modularność. Każda z warstw może zostać zaimplementowana w innym języku programowania, a łączą się one poprzez interfejsy. Dużym plusem tego rozwiązania jest łatwa możliwość zmiany pewnej części systemu bez zmian w innych częściach systemu. Dla przykładu, jeśli chcielibyśmy stworzyć GUI webowe to wystraczy tylko zaimplementować warstwę prezentacji i podpiąć się do warstwy logiki biznesowej.
+Architekturę trójwarstwową przedstawia rysunek \ref{img:rysunek_3layer}.
+\begin{figure}[!ht]
+\label{img:rysunek_3layer}	
+\includegraphics[scale=0.5]{images/3layer-architect}
+\caption[Rysunek przedstawiający model architektury trójwarstwowej]{Architektura trójwarstwowa}
+\end{figure}
 
 %---------------------------------------------------------------------------
-\subsection{Model architektury Spring}
+\subsection{Środowisko Spring}
 \label{sec:modelArchitekturySpring}
-Bardzo popularnym i nowoczesnym środowiskiem, które wprowadza zestaw narzędzi, wzorców oraz bibliotek potrzebnych do stworzenia nowoczesnych aplikacji serwerowych(i nie tylko) jest Springframework. Architektura Spring jest niesłusznie uważana za skomplikowaną, bardzo złożoną i niemożliwą do opanowania. W rzeczywistości architektura Spring stanowi zaawansowany przykład architektury szkieletowej umożliwiającej szybkie rozwijanie dowolnie złożonych aplikacji, niekoniecznie webowych. Konstrukcja szkieletu architektury Spring powoduje, że jest ona typem tzw. lekkiej infrastruktury, w której występuje bardzo niewielki stopień zależności od interfejsów Spring API. Architektura Spring obejmuje wszystkie warstwy aplikacji i podsuwa rozwiązania, które mogą być stosowane zarówno w warstwie prezentacji, jak i w warstwie integracji i warstwie danych. Architektura Spring jest rozwijana na licencji ,,open source'' od roku 2003 i od tego czasu zdobyła sobie dużą popularność i spore grono osób programujących. Poniższy rysunek ilustruje schemat architektury Spring:
+Bardzo popularnym i nowoczesnym środowiskiem, które wprowadza zestaw narzędzi, wzorców oraz bibliotek potrzebnych do stworzenia nowoczesnych aplikacji serwerowych(i nie tylko) jest Spring. Rozwiązanie to jest niesłusznie uważane za skomplikowane, bardzo złożone i niemożliwe do opanowania. W rzeczywistości Spring stanowi zaawansowany przykład architektury szkieletowej umożliwiającej szybkie rozwijanie dowolnie złożonych aplikacji, niekoniecznie webowych. Konstrukcja szkieletu architektury Spring powoduje, że występuje w nim bardzo niewielki stopień zależności od interfejsów Spring API. Architektura Spring obejmuje wszystkie warstwy aplikacji i podsuwa rozwiązania, które mogą być stosowane zarówno w warstwie prezentacji, jak i w warstwie integracji oraz warstwie danych. Szkielet aplikacyjny Spring jest rozwijany na licencji ,,open source'' od roku 2003 i od tego czasu zdobył sobie dużą popularność. Rysunek \ref{img:rysunek_spring} ilustruje schemat architektury Spring.
 
 \vspace*{0.1cm}
+\begin{figure}[!ht]
+\label{img:rysunek_spring}
 \includegraphics[scale=0.31]{images/spring-modules}
-\vspace*{0.1cm}
+\caption[Rysunek przedstawiający model architektury Spring]{Schemat architektury Spring}
+\end{figure}
 
-Architektura Spring składa się z kilku modułów, z których każdy może być wykorzystywany niezależnie w aplikacji. Oznacza to, że aplikacja może wykorzystywać całą moc architektury Spring, ale może także korzystać z fragmentu architektury, np. z modułu ułatwiającego dostęp do danych. Najważniejszym modułem architektury jest Spring Core, moduł oferujący zaawansowane opcje konfiguracji komponentów JavaBean oraz klas POJO(ang. Plain Old Java Object) i wykorzystujący technikę wstrzykiwania zależności.
-Dla mojego rozwiązania postanowiłem skorzystać właśnie z tych dwóch fragmentów architektury Spring, tj dostęp do danych oraz Core dla warstwy serwisowej. Oto listing modułów Spring wykorzystywanych w projekcie:
+Składa się ona z kilku modułów, z których każdy może być niezależnie używany w aplikacji. Oznacza to, że aplikacja może wykorzystywać wszystkie możliwości środowiska Spring, ale może także korzystać z fragmentu architektury, np. z modułu ułatwiającego dostęp do danych. Najważniejszym modułem jest Spring-Core. Jest to moduł oferujący zaawansowane opcje konfiguracji komponentów JavaBean oraz klas POJO(ang. Plain Old Java Object) i wykorzystujący technikę wstrzykiwania zależności.
+W projekcie aplikacji postanowiłem wykorzystać kilka bazowych elementów architektury. Oto lista modułów Spring wykorzystywanych w projekcie:
 \begin{itemize}
  \item JDBC - Java DataBase Connectivity - interfejs programowania opracowany w 1996 r. przez Sun Microsystems, umożliwiający niezależnym od platformy aplikacjom napisanym w języku Java porozumiewać się z bazami danych za pomocą języka SQL.
- \item DAO - Wzorzec projektowy Data Access Object (DAO) - rozdzielenie mechanizmu trwałości obiektów od reguł biznesowych
- \item Service - Spring Service Beans - obiekty serwisowe - wykonujące logikę biznesową
+ \item DAO - Wzorzec projektowy Data Access Object (DAO) - rozdzielenie mechanizmu trwałości obiektów od reguł biznesowych.
+ \item Service - Spring Service Beans - obiekty serwisowe wykonujące logikę biznesową.
 \end{itemize}
 
-Dla warstwy prezentacji wykorzystałem również wsparcie Spring. W 2008 roku została wydana 1 wersja frameworku do tworzenia aplikacji desktopowych w JAVIE - SpringRCP - Rich Client Project. Niestety po wydaniu wersji 1.1 w 2009 projekt, który był na całkiem wysokim poziomie porównując do NetBeans-RCP lub Eclipse-RCP umarł śmiercią naturalną. W roku 2011 jeden z główynch projektantów Spring postanowił go odświeżyć. W niecałe 6 miesięcy przepisał cały framework używając najnowszej metodologii pochodzącej z Spring 3. Projekt ze względów politycznych musiał zmienić nazwę na Valkyrie-RCP. W kolejnych iteracjach dodanych zostało multum nowych funkcjonalności, w wyniku których po kolejnych 3 miesiącach powstało solidne narzedzie do tworzenia skomplikowanych aplikacji desktopowych w JAVIE. Jego podstawowe cechy to przejrzystość, prostota, stosowanie dobrych wzorców GUI. Kilka podstawowych elementów architektury Valkyrie:
+Dla warstwy prezentacji wykorzystałem również wsparcie Spring. W 2008 roku została wydana pierwsza wersja frameworku do tworzenia aplikacji desktopowych w JAVIE - SpringRCP - Rich Client Project. Niestety po wydaniu wersji 1.1 w 2009 roku projekt, który był na wyższym poziomie niż NetBeans-RCP lub Eclipse-RCP nagle przestał być rozwijany. W roku 2011 jeden z główynch projektantów Spring-RCP postanowił go odświeżyć. W niecałe 6 miesięcy przepisał cały framework używając najnowszej metodologii pochodzącej z Spring 3. Nowa wersja projektu otrzymała nazwę Valkyrie-RCP. W kolejnych iteracjach dodanych zostało wiele nowych funkcjonalności, w wyniku których po kolejnych 3 miesiącach powstało solidne narzędzie do tworzenia skomplikowanych aplikacji desktopowych w JAVIE. Jego podstawowe cechy to przejrzystość, prostota, stosowanie dobrych wzorców GUI. Kilka podstawowych elementów architektury Valkyrie:
 \begin{itemize}
- \item Widget - komponent GUI (tabelka, forma, widok, edytor-danych)
+ \item Widget - komponent GUI (tabelka, forma, widok, edytor-danych).
  \item DataProvider - fasada danych dla komponentów UI.
 \end{itemize}
+
 Poniższy schemat przedstawia architekturę systemu jaki został zaimplementowany:
 
+\begin{figure}[!ht]
+\label{img:rysunek_spring2}
 \includegraphics[scale=0.4]{images/spring-layers2}
+\caption[Rysunek przedstawiający model architektury systemu]{Architektura systemu stworzonego dla pracy}
+\end{figure}
 
 Należy zaznaczyć, że model architektury spełnia założenia architekty trójwarstwowej:
 \begin{table}[h]
@@ -85,7 +96,7 @@ Należy zaznaczyć, że model architektury spełnia założenia architekty trój
  \vspace{0in}
  \begin{tabular}{|l|l|}
  \hline
- \textbf{3-warstwowa} & \textbf{Mój model} \\ 
+ \textbf{Element architektury 3-warstwowej} & \textbf{Część stworzonego systemu} \\ 
  \hline
  Dostęp do danych & H2-Database, JDBC, DAO \\
  \hline
@@ -109,19 +120,23 @@ Jedna z definicji systemu ekspertowego definiuje go jako system charakteryzując
 	 \item Mechanizm wyjaśniający
        \end{itemize}
  \item Baza wiedzy
- \item Danamiczna baza danych
+ \item Dynamiczna baza danych
 \end{itemize}
 
-Bardzo istotnym elementem systemu ekspertowego jest oddzielenie wiedzy dziedzinowej od reszty systemu. Takie podejście umożliwia usprawnienie działania systemu bez ingerencji w kod programu. W skrócie wyjaśnię elementy architektury systemu ekspertowego.
+Bardzo istotnym elementem systemu ekspertowego jest oddzielenie wiedzy dziedzinowej od reszty systemu. Takie podejście umożliwia usprawnienie działania systemu bez ingerencji w kod programu. W~skrócie wyjaśnię elementy architektury systemu ekspertowego.
 
 \textbf{Interfejs użytkownika} umożliwia zadawanie pytań, udzielanie informacji systemowi oraz odbieranie od systemu odpowiedzi i wyjaśnień.
 \textbf{Edytor bazy wiedzy} pozwala na modyfikację wiedzy zawartej w systemie, umożliwiając tym samym jego rozbudowę.
 \textbf{Mechanizm wnioskowania} jest głównym składnikiem systemu ekspertowego wykonującym cały proces rozumowania w trakcie rozwiązywania problemu postawionego przez użytkownika.
 \textbf{Mechanizm wyjaśniający} jest to jeden z elementów interfejsu pomiędzy systemem a użytkownikiem, który umożliwia użytkownikowi uzyskanie odpowiedzi dlaczego system udzielił takiej, a nie innej odpowiedzi, albo dlaczego system zadał użytkownikowi określone pytanie.
 \textbf{Baza wiedzy} jest to deklaratywna postać wiedzy ekspertów z danej dziedziny zapisana za pomocą wybranego sposobu reprezentacji wiedzy, najczęściej reguł.
-\textbf{Danamiczna baza danych} jest pamięcią roboczą przechowującą pewne fakty wprowadzone w trakcie dialogu z użytkownikiem. Baza ta umożliwia odtworzenie sposobu wnioskowania systemu i przedstawienie go użytkownikowi za pomocą mechanizmu wyjaśniającego.
+\textbf{Dynamiczna baza danych} jest pamięcią roboczą przechowującą pewne fakty wprowadzone w trakcie dialogu z użytkownikiem. Baza ta umożliwia odtworzenie sposobu wnioskowania systemu i przedstawienie go użytkownikowi za pomocą mechanizmu wyjaśniającego.
 Architekturę systemu regułowego przedstawia poniższy schemat:
+\begin{figure}[!ht]
+\label{img:rysunek_expert}	
 \includegraphics[scale=0.5]{images/expert-system}
+\caption[Rysunek przedstawiający model architektury systemu ekspertowego]{Architektura systemu ekspertowego}
+\end{figure}
 
 %---------------------------------------------------------------------------
 \subsection{System ekpertowy w architekturze Spring}
@@ -129,7 +144,7 @@ Architekturę systemu regułowego przedstawia poniższy schemat:
 
 Na początku pracy postawiona została teza: realizacja systemu ekspertowego w architekturze spring spełniającego wymagania dotyczące aplikacji grupera oraz zawierającego optymalizację grupowania.
 
-Popularne narzędzia do implementacji systemu ekspertowego to język Prolog, system Drools, Jess, CLIPS. Są to gotowe środowiska do budowania skomplikowanych systemów ekspertowych. Dla tych systemów wystarczy zdefiniować wiedzę w postaci faktów i reguł, a następnie zadać cele, aby otrzymać wynik. Nie zdecydowałem się jednak na użycie tych dedykowanych systemów z dwóch ważnych powodów. Po pierwsze w mojej pracy postanowiłem zrobić coś innowacyjnego, a mianowice chciałem zbudować swój autorski system ekspertowy od podstaw zarazem używając do jego budowy nowoczesnych narzędzi. Stworzenie chociaż zalążka takiego innowacyjnego systemu w najnowszej technologii będzie już sporym osiągnięciem. Spojrzenie na system ekspertowy z naciskiem na jego realizację w czystej JAVIE może przynieść ciekawe rezultaty. 
+Popularne narzędzia do implementacji systemu ekspertowego to język Prolog, system Drools, Jess, CLIPS. Są to gotowe środowiska do budowania skomplikowanych systemów ekspertowych. Dla tych systemów wystarczy zdefiniować wiedzę w postaci faktów i reguł, a następnie zadać cele, aby otrzymać wynik. Nie zdecydowałem się jednak na użycie tych dedykowanych systemów z dwóch ważnych powodów. Po pierwsze w mojej pracy postanowiłem zrobić coś innowacyjnego, a mianowice chciałem zbudować swój autorski system ekspertowy od podstaw zarazem używając do jego budowy nowoczesnych narzędzi. Po drugie stworzenie chociaż zalążka takiego innowacyjnego systemu w najnowszej technologii będzie już sporym osiągnięciem. Spojrzenie na system ekspertowy z naciskiem na jego realizację w czystej JAVIE może przynieść ciekawe rezultaty. 
 
 Ten sposób myślenia doprowadził mnie do punktu, w którym musiałem jasno określić, które elementy systemu ekspertowego będą zaimplementowane przez które elementy architektury Spring. I tak określiłem, że warunki dla spełnienia reguł mogą być zapisywane jako obiekty POJO w bazie danych. Same reguły mogą być zapisywane w bazie poprzez sygnatury metod do wykonania lub jako skrypty napisane w języku Groovy(obiektowy język skryptowy wzorowany na składni Javy). Dynamiczna baza wiedzy będzie zrealizowana za pomocą obiektów POJO zapisywanych w bazie danych. Interfejs użytkownika  powstanie przy użyciu środowiska ValkyrieRCP, oraz jego wzorca DataEditor, który umożliwi dodawanie, edycję, usuwanie a nawet filtrowanie faktów oraz uruchamianie algorytmu wnioskowania. System wnioskujący będzie zrealizowany w warstwie biznesowej/serwisowej, gdzie zostanie zaimplementowany mechanizm wnioskowania. Będzie on wybierał dla danych wejściowych zestaw reguł i warunków, następnie wywoła metody sprawdzające i wykona odpowiednie działania jeśli warunki są spełnione. Mechanizm wyjaśniający zaimplementowany zostanie również w warstwie biznesowej.
 
@@ -146,7 +161,7 @@ W tym podrozdziale znajduje się opis w jaki sposób powstawał model danych dla
 \label{sec:daneWejscioweNFZ}
 Jedynym pewnym źródłem danych dla aplikacji były rozporządzenia NFZ. Fundusz opublikował ponad 30 wersji pliku parametryzującego, w formacie MS-Excel. W pliku parametryzującym znajdują się arkusze, w których zostały zapisane dane w postaci tabel zdefiniowanych przez NFZ. Każda następna wersja pliku parametruzyjącego przynosiła ze sobą zaktualizowane dane. Na przykład rozpoznania i procedury, które nie występowały w wersji wcześniejszej pliku parametryzującego. Z kolejnymi wydaniami wersji poprawiane zostały drobne błędy związane z formatem zapisu danych. Moją uwagę w trakcie porównywania wersji plików zwrócił zapis w kolumnie ranga procedury. Ranga większa niż 2 była zapisywana jako napis: '>2', co poprawiono na napis '3'. Ze względu na fakt, iż wiele poprawiono wraz z wydaniami kolejnych wersji pliku parametryzującego postanowiłem pracować na wersji 25, która jest jedną z najnowszych. 
 
-Niestety nadal model danych pozostawiał wiele do życzenia. Na przykład w arkuszu o nazwie 'JPG' znajduje się listing wszystkich kodów JGP, jako kolumny przyjęte zostały wartości oddziałów - na przecięciu wiersza(kodu jgp, kodu produktu i nazwy jgp) i kolumny(oddział) postawiony został krzyżyk. W innym arkuszu dotyczącym wartości punktowej dla kodu JGP przepisane zostały jeszcze raz wszystkie kody jgp, kody produktu i nazwy jgp, a obok podane wartości punktowe. Kolejnym przykładem jest zdefiniowanie w arkuszu 'procedury' redundantnych danych - kody i nazwy procedur zduplikowane po 4-kroć, różniące się jedynie kolumną 'typ listy'.
+Niestety nadal model danych pozostawiał wiele do życzenia. Na przykład w arkuszu o nazwie 'JPG' znajduje się listing wszystkich kodów JGP, jako kolumny przyjęte zostały wartości oddziałów - na przecięciu wiersza(kodu jgp, kodu produktu i nazwy jgp) i kolumny(oddział) postawiony został krzyżyk(znak ,,X''). W innym arkuszu dotyczącym wartości punktowej dla kodu JGP przepisane zostały jeszcze raz wszystkie kody JGP, kody produktu i nazwy JGP, a obok podane wartości punktowe. Kolejnym przykładem błednego zapisu jest zdefiniowanie w arkuszu 'procedury' redundantnych danych - kody i nazwy procedur zduplikowane po 4-kroć, różniące się jedynie kolumną 'typ listy'.
 
 Plik parametryzujący dostarczał redundantne dane, zduplikowane wartości w wielu tabelach, nieokreślone klucze podstawowe, obce, ograniczenia unikalności. Nasuwał się automatycznie jeden wniosek: model danych dostarczany przez NFZ musi koniecznie zostać przekonwertowany tak, aby nowy model danych zachowywał integralność. Konwersja bedzie polegała na zapimportowaniu danych z arkusza kalkulacyjnego do bazy danych, a następnie normalizacji bazy.
 
@@ -162,9 +177,9 @@ Postanowiłem wszystkie dane aplikacji przechowywać w relacyjnej bazie danych z
  \item Wszystkie operacje wykonywane są w oparciu o algebrę relacji, bez względu na położenie wiersza tabeli.
  \item Z braku możliwości identyfikacji wiersza przez jego pozycję pojawia się potrzeba obecności jednej lub więcej kolumn niepowtarzalnych w granicach całej tabeli, pozwalających odnaleźć konkretny wiersz. Kolumny te określa się jako klucz podstawowy tabeli.
 \end{itemize}
-Uniwersalność tego rozwiązania pozwala zapisywać wszystkie typy danych, począwszy od typów prostych skończywszy na typach złożonych takich jak zserializowane obiekty JAVY, skrypty Groovy'iego lub pliki binarne. Według mnie takie podejście definiuje dużą elastyczność systemu. Na przykład planowana implementacja systemu ekspertowego będzie wymagała pewnego nakładu pracy projektowej i implementacyjnej szczególnie. Ale jestem przekonany, że rozwiązania tworzone pod konkretne problemy są lepiej zaprojektowane niż uniwersalne oraz najszybsze, co jest najważniejsze z punktu widzenia użytkownika końcowego.
+Uniwersalność tego rozwiązania pozwala zapisywać wszystkie typy danych, począwszy od typów prostych skończywszy na typach złożonych takich jak zserializowane obiekty JAVY, skrypty Groovy'iego lub pliki binarne. Według mnie takie podejście definiuje dużą elastyczność systemu. Na przykład planowana implementacja systemu ekspertowego będzie wymagała pewnego nakładu pracy projektowej i implementacyjnej szczególnie. Często rozwiązania tworzone pod konkretne problemy są lepiej zaprojektowane niż uniwersalne oraz co jest najważniejsze z punktu widzenia użytkownika końcowego są wydajniejsze.
 
-Ważną decyzją jest również wybór silnika bazy danych. Ponieważ jednym z założeń projektowym było napisanie projektu w nowoczesnym języku programowania jakim jest JAVA postanowiłem wybrać silnik bazo-danowy napisany właśnie tylko i wyłącznie w czystej JAVIE. Szukałem również rozwiązania, które pozwoli mi na zapis/odczyt danych z pojedynczego pliku bez potrzeby instalacji całej machiny serwera w systemie operacyjnym. Skorzystałem z tabelki umieszczonej na stronie www.h2database.com:
+Ważną decyzją jest również wybór silnika bazy danych. Ponieważ jednym z założeń projektowych było napisanie projektu w nowoczesnym języku programowania jakim jest JAVA postanowiłem wybrać silnik bazo-danowy napisany właśnie tylko i wyłącznie w czystej JAVIE. Szukałem również rozwiązania, które pozwoli mi na zapis/odczyt danych z pojedynczego pliku bez potrzeby instalacji całej machiny serwera w systemie operacyjnym. Skorzystałem z tabelki umieszczonej na stronie www.h2database.com:
 
 \begin{table}[h]
  \caption{Porównanie właściwości}
@@ -192,7 +207,7 @@ Ważną decyzją jest również wybór silnika bazy danych. Ponieważ jednym z z
  \end{tabular}
 \end{table}
 
-W końcu udało mi się znaleść silnik bazodanowy spełniający postawione przeze mnie wymagania. H2-database jest to rozwiązanie typu openSource, napisane w 100\% przez 1 osobę(Thomas'a Mueller'a). Zaletą silnika H2 jest jego innowacyjność. Autor stawia na łatwość użytkowania silnika bazy. Co objawia się bardzo łatwą konfiguracją, szybkim i prostym dostępem do administracji przez consolę H2, która jest uruchamiana w oknie przeglądarki. Brak potrzeby instalowania bazy danych w systemie operacyjnym jest kolejnym atutem tego rozwiązania. Funkcje importowania i eksportowania danych do/z plików zewnętrznych są wręcz intuicyjne. Dokumentacja do silnika jest przejrzysta spójna, cały czas na bieżąco aktualizowana. Chociaż rozwiązanie nie jest powszechnie znane, jednak tak duża firma jak Google stosuje go w niektórych swoich serwerowych rozwiązaniach.
+Udało mi się znaleść silnik bazodanowy spełniający postawione przeze mnie wymagania. H2-database jest to rozwiązanie typu ,,open source'', napisane w 100\% przez 1 osobę(Thomas'a Mueller'a). Zaletą silnika H2 jest jego innowacyjność. Autor stawia na łatwość użytkowania silnika bazy. Co objawia się bardzo łatwą konfiguracją, szybkim i prostym dostępem do administracji przez consolę H2, która jest uruchamiana w oknie przeglądarki. Brak potrzeby instalowania bazy danych w systemie operacyjnym jest kolejnym atutem tego rozwiązania. Funkcje importowania i eksportowania danych do/z plików zewnętrznych są wręcz intuicyjne. Dokumentacja do silnika jest przejrzysta oraz aktualizowana na bieżąco. Chociaż rozwiązanie nie jest powszechnie znane, jednak tak duża firma jak Google stosuje go w niektórych swoich serwerowych rozwiązaniach.
 
 %---------------------------------------------------------------------------
 \subsection{Normalizacja danych}
@@ -210,8 +225,8 @@ CREATE TEMPORARY TABLE ICD9_TMP(
 ) AS SELECT LIST_CODE_ID, LIST_TYPE_ID, CODE, RANGE, NAME FROM CSVREAD('icd9.csv');
 \end{lstlisting}
 
-Po zaimportowaniu wszystkich tabel, następnym krokiem jest normalizacja bazy danych. Wprowadzenie kluczy publicznych i obcych, usunięcie zwielokrotnionych wierszy. Normalizaca według wykonywana była według 1PN, 2PN oraz 3PN. Kontynuując przykład z arkuszem 'icd9' napisałem skrypt SQL tworzący nowe tabele:
-
+Po zaimportowaniu wszystkich tabel, następnym krokiem jest normalizacja bazy danych. Wprowadzenie kluczy publicznych i obcych, usunięcie zwielokrotnionych wierszy. Normalizaca według wykonywana była według 1PN, 2PN oraz 3PN. Kontynuując przykład z arkuszem ICD9 napisałem skrypt SQL tworzący nowe tabele:
+\newpage
 \begin{lstlisting}[language=SQL]
 CREATE TABLE ICD_LIST_TYPE(
     ID CHAR(1) PRIMARY KEY,
@@ -239,7 +254,7 @@ CREATE TABLE ICD9_LIST_CODE(
 );
 \end{lstlisting}
 
-Po utworzeniu poprawnego schematu danych importujemy dane z tabel tymczasowych:
+Po utworzeniu znormalizowanego schematu danych importujemy dane z tabel tymczasowych do docelowych:
 
 \begin{lstlisting}[language=SQL]
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('G', 'globalna');
@@ -258,7 +273,7 @@ INSERT INTO ICD9_LIST_CODE (ICD9_CODE, LIST_CODE, LIST_TYPE)
 \end{lstlisting}
 
 Postępując podobnie udało mi się przenieść wszystkie potrzebne dane z arkuszy kalkulacyjnych do tabel bazy danych SQL. Wprowadziłem relacje poprzez ustalenie kluczy publicznych oraz obcych. Dla kolumn wymagających wprowadzenia ograniczenia unikalności, zostało ono dodane. W miejscach gdzie spodziewałem się bardzo dużej ilości zapytań wyciągających dane po kolumnie wprowadziłem indeksację kolumny w celu szybszego działania instrukcji SELECT.
-Wynikiem działania mojej pracy jest 16 plików SQL. Skrypty importują dane do tabel tymczasowych, następnie wykonują operacje tworzące tabele spełniając warunek spójności oraz zabiegające anomaliom bazo-danowym. Na samym końcu przepisujące dane. Skrypty zostały uporządkowane w kolejności, w której muszą zostać wykonane, aby stworzyć model bazy danych wypełniony danymi wejściowymi NFZ. Poniższy listing zawiera wszystkie wyróżnione tabele:
+Wynikiem działania mojej pracy jest 16 plików SQL. Skrypty importują dane do tabel tymczasowych, następnie wykonują operacje tworzące schemat spełniający warunek spójności oraz zabiegający anomaliom bazo-danowym. Ostatnim krokiem jest odpowiednie przepisanie danych. Skrypty zostały uporządkowane w kolejności, w której muszą zostać wykonane, aby stworzyć model bazy danych wypełniony danymi wejściowymi NFZ. Poniższy listing zawiera wszystkie wyróżnione tabele:
 
 \begin{table}[h]
    \caption{Model danych}
@@ -323,7 +338,7 @@ Wynikiem działania mojej pracy jest 16 plików SQL. Skrypty importują dane do 
 \subsection{Diagram ERD}
 \label{sec:diagramERD}
 
-W wyniku dogłębnej analizy oraz procesu projektowania bazy danych poprzez normalizację danych z pliku parametryzującego powstał spójny model danych. Logiczną strukturę wynikowego modelu ilustruje diagram ERD(Entity Relationship Diagram):
+W wyniku dogłębnej analizy oraz procesu projektowania bazy poprzez normalizację danych z pliku parametryzującego powstał spójny model danych. Logiczną strukturę wynikowego modelu ilustruje diagram ERD(Entity Relationship Diagram):
 
 \includegraphics[scale=0.31]{images/erd}
 
@@ -332,42 +347,43 @@ W wyniku dogłębnej analizy oraz procesu projektowania bazy danych poprzez norm
 \section{Gruper NFZ}
 \label{sec:gruperNFZ}
 
-W tym rozdziale znajduję się skrócony opis działania algorytmu grupera. Kompletny opis algorytmu grupera został przedstawiony w dokumencie opublikowanym przez NFZ zatytułowanym: "Informacje do przygotowania aplikacji grupera na potrzeby szpitalnych systemów informatycznych umożliwiającego kwalifikację rekordu pacjenta do właściwej grupy systemu Jednorodnych Grup Pacjentów". Dokument ten stał się podstawowym źródłem do stworzenia bazowej implementacji systemu. Dokument ten jest ponad 30-stronnicowym opisem, w jaki sposób powinna działać aplikacja gruper. Opis słowny algorytmu jak i schematy bloczkowe są dalekie do standardów takich jak język UML. Okazały się moim jedynym oraz kluczowym źródłem wiedzy o zasadach kierujących algorytmem. Rozpracowanie algorytmu grupera, poznananie i zrozumienie zasad jakimi się kieruje było kluczowym punktem mojej pracy.
+W tym rozdziale znajduję się skrócony opis działania algorytmu grupera. Kompletny opis algorytmu grupera został przedstawiony w dokumencie opublikowanym przez NFZ zatytułowanym: "Informacje do przygotowania aplikacji grupera na potrzeby szpitalnych systemów informatycznych umożliwiającego kwalifikację rekordu pacjenta do właściwej grupy systemu Jednorodnych Grup Pacjentów". Dokument ten stał się podstawowym źródłem do stworzenia bazowej implementacji systemu. Dokument ten jest ponad 30-stronnicowym opisem, w jaki sposób powinna działać aplikacja gruper. Opis słowny algorytmu jak i schematy bloczkowe są dalekie do standardów takich jak język UML. Dokument ten okazał się jednak się moim jedynym oraz kluczowym źródłem wiedzy o zasadach kierujących algorytmem. Rozpracowanie algorytmu grupera, poznanie i zrozumienie zasad jakimi się kieruje było kluczowym punktem mojej pracy.
 
 %---------------------------------------------------------------------------
 \subsection{Zasady i logika grupowania}
 \label{sec:zasadyLogikaGrupowania}
-Wynikiem działania algorytmu jest grupa JGP, która spełnia określony zestaw warunków. Zestaw grup JGP oraz warunków jest wyznaczany na podstawie danych wejściowych opisujących hospitalizację pacjetna. Alogorytm w uproszczeniu sprowadza się do wyznaczania grupy JGP. Po wyznaczeniu listy grup następuje badanie mechanizmem przeliczania, jeśli grupa kwalifikuje się do zmiany wartości zostaje ona zmieniona zgodnie z algorytmem mechanizmu przelcizania. Przedstawiony poniżej diagram aktywności przedstawia działanie algorytmu grupera:
+Wynikiem działania algorytmu jest grupa JGP, która spełnia określony zestaw warunków. Zestaw grup JGP oraz warunków jest wyznaczany na podstawie danych wejściowych opisujących hospitalizację pacjetna. Algorytm w pierwszym kroku w dużym uproszczeniu wyznacza grupy JGP dla danych epizodu. Po wyznaczeniu listy grup następuje badanie mechanizmem przeliczania, jeśli grupa kwalifikuje się do zmiany wartości zostaje ona zmieniona zgodnie z algorytmem mechanizmu przeliczania. Przedstawiony poniżej diagram aktywności przedstawia działanie algorytmu grupera:
 
 \includegraphics[scale=0.4]{images/activity-gruper}
 
 %---------------------------------------------------------------------------
+\newpage
 \subsection{Proces wyznaczania grupy systemu JGP}
 \label{sec:procesWyznaczaniaGrupySystemuJGP}
 Proces wyznaczania grupy można podzielić na dwie główne gałęzie. Pierwsza gałąź(tzw. ścieżka ICD-9) wyznacza zbiór zakwalifikowanych grup wraz z warunkami do sprawdzenia na podstawie procedur znaczących. Druga ścieżka 'ICD-10' wyznacza analogicznie zbiór zakwalifikowanych grup, ale na podstawie rozpoznań zasadniczych. Ścieżka dla rozpoznań jest wybierana przez program jeśli spełniony jest jeden z następujących warunków:
-\begin{itemize}
+\begin{itemize}\itemsep2pt
 \item w danych epizodu nie występuje żadna procedura
 \item ranga procedury <= 2 i czas hospitalizacji > 1 dnia
 \end{itemize}
 Jeśli wymienione wyżej warunki nie są spełnione wybierana jest ścieżka ICD-9.
 
 Następnie po wybraniu ścieżki wyznaczana jest lista kodów JGP wraz z warunkami do sprawdzenia. Każda grupa, która spełnia wszystkie warunki jest zapisywana na liście wybranych grup. Proces wyznaczania grupy dobrze ilustruje poniższy diagram aktywności:
-
+\newpage
 \includegraphics[scale=0.4]{images/activity-jgp} 
 
 %---------------------------------------------------------------------------
 \subsection{Warunki kierunkowe}
 \label{sec:warunkiKierunkowe}
-Warunki kierunkowe to decydujące o przebiegu grupowania ewentualne dodatkowe wymagania. Każdy z warunków został oznaczony literą alfabetu. A ich  dokładny opis znajduje się w dokumencie NFZ definiującym algorytm grupera. Procedura badająca warunki JGP w pierwszej kolejności sprawdza czy spełnione są warunki kierunkowe, ponieważ mają one decydujący wpływ na proces grupowania.
+Warunki kierunkowe to wymagania decydujące o przebiegu grupowania. Każdy z warunków został oznaczony literą alfabetu. A ich  dokładny opis znajduje się w dokumencie NFZ definiującym algorytm grupera. Procedura badająca warunki JGP w pierwszej kolejności sprawdza czy spełnione są warunki kierunkowe, ponieważ mają one decydujący wpływ na proces grupowania.
 Sposób w jaki zdecydowałem się zaimplementować warunki kierunkowe:
 \begin{itemize}
 \item Każdy z warunków zapisany jest w bazie pojedynczą literą alfabetu (A-Z)
 \item Dla obiektów domenowych literka alfabetu jest mapowana na odpowiednią wartość enuma Condition
 \item zdefiniowanych jest 26 klas nazwanych dużymi literami alfabetu rozszerzających bazową klasę AbstractChecker oraz implementujących metodę:
   public abstract boolean checkCondition(Stay stay, JGPParameter parameter, List<Reason> reasons);
-\item Utworzona została enum-mapa, w której kluczem jest enum(sygnatura warunku kierunkowego), a wartością obiekt(singleton) przypisanego do niej 'sprawdzacza' warunków
+\item Utworzona została enum-mapa, w której kluczem jest wartość enum(sygnatura warunku kierunkowego), a wartością obiekt(singleton) przypisanego do niej 'sprawdzacza' warunków
 \end{itemize}
-Zaletą tego podejścia jest możliwość implementacji w miarę uniwersalnego silnika do sprawdzania warunków kierunkowych. Działa on na zasadzie: dla każdego wybranego obiektu klasy JGPParameter(warunki które mają zostać sprawdzone) na podstawie odczytanej sygnatury warunku kierunkowego zostaje uruchamiany odpowiedni kawałek kodu JAVY sprawdzający warunki dla pobytu. A oto kawłek kodu realizujący tą funkcjonalność:
+Zaletą tego podejścia jest możliwość implementacji w miarę uniwersalnego silnika do sprawdzania warunków kierunkowych. Działa on na zasadzie: dla każdego wybranego obiektu klasy \mbox{JGPParameter}(warunki które mają zostać sprawdzone) na podstawie odczytanej sygnatury warunku kierunkowego zostaje uruchamiany odpowiedni kawałek kodu JAVY sprawdzający warunki dla pobytu. A oto kawłek kodu realizujący tą funkcjonalność:
 
 \begin{lstlisting}[language=Java]
 private boolean checkDirectional(Stay stay, JGPParameter parameter, List<Reason> reasons) {
@@ -381,20 +397,20 @@ private boolean checkDirectional(Stay stay, JGPParameter parameter, List<Reason>
 }
 \end{lstlisting}
 
-W ten sposób udało mi się zapisać bardziej skomplikowane warunki w bazie danych. Tak naprawdę zapisana jest sygnatura checkera, a niestety dalej ważna część logiki jest zapisana w kodzie. Ale o rozszerzeniu tego rozwiązania  i zapisaniu całej logiki checkera do bazy danych napiszę więcej w rozdziale system ekspertowy.
+W ten sposób udało mi się zapisać bardziej skomplikowane warunki w bazie danych. Tak naprawdę zapisana jest sygnatura checkera, a niestety dalej ważna część logiki jest zapisana w kodzie. Ale o rozszerzeniu tego rozwiązania  i o zapisaniu całej logiki ,,checkera'' do bazy danych napiszę więcej w rozdziale system ekspertowy.
 
 %---------------------------------------------------------------------------
 \subsection{Mechanizm osobodni}
 \label{sec:mechanizmOsobodni}
-Oczywistym faktem jest, że wyznacznikiem kosztów leczenia pacjenta nie może być tylko wartość wyliczona na podstawie przypisanej do pacjenta grupy systemu JGP. Ważnym czynnikiem generującym koszty leczenia jest czas pobytu w szpitalu(pożywienie, wymiana pościeli, podawane leki) wszystkie te koszty generowane są przez pacjenta w każdym dniu. Dlatego do algorytmu grupera wprowadzony został mechanizm osobodni. Przelicza on wyznaczoną wartość punktową w przypadku spełnienia pewnych warunków dla określonej grupy według określonych zasad. Na początku algorytm bada czy można zastosować mechanizm przeliczania:
+Wyznacznikiem kosztów leczenia pacjenta nie może być tylko wartość wyliczona na podstawie przypisanej do pacjenta grupy systemu JGP. Ważnym czynnikiem generującym koszty leczenia jest czas pobytu w szpitalu(pożywienie, wymiana pościeli, podawane leki) wszystkie te koszty generowane są przez pacjenta w każdym dniu. Dlatego do algorytmu grupera wprowadzony został mechanizm osobodni. Przelicza on wyznaczoną wartość punktową w przypadku spełnienia pewnych warunków dla określonej grupy według określonych zasad. Na początku algorytm bada czy można zastosować mechanizm przeliczania, co obrazuje poniżej przedstawiony diagram aktywności:
 \includegraphics[scale=0.5]{images/activity-manday}
 
-Jeśli wyznaczona grupa JGP dla epizodu nie kwalifikuje się do zmiany punktowej, pozostawiamy wartość wyznaczoną przez algorytm wyznaczania JGP. Natomiast jeśli zachodzi potrzeba zmiany punktowej stosujemy następujący algorytm dla 2 przypadków:
+Jeśli wyznaczona grupa JGP dla epizodu nie kwalifikuje się do zmiany punktowej, pozostawiamy wartość wyznaczoną przez algorytm bez zmian. Natomiast jeśli zachodzi potrzeba zmiany wartości punktowej stosujemy następujący algorytm dla 2 przypadków:
 \begin{itemize}
 \item Jeśli czas hospitalizacji jest mniejszy od 2 dni ustalamy nową wartość punktową ustalaną na podstawie wartości 'poniżej 2 dni' z obiektu klasy JGPHospital. Należy zaznaczyć, że z powyższego mechanizmu są wyłączone zgony, świadczenia rozliczane w ramach umów z zakresu ,,zespół opieki dziennej'' oraz ,,zespół chirurgii jednego dnia''.
 \item Jeśli czas trwania episodu jest większy lub równy 2 dni i jest większy od limitu ustalonego na podstawie wartości ,,dni'' z obiektu klasy JGPHospital. To wartość JGP jest ustalana poprzez powiększenie aktualnej wartości JGP o wynik iloczynu dni powyżej limitu z wartością punktową określoną przez wartość "powyżej".
 
-NOWA WARTOŚĆ PUNKTOWA = STARA WARTOŚĆ + RÓŻNICA DNI PONAD LIMIT * WAROŚĆ Z KOLUMNY POWYŻEJ
+NOWA WARTOŚĆ PUNKTOWA = STARA WARTOŚĆ + RÓŻNICA DNI PONAD LIMIT * WAROŚĆ Z KOLUMNY ,,POWYŻEJ LIMITU''
 \end{itemize} 
 
 %---------------------------------------------------------------------------
@@ -402,7 +418,7 @@ NOWA WARTOŚĆ PUNKTOWA = STARA WARTOŚĆ + RÓŻNICA DNI PONAD LIMIT * WAROŚĆ
 \section{System ekspertowy}
 \label{sec:systemEkspertowy}
 
-Stworzenie systemu ekspertowego jest zadaniem bardzo trudnym. Postanowiłem, aby system który zaimplementowałem niejako dążył do systemu ekspertowego. Jest to tak zwane podejście ewolucyjne. To znaczy małymi kroczkami zbliżamy się w kierunku systemu ekspertowego, nie powstaje on od razu, ale w wyniku powolnej ewolucji, czyli przekszałceń pewnych części systemu. Pewne zmiany w implementacji sprawiają, że implementacja staje się coraz bardziej generyczna i uniwersalna. Zaletą takiego podejścia jest powolne, jasne i zrozumiałe wprowadzanie zmian w implementacji systemu, a co najważniejsze system ciągle spełnia stawiane mu wymgania. Wadą jest, że na efekt końcowy trzeba się sporo napracować.
+Stworzenie systemu ekspertowego jest zadaniem bardzo trudnym. Postanowiłem, aby system który zaimplementowałem niejako dążył do systemu ekspertowego. Jest to tak zwane podejście ewolucyjne. To znaczy małymi kroczkami zbliżamy się w kierunku systemu ekspertowego, nie powstaje on od razu, ale w wyniku powolnej ewolucji, czyli przekształceń pewnych części systemu. Zmiany zachodzące w implementacji sprawiają, że staje się ona coraz bardziej generyczna i uniwersalna. Zaletą takiego podejścia jest powolne, jasne i zrozumiałe wprowadzanie zmian w kodzie źrodłowym systemu, a co najważniejsze system ciągle spełnia stawiane mu wymagania. Wadą jest, że na efekt końcowy trzeba się sporo napracować.
 
 \subsection{Klasyfikacja}
 \label{sec:klasyfikacjaSystemuEkspertowego}
@@ -420,38 +436,14 @@ W tym podrozdziale chcę zakwalifikować system ekspertowy do odpowiednich klas 
 
 \subsection{Baza wiedzy}
 \label{sec:bazaWiedzy}
-Najważniejszym z punktu widzenia systemu ekspertowego jest podział wiedzy na bazę faktów oraz bazę reguł. Logiczne wyróżnienie faktów dla systemu grupera JGP, pozwoli spojrzeć na system grupera jak na system ekpertowy. Wyróżnijmy więc fakty:
-\begin{itemize}
- \item Rekord pacjenta
- \item Płeć
- \item Oddział
- \item Rozpoznanie(ICD-10)
- \item Procedura(ICD-9)
- \item Tryb przyjęcia
- \item Tryb wypisu
- \item Jednorodna Grupa Pacjentów
- \item Wartości punktowe dla JGP
- \item Czas hospitalizacji
-\end{itemize}
-
-oraz reguły:
-\begin{itemize}
- \item warunki kierunkowe
- \item warunek na rozpoznanie główne
- \item warunek na rozpoznanie dodatkowe
- \item warunke na procedurę zasadniczą
- \item warunki na procedury dodakowe
- \item warunek na procedury i rozpoznania wykluczające się	
- \item ograniczenie na czas hospitalizacji
- \item ograniczenie na wiek
-\end{itemize}
+Najważniejszym z punktu widzenia systemu ekspertowego jest podział wiedzy na bazę faktów oraz bazę reguł. Logiczne wyróżnienie faktów dla systemu grupera JGP, pozwoli spojrzeć na system grupera jak na system ekpertowy. Wyróżnijmy więc fakty: rekord pacjenta, płeć, oddział, rozpoznanie(ICD-10), procedura(ICD-9), tryb przyjęcia, tryb wypisu, Jednorodna Grupa Pacjentów, wartości punktowe dla JGP, czas hospitalizacji. Oraz reguły: warunki kierunkowe, warunek na rozpoznanie główne, warunek na rozpoznanie dodatkowe, warunek na procedurę zasadniczą, warunki na procedury dodakowe, warunek na procedury i rozpoznania wykluczające się, ograniczenie na czas hospitalizacji, ograniczenie na wiek.
 Spełnienie wyżej wymienionych warunków powoduje wykonanie akcji: zapisanie kodu JGP na listę kodów zaakceptowanych przez system. Model ten stosowany jest do wyznaczania grupy JGP.
 Podobny mechanizm działa w trakcie wyznacznia nowych wartości mechanizmem osobodni.
 Sprawdzane są warunki na czas hospitalizacji i jeśli są one spełnione wyznaczana jest nowa wartość punktowa.
 
 \subsection{Maszyna wnioskująca}
 \label{sec:maszynaWnioskujaca}
-Realizacja maszyny wnioskującej w języku JAVA odbywa się przy użyciu Spring 3 na poziomie warstwy biznesowej. Klasa serwisowa przeprowadzająca proces wnioskowania zgodnie z wymaganiami systemu JGP to JGPService:
+Realizacja maszyny wnioskującej w języku JAVA odbywa się na poziomie warstwy biznesowej w technologii Spring. Klasa serwisowa przeprowadzająca proces wnioskowania zgodnie z wymaganiami systemu JGP to JGPService:
 
 \begin{lstlisting}[language=Java]
 public interface JGPService {
@@ -466,17 +458,16 @@ public interface JGPService {
     public void resolveResultsByJGP(Stay stay, List<JGPParameter> parameters, JGPGroupResult jgpGroupResult);
 
     public void recountManDay(Episode episode, List<JGPResult> jgpResultList);
-
 }
 \end{lstlisting}
 
-Metoda ,,group'' sprawdza którą ścieżkę wnioskowania obiera system - 2 opcje: wg. rozpoznania głównego lub wg. procedur zasadniczych. Metody ,,doByRecognitions'' oraz ,,doByProcedures'' wyznaczają zbiór warunków z charakterystyki JGP do przeanalizowania. metoda ,,resolveResultsByJGP'' wykonuje zasadnicze wnioskowanie:
+Metoda ,,group'' sprawdza, którą ścieżkę wnioskowania obiera system. Istnieją dwie opcje: według rozpoznania głównego lub według procedur zasadniczych. Metody ,,doByRecognitions'' oraz ,,doByProcedures'' wyznaczają zbiór warunków z charakterystyki JGP do przeanalizowania. metoda ,,resolveResultsByJGP'' wykonuje zasadnicze wnioskowanie:
 \begin{itemize}\itemsep1pt
  \item Sprawdza warunki określone w obiekcie klasy JGPParameter i jeśli zostaną zaakceptowane zapisuje je na liście accepted.
  \item Metoda sprawdza warunki kierunkowe, warunek na płeć, warunek na tryb przyjęcia i wypisu, warunek na leczenie w danym oddziale, warunki na współisteniejące i zasadnicze kody ICD , warunki na kody ICD wykluczające się(negatywne).
 \end{itemize}
 
-Podusmowując maszyna wnioskująca dla poszukiwania optymalnej grupy JGP realizuje proces wnioskowania w następujących krokach. Przyjmuje zbiór faktów wejściowych w postaci obiektu klasy Episode. Następnie wybiera ścieżkę według, której mają zostać ustalone parametry JGP(ICD9 lub ICD10). Po ustaleniu ścieżki - wyciągane są z bazy reguły które mają zostać sprawdzone w postaci obiektu klasy JGPParameter. Następuje sprawdzenie warunków i w przypadku spełnienia wszystkich grupa zostaje zapisana na liście zaakceptowanych grup.
+Podusmowując maszyna wnioskująca ma za zadanie poszukiwanie optymalnej grupy JGP. Realizuje ona proces wnioskowania w następujących krokach. Przyjmuje zbiór faktów wejściowych w postaci obiektu klasy Episode. Następnie wybiera ścieżkę(ICD9 lub ICD10) według której mają zostać ustalone parametry JGP. Po ustaleniu ścieżki - wyciągane są z bazy reguły które mają zostać sprawdzone w postaci obiektu klasy JGPParameter. Następuje sprawdzenie warunków i w przypadku spełnienia wszystkich grupa zostaje zapisana na liście zaakceptowanych grup.
 
 
 %---------------------------------------------------------------------------
@@ -484,16 +475,16 @@ Podusmowując maszyna wnioskująca dla poszukiwania optymalnej grupy JGP realizu
 \section{Optymalizacja JGP}
 \label{sec:optymalizacjaJGP}
 
-W tym podrozdziale opisane zostanie zagadanienie optymalizacji kosztów leczenia pacjenta. W poprzednim podrozdziale ustaliliśmy, że maszyna wnioskująca wybiera zbiór parametrów do przetestowania. Następnie dla grup JGP spełniających warunki zapisuje je na liście ,,zaakceptowane''. W tym miejscu nasunęła się pewna myśl: A może by tak spróbować zapisać grupy JGP, które były testowane a odrzucone przez algorytm na listę grup niezaakceptowanych? Może dla każdej niezaakceptowanej grupy JGP obliczyć jaką wartość punktową mogłaby przyjąć gdyby była zaliczona. Oraz usprawnienie/ idea: dla każdej niezaakceptwanej grupy zapisać na liście powód -> dlaczego została ona niezaakceptowana - jakich warunków nie spełniła?
+W tym podrozdziale opisane zostanie zagadanienie optymalizacji kosztów leczenia pacjenta. W poprzednim podrozdziale ustaliliśmy, że maszyna wnioskująca wybiera zbiór parametrów do przetestowania. Następnie dla grup JGP spełniających warunki zapisuje je na liście ,,zaakceptowane''. W tym miejscu nasunęły się pytania: A może by tak spróbować zapisać grupy JGP, które były testowane a zostały odrzucone przez algorytm na listę grup niezaakceptowanych? Może dla każdej niezaakceptowanej grupy JGP obliczyć jaką wartość punktową mogłaby przyjąć gdyby była zaliczona? Dlaczego została ona niezaakceptowana, jakich warunków nie spełniła? Może trzeba dla każdej niezaakceptwanej grupy zapisać na liście powód jej odrzucenia? 
 
-REALIZACJA: Aby zrealizować założenia, należało rozwinąć istniejący algorytm. Do obiektu klasy JGPResult dodałem listę niezaakceptowanych grup. Każda niezaakceptwana grupa będzie posiadać dodatkowo listę powodów niezaakceptowania - lista obiektów klasy Reason. W ten sposób, system będzie wiedział jakie warunki były testowane dla konkretnego rozwiązania oraz dlaczego nie zostały one zaakceptowane. 
+Aby odpowiedzieć na powyższe pytania należy rozwinąć istniejący algorytm. Do obiektu klasy JGPResult dodałem listę niezaakceptowanych grup. Każda niezaakceptwana grupa będzie posiadać dodatkowo listę powodów niezaakceptowania - lista obiektów klasy Reason. W ten sposób, system będzie wiedział jakie warunki były testowane dla konkretnego rozwiązania oraz dlaczego nie zostały one zaakceptowane. 
 Stworzyłem hierarchię klas dla powodów niezaakcpetowania:
-
+\vspace*{0.2cm}
 \includegraphics[scale=0.4]{images/reason-classes2}
-
+\vspace*{0.2cm}
 Rozszerzyłem listę argumentów każdej z metod checkerów o argument: lista powodów niezaakceptowania: List<Reason> reasons. 
-Po sprawdzeniu konkretnego warunku, w przypadku jego niezaakceptowania tworzona jest odpowiednia instancja obiektu Reason, a następnie jest ona  dodawana do listy. Np:
-
+Po sprawdzeniu konkretnego warunku, w przypadku jego niezaakceptowania tworzona jest odpowiednia instancja obiektu Reason, a następnie jest ona  dodawana do listy. Oto przykładowy kod:
+\newpage
 \begin{lstlisting}[language=Java]
 protected boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Reason> reasons) {
      if (hospLimit != null) {
@@ -508,7 +499,7 @@ protected boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Re
 }
 \end{lstlisting}
 
-Np: Powodem niezaakceptowania grupy systemu JGP może być niespełnienie warunku: czas hospitalizacji dla grupy JGP musi być większy niż 7 dni, a zdefiniowany czas leczenia jest równy 5 dni.
+Metoda ,,checkHospitalLimit'' realizuje dopisanie powodu niezaakcpetowania grupy JGP w przypadku, gdy nie zostaje on zaakceptowany po wykonaniu testu. Powodem niezaakceptowania grupy systemu JGP może być niespełnienie warunku. Na przykład: czas hospitalizacji dla grupy JGP musi być większy niż 7 dni, a zdefiniowany czas leczenia jest równy 5 dni.
 
 Takie podejście pozwala na stworzenie funkocjonalności, która będzie podpowiadać lekarzowi jakie może uzyskać grupy JGP z większą wartości punktową, czyli jak zmaksymalizować koszty leczenia pacjenta. Program podpowiadałby również jakie konkretnie warunki musi spełnić hospitalizacja, aby zaliczyć ją do droższej grupy (wybranej przez lekarza).
 

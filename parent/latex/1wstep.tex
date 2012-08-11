@@ -1,25 +1,31 @@
 \chapter{Wstęp}
 \label{cha:wstep}
 
-Rozliczanie kosztów leczenia pacjenta jest problemem skomplikowanym. Z jednej strony dążymy do rozwiązania, w którym kluczowym czynnikiem jest zdrowie pacjenta. Aspekt medyczny brany jest pod uwagę na pierwszym miejscu. Jednak z drugiej strony równie ważnym jest aspekt finansowy. Nieprawidłowo działający system rozliczeń ma bezpośredni wpływ na aspekt medyczny, co przekłada się na niską jakość świadczonych usług. Należy więc oczekiwać, że przyjęta przez płatnika metoda finansowania świadczeń opieki zdrowotnej powinna dążyć do zapewnienia obiektywnego pomiaru jakości oraz kosztów leczenia w jednostkach szpitalnych. Jednocześnie powinna motywować świadczeniodawców do zwiększania dostępności do odpowiedniej jakości świadczeń, jak również ograniczać nieuzasadniony wzrost kosztów opieki zdrowotnej.
+Rozliczanie kosztów leczenia pacjenta jest problemem skomplikowanym. Z jednej strony dążymy do rozwiązania, w~którym kluczowym czynnikiem jest zdrowie pacjenta. Aspekt medyczny brany jest pod uwagę na pierwszym miejscu. Jednak z drugiej strony równie ważnym jest aspekt finansowy. Nieprawidłowo działający system rozliczeń ma bezpośredni wpływ na aspekt medyczny, co przekłada się na niską jakość świadczonych usług. Należy więc oczekiwać, że przyjęta przez płatnika metoda finansowania świadczeń opieki zdrowotnej powinna dążyć do zapewnienia obiektywnego pomiaru kosztów leczenia w~jednostkach szpitalnych. Jednocześnie powinna motywować świadczeniodawców do zwiększania dostępności do odpowiedniej jakości świadczeń, jak również ograniczać nieuzasadniony wzrost kosztów opieki zdrowotnej.
 
-Dotychczasowe doświadczenia światowe wskazują, że najlepszą metodą finansowania świadczeń medycznych jest system Jednorodnych Grup Pacjentów. Łączy on zarówno aspekt medyczny jak i finansowy. Istotnym założeniem tego systemu jest jego otwarty charakter. Corocznie każdy z krajów, w których obowiązuje system JGP przyjmuje nową wersję systemu, który jest ciągle doskonalony i rozwijany.
+Dotychczasowe doświadczenia światowe wskazują, że najlepszą metodą finansowania świadczeń medycznych jest system Jednorodnych Grup Pacjentów. Łączy on zarówno aspekt medyczny jak i finansowy. Istotnym założeniem tego systemu jest jego otwarty charakter. Corocznie każdy z krajów, w~których obowiązuje system JGP przyjmuje nową wersję systemu, który jest ciągle doskonalony i rozwijany.
 
 %---------------------------------------------------------------------------
 
 \section{Cele pracy}
 \label{sec:celePracy}
 
-Celem poniższej pracy jest stworzenie aplikacji typu gruper według wytycznych Narodowego Funduszu Zdrowia. Aplikacja będzie systemem ekspertowym opartym na bazie wiedzy dostarczonej przez NFZ. Algorytm grupowania będzie własną implementacją systemu regułowego w języku JAVA, który będzie odpowiadał algorytmowi zapropowanemu przez NFZ. Program będzie jedynym rozwiązaniem typu OpenSource na rynku. Poruszony zostanie również problem optymalizacji procesu grupowania, czyli maksymalizacji kosztów leczenia pacjenta. Oczywistym faktem jest, że każda placówka medyczna chce dostać jak największy zwrot poniesionych środków od płatnika. Na końcu przedstawione zostaną realne przypadki dla konkretnych placówek oraz konkretnych przypadków leczenia dla których użyto aplikacji. Napisane zostaną testy integracyjne, sprawdzające poprawność działania algorytmu grupera dla wszystkich zdefiniowanych reguł. 
-Podsumowując stawiane tezy:
+Celem poniższej pracy jest stworzenie aplikacji typu gruper według wytycznych Narodowego Funduszu Zdrowia. Aplikacja będzie systemem ekspertowym opartym na bazie wiedzy dostarczonej przez NFZ. Algorytm grupowania będzie własną implementacją systemu regułowego w~języku JAVA, który będzie odpowiadał algorytmowi zapropowanemu przez NFZ. Program będzie jedynym rozwiązaniem typu ,,open source'' na rynku. Poruszony zostanie również problem optymalizacji procesu grupowania, czyli maksymalizacji kosztów leczenia pacjenta. Należy podkreślić, że każda placówka medyczna chce dostać jak największy zwrot poniesionych środków od płatnika. Na końcu pracy przedstawione zostaną realne przypadki użycia systemu dla konkretnych przypadków leczenia. Napisane zostaną testy integracyjne, sprawdzające poprawność działania algorytmu grupera dla wszystkich zdefiniowanych reguł. 
+Podsumowując stawiane cele:
 \begin{enumerate}
-\item Implementacja algorytmu grupera NFZ
-\item Stworzenie własnego systemu ekspertowego dla rozwiązania
-\item Optymalizacja kosztów leczenia, rozszerzenie grupera
-\item Jedyne na rynku rozwiązanie OpenSource
-\item Testy integracyjne, realne przypadki użycia
+\item Implementacja algorytmu ,,Gruper JGP''.
+\item Stworzenie własnego systemu ekspertowego dla rozwiązania.
+\item Optymalizacja kosztów leczenia.
+\item Rozwiązanie typu ,,open source''.
+\item Testy integracyjne, realne przypadki użycia.
 \end{enumerate}
 
+
+%---------------------------------------------------------------------------
+
+\section{Teza pracy}
+\label{sec:tezaPracy}
+//TODO
 
 %---------------------------------------------------------------------------
 
@@ -28,9 +34,9 @@ Podsumowując stawiane tezy:
 
 W rodziale~\ref{cha:wprowadzenie} przedstawiono wszystkie podstawowe informacje oraz zdefiniowano słownik podstawowych pojęć. Wyjaśniona została istota aplikacji grupera oraz powszechnego na całym świecie systemu Jednorodnych Grup Pacjentów. Przedstawiona została również bardzo skrócona wersja historii powstania systemu JGP.
 
-W rodziale~\ref{cha:rozwiazanie} został szczegółowo opisany system, który został stworzony w ramach tej pracy. W tym rozdziale znajduje się opis architektury systemu, modelu danych, następnie wyjaśniony został szczegółowo algorytm grupowania. Stworzenie systemu ekspertowego własnej implementacji odpowiadającego algorytmowi grupowania znajduje się w podrozdziale~\ref{sec:systemEkspertowy}.
+W rodziale~\ref{cha:rozwiazanie} został szczegółowo opisany system, który został stworzony w~ramach tej pracy. W~tym rozdziale znajduje się opis architektury systemu, modelu danych, następnie wyjaśniony został szczegółowo algorytm grupowania. Opis systemu ekspertowego własnej implementacji odpowiadającego algorytmowi grupowania znajduje się w~podrozdziale~\ref{sec:systemEkspertowy}.
 
-Rozdział~\ref{cha:prezentacja} zawiera prezentację działania systemu na konkretnym przykładzie. Przedstawiony został przypadek użycia aplikacji - rozliczenie kosztów leczenia oraz przeprowadzona została optymalizacja otrzymanych wyników.
+Rozdział~\ref{cha:prezentacja} zawiera prezentację działania systemu na konkretnym przykładzie. Przedstawiony został przypadek użycia aplikacji, który zawiera rozliczenie kosztów hospitalizacji oraz przeprowadzenie optymalizacji otrzymanych wyników.
 
-Podsumowanie pracy znajduje się w rozdziale ~\ref{cha:podsumowanie} - są tam informacje o możliwościach rozwoju aplikacji; porównanie z istniejącymi na rynku rozwiązaniami oraz zestawienie wszystkich użytych narzędzi i bibliotek.
+Podsumowanie pracy znajduje się w~rozdziale ~\ref{cha:podsumowanie} - są tam informacje o możliwościach rozwoju aplikacji; porównanie z istniejącymi na rynku rozwiązaniami oraz zestawienie wszystkich użytych narzędzi i bibliotek.
 

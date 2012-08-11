@@ -8,13 +8,13 @@ przedstawiony interfejs graficzny użytkownika. Następnie rozdział~\ref{sec:pr
 
 \section{Interfejs użytkownika}
 \label{sec:interfejsUzytkownika}
-Aplikacja ma standardowy interfejs aplikacji desktopowej napisanej w języku JAVA. Skórka aplikacji jest ustawiona na przyjazny ,,PlasticXPLookAndFeel''.
+Aplikacja posiada standardowy interfejs aplikacji desktopowej napisanej w języku JAVA. Skórka aplikacji jest ustawiona na przyjazny ,,PlasticXPLookAndFeel''.
 
-Jeden z szablonowych widoków, który chciałem zaprezentować w tej pracy to widok bazy pacjentów. Warto zaznaczyć, że wszystkie funkcjonalności, takie jak dodawanie, usuwanie, filtrowanie oraz cały widoczny układ komponentów graficznych dostarcza framework Valkyrie-RCP. Realizuje je klasa DataEditor, która jest komponentem graficznym(Widgetem), do którego wstrzykujemy DataProvider - fasadę danych dla interfejsu użytkownika, DetailForm - formę do dodawania/usuwania danych, FilterForm formę dla dodatkowego filtrowania oraz TableWidget - obiekt definiujący wyświetlaną tabelkę danych. Poniższy rysunek ilutruje widok bazy pacjetnów:
+Jeden z szablonowych widoków, który chciałem zaprezentować w tej pracy to widok bazy pacjentów. Warto zaznaczyć, że wszystkie funkcjonalności, takie jak dodawanie, usuwanie, filtrowanie oraz cały widoczny układ komponentów graficznych dostarcza framework Valkyrie-RCP. Realizuje je klasa DataEditor, która jest komponentem graficznym(Widgetem), do którego wstrzykujemy JavaBean'y: \textbf{DataProvider} - fasadę danych dla interfejsu użytkownika, \textbf{DetailForm} - formę do dodawania/usuwania danych, \textbf{FilterForm} formę dla dodatkowego filtrowania oraz \textbf{TableWidget} - obiekt definiujący wyświetlaną tabelkę danych. Poniższy rysunek ilutruje widok bazy pacjetnów:
 
 \includegraphics[scale=0.4]{images/patient} 
 
-Na identycznym szablonie zbudowane są widoki: katalog kodów ICD-9, ICD-10, JGP. Z tą różnicą, że zablokowana jest możliwość dodawania, edycji i usuwania faktów z bazy wiedzy. Według założeń systemu ekspertowego może te operacje wykonywać tylko i wyłącznie inżynier wiedzy.
+W oparciu o wzorzec DataEditor zbudowane są następujące widoki: katalog kodów ICD-9, ICD-10, JGP. Z tą różnicą w stosunku do widoku bazy pacjentów, że zablokowana jest dla nich możliwość dodawania, edycji i usuwania faktów z bazy wiedzy. Według założeń systemu ekspertowego może te operacje wykonywać tylko i wyłącznie inżynier wiedzy.
 
 %---------------------------------------------------------------------------
 
@@ -26,15 +26,15 @@ Zdefiniujmy więc fakty wejściowe. Leczony pacjent urodzony w 1937 roku ma 75 l
 
 \includegraphics[scale=0.4]{images/gruper1}
 
-Następnie należy zdefiniować pobyt. Ustalamy dane pobytu: odział kod świadczenia, data przyjęcia i wypisu przepisuje się auomatycznie.
+Następnie należy zdefiniować pobyt. Aby to zrobić klikamy przycisk Dodaj pobyt.
 
 \includegraphics[scale=0.4]{images/gruper2}
 
-Kolejnym krokiem jest dodanie zdiagnozowanych rozpoznań. U pacjenta stwierdzono:
+Ustalamy dane pobytu: oddział kod świadczenia; data przyjęcia i wypisu przepisuje się automatycznie.
 
 \includegraphics[scale=0.4]{images/gruper3}
 
-Dodajemy rozpoznanie do pobytu klikając przycisk Select.
+Kolejnym krokiem jest dodanie zdiagnozowanych rozpoznań. Dodajemy rozpoznanie do pobytu klikając przycisk Select.
 
 \includegraphics[scale=0.4]{images/gruper4}
 
@@ -50,21 +50,21 @@ Po kliknięciu OK, wracamy do okienka z prawidłowo zdefiniowanym pobytem.
 
 \includegraphics[scale=0.4]{images/gruper7}
 
-Widok groupera z wypełnionymi wszystkimi danymi wejściowymi prawidłowo, pozwala na uruchomienie algorytmu użytkownikowi. Należy nacisnąć przycisk Grupuj.
+Kiedy wszystkie dane dla pobytu zostały uzupełnione zatwierdzamy zapisanie pobytu przyciskiem OK.
 
 \includegraphics[scale=0.4]{images/gruper8}
 
-Uruchamiany jest algorytm wnioskowania, który wybiera warunki do sprawdzenia, testuje je, a wyniki zapisuje na listach: Zaakceptowane, Potencjalnie droższe, Potencjalnie tańsze.
+Widok groupera z wypełnionymi wszystkimi danymi wejściowymi prawidłowo, pozwala na uruchomienie algorytmu użytkownikowi. Należy nacisnąć przycisk Grupuj.
 
 \includegraphics[scale=0.4]{images/gruper9}
 
-W tym miejscu można zakończyć przebieg grupowania. Została wybrana optymalna grupa JGP: ,,A49 - Udar mózgu - leczenie > 3 dni'' oraz ustalona została wartość kosztów leczenia 77pkt.
+Uruchamiany jest algorytm wnioskowania, który wybiera warunki do sprawdzenia, testuje je, a wyniki zapisuje na listach: Zaakceptowane, Potencjalnie droższe, Potencjalnie tańsze. W tym miejscu można zakończyć przebieg grupowania. Została wybrana optymalna grupa JGP: ,,A49 - Udar mózgu - leczenie > 3 dni'' oraz ustalona została wartość kosztów leczenia 77pkt.
 
 Spróbujmy zoptymalizować koszty leczenia. Dla placówki, która często jest zadłużona na niebagatelne kwoty i jest na skraju bankructwa bardzo ważna jest maksymalizacja kosztów leczenia. Odpowiednie narzędzia pozwalające przewidywać wyliczane według NFZ koszty leczenia pacjenta może sprawić, że placówka ma możliwość wygenerowania większych zysków z wykonywanej pracy, a pacjent będzie leczony lepiej. Co należy zrobić, aby zmaksymalizować koszty leczenia dla naszego przypadku? Na tym etapie należy spojrzeć na zakładkę ,,Potencjalnie droższe''. Będą tam grupy JGP które będą nas właśnie szczególnie interesować.
 
 \includegraphics[scale=0.4]{images/gruper10}
 
-Widać, że istnieje grupa JGP dająca możliwośc wygenerwoania kosztów w wysokości 162pkt. Jest to ponad 2-krotnie większa wartość od wyliczonej aktualnie! Co zrobić, żeby zakwalifikować leczenie do tej grupy systemu JGP. Klikamy w przycisk Szczegóły i patrzymy na powody niezaakceptowania grupy.
+Widać, że istnieje grupa JGP dająca możliwośc wygenerwoania kosztów w wysokości 162pkt. Jest to ponad 2-krotnie większa wartość od wyliczonej aktualnie! Co zrobić, żeby zakwalifikować leczenie do tej grupy systemu JGP. Klikamy przycisk Szczegóły i sprawdzamy powody niezaakceptowania grupy A48.
 
 \includegraphics[scale=0.4]{images/gruper11}
 
@@ -82,7 +82,7 @@ I dodajemy kolejną procedurę medyczną, badanie radiologiczne: ,,Arteriografia
 
 \includegraphics[scale=0.4]{images/gruper14}
 
-W wyniku ponownego uruchomienia algorytmu grupowania, otrzymuje jako wynik zaakceptowaną i optymalną grupę JGP, na której na zależało:
+W wyniku ponownego uruchomienia algorytmu grupowania, otrzymuje jako wynik zaakceptowaną i optymalną grupę JGP, na której nam zależało:
 
 \includegraphics[scale=0.4]{images/gruper15}
 
@@ -93,9 +93,9 @@ Wybrana zostaje grupa A48 - Kompleksowe leczenie udarów mózgu > 7 dni w oddzia
 \section{Testy integracyjne}
 \label{sec:testyIntegracyjne}
 
-Takich przypadków użycia aplikacji jest na prawdę bardzo wiele. Aplikacje wysokiej jakości charakteryzują się wysokim pokryciem kodu w testach. Postanowiłem zatem napisać testy integracyjne klasy JGPService. Stworzyłem klasę JGPServiceTest, której zadaniem jest przetestowanie 26 przypadków użycia algorytmu grupowania, gdzie grupa wynikowa będzie pochodzić z konkretnego warunku kierunkowego. A wieć poszczególne testy są napisane w ten sposób, aby przetestować każdy z możliwych 26 warunków kierunkowcyh A-Z.
-Przykład przedstawiony powyżej został również zaimplementwoany w testach. Jest to test sprawdzający poprawność działania warunku kierunkowego E - grupa zdefiniowana procedurą i rozpoznaniem zasadniczym; może mieć dodatkowe warunki (czas hospitalizacji, wiek).
-Dla testów integracyjnych przygotowana jest baza wiedzy. Ustalane są dane epizodu, uruchamiany jest mechanizm wnioskowania. A następnie sprawdzane są wyniki. Testowana jest poprawność wyników z listy zaakceptowanych kodów oraz z listy niezaakceptowanych kodów, wraz z testami powodów niezaakceptowania.
+Takich przypadków użycia aplikacji jest na prawdę bardzo wiele. Aplikacje wysokiej jakości charakteryzują się wysokim pokryciem kodu w testach. Postanowiłem zatem napisać testy integracyjne klasy JGPService. Stworzyłem klasę JGPServiceTest, której zadaniem jest przetestowanie wszystkich głównych ścieżek algorytmu grupowania, gdzie testowana grupa wynikowa będzie pochodzić z konkretnego warunku kierunkowego. Zatem poszczególne testy są napisane w ten sposób, aby przetestować każdy z możliwych 26 warunków kierunkowcyh A-Z.
+Przykład przedstawiony powyżej został również zaimplementwoany w testach. Jest to test, który sprawdza poprawne działanie systemu dla warunku kierunkowego E - ,,grupa zdefiniowana procedurą i rozpoznaniem zasadniczym; może mieć dodatkowe warunki (czas hospitalizacji, wiek)''.
+Dla testów integracyjnych przygotowana jest testowa baza wiedzy. Ustalane są dane epizodu, uruchamiany jest mechanizm wnioskowania. Następnie sprawdzane są wyniki. Testowana jest poprawność wyników z listy zaakceptowanych kodów oraz z listy niezaakceptowanych kodów, wraz z testami zgodności powodów niezaakceptowania z wartościami oczekiwanymi.
 Kod przykładowego testu integracyjnego:
 
 \begin{lstlisting}[language=Java]
