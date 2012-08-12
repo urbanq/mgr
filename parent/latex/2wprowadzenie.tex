@@ -1,7 +1,7 @@
 \chapter{Wprowadzenie}
 \label{cha:wprowadzenie}
 
-JGP - ideą tego rozwiązania jest stworzenie w~miarę prostych i łatwych w~stosowaniu metod kwalifikowania danego świadczenia(już po jego wykonaniu) do pewnej grupy ze ściśle zdefiniowanej listy, celem rozliczenia usługi przed płatnikiem (NFZ).
+JGP - ideą tego rozwiązania jest stworzenie w~miarę prostych i łatwych w~stosowaniu metod kwalifikowania danego świadczenia(już po jego wykonaniu) do pewnej grupy ze ściśle zdefiniowanej listy, celem rozliczenia usługi przed płatnikiem(NFZ) \cite{kozierkiewicz_jgp}.
 Uwzględniając fakt, że aplikacja jest przeznaczona dla sektora medycznego starano się jasno i przejrzyście wytłumaczyć poszczególne pojęcia medyczne. Dla czytelnika, który nie jest zapoznany z~nomenklaturą medyczną wprowadzono słownik pojęć medycznych, do którego może wracać w~trakcie czytania pracy. Podstawowe pojęcia używane w~pracy są zdefiniowane w~podrozdziałach poniżej.  
 
 %---------------------------------------------------------------------------
@@ -9,7 +9,7 @@ Uwzględniając fakt, że aplikacja jest przeznaczona dla sektora medycznego sta
 \section{Rekord pacjenta}
 \label{sec:rekordPacjenta}
 
-Przez pojęcie rekord pacjenta rozumiemy zbiór danych identyfikujących jednoznacznie pacjenta. Podstawowe dane to imię, nazwisko oraz numer PESEL. Z punktu widzenia pracy dane rekordu pacjenta takie jak adres, numer telefonu, historia leczenia są pomijane. Dla algorytmu ,,Grupera JGP'' wymagane jest podanie daty urodzenia oraz płci pacjenta. Dane te można odczytać z~numeru PESEL.
+Przez pojęcie rekord pacjenta rozumiemy zbiór danych identyfikujących jednoznacznie pacjenta. Podstawowe dane to imię, nazwisko oraz numer PESEL. Z punktu widzenia pracy dane rekordu pacjenta takie jak adres, numer telefonu, historia leczenia są pomijane. Dla algorytmu ,,Grupera JGP'' wymagane jest podanie daty urodzenia oraz płci pacjenta\cite{algorytm_grupera}. Dane te można odczytać z~numeru PESEL.
 
 Przykład:
 Mateusz, Urbanik, 86060211756, 02.06.1986, mężczyzna.
@@ -19,8 +19,8 @@ Mateusz, Urbanik, 86060211756, 02.06.1986, mężczyzna.
 \section{Katalog kodów rozpoznań i procedur (ICD-10, ICD9)}
 \label{sec:kodyICD}
 
-Podstawowe dane określające przebieg leczenia pacjenta to rozpoznania i procedury. Rozpoznania medyczne zostały sklasyfikowane w~katalogu ICD-10. NFZ definiuje kalog ICD-10 jako ,,Międzynarodową Statystyczną Klasyfikację Chorób i Problemów Zdrowotnych''.
-Procedury medyczne zostały zestawione w~katalogu ICD-9. Lista kodów w~tej pracy zawiera 3717 procedur medycznych oraz 7488 rozpoznań medycznych(diagnoz).
+Podstawowe dane określające przebieg leczenia pacjenta to rozpoznania i procedury. Rozpoznania medyczne zostały sklasyfikowane w~katalogu ICD-10. NFZ definiuje kalog ICD-10 jako ,,Międzynarodową Statystyczną Klasyfikację Chorób i Problemów Zdrowotnych''\cite{forumNFZ}.
+Procedury medyczne zostały zestawione w~katalogu ICD-9. Lista kodów w~tej pracy zawiera 3717 procedur medycznych oraz 7488 rozpoznań medycznych(diagnoz)\cite{plik_parametryzujacy}.
 
 Przykłady rozpoznań(kod - nazwa):
 \begin{itemize}
@@ -41,7 +41,7 @@ Przykłady procedur(kod - nazwa):
 \section{Hospitalizacja}
 \label{sec:hospitalizacja}
 
-Hospitalizacja, częściej nazywana epizodem lub danymi epizodu. Epizodem definiujemy leczenie w~szpitalu obejmujące wszystkie świadczenia udzielone od momentu przyjęcia do momentu wypisu lub zgonu niezależnie od ilości oddziałów(pobytów), w~których pacjent był leczony. Pobyt oznacza leczenie w~oddziale o określonej specjalności.
+Hospitalizacja nazywana jest również epizodem lub danymi epizodu. Pojęciem epizod definiuje się leczenie w~szpitalu obejmujące wszystkie świadczenia udzielone od momentu przyjęcia do momentu wypisu lub zgonu niezależnie od ilości oddziałów(pobytów), w~których pacjent był leczony. Pobyt oznacza leczenie w~oddziale o określonej specjalności\cite{algorytm_grupera}.
 
 Przykład:
 \begin{itemize}
@@ -69,7 +69,7 @@ Przykład:
 \section{Charakterystyka JGP}
 \label{sec:charakterystykaJGP}
 
-Charakterystyka JGP jest to zbiór wszystkich istotnych parametrów służących do prawidłowego wyznaczenia grupy:
+Charakterystyka JGP jest to zbiór wszystkich istotnych parametrów służących do prawidłowego wyznaczenia grupy\cite{algorytm_grupera}:
 \begin{itemize}
 \item powiązana grupa JGP,
 \item rozpoznania zasadnicze, współistniejące według kodyfikacji ICD-10,
@@ -87,7 +87,7 @@ Charakterystyka JGP jest to zbiór wszystkich istotnych parametrów służących
 \label{sec:kodJGP}
 
 JGP, czyli Jednorodne Grupy Pacjentów jest to tłumaczenie angielskiego terminu DRG - Diagnosis Related Groups.
-JGP posiada swój własny unikalny kod, kod produktu oraz nazwę. Każda z~grup posiada wartości punktowe wyliczane przez płatnika, zależne od trybu hospitalizacji. w~mojej pracy bazuję na liście 514 kodów JGP.
+JGP posiada swój własny unikalny kod, kod produktu oraz nazwę. Każda z~grup posiada wartości punktowe wyliczane przez płatnika, zależne od trybu hospitalizacji. W~pracy bazowano na liście 514 kodów JGP\cite{plik_parametryzujacy}.
 
 Przykład:
 \begin{itemize}
@@ -101,7 +101,7 @@ Przykład:
 \subsection{Warunki kierunkowe}
 \label{sec:warunkiKierunkowe}
 
-Dla każdej grupy zdefiniowany jest zestaw warunków logicznych, które pozwalają na przypisanie epizodu do tej grupy JGP. Są to dodatkowe wymagania, które decydują o przebiegu grupowania. W~algorytmie grupera w~wersji numer 10 zdefiniowanych jest 26 warunków kierunkowych. Oznaczone są one kolejno literami alfabetu.
+Dla każdej grupy zdefiniowany jest zestaw warunków logicznych, które pozwalają na przypisanie epizodu do tej grupy JGP. Są to dodatkowe wymagania, które decydują o przebiegu grupowania. W~algorytmie ,,Grupera'' w~wersji numer 10 zdefiniowanych jest 26 warunków kierunkowych. Oznaczone są one kolejno literami alfabetu\cite{algorytm_grupera}.
 Przykład:
 \begin{itemize}
 \item D - grupa zdefiniowana rozpoznaniem i dwiema procedurami, z~jednej listy, może mieć dodatkowy warunek (czas hospitalizacji).
@@ -114,7 +114,7 @@ Przykład:
 \subsection{Warunki dodatkowe}
 \label{sec:warunkiDodatkowe}
 
-W przebiegu grupowania brane są pod uwagę warunki dodatkowe takie jak: wiek, czas hospitalizacji, płeć, tryb przyjęcia, tryb wypisu, oddział. Zdefiniowane ograniczenia powodują zaliczenie lub nie zaliczenie grupy dla danego epizodu.
+W przebiegu grupowania brane są pod uwagę warunki dodatkowe takie jak: wiek, czas hospitalizacji, płeć, tryb przyjęcia, tryb wypisu, oddział. Zdefiniowane ograniczenia powodują zaliczenie lub nie zaliczenie grupy dla danego epizodu\cite{algorytm_grupera}.
 Przykład:
 \begin{itemize}
 \item Czas hospitalizacji mniejszy od 14 dni.
@@ -127,31 +127,32 @@ Przykład:
 \section{Gruper NFZ}
 \label{sec:gruperNFZ}
 
-Przez pojęcie ,,Gruper'' lub ,,Gruper JGP'' rozumiemy aplikację umożliwiającą kwalifikację rekordu pacjenta (na podstawie danych epizodu) do właściwej grupy systemu JGP. Wynikiem grupowania jest konkretna grupa z~katalogu jednorodnych grup pacjentów oraz wartość punktowa, która jest przeliczana przez płatnika na konkretną kwotę pieniężną.
+Przez pojęcie ,,Gruper'' lub ,,Gruper JGP'' rozumiemy aplikację umożliwiającą kwalifikację rekordu pacjenta (na podstawie danych epizodu) do właściwej grupy systemu JGP. Wynikiem grupowania jest konkretna grupa z~katalogu jednorodnych grup pacjentów oraz wartość punktowa, która jest przeliczana przez płatnika na konkretną kwotę pieniężną\cite{kozierkiewicz_jgp}.
 
 %---------------------------------------------------------------------------
 
 \section{Publikacje NFZ}
 \label{sec:publikacjeNFZ}
 
-Narodowy Fundusz Zdrowia publikuje na swojej witrynie internetowej \underline{\texttt{www.nfz.gov.pl}} pliki potrzebne do stworzenia aplikacji typu ,,Gruper''. Pomijając pliki z~opisami zmian, prezentacje na temat procesu grupowania oraz inne mało istotne, istnieją 2 zasadnicze pliki. Są to: ,,plik\_parametryzujący\_v25.xls'' oraz ,,Algorytm\_grupera\_JGP\_v3.doc''. Do dzisiaj wydanych zostało ponad 30 wersji pliku parametryzującego oraz ponad 10 wersji pliku z~algorytmem grupera.
-,,plik\_parametryzujący\_v25.xls'' jest to dokument w~arkuszu MS-Excel zawierający wszystkie potrzebne dla ,,Grupera'' dane w~niezestandaryzowanym zapisie. Natomiast ,,Algorytm\_grupera\_JGP\_v3.doc'' jest to dokument w~formacie MS-Word opisujący algorytm grupera według wymogów Narodowego Funuszu Zdrowia. Jest to 34 stronnicowy opis algorytmu, do którego stworzenia nie zostały wykorzystane żadne ze standardów informatycznych. Zbiór danych na których postanowiłem pracować to jedna z~najnowszych wersji pliku parametryzującego (wersja 25). Algorytm ,,Grupera'' postanowiłem zaimplementować w~wersji 10. Różnice pomiędzy wersjami plików parametryzująch oraz plików z~algorytmem są subtelne i nie mają najmniejszego wpływu na wynik pracy.
+Narodowy Fundusz Zdrowia publikuje na swojej witrynie internetowej \underline{\texttt{www.nfz.gov.pl}} pliki potrzebne do stworzenia aplikacji typu ,,Gruper''. Pomijając pliki z~opisami zmian, prezentacje na temat procesu grupowania oraz inne mało istotne, istnieją 2 zasadnicze pliki. Są to: \textsl{,,plik\_parametryzujący\_v25.xls''}\cite{plik_parametryzujacy} oraz \textsl{,,Algorytm\_grupera\_JGP\_v10.doc''}\cite{algorytm_grupera}. Do dzisiaj wydanych zostało ponad 30 wersji pliku parametryzującego oraz ponad 10 wersji pliku z~algorytmem ,,Grupera''.
+\textsl{,,plik\_parametryzujący\_v25.xls''} jest to dokument w~arkuszu MS-Excel zawierający wszystkie potrzebne dla ,,Grupera'' dane w~niezestandaryzowanym zapisie. Natomiast \textsl{,,Algorytm\_grupera\_JGP\_v10.doc''} jest to dokument w~formacie MS-Word opisujący algorytm. Plik zawiera wszystkie wytyczne Narodowego Funuszu Zdrowia potrzebne do stworzenia aplikacji. Jest to 34 stronnicowy opis algorytmu nie używający standardów informatycznych(np. języka UML). Zbiór danych na których zdecydowano się pracować to jedna z~najnowszych wersji pliku parametryzującego (wersja 25). Algorytm ,,Grupera'' postanowiono zaimplementować w~wersji 10. Różnice pomiędzy wersjami plików parametryzująch oraz plików z~algorytmem są subtelne i nie mają najmniejszego wpływu na wynik pracy.
 
 %---------------------------------------------------------------------------
 
 \section{Idea systemu JGP}
 \label{sec:ideaSystemuJGP}
 
-System Jednorodnych Grup Pacjentów został wprowadzony, aby usystematyzować w~Polsce sposób rozliczania hospitalizacji pacjenta. Praktyczna konstrukcja tego systemu wynika z~obserwacji, że pewne grupy pacjentów, często znacznie różniące się wymagają dość podobnego postępowania. Natomiast z~drugiej strony, ta sama choroba u pacjentów rożniących się wiekiem i współistniejącymi problemami wymaga często innego postępowania.
-Zwróćmy uwagę, że ze zbioru 3717 procedur oraz 7488 rozpoznań, które w~danych episodu mogą występować w~niezliczonej ilości kombinacji w~wyniku procesu grupowania otrzymujemy zawsze jedną grupę spośród 514 możliwych oraz dokładnie jedną wartość punktową, która jednoznacznie definiuje koszty leczenia.
-Wartości punktowe dla poszczególnych grup, czyli wycena grup została dokonana przez ekspertów Narodowego Funduszu Zdrowia na podstawie danych sprawozdawczych z~monitorowanych szpitali w~okresie 2002-2007. Obecnie wycena opiera się na wszystkich danych sprawozdawczych przekazywanych przez wszystkie szpitale oddziałom NFZ i dostosowywana jest do rzeczywistych kosztów, z~częstotliwością co około 6 miesięcy.
+System Jednorodnych Grup Pacjentów został wprowadzony, aby usystematyzować w~Polsce sposób rozliczania hospitalizacji pacjenta. Praktyczna konstrukcja tego systemu wynika z~obserwacji, że pewne grupy pacjentów, często znacznie różniące się wymagają dość podobnego postępowania. Natomiast z~drugiej strony, ten sam przypadek chorobowy u pacjentów rożniących się wiekiem i współistniejącymi problemami wymaga często innego postępowania\cite{kozierkiewicz_jgp}.
+
+Zwróćmy uwagę, że ze zbioru 3717 procedur oraz 7488 rozpoznań, które w~danych epizodu mogą występować w~niezliczonej ilości kombinacji w~wyniku procesu grupowania otrzymujemy zawsze jedną grupę spośród 514 możliwych oraz dokładnie jedną wartość punktową, która jednoznacznie definiuje koszty leczenia.
+Wartości punktowe dla poszczególnych grup, czyli wycena grup została dokonana przez ekspertów Narodowego Funduszu Zdrowia na podstawie danych sprawozdawczych z~monitorowanych szpitali w~okresie 2002-2007. Obecnie wycena opiera się na wszystkich danych sprawozdawczych przekazywanych przez wszystkie szpitale oddziałom NFZ i dostosowywana jest do rzeczywistych kosztów, z~częstotliwością co około 6 miesięcy\cite{szkoleniaJGP}.
 Rysunek~\ref{img:rysunek_jgp} przedstawia ideę systemu JGP:
 
 \vspace*{1cm}
 \begin{figure}[!ht]
 \label{img:rysunek_jgp}
 \includegraphics{images/standarization}
-\caption[Rysunek przedstawiający ideę systemu JGP]{Idea systemu JGP}
+\caption[Rysunek przedstawiający ideę systemu JGP]{Idea systemu JGP. Autor: Mateusz Urbanik}
 \end{figure}
 
 %---------------------------------------------------------------------------
@@ -159,16 +160,16 @@ Rysunek~\ref{img:rysunek_jgp} przedstawia ideę systemu JGP:
 \section{Historia systemu Jednorodnych Grup Pacjentów}
 \label{sec:historiaJGP}
 
-Początki systemu JGP sięgają lat 60-tych XX wieku systemu opieki zdrowotnej w~USA. Wtedy zaobserwowano, iż pacjenci z~tym samym schorzeniem, którym wykonywano te same badania i procedury oraz których czas hospitalizacji był zbliżony, generowali te same koszty. Na przełomie lat 60. i 70. prof. Robert Fetter z~Uniwersytetu Yale po raz pierwszy przedstawił założenia systemu Jednorodnych Grup Pacjentów (Diagnosis Related Groups – DRG). Pacjenci z tą samą chorobą generujący podobne koszty zostali przyporządkowani do 333 grup, w~54 głównych kategoriach diagnostycznych. Prof. Robert Fetter oparł się na analizie danych 1 mln 700 tys. pacjentów hospitalizowanych w~szpitalach stanu New Jersey. Ostatecznie w~Stanach Zjednoczonych system DRG wprowadzono w~życie decyzją Kongresu w~roku 1982.
+Początki systemu JGP sięgają lat 60-tych XX wieku systemu opieki zdrowotnej w~USA. Wtedy zaobserwowano, iż pacjenci z~tym samym schorzeniem, którym wykonywano te same badania i procedury oraz których czas hospitalizacji był zbliżony, generowali te same koszty. Na przełomie lat 60. i 70. prof. Robert Fetter z~Uniwersytetu Yale po raz pierwszy przedstawił założenia systemu Jednorodnych Grup Pacjentów (Diagnosis Related Groups – DRG). Pacjenci z tą samą chorobą generujący podobne koszty zostali przyporządkowani do 333 grup, w~54 głównych kategoriach diagnostycznych. Prof. Robert Fetter oparł się na analizie danych 1 mln 700 tys. pacjentów hospitalizowanych w~szpitalach stanu New Jersey. Ostatecznie w~Stanach Zjednoczonych system DRG wprowadzono w~życie decyzją Kongresu w~roku 1982\cite{kozierkiewicz_jgp}.
 
-Zaproponowany system zaczął się upowszechniać w~Europie pod koniec lat 90. XX wieku. W~Polsce pierwsze próby implementacji modelu DRG miały miejsce jeszcze w~czasach, kiedy koszty leczenia finansowane były przez Kasy Chorych:
+Zaproponowany system zaczął się upowszechniać w~Europie pod koniec lat 90. XX wieku. W~Polsce pierwsze próby implementacji modelu DRG miały miejsce jeszcze w~czasach, kiedy koszty leczenia finansowane były przez Kasy Chorych. Oto lista dużych projektów wpływających na rozwój i ujednolicenie systemu JGP w Polsce\cite{szkoleniaJGP}:
 \begin{enumerate}
 \item Grupy JGP w~ginekologii i położnictwie w~Łódzkiej Kasie Chorych w~1999 roku, opracowane na podstawie danych o kosztach leczenia pacjentek z~10 szpitali z~województwa warmińsko-mazurskiego.
 \item Wdrożenie systemu JGP do rozliczeń świadczeń szpitalnych w~Dolnośląskiej i Podkarpackiej Kasie Chorych w~latach 1999 - 2003.
 \item Projekt adaptacji austriackiego systemu LKF zrealizowany w~ramach projektu Banku Światowego w~latach 2000 – 2002.
 \item Doświadczenia zebrane w~trakcie trwania projektu VITAPOL komponent-3: „Przegląd polskiego systemu ustalania kosztów w~opiece zdrowotnej” – umowa realizowana przez brytyjskich ekspertów.
 \end{enumerate} 
-To właśnie brytyjski system HRG stał się podstawą opracowania polskiego modelu Jednorodnych Grup Pacjentów JGP. System Jednorodnych Grup Pacjentów w~leczeniu szpitalnym został wprowadzony w~Polsce 1 lipca 2008, a jego głównym twórcą jest dr Jacek Grabowski, ekspert systemów opieki zdrowotnej, z~wykształcenia lekarz psychiatra.
+To właśnie brytyjski system HRG stał się podstawą opracowania polskiego modelu Jednorodnych Grup Pacjentów JGP. System Jednorodnych Grup Pacjentów w~leczeniu szpitalnym został wprowadzony w~Polsce 1 lipca 2008, a jego głównym twórcą jest dr Jacek Grabowski, ekspert systemów opieki zdrowotnej, z~wykształcenia lekarz psychiatra\cite{kozierkiewicz_jgp}.
 
-W chwili obecnej system JGP jest zalecany przez Komisję Europejską na terenie całej Unii Europejskiej. Rozpoczęto prace nad projektem Euro-DRG 7, który docelowo stanowiłby jednolity system JGP dla całej Unii Europejskiej.
+W chwili obecnej system JGP jest zalecany przez Komisję Europejską na terenie całej Unii Europejskiej. Rozpoczęto prace nad projektem Euro-DRG 7, który docelowo stanowiłby jednolity system JGP dla całej Unii Europejskiej\cite{forumNFZ}.
 

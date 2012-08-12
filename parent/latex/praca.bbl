@@ -1,70 +1,78 @@
 \begin{thebibliography}{Lam92}
 
-\bibitem[1]{1}
+\bibitem{kozierkiewicz_jgp}
+Adam Kozierkiewicz
+\newblock {\em {Jednorodne Grupy Pacjentów. Przewodnik po systemie}}.
+\newblock Narodowy Fundusz Zdrowia - Centrala
+\newblock Departament Świadczeń Opieki Zdrowotnej.	
+\newblock Warszawa, 2009
+\newblock \\\texttt{http://www.nfz.gov.pl/akademia/pliki/Jednorodne\_Grupy\_Pacjentow\_Przewodnik\_po\_systemie.pdf}
+
+\bibitem{forumNFZ}
 \newblock {\em {Forum dyskusyjne NFZ - dział: ,,JGP - dla wszystkich''}}.
 \newblock \\\texttt{http://dyskusje.nfz.gov.pl/viewforum.php?f=27\&sid=7990da5b194dc9afaf6c0fb3ef25eb69}.
 
-\bibitem[2]{2}
+\bibitem{mpFAQ}
 \newblock {\em {Medycyna Praktyczna - Jednorodne Grupy Pacjentów - Pytania i odpowiedzi}}.
 \newblock \\\texttt{www.mp.pl/jgp/index.php?aid=39481\&\_tc=E2D018CB1177259D5AC74C4E8B16C8AD}
 
-\bibitem[3]{3}
+\bibitem{szkoleniaJGP}
 \newblock {\em {Platforma informacyjno-szkoleniowa Narodowego Funduszu Zdrowia z zakresu systemu Jednorodnych Grup Pacjentów }}.
 \newblock \\\texttt{http://szkoleniajgp.smartlearn.pl/cms/}
 
-\bibitem[4]{4}
+\bibitem{plik_parametryzujacy}
 Narodowy Fundusz Zdrowia
 \newblock {\em {Plik parametryzujący}}.
 \newblock \\\texttt{www.nfz.gov.pl/new/art/4273/plik\_parametryzujacy\_v.25.xls}
 
-\bibitem[5]{5}
+\bibitem{algorytm_grupera}
 Narodowy Fundusz Zdrowia
 \newblock {\em {Algorytm grupera}}.
-\newblock Warszawa, wrzesień 2010 r.
+\newblock Warszawa, wrzesień 2010
 \newblock \\\texttt{www.nfz.gov.pl/new/art/4253/algorytm\_grupera\_JGP\_v10.doc}
 
-\bibitem[6]{6}
+\bibitem{mulawka_ekspertowe}
 Jan J.~Mulawka
 \newblock {\em Systemy ekspertowe}
 \newblock Wydawnictwa Naukowo Techniczne , Styczeń 1997
 
-\bibitem[7]{7}
+\bibitem{wilblik_wiedza}
 Daniel T. Larose, tłum. Anna Wilbik
 \newblock {\em Odkrywanie wiedzy z danych}
 \newblock PWN , Listopad 2006
 
-\bibitem[8]{8}
+\bibitem{goluchowski_eskpertowe}
 Jerzy Gołuchowski
 \newblock {\em Wiedza i komunikacja w innowacyjnych organizacjach. Systemy ekspertowe – wczoraj, dziś, jutro. }
 \newblock praca naukowa
 
-\bibitem[9]{9}
+\bibitem{martyniuk_ekspertowe}
 Ewa Martyniuk  
 \newblock {\em {Główne elementy systemu ekspertowego: baza wiedzy, maszyna wnioskująca, pamięć robocza}}.
 \newblock \\\texttt{http://aragorn.pb.bialystok.pl\slash \~{}radev\slash ai\slash se\slash zal\slash ready\slash martyniuk.htm}
 
-\bibitem[10]{10}
+\bibitem{zielonogorski_ekspertowe}
 Uniwersytet Zielonogórski- Instytut Informatyki i Elektroniki
 \newblock {\em {Projektowanie Systemów Informatycznych - SYSTEMY EKSPERTOWE wykład nr 9}}.
 \newblock \\\texttt{http://www.wmie.uz.zgora.pl\slash \~{}jjablons\slash wyk\slash psi-se.pdf}
 
-\bibitem[11]{11}
+\bibitem{bruce_spring}
 Bruce A.~Tate, Justin Gehtland
 \newblock {\em Spring: A Developer's Notebook}
 \newblock Wydawnictwo O'Reilly, 2006
 
-\bibitem[12]{12}
+\bibitem{spring_reference}
 Rod Johnson, Juergen Hoeller, Keith Donald, Colin Sampaleanu, Rob Harrop, Alef Arendsen, Thomas Risberg, Darren Davison, Dmitriy Kopylenko, Mark Pollack, Thierry Templier, Erwin Vervaet, Portia Tung, Ben Hale, Adrian Colyer, John Lewis, Costin Leau, Mark Fisher, Sam Brannen, Ramnivas Laddad, Arjen Poutsma, Chris Beams, Tareq Abedrabbo, Andy Clement, Dave Syer, Oliver Gierke
 \newblock {\em Spring Framework Reference Documentation 3.0}
 \newblock Copyright© 2004-2010
 \newblock \\\texttt{http://static.springsource.org\slash spring\slash docs\slash 3.0.x\slash spring-framework-reference\slash html}
 
-\bibitem[13]{13}
+\bibitem{valkyrie_reference}
 The Valkyrie RCP TEAM
 \newblock {\em Valkyrie RCP Reference Guide}.
 \newblock \\\texttt{https://github.com/ndeverge/Valkyrie-RCP} \\\texttt{http://ndeverge.github.com/Valkyrie-RCP}
 
-\bibitem[14]{14}
+\bibitem{h2_reference}
 \newblock {\em {Reference Guide}}
 \newblock H2 Database Engine Version 1.3.166 (2012-04-08)
 \newblock \\\texttt{http://www.h2database.com/html/grammar.html} \\\texttt{http://www.h2database.com/h2.pdf}
