@@ -22,7 +22,7 @@ Na kształt aplikacji bezpośredni wpływ miały założenia projektowe postawio
  \item Wykonać testy dla wszystkich głównych ścieżek poszukiwań rozwiązania.
 \end{enumerate}
 
-Stworzenie aplikacji typu ,,Gruper'' oznacza, że musi zostać zaimplementowany algorytm ,,Grupera'' zgodnie z wytycznymi narzuconymi przez NFZ. Precyzyjne określelnie modelu danych jest podstawowym założeniem, bez którego niemożliwa jest dalsza praca nad projektem. Zastosowanie architektury warstwowej dla systemu zwiększa elastyczność rozwiązania i pozwala na łatwe modyfikowanie i skalowalność systemu.
+Stworzenie aplikacji typu ,,Gruper'' oznacza, że musi zostać zaimplementowany algorytm ,,Grupera'' zgodnie z wytycznymi narzuconymi przez NFZ. Precyzyjne określenie modelu danych jest podstawowym założeniem, bez którego niemożliwa jest dalsza praca nad projektem. Zastosowanie architektury warstwowej dla systemu zwiększa elastyczność rozwiązania i pozwala na łatwe modyfikowanie i skalowalność systemu.
 
 Implementacja całego systemu tylko w języku JAVA umożliwia rozwijanie projektu przez osoby nie znające składni oraz zasad jakimi kierują się inne języki dedykowane dla systemów ekspertowych takie jak Prolog czy Drools. Wszystkie założenia systemu ekspertowego zostają spełnione, a implementacja będzie w 100\% autorska. Fakty i reguły będą obiektami JAVY. Unikalność, innowacyjność i łatwość wdrożenia się w projekt dla tego rozwiązania mają być jego największymi atutami.
 
@@ -33,37 +33,37 @@ Implementacja całego systemu tylko w języku JAVA umożliwia rozwijanie projekt
 \section{Architektura systemu}
 \label{sec:architekturaSystemu}
 
-Wybór architektury systemu to decyzja podejmowana w początkowej fazie tworzenia systemu. Często okazuję się ona najważniejszą decyzją, która ma ogromny wpływ na rozwój oprogramowania. Kierując się wyborem architektury postawiono na jej elastyczność oraz modularność. Obrazując system jako maszynę złożoną z wielu rożnorodnych elementów dążono do stworzenia takiej, którą można w łatwy sposób ulepszać poprzez dokładanie nowych klocków oraz naprawiać poprzez podmianę starych części nowymi i lepszymi.
+Wybór architektury systemu to decyzja podejmowana w początkowej fazie tworzenia systemu. Często okazuję się ona najważniejszą decyzją, która ma ogromny wpływ na rozwój oprogramowania\cite{sienkiewicz_architektura}. Kierując się wyborem architektury postawiono na jej elastyczność oraz modularność. Obrazując system jako maszynę złożoną z wielu rożnorodnych elementów dążono do stworzenia takiej, którą można w łatwy sposób ulepszać poprzez dokładanie nowych klocków oraz naprawiać poprzez podmianę starych części nowymi i lepszymi.
 
 %---------------------------------------------------------------------------
-\subsection{Model 3-warstwowy}
+\subsection{Model warstwowy}
 \label{sec:model3warstwowy}
-Architektura systemu odzwierciedla jego logiczny podział. Standardem w praktycznie każdej aplikacji jest zastosowanie modelu architektury trójwarstwowej. Model wprowadza podział aplikacji na trzy warstwy:
+Architektura systemu odzwierciedla jego logiczny podział. Standardem w praktycznie każdej aplikacji jest zastosowanie modelu architektury warstwowej\cite{sienkiewicz_architektura}. Model wprowadza podział aplikacji na trzy warstwy:
 \begin{enumerate}
  \item \textbf{Warstwę danych} odpowiedzialną za poprawne przechowywanie, zapis oraz odczyt danych.
- \item \textbf{Warstwę logiki biznesowej}, której zadaniem jest koordynacja pracy aplikacji, przetwrzanie żądań użytkownika, aplikacja reguł logicznych, dokonywanie obliczeń.
- \item \textbf{Warstwa prezentacji} wykonyjącą tłumaczenie żądań i wyników działania aplikacji do i z języka zrozumiałego dla użytkownika.
+ \item \textbf{Warstwę logiki biznesowej}, której zadaniem jest koordynacja pracy aplikacji, przetwarzanie żądań użytkownika, aplikacja reguł logicznych, dokonywanie obliczeń.
+ \item \textbf{Warstwa prezentacji} wykonująca tłumaczenie żądań i wyników działania aplikacji do i z języka zrozumiałego dla użytkownika.
 \end{enumerate}
 
-Wybrałem ten model do zastosowania przy tworzeniu aplikacji ze względu na jego logiczną i zrozumiałą dla każdego informatyka modularność. Każda z warstw może zostać zaimplementowana w innym języku programowania, a komunikują się one poprzez interfejsy. Dużym plusem tego rozwiązania jest łatwa możliwość zmiany pewnej części systemu bez zmian w innych częściach systemu. Dla przykładu, jeśli chcielibyśmy stworzyć webowy interfejs użytkownika to wystraczy tylko zaimplementować warstwę prezentacji i podpiąć ją do warstwy logiki biznesowej.
+Wybrano ten model do zastosowania przy tworzeniu aplikacji ze względu na jego logiczną i zrozumiałą dla każdego informatyka modularność. Każda z warstw może zostać zaimplementowana w innym języku programowania, a komunikują się one poprzez interfejsy. Dużym plusem tego rozwiązania jest łatwa możliwość zmiany pewnej części systemu bez zmian w innych częściach systemu. Dla przykładu, jeśli zaszłaby potrzeba stworzenia webowego interfejsu użytkownika to wystraczy tylko zaimplementować warstwę prezentacji i podpiąć ją do warstwy logiki biznesowej.
 
 Architekturę trójwarstwową przedstawia rysunek \ref{img:rysunek_3layer}.
 \begin{figure}[!ht]
 \label{img:rysunek_3layer}	
 \includegraphics[scale=0.5]{images/3layer-architect}
-\caption[Rysunek przedstawiający model architektury trójwarstwowej]{Architektura trójwarstwowa}
+\caption[Rysunek przedstawiający model architektury trójwarstwowej]{Architektura trójwarstwowa. Autor: Mateusz Urbanik}
 \end{figure}
 
 %---------------------------------------------------------------------------
 \subsection{Środowisko Spring}
 \label{sec:modelArchitekturySpring}
-Bardzo popularnym i nowoczesnym środowiskiem, które wprowadza zestaw narzędzi, wzorców oraz bibliotek potrzebnych do stworzenia nowoczesnych aplikacji serwerowych(i nie tylko) jest Spring. Rozwiązanie to jest niesłusznie uważane za skomplikowane, bardzo złożone i niemożliwe do opanowania. W rzeczywistości Spring stanowi zaawansowany przykład architektury szkieletowej umożliwiającej szybkie rozwijanie dowolnie złożonych aplikacji, niekoniecznie webowych. Konstrukcja szkieletu architektury Spring powoduje, że występuje w nim bardzo niewielki stopień zależności od interfejsów Spring API. Architektura Spring obejmuje wszystkie warstwy aplikacji i podsuwa rozwiązania, które mogą być stosowane zarówno w warstwie prezentacji, jak i w warstwie integracji oraz warstwie danych. Szkielet aplikacyjny Spring jest rozwijany na licencji ,,open source'' od roku 2003 i od tego czasu zdobył sobie dużą popularność. Rysunek \ref{img:rysunek_spring} ilustruje schemat architektury Spring.
+Bardzo popularnym i nowoczesnym środowiskiem, które wprowadza zestaw narzędzi, wzorców oraz bibliotek potrzebnych do stworzenia nowoczesnych aplikacji serwerowych(i nie tylko) jest Spring. Rozwiązanie to jest niesłusznie uważane za skomplikowane, bardzo złożone i niemożliwe do opanowania. W rzeczywistości Spring stanowi zaawansowany przykład architektury szkieletowej umożliwiającej szybkie rozwijanie dowolnie złożonych aplikacji, niekoniecznie webowych. Konstrukcja szkieletu architektury Spring powoduje, że występuje w nim bardzo niewielki stopień zależności od interfejsów Spring API. Architektura Spring obejmuje wszystkie warstwy aplikacji i podsuwa rozwiązania, które mogą być stosowane zarówno w warstwie prezentacji, jak i w warstwie integracji oraz warstwie danych. Szkielet aplikacyjny Spring jest rozwijany na licencji ,,open source'' od roku 2003 i od tego czasu zdobył sobie dużą popularność\cite{bruce_spring}. Rysunek \ref{img:rysunek_spring} ilustruje schemat architektury Spring.
 
 \vspace*{0.1cm}
 \begin{figure}[!ht]
 \label{img:rysunek_spring}
 \includegraphics[scale=0.31]{images/spring-modules}
-\caption[Rysunek przedstawiający model architektury Spring]{Schemat architektury Spring}
+\caption[Rysunek przedstawiający model architektury Spring]{Schemat architektury Spring. Źródło: Spring Reference Guide\cite{spring_reference}}
 \end{figure}
 
 Składa się ona z kilku modułów, z których każdy może być niezależnie używany w aplikacji. Oznacza to, że aplikacja może wykorzystywać wszystkie możliwości środowiska Spring, ale może także korzystać z fragmentu architektury, np. z modułu ułatwiającego dostęp do danych. Najważniejszym modułem jest Spring-Core. Jest to moduł oferujący zaawansowane opcje konfiguracji komponentów JavaBean oraz klas POJO(ang. Plain Old Java Object) i wykorzystujący technikę wstrzykiwania zależności.
@@ -74,7 +74,7 @@ W projekcie aplikacji postanowiłem wykorzystać kilka bazowych elementów archi
  \item Service - Spring Service Beans - obiekty serwisowe wykonujące logikę biznesową.
 \end{itemize}
 
-Dla warstwy prezentacji wykorzystałem również wsparcie Spring. W 2008 roku została wydana pierwsza wersja frameworku do tworzenia aplikacji desktopowych w JAVIE - SpringRCP - Rich Client Project. Niestety po wydaniu wersji 1.1 w 2009 roku projekt, który był na wyższym poziomie niż NetBeans-RCP lub Eclipse-RCP nagle przestał być rozwijany. W roku 2011 jeden z główynch projektantów Spring-RCP postanowił go odświeżyć. W niecałe 6 miesięcy przepisał cały framework używając najnowszej metodologii pochodzącej z Spring 3. Nowa wersja projektu otrzymała nazwę Valkyrie-RCP. W kolejnych iteracjach dodanych zostało wiele nowych funkcjonalności, w wyniku których po kolejnych 3 miesiącach powstało solidne narzędzie do tworzenia skomplikowanych aplikacji desktopowych w JAVIE. Jego podstawowe cechy to przejrzystość, prostota, stosowanie dobrych wzorców GUI. Kilka podstawowych elementów architektury Valkyrie:
+Dla warstwy prezentacji wykorzystałem również wsparcie Spring. W 2008 roku została wydana pierwsza wersja frameworku do tworzenia aplikacji desktopowych w JAVIE - SpringRCP - Rich Client Project. Niestety po wydaniu wersji 1.1 w 2009 roku projekt, który był na wyższym poziomie niż NetBeans-RCP lub Eclipse-RCP nagle przestał być rozwijany. W roku 2011 jeden z główynch projektantów Spring-RCP postanowił go odświeżyć. W niecałe 6 miesięcy przepisał cały framework używając najnowszej metodologii pochodzącej z Spring 3. Nowa wersja projektu otrzymała nazwę Valkyrie-RCP\cite{valkyrie_reference}. W kolejnych iteracjach dodanych zostało wiele nowych funkcjonalności, w wyniku których po kolejnych 3 miesiącach powstało solidne narzędzie do tworzenia skomplikowanych aplikacji desktopowych w JAVIE. Jego podstawowe cechy to przejrzystość, prostota, stosowanie dobrych wzorców GUI. Kilka podstawowych elementów pakietu Valkyrie:
 \begin{itemize}
  \item Widget - komponent GUI (tabelka, forma, widok, edytor-danych).
  \item DataProvider - fasada danych dla komponentów UI.
@@ -85,7 +85,7 @@ Poniższy schemat przedstawia architekturę systemu jaki został zaimplementowan
 \begin{figure}[!ht]
 \label{img:rysunek_spring2}
 \includegraphics[scale=0.4]{images/spring-layers2}
-\caption[Rysunek przedstawiający model architektury systemu]{Architektura systemu stworzonego dla pracy}
+\caption[Rysunek przedstawiający model architektury systemu]{Architektura systemu stworzonego dla pracy. Autor: Mateusz Urbanik}
 \end{figure}
 
 Należy zaznaczyć, że model architektury spełnia założenia architekty trójwarstwowej:
@@ -112,15 +112,15 @@ Należy zaznaczyć, że model architektury spełnia założenia architekty trój
 \label{sec:architekturaSystemuEkspertowego}
 Jedna z definicji systemu ekspertowego definiuje go jako system charakteryzujący się strukturą:
 \begin{itemize}
- \item Szkielet
+ \item 	Szkielet,
        \begin{itemize}
-	 \item Interfejs użytkownika
-	 \item Edytor bazy wiedzy
-	 \item Systemu wnioskujący
-	 \item Mechanizm wyjaśniający
+	 \item Interfejs użytkownika,
+	 \item Edytor bazy wiedzy,
+	 \item Systemu wnioskujący,
+	 \item Mechanizm wyjaśniający,
        \end{itemize}
- \item Baza wiedzy
- \item Dynamiczna baza danych
+ \item Baza wiedzy,
+ \item Dynamiczna baza danych.
 \end{itemize}
 
 Bardzo istotnym elementem systemu ekspertowego jest oddzielenie wiedzy dziedzinowej od reszty systemu. Takie podejście umożliwia usprawnienie działania systemu bez ingerencji w kod programu. W~skrócie wyjaśnię elementy architektury systemu ekspertowego.
@@ -135,7 +135,7 @@ Architekturę systemu regułowego przedstawia poniższy schemat:
 \begin{figure}[!ht]
 \label{img:rysunek_expert}	
 \includegraphics[scale=0.5]{images/expert-system}
-\caption[Rysunek przedstawiający model architektury systemu ekspertowego]{Architektura systemu ekspertowego}
+\caption[Rysunek przedstawiający model architektury systemu ekspertowego]{Architektura systemu ekspertowego. Autor: Mateusz Urbanik}
 \end{figure}
 
 %---------------------------------------------------------------------------

@@ -56,6 +56,12 @@ Uniwersytet Zielonogórski- Instytut Informatyki i Elektroniki
 \newblock {\em {Projektowanie Systemów Informatycznych - SYSTEMY EKSPERTOWE wykład nr 9}}.
 \newblock \\\texttt{http://www.wmie.uz.zgora.pl\slash \~{}jjablons\slash wyk\slash psi-se.pdf}
 
+\bibitem{sienkiewicz_architektura}
+Józef E. Sienkiewicz, Paweł Syty
+\newblock {\em Architektura warstwowa aplikacji internetowych.}
+\newblock Politechnika Gdańska, Elbląg 2008
+\newblock \\\texttt{www.mif.pg.gda.pl/homepages/sylas/articles/art\_2008\_elblag.pdf}
+
 \bibitem{bruce_spring}
 Bruce A.~Tate, Justin Gehtland
 \newblock {\em Spring: A Developer's Notebook}
