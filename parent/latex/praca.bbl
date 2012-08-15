@@ -20,6 +20,10 @@ Adam Kozierkiewicz
 \newblock {\em {Platforma informacyjno-szkoleniowa Narodowego Funduszu Zdrowia z zakresu systemu Jednorodnych Grup Pacjentów }}.
 \newblock \\\texttt{http://szkoleniajgp.smartlearn.pl/cms/}
 
+\bibitem{rozporzadzenia_nfz}
+\newblock {\em {Oficjalna strona Narodowego Funduszu Zdrowia}}.
+\newblock \\\texttt{www.nfz.gov.pl}
+
 \bibitem{plik_parametryzujacy}
 Narodowy Fundusz Zdrowia
 \newblock {\em {Plik parametryzujący}}.
@@ -72,6 +76,11 @@ Rod Johnson, Juergen Hoeller, Keith Donald, Colin Sampaleanu, Rob Harrop, Alef A
 \newblock {\em Spring Framework Reference Documentation 3.0}
 \newblock Copyright© 2004-2010
 \newblock \\\texttt{http://static.springsource.org\slash spring\slash docs\slash 3.0.x\slash spring-framework-reference\slash html}
+
+\bibitem{spring_rcp_reference}
+The spring-richclient team
+\newblock {\em Spring Rich Client Project site}
+\newblock \\\texttt{http://spring-rich-c.sourceforge.net/1.1.0/index.html}
 
 \bibitem{valkyrie_reference}
 The Valkyrie RCP TEAM

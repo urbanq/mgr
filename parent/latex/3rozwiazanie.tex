@@ -49,9 +49,10 @@ Wybrano ten model do zastosowania przy tworzeniu aplikacji ze względu na jego l
 
 Architekturę trójwarstwową przedstawia rysunek \ref{img:rysunek_3layer}.
 \begin{figure}[!ht]
-\label{img:rysunek_3layer}	
+\centering	
 \includegraphics[scale=0.5]{images/3layer-architect}
 \caption[Rysunek przedstawiający model architektury trójwarstwowej]{Architektura trójwarstwowa. Autor: Mateusz Urbanik}
+\label{img:rysunek_3layer}
 \end{figure}
 
 %---------------------------------------------------------------------------
@@ -61,31 +62,34 @@ Bardzo popularnym i nowoczesnym środowiskiem, które wprowadza zestaw narzędzi
 
 \vspace*{0.1cm}
 \begin{figure}[!ht]
-\label{img:rysunek_spring}
+\centering
 \includegraphics[scale=0.31]{images/spring-modules}
 \caption[Rysunek przedstawiający model architektury Spring]{Schemat architektury Spring. Źródło: Spring Reference Guide\cite{spring_reference}}
+\label{img:rysunek_spring}
 \end{figure}
 
-Składa się ona z kilku modułów, z których każdy może być niezależnie używany w aplikacji. Oznacza to, że aplikacja może wykorzystywać wszystkie możliwości środowiska Spring, ale może także korzystać z fragmentu architektury, np. z modułu ułatwiającego dostęp do danych. Najważniejszym modułem jest Spring-Core. Jest to moduł oferujący zaawansowane opcje konfiguracji komponentów JavaBean oraz klas POJO(ang. Plain Old Java Object) i wykorzystujący technikę wstrzykiwania zależności.
-W projekcie aplikacji postanowiłem wykorzystać kilka bazowych elementów architektury. Oto lista modułów Spring wykorzystywanych w projekcie:
+Spring składa się z kilku modułów, z których każdy może być niezależnie używany w aplikacji. Oznacza to, że aplikacja może wykorzystywać wszystkie możliwości środowiska Spring, ale może także korzystać z fragmentu architektury, np. z modułu ułatwiającego dostęp do danych. Najważniejszym modułem jest Spring-Core. Jest to moduł oferujący zaawansowane opcje konfiguracji komponentów JavaBean oraz klas POJO(ang. Plain Old Java Object) i wykorzystujący technikę wstrzykiwania zależności.
+W aplikacji postanowiono wykorzystać kilka bazowych elementów architektury. Oto lista modułów Spring wykorzystywanych w projekcie:
 \begin{itemize}
  \item JDBC - Java DataBase Connectivity - interfejs programowania opracowany w 1996 r. przez Sun Microsystems, umożliwiający niezależnym od platformy aplikacjom napisanym w języku Java porozumiewać się z bazami danych za pomocą języka SQL.
- \item DAO - Wzorzec projektowy Data Access Object (DAO) - rozdzielenie mechanizmu trwałości obiektów od reguł biznesowych.
+ \item DAO(ang. Data Access Object) - wzorzec projektowy wprowadzający rozdzielenie mechanizmu trwałości obiektów od reguł biznesowych.
  \item Service - Spring Service Beans - obiekty serwisowe wykonujące logikę biznesową.
 \end{itemize}
 
-Dla warstwy prezentacji wykorzystałem również wsparcie Spring. W 2008 roku została wydana pierwsza wersja frameworku do tworzenia aplikacji desktopowych w JAVIE - SpringRCP - Rich Client Project. Niestety po wydaniu wersji 1.1 w 2009 roku projekt, który był na wyższym poziomie niż NetBeans-RCP lub Eclipse-RCP nagle przestał być rozwijany. W roku 2011 jeden z główynch projektantów Spring-RCP postanowił go odświeżyć. W niecałe 6 miesięcy przepisał cały framework używając najnowszej metodologii pochodzącej z Spring 3. Nowa wersja projektu otrzymała nazwę Valkyrie-RCP\cite{valkyrie_reference}. W kolejnych iteracjach dodanych zostało wiele nowych funkcjonalności, w wyniku których po kolejnych 3 miesiącach powstało solidne narzędzie do tworzenia skomplikowanych aplikacji desktopowych w JAVIE. Jego podstawowe cechy to przejrzystość, prostota, stosowanie dobrych wzorców GUI. Kilka podstawowych elementów pakietu Valkyrie:
+Dla warstwy prezentacji wykorzystałem również wsparcie Spring. W 2008 roku została wydana przez społeczność Spring pierwsza wersja środowiska do tworzenia aplikacji desktopowych w JAVIE - SpringRCP - Rich Client Project. Niestety po wydaniu wersji 1.1 w 2009 roku projekt, który był na wyższym technologicznie poziomie niż NetBeans-RCP lub Eclipse-RCP z nieznanych powodów przestał być rozwijany\cite{spring_rcp_reference}. W roku 2011 jeden z głównych projektantów Spring-RCP postanowił go odświeżyć. W niecałe 6 miesięcy przepisano całe środowisko używając najnowszej metodologii pochodzącej z Spring 3. Nowa wersja projektu otrzymała nazwę Valkyrie-RCP\cite{valkyrie_reference}. W kolejnych iteracjach dodanych zostało wiele nowych funkcjonalności, w wyniku których po kolejnych 3 miesiącach powstało solidne narzędzie do tworzenia skomplikowanych aplikacji desktopowych w JAVIE. Jego podstawowe cechy to przejrzystość, prostota, stosowanie dobrych wzorców GUI.
+Podstawowe elementy pakietu Valyrie-RCP, które wykorzystano do stworzenia aplikacji to\cite{valkyrie_reference}:
 \begin{itemize}
  \item Widget - komponent GUI (tabelka, forma, widok, edytor-danych).
  \item DataProvider - fasada danych dla komponentów UI.
 \end{itemize}
 
-Poniższy schemat przedstawia architekturę systemu jaki został zaimplementowany:
+Rysunek \ref{img:rysunek_spring2} przedstawia architekturę systemu jaki został zaimplementowany.
 
 \begin{figure}[!ht]
-\label{img:rysunek_spring2}
+\centering
 \includegraphics[scale=0.4]{images/spring-layers2}
 \caption[Rysunek przedstawiający model architektury systemu]{Architektura systemu stworzonego dla pracy. Autor: Mateusz Urbanik}
+\label{img:rysunek_spring2}
 \end{figure}
 
 Należy zaznaczyć, że model architektury spełnia założenia architekty trójwarstwowej:
@@ -96,7 +100,7 @@ Należy zaznaczyć, że model architektury spełnia założenia architekty trój
  \vspace{0in}
  \begin{tabular}{|l|l|}
  \hline
- \textbf{Element architektury 3-warstwowej} & \textbf{Część stworzonego systemu} \\ 
+ \textbf{Element architektury 3-warstwowej} & \textbf{Moduły systemu} \\ 
  \hline
  Dostęp do danych & H2-Database, JDBC, DAO \\
  \hline
@@ -110,7 +114,7 @@ Należy zaznaczyć, że model architektury spełnia założenia architekty trój
 %---------------------------------------------------------------------------
 \subsection{Architektura systemu ekspertowego}
 \label{sec:architekturaSystemuEkspertowego}
-Jedna z definicji systemu ekspertowego definiuje go jako system charakteryzujący się strukturą:
+Jedna z definicji systemu ekspertowego definiuje go jako system charakteryzujący się strukturą\cite{goluchowski_eskpertowe}:
 \begin{itemize}
  \item 	Szkielet,
        \begin{itemize}
@@ -130,15 +134,17 @@ Bardzo istotnym elementem systemu ekspertowego jest oddzielenie wiedzy dziedzino
 \textbf{Mechanizm wnioskowania} jest głównym składnikiem systemu ekspertowego wykonującym cały proces rozumowania w trakcie rozwiązywania problemu postawionego przez użytkownika.
 \textbf{Mechanizm wyjaśniający} jest to jeden z elementów interfejsu pomiędzy systemem a użytkownikiem, który umożliwia użytkownikowi uzyskanie odpowiedzi dlaczego system udzielił takiej, a nie innej odpowiedzi, albo dlaczego system zadał użytkownikowi określone pytanie.
 \textbf{Baza wiedzy} jest to deklaratywna postać wiedzy ekspertów z danej dziedziny zapisana za pomocą wybranego sposobu reprezentacji wiedzy, najczęściej reguł.
-\textbf{Dynamiczna baza danych} jest pamięcią roboczą przechowującą pewne fakty wprowadzone w trakcie dialogu z użytkownikiem. Baza ta umożliwia odtworzenie sposobu wnioskowania systemu i przedstawienie go użytkownikowi za pomocą mechanizmu wyjaśniającego.
-Architekturę systemu regułowego przedstawia poniższy schemat:
+\textbf{Dynamiczna baza danych} jest pamięcią roboczą przechowującą pewne fakty wprowadzone w trakcie dialogu z użytkownikiem. Baza ta umożliwia odtworzenie sposobu wnioskowania systemu i przedstawienie go użytkownikowi za pomocą mechanizmu wyjaśniającego\cite{martyniuk_ekspertowe}.
+Architekturę systemu regułowego przedstawia rysunek \ref{img:rysunek_expert}.
 \begin{figure}[!ht]
-\label{img:rysunek_expert}	
+\centering	
 \includegraphics[scale=0.5]{images/expert-system}
 \caption[Rysunek przedstawiający model architektury systemu ekspertowego]{Architektura systemu ekspertowego. Autor: Mateusz Urbanik}
+\label{img:rysunek_expert}
 \end{figure}
 
 %---------------------------------------------------------------------------
+\begin{comment}
 \subsection{System ekpertowy w architekturze Spring}
 \label{sec:systemEkpertowyArchitekturaSpring}
 
@@ -147,7 +153,7 @@ Na początku pracy postawiona została teza: realizacja systemu ekspertowego w a
 Popularne narzędzia do implementacji systemu ekspertowego to język Prolog, system Drools, Jess, CLIPS. Są to gotowe środowiska do budowania skomplikowanych systemów ekspertowych. Dla tych systemów wystarczy zdefiniować wiedzę w postaci faktów i reguł, a następnie zadać cele, aby otrzymać wynik. Nie zdecydowałem się jednak na użycie tych dedykowanych systemów z dwóch ważnych powodów. Po pierwsze w mojej pracy postanowiłem zrobić coś innowacyjnego, a mianowice chciałem zbudować swój autorski system ekspertowy od podstaw zarazem używając do jego budowy nowoczesnych narzędzi. Po drugie stworzenie chociaż zalążka takiego innowacyjnego systemu w najnowszej technologii będzie już sporym osiągnięciem. Spojrzenie na system ekspertowy z naciskiem na jego realizację w czystej JAVIE może przynieść ciekawe rezultaty. 
 
 Ten sposób myślenia doprowadził mnie do punktu, w którym musiałem jasno określić, które elementy systemu ekspertowego będą zaimplementowane przez które elementy architektury Spring. I tak określiłem, że warunki dla spełnienia reguł mogą być zapisywane jako obiekty POJO w bazie danych. Same reguły mogą być zapisywane w bazie poprzez sygnatury metod do wykonania lub jako skrypty napisane w języku Groovy(obiektowy język skryptowy wzorowany na składni Javy). Dynamiczna baza wiedzy będzie zrealizowana za pomocą obiektów POJO zapisywanych w bazie danych. Interfejs użytkownika  powstanie przy użyciu środowiska ValkyrieRCP, oraz jego wzorca DataEditor, który umożliwi dodawanie, edycję, usuwanie a nawet filtrowanie faktów oraz uruchamianie algorytmu wnioskowania. System wnioskujący będzie zrealizowany w warstwie biznesowej/serwisowej, gdzie zostanie zaimplementowany mechanizm wnioskowania. Będzie on wybierał dla danych wejściowych zestaw reguł i warunków, następnie wywoła metody sprawdzające i wykona odpowiednie działania jeśli warunki są spełnione. Mechanizm wyjaśniający zaimplementowany zostanie również w warstwie biznesowej.
-
+\end{comment}
 
 %---------------------------------------------------------------------------
 %---------------------------------------------------------------------------
@@ -159,30 +165,30 @@ W tym podrozdziale znajduje się opis w jaki sposób powstawał model danych dla
 %---------------------------------------------------------------------------
 \subsection{Dane wejściowe NFZ}
 \label{sec:daneWejscioweNFZ}
-Jedynym pewnym źródłem danych dla aplikacji były rozporządzenia NFZ. Fundusz opublikował ponad 30 wersji pliku parametryzującego, w formacie MS-Excel. W pliku parametryzującym znajdują się arkusze, w których zostały zapisane dane w postaci tabel zdefiniowanych przez NFZ. Każda następna wersja pliku parametruzyjącego przynosiła ze sobą zaktualizowane dane. Na przykład rozpoznania i procedury, które nie występowały w wersji wcześniejszej pliku parametryzującego. Z kolejnymi wydaniami wersji poprawiane zostały drobne błędy związane z formatem zapisu danych. Moją uwagę w trakcie porównywania wersji plików zwrócił zapis w kolumnie ranga procedury. Ranga większa niż 2 była zapisywana jako napis: '>2', co poprawiono na napis '3'. Ze względu na fakt, iż wiele poprawiono wraz z wydaniami kolejnych wersji pliku parametryzującego postanowiłem pracować na wersji 25, która jest jedną z najnowszych. 
+Jedynym źródłem danych wejściowych dla aplikacji były rozporządzenia NFZ opublikowane na ich witrynie internetowej\cite{rozporzadzenia_nfz}. Fundusz opublikował ponad 30 wersji pliku parametryzującego. W tym pliku znajdują się arkusze, w których dane zostały zapisane w tabelach. Każda następna wersja pliku parametryzyjącego począwszy od wersji pierwszej dostarcza zaktualizowane dane(np. nowe kody rozponań, procedur). Z kolejnymi wydaniami pliku poprawiane zostały drobne błędy związane z formatem zapisu danych. Aby zobrazować sposób w jaki dane zmieniały się przeanalizowano zapis w kolumnie ranga procedury. Ranga większa niż 2 była zapisywana początkowo jako napis '>2', zmieniono ten zapis na wartość '3'. Ze względu na fakt, iż wiele poprawiono wraz z wydaniami kolejnych wersji pliku parametryzującego postanowiono pracować na wersji 25, która jest jedną z najnowszych. 
 
-Niestety nadal model danych pozostawiał wiele do życzenia. Na przykład w arkuszu o nazwie 'JPG' znajduje się listing wszystkich kodów JGP, jako kolumny przyjęte zostały wartości oddziałów - na przecięciu wiersza(kodu jgp, kodu produktu i nazwy jgp) i kolumny(oddział) postawiony został krzyżyk(znak ,,X''). W innym arkuszu dotyczącym wartości punktowej dla kodu JGP przepisane zostały jeszcze raz wszystkie kody JGP, kody produktu i nazwy JGP, a obok podane wartości punktowe. Kolejnym przykładem błednego zapisu jest zdefiniowanie w arkuszu 'procedury' redundantnych danych - kody i nazwy procedur zduplikowane po 4-kroć, różniące się jedynie kolumną 'typ listy'.
+Kolejne wersje pliku z danymi nie wnosiły żadnych zmian do modelu danych, który pozostawał dalej źle zdefiniowany. Dla przykładu arkusz o nazwie 'JPG' zawiera listę kodów JGP, gdzie jako wartości kolumn przyjęte zostały wartości oddziałów, a na przecięciu wiersza(kodu, kodu produktu, nazwy JGP) i kolumny(oddział) postawiony został krzyżyk(znak 'X'). Inny przykład źle zdefiniowanego modelu danych to arkusz, w którym zapisane są wartości punktowe dla kodów JGP. W arkuszu tym zostały przepisane jeszcze raz wszystkie kody JGP, kody produktu i nazwy grup, a obok podane zostały wartości punktowe. Jeszcze jednym przykładem nieprawidłowego zapisu danych jest zdefiniowanie w arkuszu 'procedury' redundantnych danych. Kody i nazwy procedur zostały zwielekrotnione, chociaż różniły się one jedynie kolumną 'typ listy'.
 
-Plik parametryzujący dostarczał redundantne dane, zduplikowane wartości w wielu tabelach, nieokreślone klucze podstawowe, obce, ograniczenia unikalności. Nasuwał się automatycznie jeden wniosek: model danych dostarczany przez NFZ musi koniecznie zostać przekonwertowany tak, aby nowy model danych zachowywał integralność. Konwersja bedzie polegała na zapimportowaniu danych z arkusza kalkulacyjnego do bazy danych, a następnie normalizacji bazy.
+Plik parametryzujący dostarczał redundantne dane, zwielokrotnione wartości w wielu tabelach, nieokreślone zostały klucze podstawowe, obce, ani ograniczenia unikalności. Wyciągnięty został jeden wniosek: model danych dostarczany przez NFZ musi zostać przekonwertowany tak, aby nowy model danych zachowywał integralność. Przyjęto następującą strategię konwersji danych NFZ: dane z arkuszy kalukulacyjnych zostaną zaimportowane bezpośrednio do relacyjnej bazy danych, a następnie zostanie przeprowadzony proces normalizacji bazy.
 
 %---------------------------------------------------------------------------
 \subsection{Relacyjna baza danych}
 \label{sec:relacyjnaBazaDanych}
 
-Postanowiłem wszystkie dane aplikacji przechowywać w relacyjnej bazie danych ze względu na nastepujące właściwości tego rozwiązania:
+Wszystkie dane postanowiono zapisywać w relacyjnej bazie danych ze względu na nastepujące właściwości tego rozwiązania:
 \begin{itemize}
  \item Wszystkie wartości danych oparte są na prostych typach danych.
  \item Wszystkie dane w bazie relacyjnej przedstawiane są w formie dwuwymiarowych tabel
  \item Po wprowadzeniu danych do bazy, możliwe jest porównywanie wartości z różnych kolumn, zazwyczaj również z różnych tabel, i scalanie wierszy, gdy pochodzące z nich wartości są zgodne. Umożliwia to wiązanie danych i wykonywanie stosunkowo złożonych operacji w granicach całej bazy danych.
- \item Wszystkie operacje wykonywane są w oparciu o algebrę relacji, bez względu na położenie wiersza tabeli.
+ \item Bez względu na położenie wiersza tabeli wszystkie operacje wykonywane są w oparciu o algebrę relacji.
  \item Z braku możliwości identyfikacji wiersza przez jego pozycję pojawia się potrzeba obecności jednej lub więcej kolumn niepowtarzalnych w granicach całej tabeli, pozwalających odnaleźć konkretny wiersz. Kolumny te określa się jako klucz podstawowy tabeli.
 \end{itemize}
-Uniwersalność tego rozwiązania pozwala zapisywać wszystkie typy danych, począwszy od typów prostych skończywszy na typach złożonych takich jak zserializowane obiekty JAVY, skrypty Groovy'iego lub pliki binarne. Według mnie takie podejście definiuje dużą elastyczność systemu. Na przykład planowana implementacja systemu ekspertowego będzie wymagała pewnego nakładu pracy projektowej i implementacyjnej szczególnie. Często rozwiązania tworzone pod konkretne problemy są lepiej zaprojektowane niż uniwersalne oraz co jest najważniejsze z punktu widzenia użytkownika końcowego są wydajniejsze.
+Uniwersalność tego rozwiązania pozwala na zapis wszystkich typy danych, począwszy od typów prostych skończywszy na typach złożonych takich jak zserializowane obiekty JAVY, skrypty Groovy'iego lub pliki binarne. Taki sposób zapisu danych wpływa na elastyczność systemu. Na przykład planowana implementacja systemu ekspertowego będzie wymagała pewnego nakładu pracy projektowej i implementacyjnej szczególnie. Często rozwiązania tworzone pod konkretne problemy są lepiej zaprojektowane niż uniwersalne oraz co jest najważniejsze z punktu widzenia użytkownika końcowego są wydajniejsze.
 
-Ważną decyzją jest również wybór silnika bazy danych. Ponieważ jednym z założeń projektowych było napisanie projektu w nowoczesnym języku programowania jakim jest JAVA postanowiłem wybrać silnik bazo-danowy napisany właśnie tylko i wyłącznie w czystej JAVIE. Szukałem również rozwiązania, które pozwoli mi na zapis/odczyt danych z pojedynczego pliku bez potrzeby instalacji całej machiny serwera w systemie operacyjnym. Skorzystałem z tabelki umieszczonej na stronie www.h2database.com:
+Ważną decyzją jest również wybór silnika bazy danych. Ponieważ jednym z założeń projektowych było napisanie projektu w nowoczesnym języku programowania jakim jest JAVA postanowiłem wybrać silnik bazo-danowy napisany właśnie tylko i wyłącznie w czystej JAVIE. Szukałem również rozwiązania, które pozwoli mi na zapis/odczyt danych z pojedynczego pliku bez potrzeby instalacji całej machiny serwera w systemie operacyjnym. Skorzystałem z tabelki umieszczonej na stronie \underline{\texttt{www.h2database.com}}:
 
 \begin{table}[h]
- \caption{Porównanie właściwości}
+ \caption{Porównanie właściwości silników baz danych. Źródło: \underline{\texttt{www.h2database.com}}}
  \tiny\tt
  \centering
  \vspace{0in}
