@@ -160,35 +160,35 @@ Ten sposób myślenia doprowadził mnie do punktu, w którym musiałem jasno okr
 \section{Model danych}
 \label{sec:modelDanych}
 
-W tym podrozdziale znajduje się opis w jaki sposób powstawał model danych dla aplikacji.
+W tym podrozdziale znajduje się opis w jaki sposób stworzony został model danych dla aplikacji.
 
 %---------------------------------------------------------------------------
 \subsection{Dane wejściowe NFZ}
 \label{sec:daneWejscioweNFZ}
-Jedynym źródłem danych wejściowych dla aplikacji były rozporządzenia NFZ opublikowane na ich witrynie internetowej\cite{rozporzadzenia_nfz}. Fundusz opublikował ponad 30 wersji pliku parametryzującego. W tym pliku znajdują się arkusze, w których dane zostały zapisane w tabelach. Każda następna wersja pliku parametryzyjącego począwszy od wersji pierwszej dostarcza zaktualizowane dane(np. nowe kody rozponań, procedur). Z kolejnymi wydaniami pliku poprawiane zostały drobne błędy związane z formatem zapisu danych. Aby zobrazować sposób w jaki dane zmieniały się przeanalizowano zapis w kolumnie ranga procedury. Ranga większa niż 2 była zapisywana początkowo jako napis '>2', zmieniono ten zapis na wartość '3'. Ze względu na fakt, iż wiele poprawiono wraz z wydaniami kolejnych wersji pliku parametryzującego postanowiono pracować na wersji 25, która jest jedną z najnowszych. 
+Jedynym źródłem danych wejściowych dla aplikacji były rozporządzenia NFZ opublikowane na oficjalnej witrynie internetowej Funduszu\cite{rozporzadzenia_nfz}. Fundusz opublikował ponad 30 wersji pliku parametryzującego w formacie MS-Excel. W pliku tym znajdują się arkusze kalkulacyjne, w których dane zostały zapisane w postaci tabel. Każda następna wersja pliku parametryzującego począwszy od wersji pierwszej dostarcza zaktualizowane dane(np. nowe kody rozponań, procedur). Z kolejnymi wydaniami pliku poprawione zostały drobne błędy związane z formatem zapisu danych. Aby zobrazować sposób w jaki dane zmieniały się przeanalizowano zapis w kolumnie ranga procedury. Ranga większa niż 2 była zapisywana początkowo jako napis '>2', zmieniono ten zapis na wartość '3'. Ze względu na fakt, iż wiele poprawiono wraz z wydaniami kolejnych wersji pliku parametryzującego postanowiono pracować na wersji 25, która jest jedną z najnowszych. 
 
 Kolejne wersje pliku z danymi nie wnosiły żadnych zmian do modelu danych, który pozostawał dalej źle zdefiniowany. Dla przykładu arkusz o nazwie 'JPG' zawiera listę kodów JGP, gdzie jako wartości kolumn przyjęte zostały wartości oddziałów, a na przecięciu wiersza(kodu, kodu produktu, nazwy JGP) i kolumny(oddział) postawiony został krzyżyk(znak 'X'). Inny przykład źle zdefiniowanego modelu danych to arkusz, w którym zapisane są wartości punktowe dla kodów JGP. W arkuszu tym zostały przepisane jeszcze raz wszystkie kody JGP, kody produktu i nazwy grup, a obok podane zostały wartości punktowe. Jeszcze jednym przykładem nieprawidłowego zapisu danych jest zdefiniowanie w arkuszu 'procedury' redundantnych danych. Kody i nazwy procedur zostały zwielekrotnione, chociaż różniły się one jedynie kolumną 'typ listy'.
 
-Plik parametryzujący dostarczał redundantne dane, zwielokrotnione wartości w wielu tabelach, nieokreślone zostały klucze podstawowe, obce, ani ograniczenia unikalności. Wyciągnięty został jeden wniosek: model danych dostarczany przez NFZ musi zostać przekonwertowany tak, aby nowy model danych zachowywał integralność. Przyjęto następującą strategię konwersji danych NFZ: dane z arkuszy kalukulacyjnych zostaną zaimportowane bezpośrednio do relacyjnej bazy danych, a następnie zostanie przeprowadzony proces normalizacji bazy.
+Plik parametryzujący dostarczał redundantne dane, zwielokrotnione wartości w wielu tabelach, nieokreślone zostały klucze podstawowe, obce, ani ograniczenia unikalności. Po wykonaniu dogłębnej analizy pliku wyciągnięto następujący wniosek: model danych dostarczany przez NFZ musi zostać przekonwertowany tak, aby nowy model danych zachowywał integralność. Przyjęto następującą strategię konwersji danych NFZ: dane z arkuszy kalukulacyjnych zostaną zaimportowane bezpośrednio do relacyjnej bazy danych, a następnie zostanie przeprowadzony proces normalizacji.
 
 %---------------------------------------------------------------------------
 \subsection{Relacyjna baza danych}
 \label{sec:relacyjnaBazaDanych}
 
-Wszystkie dane postanowiono zapisywać w relacyjnej bazie danych ze względu na nastepujące właściwości tego rozwiązania:
+Wszystkie dane postanowiono zapisywać w relacyjnej bazie danych ze względu na nastepujące właściwości tego rozwiązania\cite{bazy_mimuw}:
 \begin{itemize}
  \item Wszystkie wartości danych oparte są na prostych typach danych.
- \item Wszystkie dane w bazie relacyjnej przedstawiane są w formie dwuwymiarowych tabel
+ \item Wszystkie dane w bazie relacyjnej przedstawiane są w formie dwuwymiarowych tabel.
  \item Po wprowadzeniu danych do bazy, możliwe jest porównywanie wartości z różnych kolumn, zazwyczaj również z różnych tabel, i scalanie wierszy, gdy pochodzące z nich wartości są zgodne. Umożliwia to wiązanie danych i wykonywanie stosunkowo złożonych operacji w granicach całej bazy danych.
  \item Bez względu na położenie wiersza tabeli wszystkie operacje wykonywane są w oparciu o algebrę relacji.
  \item Z braku możliwości identyfikacji wiersza przez jego pozycję pojawia się potrzeba obecności jednej lub więcej kolumn niepowtarzalnych w granicach całej tabeli, pozwalających odnaleźć konkretny wiersz. Kolumny te określa się jako klucz podstawowy tabeli.
 \end{itemize}
-Uniwersalność tego rozwiązania pozwala na zapis wszystkich typy danych, począwszy od typów prostych skończywszy na typach złożonych takich jak zserializowane obiekty JAVY, skrypty Groovy'iego lub pliki binarne. Taki sposób zapisu danych wpływa na elastyczność systemu. Na przykład planowana implementacja systemu ekspertowego będzie wymagała pewnego nakładu pracy projektowej i implementacyjnej szczególnie. Często rozwiązania tworzone pod konkretne problemy są lepiej zaprojektowane niż uniwersalne oraz co jest najważniejsze z punktu widzenia użytkownika końcowego są wydajniejsze.
+Uniwersalność tego rozwiązania pozwala na zapis wszystkich typów danych, począwszy od typów prostych skończywszy na typach złożonych takich jak zserializowane obiekty JAVY, skrypty Groovy'iego lub pliki binarne. Taki sposób zapisu danych wpływa na elastyczność systemu.
 
-Ważną decyzją jest również wybór silnika bazy danych. Ponieważ jednym z założeń projektowych było napisanie projektu w nowoczesnym języku programowania jakim jest JAVA postanowiłem wybrać silnik bazo-danowy napisany właśnie tylko i wyłącznie w czystej JAVIE. Szukałem również rozwiązania, które pozwoli mi na zapis/odczyt danych z pojedynczego pliku bez potrzeby instalacji całej machiny serwera w systemie operacyjnym. Skorzystałem z tabelki umieszczonej na stronie \underline{\texttt{www.h2database.com}}:
+Ważną decyzją projektową jest wybór konkretnego silnika bazy danych. Szukano rozwiązania, które pozwoli na zapis/odczyt danych z pliku bez potrzeby instalacji aplikacji serwera bazo-danowego w systemie operacyjnym. Tabela \ref{table_h2} przedstawia wybrane właściwości znanych silników bazodanowych(Źródło: \underline{\texttt{www.h2database.com}}[dostęp 4-04-2012]).
 
 \begin{table}[h]
- \caption{Porównanie właściwości silników baz danych. Źródło: \underline{\texttt{www.h2database.com}}}
+ \caption{Porównanie wybranych właściwości silników bazodanowych.}
  \tiny\tt
  \centering
  \vspace{0in}
@@ -211,17 +211,18 @@ Ważną decyzją jest również wybór silnika bazy danych. Ponieważ jednym z z
  Footprint (jar/dll size) & ~1 MB & ~2 MB & ~1 MB & ~4 MB & ~6 MB \\
  \hline
  \end{tabular}
+ \label{table_h2}
 \end{table}
 
-Udało mi się znaleść silnik bazodanowy spełniający postawione przeze mnie wymagania. H2-database jest to rozwiązanie typu ,,open source'', napisane w 100\% przez 1 osobę(Thomas'a Mueller'a). Zaletą silnika H2 jest jego innowacyjność. Autor stawia na łatwość użytkowania silnika bazy. Co objawia się bardzo łatwą konfiguracją, szybkim i prostym dostępem do administracji przez consolę H2, która jest uruchamiana w oknie przeglądarki. Brak potrzeby instalowania bazy danych w systemie operacyjnym jest kolejnym atutem tego rozwiązania. Funkcje importowania i eksportowania danych do/z plików zewnętrznych są wręcz intuicyjne. Dokumentacja do silnika jest przejrzysta oraz aktualizowana na bieżąco. Chociaż rozwiązanie nie jest powszechnie znane, jednak tak duża firma jak Google stosuje go w niektórych swoich serwerowych rozwiązaniach.
+H2 to silnik bazodanowy spełniający postawione wymagania. Jest to rozwiązanie typu ,,open source'', którego autorem jest Thomas Mueller. Zaletą silnika H2 jest łatwość administracji bazy z poziomu przeglądarki(H2-Console). Implementacja JDBC-API pozwala na łatwą konfigurację w aplikacji. Brak potrzeby instalowania serwera bazy danych w systemie operacyjnym jest kolejnym atutem tego rozwiązania. Domyślnie silnik posiada funkcje CSVREAD i CSVWRITE, które pozwalają na import i~eksport danych z poziomu języka SQL. Dokumentacja do silnika jest przejrzysta oraz aktualizowana na bieżąco\cite{h2_reference}.
 
 %---------------------------------------------------------------------------
 \subsection{Normalizacja danych}
 \label{sec:normalizacjaDanych}
 
-Dostarczony przez NFZ plik parametryzujący musi zostać poddany 'obróbce'. Każdy z arkuszy z pliku parametryzującego zapisałem w osobnym pliku CSV. Każdy z plików csv zaimportowalem(używając funkcji CSVREAD silnika H2) do osobnej tabeli tymczasowej.
+Plik parametryzujący, w którym znajdują się wszystkie potrzebne dla aplikacji dane zaimportowano do bazy danych, a bazę poddano procesowi normalizacji. Każdy z arkuszy z pliku parametryzującego zapisano w osobnym pliku CSV. Każdy z plików CSV zaimportowano używając funkcji CSVREAD silnika H2 do odpowiadających im tabel tymczasowych w systemie bazy danych. Przykład importu tabeli przedstawia listing~\ref{sql_import_csv}.
 
-\begin{lstlisting}[language=SQL]
+\begin{lstlisting}[language=SQL,caption={Import listy kodów ICD9 z pliku CSV. Autor: Mateusz Urbanik},label=sql_import_csv]
 CREATE TEMPORARY TABLE ICD9_TMP(
     LIST_CODE_ID VARCHAR(5) NOT NULL, -- Kod listy
     LIST_TYPE_ID CHAR(1) NOT NULL,    -- Typ listy
@@ -231,9 +232,9 @@ CREATE TEMPORARY TABLE ICD9_TMP(
 ) AS SELECT LIST_CODE_ID, LIST_TYPE_ID, CODE, RANGE, NAME FROM CSVREAD('icd9.csv');
 \end{lstlisting}
 
-Po zaimportowaniu wszystkich tabel, następnym krokiem jest normalizacja bazy danych. Wprowadzenie kluczy publicznych i obcych, usunięcie zwielokrotnionych wierszy. Normalizaca według wykonywana była według 1PN, 2PN oraz 3PN. Kontynuując przykład z arkuszem ICD9 napisałem skrypt SQL tworzący nowe tabele:
+Następnym krokiem jest normalizacja bazy danych. Proces normalizacji bazy przeprowadzony został zgodnie z regułami postaci normalnych: 1PN, 2PN oraz 3PN\cite{bazy_mimuw}. Rozdzielono tabele, wprowadzono klucze publiczne i obce, usunięto zwielokrotnione wiersze. Listing \ref{sql_normalizacja_create} przedstawia skrypt tworzący nowe tabele.
 \newpage
-\begin{lstlisting}[language=SQL]
+\begin{lstlisting}[language=SQL,caption={Normalizacja - tworzenie tabel dla listy kodów ICD9. Autor: Mateusz Urbanik},label=sql_normalizacja_create]
 CREATE TABLE ICD_LIST_TYPE(
     ID CHAR(1) PRIMARY KEY,
     NAME VARCHAR(10) NOT NULL
@@ -260,9 +261,9 @@ CREATE TABLE ICD9_LIST_CODE(
 );
 \end{lstlisting}
 
-Po utworzeniu znormalizowanego schematu danych importujemy dane z tabel tymczasowych do docelowych:
+Po utworzeniu znormalizowanego schematu danych skopiowano dane z tabel tymczasowych do docelowych pomijając zwielokrotnione wiersze. Listing \ref{sql_normalizacja_insert} przedstawia skrypt SQL wypełniający tabele docelowe dla listy kodów ICD9.
 
-\begin{lstlisting}[language=SQL]
+\begin{lstlisting}[language=SQL,caption={Normalizacja - wypełnianie tabel danymi dla listy kodów ICD9. Autor: Mateusz Urbanik},label=sql_normalizacja_insert]
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('G', 'globalna');
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('U', 'do sekcji');
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('H', 'do grupy');
@@ -278,11 +279,12 @@ INSERT INTO ICD9_LIST_CODE (ICD9_CODE, LIST_CODE, LIST_TYPE)
  SELECT CODE, LIST_CODE_ID, LIST_TYPE_ID FROM ICD9_TMP ORDER BY CODE;
 \end{lstlisting}
 
-Postępując podobnie udało mi się przenieść wszystkie potrzebne dane z arkuszy kalkulacyjnych do tabel bazy danych SQL. Wprowadziłem relacje poprzez ustalenie kluczy publicznych oraz obcych. Dla kolumn wymagających wprowadzenia ograniczenia unikalności, zostało ono dodane. W miejscach gdzie spodziewałem się bardzo dużej ilości zapytań wyciągających dane po kolumnie wprowadziłem indeksację kolumny w celu szybszego działania instrukcji SELECT.
-Wynikiem działania mojej pracy jest 16 plików SQL. Skrypty importują dane do tabel tymczasowych, następnie wykonują operacje tworzące schemat spełniający warunek spójności oraz zabiegający anomaliom bazo-danowym. Ostatnim krokiem jest odpowiednie przepisanie danych. Skrypty zostały uporządkowane w kolejności, w której muszą zostać wykonane, aby stworzyć model bazy danych wypełniony danymi wejściowymi NFZ. Poniższy listing zawiera wszystkie wyróżnione tabele:
+Spełniając założenia postaci normalnych bazy przeniesiono wszystkie potrzebne dane z arkuszy kalkulacyjnych do tabel bazy danych SQL. Wprowadzono relacje poprzez ustalenie kluczy publicznych oraz obcych. Dla kolumn wymagających wprowadzenia klucza ograniczenia unikalności, zostało ono dodane. W celu przyspieszenia działania instrukcji SELECT dodano indeksy do kolumn.
+ 
+W wyniku procesu normalizacji i wstępnej optymalizacji schematu bazy, utworzonych zostało 16 plików SQL. Skrypty importują dane do tabel tymczasowych, następnie wykonują instrukcje tworzące schemat, który spełnia warunki spójności oraz zabiega anomaliom bazo-danowym. Ostatnim krokiem jest przepisanie danych, w którym pomijane są zwielokrotnione wpisy. Skrypty zostały uporządkowane w kolejności, w której muszą zostać wykonane, aby stworzyć model wypełniając go danymi z pliku opublikowanego przez NFZ. Tabela \ref{table_csv_sql} zawiera wszystkie wyróżnione tabele oraz powiązane z nimi pliki z danymi.
 
 \begin{table}[h]
-   \caption{Model danych}
+   \caption{Pliki oraz tabele  - model danych. Autor: Mateusz Urbanik}
    \tiny\tt
    \centering
    \vspace{0in}
@@ -335,6 +337,7 @@ Wynikiem działania mojej pracy jest 16 plików SQL. Skrypty importują dane do 
       parametry JGP & jgp\_parameter.csv & 15\_jgp\_parameter.sql & JGP\_PARAMETER \\
       \hline
    \end{tabular}
+ \label{table_csv_sql}
 \end{table}
 
 
@@ -344,54 +347,70 @@ Wynikiem działania mojej pracy jest 16 plików SQL. Skrypty importują dane do 
 \subsection{Diagram ERD}
 \label{sec:diagramERD}
 
-W wyniku dogłębnej analizy oraz procesu projektowania bazy poprzez normalizację danych z pliku parametryzującego powstał spójny model danych. Logiczną strukturę wynikowego modelu ilustruje diagram ERD(Entity Relationship Diagram):
+W wyniku procesu dogłębnej analizy modelu danych, a następnie jego normalizacji powstał spójny oraz odporny na anomalie bazodanowe schemat. Logiczną strukturę wynikowego modelu ilustruje rysunek \ref{img:diagram_erd} przedstawiający diagram ERD(Entity Relationship Diagram).
 
+\begin{figure}[!ht]
+\centering
 \includegraphics[scale=0.31]{images/erd}
+\caption[Diagram ERD]{Diagram ERD. Autor: Mateusz Urbanik}
+\label{img:diagram_erd}
+\end{figure}
 
 %---------------------------------------------------------------------------
 %---------------------------------------------------------------------------
 \section{Gruper NFZ}
 \label{sec:gruperNFZ}
 
-W tym rozdziale znajduję się skrócony opis działania algorytmu grupera. Kompletny opis algorytmu grupera został przedstawiony w dokumencie opublikowanym przez NFZ zatytułowanym: "Informacje do przygotowania aplikacji grupera na potrzeby szpitalnych systemów informatycznych umożliwiającego kwalifikację rekordu pacjenta do właściwej grupy systemu Jednorodnych Grup Pacjentów". Dokument ten stał się podstawowym źródłem do stworzenia bazowej implementacji systemu. Dokument ten jest ponad 30-stronnicowym opisem, w jaki sposób powinna działać aplikacja gruper. Opis słowny algorytmu jak i schematy bloczkowe są dalekie do standardów takich jak język UML. Dokument ten okazał się jednak się moim jedynym oraz kluczowym źródłem wiedzy o zasadach kierujących algorytmem. Rozpracowanie algorytmu grupera, poznanie i zrozumienie zasad jakimi się kieruje było kluczowym punktem mojej pracy.
+W tym podrozdziale znajduje się skrócony opis działania algorytmu ,,Grupera''. Kompletny opis algorytmu został przedstawiony w dokumencie ,,Informacje do przygotowania aplikacji grupera na potrzeby szpitalnych systemów informatycznych umożliwiającego kwalifikację rekordu pacjenta do właściwej grupy systemu Jednorodnych Grup Pacjentów'' opublikowanym przez NFZ\cite{algorytm_grupera}. Zawiera on słowny opis algorytmu oraz schematy blokowe, które są dalekie do standardów takich jak na przykład język UML. Należy w tym miejscu zaznaczyć, że specyfikacja udostępniona przez Fundusz jest jedynym źródłem wiedzy o zasadach kierujących algorytmem.
+% Poznanie algorytmu grupera, zrozumienie zasad jakimi się on kieruje było kluczowym punktem pracy.
 
 %---------------------------------------------------------------------------
 \subsection{Zasady i logika grupowania}
 \label{sec:zasadyLogikaGrupowania}
-Wynikiem działania algorytmu jest grupa JGP, która spełnia określony zestaw warunków. Zestaw grup JGP oraz warunków jest wyznaczany na podstawie danych wejściowych opisujących hospitalizację pacjetna. Algorytm w pierwszym kroku w dużym uproszczeniu wyznacza grupy JGP dla danych epizodu. Po wyznaczeniu listy grup następuje badanie mechanizmem przeliczania, jeśli grupa kwalifikuje się do zmiany wartości zostaje ona zmieniona zgodnie z algorytmem mechanizmu przeliczania. Przedstawiony poniżej diagram aktywności przedstawia działanie algorytmu grupera:
+Wynikiem działania algorytmu ,,Grupera'' jest grupa JGP, która spełnia określony zestaw warunków. Lista grup JGP oraz zestaw warunków jest wyznaczany na podstawie danych wejściowych opisujących hospitalizację pacjetna. Algorytm w pierwszym kroku(w dużym uproszczeniu) wyznacza grupy JGP dla danych epizodu. Po wyznaczeniu listy grup następuje badanie tzw. mechanizmem przeliczania. Jeśli dana grupa zostanie zakwalifikowana do zmiany wartości punktowej zostaje ona zmieniona zgodnie z algorytmem mechanizmu przeliczania\cite{algorytm_grupera}. Diagram aktywności zilustrowany na rysunku \ref{img:diagram_activity_gruper} przedstawia działanie algorytmu ,,Grupera''.
 
+\begin{figure}[!ht]
+\centering
 \includegraphics[scale=0.4]{images/activity-gruper}
+\caption[Diagram aktywności]{Diagram aktywności - algorytm ,,Grupera''. Autor: Mateusz Urbanik}
+\label{img:diagram_activity_gruper}
+\end{figure}
 
 %---------------------------------------------------------------------------
 \newpage
 \subsection{Proces wyznaczania grupy systemu JGP}
 \label{sec:procesWyznaczaniaGrupySystemuJGP}
-Proces wyznaczania grupy można podzielić na dwie główne gałęzie. Pierwsza gałąź(tzw. ścieżka ICD-9) wyznacza zbiór zakwalifikowanych grup wraz z warunkami do sprawdzenia na podstawie procedur znaczących. Druga ścieżka 'ICD-10' wyznacza analogicznie zbiór zakwalifikowanych grup, ale na podstawie rozpoznań zasadniczych. Ścieżka dla rozpoznań jest wybierana przez program jeśli spełniony jest jeden z następujących warunków:
+Proces wyznaczania grupy można podzielić na dwie główne gałęzie. Pierwsza gałąź(tzw. ścieżka 'ICD-9') wyznacza zbiór zakwalifikowanych grup wraz z warunkami do sprawdzenia na podstawie procedur znaczących. Druga ścieżka 'ICD-10' wyznacza analogicznie zbiór zakwalifikowanych grup, ale na podstawie rozpoznań zasadniczych. Ścieżka dla rozpoznań jest wybierana przez program jeśli spełniony jest jeden z następujących warunków:
 \begin{itemize}\itemsep2pt
 \item w danych epizodu nie występuje żadna procedura
 \item ranga procedury <= 2 i czas hospitalizacji > 1 dnia
 \end{itemize}
-Jeśli wymienione wyżej warunki nie są spełnione wybierana jest ścieżka ICD-9.
+Jeśli wymienione wyżej warunki nie są spełnione wybierana jest ścieżka ICD-9\cite{algorytm_grupera}.
 
-Następnie po wybraniu ścieżki wyznaczana jest lista kodów JGP wraz z warunkami do sprawdzenia. Każda grupa, która spełnia wszystkie warunki jest zapisywana na liście wybranych grup. Proces wyznaczania grupy dobrze ilustruje poniższy diagram aktywności:
+Po wybraniu ścieżki wyznaczana jest lista kodów JGP wraz z zestawem warunków do przetestowania. Każda grupa, która spełnia wszystkie warunki jest zapisywana na liście wybranych grup. Proces wyznaczania grupy ilustruje diagram aktywnyści przedstawiony na rysunku~\ref{img:diagram_activity_jgp}.
 \newpage
+\begin{figure}[!ht]
+\centering
 \includegraphics[scale=0.4]{images/activity-jgp} 
+\caption[Diagram aktywności]{Diagram aktywności - wyznaczanie grupy JGP. Autor: Mateusz Urbanik}
+\label{img:diagram_activity_jgp}
+\end{figure}
 
 %---------------------------------------------------------------------------
 \subsection{Warunki kierunkowe}
 \label{sec:warunkiKierunkowe}
-Warunki kierunkowe to wymagania decydujące o przebiegu grupowania. Każdy z warunków został oznaczony literą alfabetu. A ich  dokładny opis znajduje się w dokumencie NFZ definiującym algorytm grupera. Procedura badająca warunki JGP w pierwszej kolejności sprawdza czy spełnione są warunki kierunkowe, ponieważ mają one decydujący wpływ na proces grupowania.
-Sposób w jaki zdecydowałem się zaimplementować warunki kierunkowe:
-\begin{itemize}
-\item Każdy z warunków zapisany jest w bazie pojedynczą literą alfabetu (A-Z)
-\item Dla obiektów domenowych literka alfabetu jest mapowana na odpowiednią wartość enuma Condition
-\item zdefiniowanych jest 26 klas nazwanych dużymi literami alfabetu rozszerzających bazową klasę AbstractChecker oraz implementujących metodę:
-  public abstract boolean checkCondition(Stay stay, JGPParameter parameter, List<Reason> reasons);
-\item Utworzona została enum-mapa, w której kluczem jest wartość enum(sygnatura warunku kierunkowego), a wartością obiekt(singleton) przypisanego do niej 'sprawdzacza' warunków
-\end{itemize}
-Zaletą tego podejścia jest możliwość implementacji w miarę uniwersalnego silnika do sprawdzania warunków kierunkowych. Działa on na zasadzie: dla każdego wybranego obiektu klasy \mbox{JGPParameter}(warunki które mają zostać sprawdzone) na podstawie odczytanej sygnatury warunku kierunkowego zostaje uruchamiany odpowiedni kawałek kodu JAVY sprawdzający warunki dla pobytu. A oto kawłek kodu realizujący tą funkcjonalność:
+Warunki kierunkowe są to wymagania decydujące o przebiegu grupowania. Każdy z warunków został oznaczony literą alfabetu. Ich dokładny opis znajduje się w dokumencie NFZ definiującym algorytm grupera\cite{algorytm_grupera}. Procedura badająca warunki JGP w pierwszej kolejności sprawdza czy spełnione są warunki kierunkowe, ponieważ mają one największy wpływ na proces grupowania.
 
-\begin{lstlisting}[language=Java]
+Sposób w jaki zdecydowano się zaimplementować warunki kierunkowe przedstawiają poniższe założenia:
+\begin{itemize}
+\item Każdy z warunków zapisany jest w bazie pojedynczą literą alfabetu (A-Z).
+\item Każda z liter alfabetu zostanie zmapowana na odpowiednią wartość enuma 'Condition', który zawiera wszystkie sygnatury warunków kierunkowych.
+\item Zdefiniowanych zostało 26 klas nazwanych dużymi literami alfabetu rozszerzających bazową klasę AbstractChecker oraz implementujących metodę \mbox{\textit{public abstract boolean checkCondition(Stay stay, JGPParameter parameter, List<Reason> reasons);}}
+\item Utworzona została enum-mapa, w której kluczem jest wartość enum(sygnatura warunku kierunkowego), a wartością obiekt(singleton) przypisanego do niej 'sprawdzacza' warunków.
+\end{itemize}
+Zaletą takiego rozwiązania jest możliwość implementacji generycznego silnika do sprawdzania warunków kierunkowych. Zdefiniowano zatem algorytm działania takiego silnika. Dla każdego wybranego obiektu klasy \mbox{JGPParameter}(warunki które mają zostać sprawdzone) na podstawie odczytanej sygnatury warunku kierunkowego zostaje uruchamiany odpowiedni kawałek kodu JAVY sprawdzający poprawność warunków dla pobytu. Listing \ref{java_check} przedstawia kawałek kodu JAVY realizujący tą funkcjonalność.
+
+\begin{lstlisting}[language=Java,caption={Metoda sprawdzająca warunki kierunkowe. Autor: Mateusz Urbanik},label=java_check]
 private boolean checkDirectional(Stay stay, JGPParameter parameter, List<Reason> reasons) {
   //pobranie sygnatury(A-Z) warunku ktory powinien zostac sprawdzony
   Condition condition = parameter.getCondition();
@@ -403,20 +422,26 @@ private boolean checkDirectional(Stay stay, JGPParameter parameter, List<Reason>
 }
 \end{lstlisting}
 
-W ten sposób udało mi się zapisać bardziej skomplikowane warunki w bazie danych. Tak naprawdę zapisana jest sygnatura checkera, a niestety dalej ważna część logiki jest zapisana w kodzie. Ale o rozszerzeniu tego rozwiązania  i o zapisaniu całej logiki ,,checkera'' do bazy danych napiszę więcej w rozdziale system ekspertowy.
+Rozwiązanie to pozwoliło na zapis skomplikowanych warunków w bazie danych. Jednak zapisywanie sygnatury obiektu 'sprawdzacza warunków', sprawia że nadal ważna część logiki jest zapisana w kodzie. O rozwinięciu tego rozwiązania  i o sposobie zapisu całej logiki ,,checkera'' do bazy danych napisano więcej w rozdziale \ref{sec:systemEkspertowy}.
 
 %---------------------------------------------------------------------------
 \subsection{Mechanizm osobodni}
 \label{sec:mechanizmOsobodni}
-Wyznacznikiem kosztów leczenia pacjenta nie może być tylko wartość wyliczona na podstawie przypisanej do pacjenta grupy systemu JGP. Ważnym czynnikiem generującym koszty leczenia jest czas pobytu w szpitalu(pożywienie, wymiana pościeli, podawane leki) wszystkie te koszty generowane są przez pacjenta w każdym dniu. Dlatego do algorytmu grupera wprowadzony został mechanizm osobodni. Przelicza on wyznaczoną wartość punktową w przypadku spełnienia pewnych warunków dla określonej grupy według określonych zasad. Na początku algorytm bada czy można zastosować mechanizm przeliczania, co obrazuje poniżej przedstawiony diagram aktywności:
+Wyznacznikiem kosztów leczenia pacjenta nie może być tylko wartość punktowa wyliczona na podstawie przypisanej do pacjenta grupy systemu JGP. Ważnym czynnikiem generującym koszty leczenia jest czas pobytu w szpitalu. Pożywienie, wymiana pościeli, podawane leki i inne koszty generowane są przez pacjenta w każdym dniu jego pobytu na oddziale. Dlatego do algorytmu ,,Grupera'' musiał zostać wprowadzony mechanizm osobodni\cite{szkoleniaJGP}. Na początku algorytm bada czy można zastosować mechanizm przeliczania, co obrazuje diagram aktywności \ref{img:diagram_activity_maday}.
+
+\begin{figure}[!ht]
+\centering
 \includegraphics[scale=0.5]{images/activity-manday}
+\caption[Diagram aktywności]{Diagram aktywności - mechanizm osobodni. Autor: Mateusz Urbanik}
+\label{img:diagram_activity_maday}
+\end{figure}
 
 Jeśli wyznaczona grupa JGP dla epizodu nie kwalifikuje się do zmiany punktowej, pozostawiamy wartość wyznaczoną przez algorytm bez zmian. Natomiast jeśli zachodzi potrzeba zmiany wartości punktowej stosujemy następujący algorytm dla 2 przypadków:
 \begin{itemize}
 \item Jeśli czas hospitalizacji jest mniejszy od 2 dni ustalamy nową wartość punktową ustalaną na podstawie wartości 'poniżej 2 dni' z obiektu klasy JGPHospital. Należy zaznaczyć, że z powyższego mechanizmu są wyłączone zgony, świadczenia rozliczane w ramach umów z zakresu ,,zespół opieki dziennej'' oraz ,,zespół chirurgii jednego dnia''.
 \item Jeśli czas trwania episodu jest większy lub równy 2 dni i jest większy od limitu ustalonego na podstawie wartości ,,dni'' z obiektu klasy JGPHospital. To wartość JGP jest ustalana poprzez powiększenie aktualnej wartości JGP o wynik iloczynu dni powyżej limitu z wartością punktową określoną przez wartość "powyżej".
 
-NOWA WARTOŚĆ PUNKTOWA = STARA WARTOŚĆ + RÓŻNICA DNI PONAD LIMIT * WAROŚĆ Z KOLUMNY ,,POWYŻEJ LIMITU''
+NOWA WARTOŚĆ PUNKTOWA = STARA WARTOŚĆ + RÓŻNICA DNI PONAD LIMIT * WARTOŚĆ Z KOLUMNY ,,POWYŻEJ LIMITU''
 \end{itemize} 
 
 %---------------------------------------------------------------------------
@@ -424,34 +449,36 @@ NOWA WARTOŚĆ PUNKTOWA = STARA WARTOŚĆ + RÓŻNICA DNI PONAD LIMIT * WAROŚĆ
 \section{System ekspertowy}
 \label{sec:systemEkspertowy}
 
-Stworzenie systemu ekspertowego jest zadaniem bardzo trudnym. Postanowiłem, aby system który zaimplementowałem niejako dążył do systemu ekspertowego. Jest to tak zwane podejście ewolucyjne. To znaczy małymi kroczkami zbliżamy się w kierunku systemu ekspertowego, nie powstaje on od razu, ale w wyniku powolnej ewolucji, czyli przekształceń pewnych części systemu. Zmiany zachodzące w implementacji sprawiają, że staje się ona coraz bardziej generyczna i uniwersalna. Zaletą takiego podejścia jest powolne, jasne i zrozumiałe wprowadzanie zmian w kodzie źrodłowym systemu, a co najważniejsze system ciągle spełnia stawiane mu wymagania. Wadą jest, że na efekt końcowy trzeba się sporo napracować.
+Stworzenie systemu ekspertowego jest zadaniem trudnym\cite{mulawka_ekspertowe}. Zdecydowano się na podejście ewolucyjne, w którym system w trakcie rozwijania go będzie dążył do rozwiązania spełniającego założenia systemu ekspertowego. Zbliżanie się w kierunku systemu ekspertowego oznacza, że nie powstaje on od razu, ale w wyniku przekształceń pewnych części systemu. Zmiany zachodzące w implementacji sprawiają, że staje się ona coraz bardziej generyczna i uniwersalna. Zaletą takiego podejścia jest powolne, jasne i zrozumiałe wprowadzanie zmian w kodzie źrodłowym systemu, w trakcie których system ciągle spełnia stawiane mu wymagania. Wadą jest potrzeba dużego nakładu pracy, aby uzyskać w efekcie generyczny system ekspertowy\cite{zielonogorski_ekspertowe}.
 
 \subsection{Klasyfikacja}
 \label{sec:klasyfikacjaSystemuEkspertowego}
-W tym podrozdziale chcę zakwalifikować system ekspertowy do odpowiednich klas systemów ekspertowych:
+W tym podrozdziale zakwalifikowano stworzony system do odpowiednich klas systemów ekspertowych:
 \begin{itemize}
- \item Ze względu na możliwość ingerencji człowieka w produkowane przez system rozwiązanie jest to tzw. system doradczy \textendash{} podpowiada rozwiązanie pomagając podjąć decyzję użytkownikowi \textendash{} prezentuje rozwiązanie jakiegoś problemu, ale do użytkownika należy jego ocena, oraz to czy je zaakceptuje, czy odrzuci.
- \item Ze względu na złożoność jest to system płytki - tzn. taki który korzysta tylko z informacji zgromadzonych w bazie wiedzy.
- \item Ze względu na dane otrzymywane na wyjściu jest to system:
+ \item Ze względu na możliwość ingerencji człowieka w produkowane przez system rozwiązanie jest to tzw. system doradczy \textendash{} podpowiada rozwiązanie pomagając podjąć decyzję użytkownikowi \textendash{} prezentuje rozwiązanie jakiegoś problemu, ale do użytkownika należy jego ocena, oraz to czy je zaakceptuje, czy odrzuci\cite{goluchowski_eskpertowe}.
+ \item Ze względu na złożoność jest to system płytki - tzn. taki który korzysta tylko z informacji zgromadzonych w bazie wiedzy\cite{goluchowski_eskpertowe}.
+ \item Ze względu na dane otrzymywane na wyjściu\cite{mulawka_ekspertowe} jest to system:
    \begin{itemize}
-    \item Diagnozy \textendash{} ocena istniejącego stanu na podstawie posiadanych danych
-    \item Planowania \textendash{} opis stanu, do którego należy dążyć
+    \item Diagnozy \textendash{} ocena istniejącego stanu na podstawie posiadanych danych,
+    \item Planowania \textendash{} opis stanu, do którego należy dążyć.
    \end{itemize}
- \item Ze względu na rodzaj przetwarzanej informacji jest to system z wiedzą pewną.
+ \item Ze względu na rodzaj przetwarzanej informacji jest to system z wiedzą pewną\cite{mulawka_ekspertowe}.
 \end{itemize}
 
 \subsection{Baza wiedzy}
 \label{sec:bazaWiedzy}
-Najważniejszym z punktu widzenia systemu ekspertowego jest podział wiedzy na bazę faktów oraz bazę reguł. Logiczne wyróżnienie faktów dla systemu grupera JGP, pozwoli spojrzeć na system grupera jak na system ekpertowy. Wyróżnijmy więc fakty: rekord pacjenta, płeć, oddział, rozpoznanie(ICD-10), procedura(ICD-9), tryb przyjęcia, tryb wypisu, Jednorodna Grupa Pacjentów, wartości punktowe dla JGP, czas hospitalizacji. Oraz reguły: warunki kierunkowe, warunek na rozpoznanie główne, warunek na rozpoznanie dodatkowe, warunek na procedurę zasadniczą, warunki na procedury dodakowe, warunek na procedury i rozpoznania wykluczające się, ograniczenie na czas hospitalizacji, ograniczenie na wiek.
-Spełnienie wyżej wymienionych warunków powoduje wykonanie akcji: zapisanie kodu JGP na listę kodów zaakceptowanych przez system. Model ten stosowany jest do wyznaczania grupy JGP.
-Podobny mechanizm działa w trakcie wyznacznia nowych wartości mechanizmem osobodni.
-Sprawdzane są warunki na czas hospitalizacji i jeśli są one spełnione wyznaczana jest nowa wartość punktowa.
+Najważniejszym z punktu widzenia systemu ekspertowego jest podział wiedzy na bazę faktów oraz bazę reguł\cite{zielonogorski_ekspertowe}. Logiczne wyróżnienie faktów dla systemu grupera JGP, pozwoli spojrzeć na aplikację ,,Grupera'' jak na system ekpertowy. Wyróżniono zatem fakty: rekord pacjenta, płeć, oddział, rozpoznanie(ICD-10), procedura(ICD-9), tryb przyjęcia, tryb wypisu, Jednorodna Grupa Pacjentów, wartości punktowe dla JGP, czas hospitalizacji.
+
+Zdefiniowano nastepujące warunki: warunki kierunkowe, warunek na rozpoznanie główne, warunek na rozpoznanie dodatkowe, warunek na procedurę zasadniczą, warunki na procedury dodakowe, warunek na procedury i rozpoznania wykluczające się, ograniczenie na czas hospitalizacji, ograniczenie na wiek.
+Spełnienie wyżej wymienionych warunków powoduje wykonanie akcji: zapisanie kodu JGP na listę wybranych kodów. Reguła ta stosowana jest do wyznaczania listy zaakceptowanych grup JGP.
+
+Proces wyznaczania nowych wartości mechanizmem osobodni, gdzie sprawdzane są warunki na czas hospitalizacji, a w przypadku ich spełnienia wyznaczana jest nowa wartość punktowa jest kolejnym przykładem reguły w systemie ekspertowym.
 
 \subsection{Maszyna wnioskująca}
 \label{sec:maszynaWnioskujaca}
 Realizacja maszyny wnioskującej w języku JAVA odbywa się na poziomie warstwy biznesowej w technologii Spring. Klasa serwisowa przeprowadzająca proces wnioskowania zgodnie z wymaganiami systemu JGP to JGPService:
 
-\begin{lstlisting}[language=Java]
+\begin{lstlisting}[language=Java,caption={Deklaracja interfejsu serwisu JGP. Autor: Mateusz Urbanik},label=java_jgp_service]
 public interface JGPService {
     public List<JGP> findJGP(final JGPFilter filter);
 
