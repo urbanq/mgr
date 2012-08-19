@@ -476,9 +476,9 @@ Proces wyznaczania nowych wartości mechanizmem osobodni, gdzie sprawdzane są w
 
 \subsection{Maszyna wnioskująca}
 \label{sec:maszynaWnioskujaca}
-Realizacja maszyny wnioskującej w języku JAVA odbywa się na poziomie warstwy biznesowej w technologii Spring. Klasa serwisowa przeprowadzająca proces wnioskowania zgodnie z wymaganiami systemu JGP to JGPService:
+Realizacja maszyny wnioskującej w języku JAVA odbywa się na poziomie warstwy biznesowej w technologii Spring. Klasa serwisowa przeprowadzająca proces wnioskowania zgodnie z wymaganiami systemu JGP to JGPService(Listing \ref{java_jgp_service}).
 
-\begin{lstlisting}[language=Java,caption={Deklaracja interfejsu serwisu JGP. Autor: Mateusz Urbanik},label=java_jgp_service]
+\begin{lstlisting}[language=Java,caption={Serwis JGP - realizacja maszyny wnioskującej. Autor: Mateusz Urbanik},label=java_jgp_service]
 public interface JGPService {
     public List<JGP> findJGP(final JGPFilter filter);
 
@@ -494,13 +494,13 @@ public interface JGPService {
 }
 \end{lstlisting}
 
-Metoda ,,group'' sprawdza, którą ścieżkę wnioskowania obiera system. Istnieją dwie opcje: według rozpoznania głównego lub według procedur zasadniczych. Metody ,,doByRecognitions'' oraz ,,doByProcedures'' wyznaczają zbiór warunków z charakterystyki JGP do przeanalizowania. metoda ,,resolveResultsByJGP'' wykonuje zasadnicze wnioskowanie:
-\begin{itemize}\itemsep1pt
- \item Sprawdza warunki określone w obiekcie klasy JGPParameter i jeśli zostaną zaakceptowane zapisuje je na liście accepted.
- \item Metoda sprawdza warunki kierunkowe, warunek na płeć, warunek na tryb przyjęcia i wypisu, warunek na leczenie w danym oddziale, warunki na współisteniejące i zasadnicze kody ICD , warunki na kody ICD wykluczające się(negatywne).
-\end{itemize}
+Metoda \textit{,,group''} na podstawie danych epizodu wybiera główną ścieżkę poszukiwania. Istnieją dwie opcje: według rozpoznania głównego lub według procedur zasadniczych. Metody \textit{,,doByRecognitions''} oraz \textit{,,doByProcedures''} wyznaczają zbiór warunków z charakterystyki JGP do przeanalizowania. Metoda \textit{,,resolveResultsByJGP''} wykonuje 2 zasadnicze fazy procesu wnioskowania:
+\begin{enumerate}\itemsep1pt
+ \item Sprawdza warunki kierunkowe, warunek na płeć, warunek na tryb przyjęcia i wypisu, warunek na leczenie w danym oddziale, warunki na współisteniejące i zasadnicze kody ICD , warunki na kody ICD wykluczające się(negatywne).
+ \item Jeśli zostaną one spełnione to zapisuje kod JGP na liście zaakceptowanych kodów.
+\end{enumerate}
 
-Podusmowując maszyna wnioskująca ma za zadanie poszukiwanie optymalnej grupy JGP. Realizuje ona proces wnioskowania w następujących krokach. Przyjmuje zbiór faktów wejściowych w postaci obiektu klasy Episode. Następnie wybiera ścieżkę(ICD9 lub ICD10) według której mają zostać ustalone parametry JGP. Po ustaleniu ścieżki - wyciągane są z bazy reguły które mają zostać sprawdzone w postaci obiektu klasy JGPParameter. Następuje sprawdzenie warunków i w przypadku spełnienia wszystkich grupa zostaje zapisana na liście zaakceptowanych grup.
+Podusmowując, maszyna wnioskująca ma za zadanie poszukiwanie optymalnej grupy JGP. Realizuje ona proces wnioskowania w następujących krokach. Przyjmuje zbiór faktów wejściowych w postaci obiektu klasy Episode. Następnie wybiera ścieżkę(ICD9 lub ICD10) według której mają zostać ustalone parametry JGP. Po ustaleniu ścieżki poszukiwania, wyciągane są z bazy warunki(w postaci obiektu klasy JGPParameter), które mają zostać przetestowane. Następuje sprawdzenie warunków i w przypadku spełnienia wszystkich grupa zostaje zapisana na liście zaakceptowanych grup.
 
 
 %---------------------------------------------------------------------------
@@ -508,17 +508,29 @@ Podusmowując maszyna wnioskująca ma za zadanie poszukiwanie optymalnej grupy J
 \section{Optymalizacja JGP}
 \label{sec:optymalizacjaJGP}
 
-W tym podrozdziale opisane zostanie zagadanienie optymalizacji kosztów leczenia pacjenta. W poprzednim podrozdziale ustaliliśmy, że maszyna wnioskująca wybiera zbiór parametrów do przetestowania. Następnie dla grup JGP spełniających warunki zapisuje je na liście ,,zaakceptowane''. W tym miejscu nasunęły się pytania: A może by tak spróbować zapisać grupy JGP, które były testowane a zostały odrzucone przez algorytm na listę grup niezaakceptowanych? Może dla każdej niezaakceptowanej grupy JGP obliczyć jaką wartość punktową mogłaby przyjąć gdyby była zaliczona? Dlaczego została ona niezaakceptowana, jakich warunków nie spełniła? Może trzeba dla każdej niezaakceptwanej grupy zapisać na liście powód jej odrzucenia? 
+W tym podrozdziale opisano zagadanienie optymalizacji kosztów leczenia pacjenta. W podrozdziale~\ref{sec:maszynaWnioskujaca} ustalono, że maszyna wnioskująca wybiera zbiór parametrów do przetestowania. Następnie dla grup JGP spełniających warunki, zapisuje je na liście zaakceptowanych grup.
+Grupy niespełniające warunki są odrzucane. Tę utraconą informację postanowiono wykorzystać. Zapostulowano dodanie następujących funkcjonalności do algorytmu:
+\begin{enumerate}
+ \item Zapisać testowane grupy JGP odrzucone przez algorytm na oddzielną listę(grupy niezaakceptowane).
+ \item Dla każdej niezaakceptowanej grupy JGP obliczyć jaką wartość punktową przyjęłaby, gdyby została zaakceptowana przez algorytm.
+ \item Stworzyć listę powodów odrzucenia grupy i zapisać ją dla każdej niezaakceptowanej grupy.
+\end{enumerate}
 
-Aby odpowiedzieć na powyższe pytania należy rozwinąć istniejący algorytm. Do obiektu klasy JGPResult dodałem listę niezaakceptowanych grup. Każda niezaakceptwana grupa będzie posiadać dodatkowo listę powodów niezaakceptowania - lista obiektów klasy Reason. W ten sposób, system będzie wiedział jakie warunki były testowane dla konkretnego rozwiązania oraz dlaczego nie zostały one zaakceptowane. 
-Stworzyłem hierarchię klas dla powodów niezaakcpetowania:
-\vspace*{0.2cm}
+Rozszerzono implementację algorytmu o powyższe funkcjonalności. Do obiektu klasy \textit{JGPResult} dodano listę niezaakceptowanych grup. Każda niezaakceptwana grupa będzie posiadać dodatkowo listę powodów niezaakceptowania, czyli listę obiektów klasy Reason. 
+Taka implementacja sprawia że, system pamięta informację jakie dokładnie warunki były testowane dla konkretnego rozwiązania oraz dlaczego nie zostały one zaakceptowane. Hierarchię klas powodów niezaakceptowania przedstawia rysunek \ref{img:diagram_class_reason}.
+
+\begin{figure}[!ht]
+\centering
 \includegraphics[scale=0.4]{images/reason-classes2}
-\vspace*{0.2cm}
-Rozszerzyłem listę argumentów każdej z metod checkerów o argument: lista powodów niezaakceptowania: List<Reason> reasons. 
-Po sprawdzeniu konkretnego warunku, w przypadku jego niezaakceptowania tworzona jest odpowiednia instancja obiektu Reason, a następnie jest ona  dodawana do listy. Oto przykładowy kod:
+\caption[Diagram aktywności]{Diagram klas - hierarchia powodów niezaakceptowania. Autor: Mateusz Urbanik}
+\label{img:diagram_class_reason}
+\end{figure}
+
 \newpage
-\begin{lstlisting}[language=Java]
+Rozszerzono listę argumentów każdej z metod sprawdzających warunki o argument \mbox{\textit{,,List<Reason> reasons''}}(lista powodów niezaakceptowania). Powodem niezaakceptowania grupy systemu JGP jest niespełnienie konkretnego warunku.
+W przypadku niezaakceptowania warunku tworzona jest odpowiednia instancja obiektu \textit{Reason} i jest ona  dodawana do listy powodów niezaakceptowania. Przykładowa implementacja tej funkcjonalności jest przedstawiona na listingu \ref{java_check_hosp_limit}.
+
+\begin{lstlisting}[language=Java,caption={Metoda sprawdzająca warunek na czas hospitalizacji. Autor: Mateusz Urbanik},label=java_check_hosp_limit]
 protected boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Reason> reasons) {
      if (hospLimit != null) {
          int time = stay.getEpisode().hospitalTime(hospLimit.getTimeUnit());
@@ -532,8 +544,8 @@ protected boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Re
 }
 \end{lstlisting}
 
-Metoda ,,checkHospitalLimit'' realizuje dopisanie powodu niezaakcpetowania grupy JGP w przypadku, gdy nie zostaje on zaakceptowany po wykonaniu testu. Powodem niezaakceptowania grupy systemu JGP może być niespełnienie warunku. Na przykład: czas hospitalizacji dla grupy JGP musi być większy niż 7 dni, a zdefiniowany czas leczenia jest równy 5 dni.
+Metoda \textit{,,checkHospitalLimit''} realizuje dopisanie powodu niezaakcpetowania grupy JGP w przypadku, gdy test sprawdzający czas hospitalizacji epizodu będzie miał wynik negatywny. Przykładem zapisu powodu niezaakceptowania jest przypadek, gdy czas hospitalizacji dla grupy JGP musi być większy niż 7 dni, a zdefiniowany czas leczenia jest równy 5 dni.
 
 Takie podejście pozwala na stworzenie funkocjonalności, która będzie podpowiadać lekarzowi jakie może uzyskać grupy JGP z większą wartości punktową, czyli jak zmaksymalizować koszty leczenia pacjenta. Program podpowiadałby również jakie konkretnie warunki musi spełnić hospitalizacja, aby zaliczyć ją do droższej grupy (wybranej przez lekarza).
 
-Zaimplementowanie mechanizmu ,,Reasons - powody niezaakceptowania do grupy'' odpowiada w systemie ekspertowym modułowi objaśniająco-wyjąśniającemu(ang. Explanation Facility). Jest to część systemu odpowiedzialna za wyprowadzanie na zewnątrz wniosków systemu. Moduł ten daje użytkownikowi radę, sugestię, ale nie podejmuje decyzji. Zwróćmy uwagę, że zapis historii niespełnionych warunków pozwala odtworzyć część ścieżki poszukiwania rozwiązania dla rozwiązań niespełniających warunków.
+Zaimplementowanie mechanizmu ,,Reasons - powody niezaakceptowania do grupy'' odpowiada w systemie ekspertowym modułowi objaśniająco-wyjąśniającemu(ang. Explanation Facility). Jest to część systemu odpowiedzialna za wyprowadzanie na zewnątrz wniosków systemu. Moduł ten daje użytkownikowi radę, sugestię, ale nie podejmuje decyzji\cite{martyniuk_ekspertowe}. Należy zwrócić uwagę na fakt, iż zapis historii niespełnionych warunków pozwala odtworzyć część ścieżki poszukiwania rozwiązania.
