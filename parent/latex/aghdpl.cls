@@ -218,3 +218,6 @@ University of Science and Technology in Krakow}}}
 \setlength{\cftparskip}{2pt}
 \setlength{\cftbeforechapskip}{0mm}
 \renewcommand{\cftchappagefont}{\normalsize}
+
+\renewcommand{\fnum@figure}[1]{\textbf{Rys.~\thefigure. }}
+\renewcommand{\fnum@table}[1]{Tab.~\thetable. } % for tables if re

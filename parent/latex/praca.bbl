@@ -7,40 +7,40 @@ Adam Kozierkiewicz
 \newblock Departament Świadczeń Opieki Zdrowotnej.	
 \newblock Warszawa, 2009
 \newblock \\\texttt{http://www.nfz.gov.pl/akademia/pliki/Jednorodne\_Grupy\_Pacjentow\_Przewodnik\_po\_systemie.pdf}
-\newblock [dostęp 2007-07-20].
+\newblock \mbox{[data dostępu 2007-07-20]}.
 
 \bibitem{forumNFZ}
 \newblock {\em {Forum dyskusyjne NFZ - dział: ,,JGP - dla wszystkich''}}.
 \newblock \\\texttt{http://dyskusje.nfz.gov.pl/viewforum.php?f=27\&sid=7990da5b194dc9afaf6c0fb3ef25eb69}.
-\newblock [dostęp 2012-05-15].
+\newblock \mbox{[data dostępu 2012-05-15]}.
 
 \bibitem{mpFAQ}
 \newblock {\em {Medycyna Praktyczna - Jednorodne Grupy Pacjentów - Pytania i odpowiedzi}}.
 \newblock \\\texttt{www.mp.pl/jgp/index.php?aid=39481\&\_tc=E2D018CB1177259D5AC74C4E8B16C8AD}
-\newblock [dostęp 2012-05-15].
+\newblock \mbox{[data dostępu 2012-05-15]}.
 
 \bibitem{szkoleniaJGP}
 \newblock {\em {Platforma informacyjno-szkoleniowa Narodowego Funduszu Zdrowia z zakresu systemu Jednorodnych Grup Pacjentów }}.
 \newblock \\\texttt{http://szkoleniajgp.smartlearn.pl/cms/}
-\newblock [dostęp 2012-05-16].
+\newblock \mbox{[data dostępu 2012-05-16]}.
 
 \bibitem{rozporzadzenia_nfz}
 \newblock {\em {Oficjalna strona Narodowego Funduszu Zdrowia}}.
 \newblock \\\texttt{www.nfz.gov.pl}
-\newblock [dostęp 2012-04-01].
+\newblock \mbox{[data dostępu 2012-04-01]}.
 
 \bibitem{plik_parametryzujacy}
 Narodowy Fundusz Zdrowia
 \newblock {\em {Plik parametryzujący}}.
 \newblock \\\texttt{www.nfz.gov.pl/new/art/4273/plik\_parametryzujacy\_v.25.xls}
-\newblock [dostęp 2012-04-01].
+\newblock \mbox{[data dostępu 2012-04-01]}.
 
 \bibitem{algorytm_grupera}
 Narodowy Fundusz Zdrowia
 \newblock {\em {Algorytm grupera}}.
 \newblock Warszawa, wrzesień 2010
 \newblock \\\texttt{www.nfz.gov.pl/new/art/4253/algorytm\_grupera\_JGP\_v10.doc}
-\newblock [dostęp 2012-04-01].
+\newblock \mbox{[data dostępu 2012-04-01]}.
 
 \bibitem{mulawka_ekspertowe}
 Jan J.~Mulawka
@@ -61,25 +61,25 @@ Jerzy Gołuchowski
 Ewa Martyniuk  
 \newblock {\em {Główne elementy systemu ekspertowego: baza wiedzy, maszyna wnioskująca, pamięć robocza}}.
 \newblock \\\texttt{http://aragorn.pb.bialystok.pl\slash \~{}radev\slash ai\slash se\slash zal\slash ready\slash martyniuk.htm}
-\newblock [dostęp 2012-06-02].
+\newblock \mbox{[data dostępu 2012-06-02]}.
 
 \bibitem{zielonogorski_ekspertowe}
 Uniwersytet Zielonogórski- Instytut Informatyki i Elektroniki
 \newblock {\em {Projektowanie Systemów Informatycznych - SYSTEMY EKSPERTOWE wykład nr 9}}.
 \newblock \\\texttt{http://www.wmie.uz.zgora.pl\slash \~{}jjablons\slash wyk\slash psi-se.pdf}
-\newblock [dostęp 2012-06-02].
+\newblock \mbox{[data dostępu 2012-06-02]}.
 
 \bibitem{bazy_mimuw}
 Materiały dydaktyczne MIMUW na studia informatyczne
 \newblock \\\texttt{http://wazniak.mimuw.edu.pl/index.php?title=Bazy\_danych}
-\newblock [dostęp 2012-04-25].
+\newblock \mbox{[data dostępu 2012-04-25]}.
 
 \bibitem{sienkiewicz_architektura}
 Józef E. Sienkiewicz, Paweł Syty
 \newblock {\em Architektura warstwowa aplikacji internetowych.}
 \newblock Politechnika Gdańska, Elbląg 2008
 \newblock \\\texttt{www.mif.pg.gda.pl/homepages/sylas/articles/art\_2008\_elblag.pdf}
-\newblock [dostęp 2012-06-20].
+\newblock \mbox{[data dostępu 2012-06-20]}.
 
 \bibitem{bruce_spring}
 Bruce A.~Tate, Justin Gehtland
@@ -91,24 +91,24 @@ Rod Johnson, Juergen Hoeller, Keith Donald, Colin Sampaleanu, Rob Harrop, Alef A
 \newblock {\em Spring Framework Reference Documentation 3.0}
 \newblock Copyright© 2004-2010
 \newblock \\\texttt{http://static.springsource.org\slash spring\slash docs\slash 3.0.x\slash spring-framework-reference\slash html}
-\newblock [dostęp 2012-05-17].
+\newblock \mbox{[data dostępu 2012-05-17]}.
 
 \bibitem{spring_rcp_reference}
 The spring-richclient team
 \newblock {\em Spring Rich Client Project site}
 \newblock \\\texttt{http://spring-rich-c.sourceforge.net/1.1.0/index.html}
-\newblock [dostęp 2012-04-14].
+\newblock \mbox{[data dostępu 2012-04-14]}.
 
 \bibitem{valkyrie_reference}
 The Valkyrie RCP TEAM
 \newblock {\em Valkyrie RCP Reference Guide}.
 \newblock \\\texttt{https://github.com/ndeverge/Valkyrie-RCP} \\\texttt{http://ndeverge.github.com/Valkyrie-RCP}
-\newblock [dostęp 2012-05-16].
+\newblock \mbox{[data dostępu 2012-05-16]}.
 
 \bibitem{h2_reference}
 \newblock {\em {Reference Guide}}
 \newblock H2 Database Engine Version 1.3.166 (2012-04-08)
 \newblock \\\texttt{http://www.h2database.com/html/grammar.html} \\\texttt{http://www.h2database.com/h2.pdf}
-\newblock [dostęp 2012-05-12].
+\newblock \mbox{[data dostępu 2012-05-12]}.
 
 \end{thebibliography}

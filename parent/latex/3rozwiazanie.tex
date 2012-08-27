@@ -549,3 +549,86 @@ Metoda \textit{,,checkHospitalLimit''} realizuje dopisanie powodu niezaakcpetowa
 Takie podejście pozwala na stworzenie funkocjonalności, która będzie podpowiadać lekarzowi jakie może uzyskać grupy JGP z większą wartości punktową, czyli jak zmaksymalizować koszty leczenia pacjenta. Program podpowiadałby również jakie konkretnie warunki musi spełnić hospitalizacja, aby zaliczyć ją do droższej grupy (wybranej przez lekarza).
 
 Zaimplementowanie mechanizmu ,,Reasons - powody niezaakceptowania do grupy'' odpowiada w systemie ekspertowym modułowi objaśniająco-wyjąśniającemu(ang. Explanation Facility). Jest to część systemu odpowiedzialna za wyprowadzanie na zewnątrz wniosków systemu. Moduł ten daje użytkownikowi radę, sugestię, ale nie podejmuje decyzji\cite{martyniuk_ekspertowe}. Należy zwrócić uwagę na fakt, iż zapis historii niespełnionych warunków pozwala odtworzyć część ścieżki poszukiwania rozwiązania.
+
+%---------------------------------------------------------------------------
+
+\section{Porównanie z innymi istniejącymi rozwiązaniami}
+\label{sec:porownanieZinnymiRozwiazaniami}
+
+Przeanalizowano konkurencyjne rozwiązania na rynku. Najpopularniejsze aplikacje, postanowiono zainstalować, uruchomić i porównać z rozwiązaniem stworzonym na potrzeby pracy. %A oto listing systemów medycznych zawierających algorytm grupera:
+
+\textbf{MP-System} - złożony system do kompleksowej obsługi szpitali. Już w trakcie instalacji wersji demo pojawiły się błędy dotyczące starej wersji serwera MS-SQL(dostarczanej wraz z aplikacją). Niestety nawet po kilku-godzinnych trudach nie udało się zainstalować i uruchomić aplikacji. Skomplikowany proces instalacji uniemożliwił zainstalowanie systemu Medycyny Praktycznej.
+
+\textbf{Internetowy OPTYMALIZATOR JGP} CompuGroup Medical Polska Lublin - wersja demo dostępna pod adresem http://jgp.uhc.com.pl/jgpgrouper(dostęp 12.06.2012).
+Aplikacja umożliwia przeporawdzenie pięciu darmowych grupowań dziennie. Powyżej tej liczby jest aplikacja jest płatna. Według statystyk zamieszonych na stronie przy użyciu aplikacji przeprowadzono 4mln grupowań dla kilkuset szpitali.%Jest to rozwiązanie wysokiej jakości, ale płatne.
+System ten posiada również moduł do optymalizacji, z którego korzysta 58\% użytkowników(pozostałe 42\% korzysta z samego algorytmu grupowania).
+
+\textbf{SMARTGRUPER} - http://smartgruper.pl(dostęp 12.06.2012). Jest to komercyjne rozwiązanie, nie posiadające wersji demo. Z opisu na stronie projektu wynika, że jest to oprogramowanie, które posiada wiele funkcjonalności poza standardowym ,,Gruperem'', na przykład moduł optymalizacji JGP, zapisywanie grupowań. Dostępne są 3 wersje produktu:
+\begin{itemize}
+ \item Wersja On-line. Dostęp indywidualny oraz dla małych placówek medycznych. Dostęp do systemu Smart Gruper on-line.
+ \item Wersja Professional. Rozwiązanie dla szpitala bez integracji. Instalacja na serwerze w szpitalu.
+ \item Wersja Enterprise. Rozwiązanie dla szpitala z integracją. Instalacja na serwerze w szpitalu oraz integracja z istniejącym systemem informatycznym szpitala.
+\end{itemize}
+
+Każdy z powyżej wymienionych systemów jest rozwiązaniem komercyjnym. System stworzony w ramach tej pracy jest aktualnie jedynym rozwiązaniem typu ,,open source'' na rynku oraz jedynym, które wnosi możliwości jakie daje profesjonalny system ekspertowy.
+
+Przyszłością systemów do rozliczania kosztów leczenia pacjenta jest powstający system \mbox{Euro-DRG~7}, który docelowo stanowiłby jednolity system JGP dla całej Unii Europejskiej(http://www.eurodrg.eu).
+NFZ stał się partnerem systemu Euro-DRG i aktywnie uczestniczy w jego tworzeniu. Być może stworzenie platformy systemu ekspertowego dla systemu Euro-DRG byłoby dobrym kierunkiem rozwoju tego typu rozwiązania. Jako projekt ,,open source'' posiadałby on swoich aktywnych uczestników nie tylko w Polsce, ale w całej Unii Europejskiej. Niestety aktualnie nie określona została jeszcze specyfikacja systemu. 
+\begin{comment}
+Problematyczne jest podejście wszystkich firm startujących w przetargach, ponieważ każda z nich chce mieć monopol na cały obszar zastosowania systemu. Jest to w mojej opinii poważna przeszkoda w tworzeniu najlepszej jakości oprogramowania, ponieważ w jej wyniku powstają systemy skomplikowane, ktorych używa się tylko dlatego, że nie ma innej alternatywy. Podobnie jak system operacyjny Linux jest ciągle ,,konkurencją'' dla systemu Winodws, tak samo oprogramowanie openSource w każdej dziedzinie będzie uczestniczyć w nieustającym wyścigu z oprogramowaniem komercyjnym. 
+\end{comment}
+%---------------------------------------------------------------------------
+
+\section{Wykorzystane biblioteki}
+\label{sec:wykorzystaneBiblioteki}
+Tabela \ref{tab:tools} zawiera listę narzędzi wykorzystanych do stworzenia systemu.
+\begin{table}[h]
+ \caption{Wykorzystane narzędzia}
+ \small\tt
+ \centering
+ \vspace{0in}
+ \begin{tabular}{|l|p{7cm}|}
+ \hline
+ GIT & repozytorium kod źródłowy (https://github.com/urbanq/mgr) \\
+ \hline
+ commons-collections-3.2.1 & Pomocnicze metody dla operacji na kolekcjach \\
+ \hline
+ aspectj-1.6.10 & Aspekty dla JAVY \\
+ \hline
+ h2database-1.3.166 & Silnik bazodanowy H2 \\
+ \hline
+ junit-4.10 & Środowisko testowe \\
+ \hline
+ jgoodies-2.2.0 & GUI narzędzia pomocnicze \\
+ \hline
+ jodatime-2.1 & Najlepsza biblioteka do wykonywania obliczeń datowo/czasowych \\
+ \hline
+ spring-framework-3.0.5 & Spring framework z komponentami Core, JDBC, Security, Beans, Aspects, ORM, Test, TX \\
+ \hline
+ valkyriercp-1.0 & Biblioteka pozwalająca na wysokopozimowe programowanie GUI \\
+ \hline
+ \end{tabular}
+ \label{tab:tools}
+\end{table}
+
+%---------------------------------------------------------------------------
+
+\section{Jakość oprogramowania}
+\label{sec:jakoscOprogramowania}
+
+Zestawienie wartości liczbowych charakteryzujące oprogramowanie jest nazywane metryką oprogramowania. Dla projektu wykonanego w ramach pracy obliczyłem następujące wartości metryk chrakteryzujące jego wielkość:
+\begin{itemize}
+ \item 7009 LOC(Lines of code) - ilość linijek kodu źródłowego
+ \item 191 C(Classes) - ilość zdefiniowanych klas JAVY.
+\end{itemize}
+
+Następne zestawienie metryk charakteryzujące jakość napisanego kodu to MOOD - Metrics for Object-Oriented Design. Metryki te służą do wyrażenia w procentach cech charakteryzujących dla programowania obiektowego:
+\begin{itemize}
+ \item 78,26\% AHF - Attribute Hiding Factor - hermetyzacja atrybutów
+ \item 23,55\% MHF - Method Hiding Factor - hermetyzacja metod
+ \item 71,49\% AIF - Attribute Inheritance Factor - dziedziczenie atrybutów
+ \item 32,29\% MIF - Method Inheritance Factor - dziedziczenie metod
+ \item 5,47\% CF - Coupling Factor - przekazywanie komunikatów 
+ \item 57,21\% PF - polimorfizm
+\end{itemize}
+
