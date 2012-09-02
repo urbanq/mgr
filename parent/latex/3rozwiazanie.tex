@@ -51,7 +51,7 @@ Architekturę trójwarstwową przedstawia rysunek \ref{img:rysunek_3layer}.
 \begin{figure}[!ht]
 \centering	
 \includegraphics[scale=0.5]{images/3layer-architect}
-\caption[Rysunek przedstawiający model architektury trójwarstwowej]{Architektura trójwarstwowa. Autor: Mateusz Urbanik}
+\caption[Rysunek przedstawiający model architektury trójwarstwowej]{Architektura trójwarstwowa.}
 \label{img:rysunek_3layer}
 \end{figure}
 
@@ -88,7 +88,7 @@ Rysunek \ref{img:rysunek_spring2} przedstawia architekturę systemu jaki został
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.4]{images/spring-layers2}
-\caption[Rysunek przedstawiający model architektury systemu]{Architektura systemu stworzonego dla pracy. Autor: Mateusz Urbanik}
+\caption[Rysunek przedstawiający model architektury systemu]{Architektura systemu stworzonego dla pracy.}
 \label{img:rysunek_spring2}
 \end{figure}
 
@@ -139,7 +139,7 @@ Architekturę systemu regułowego przedstawia rysunek \ref{img:rysunek_expert}.
 \begin{figure}[!ht]
 \centering	
 \includegraphics[scale=0.5]{images/expert-system}
-\caption[Rysunek przedstawiający model architektury systemu ekspertowego]{Architektura systemu ekspertowego. Autor: Mateusz Urbanik}
+\caption[Rysunek przedstawiający model architektury systemu ekspertowego]{Architektura systemu ekspertowego.}
 \label{img:rysunek_expert}
 \end{figure}
 
@@ -222,7 +222,7 @@ H2 to silnik bazodanowy spełniający postawione wymagania. Jest to rozwiązanie
 
 Plik parametryzujący, w którym znajdują się wszystkie potrzebne dla aplikacji dane zaimportowano do bazy danych, a bazę poddano procesowi normalizacji. Każdy z arkuszy z pliku parametryzującego zapisano w osobnym pliku CSV. Każdy z plików CSV zaimportowano używając funkcji CSVREAD silnika H2 do odpowiadających im tabel tymczasowych w systemie bazy danych. Przykład importu tabeli przedstawia listing~\ref{sql_import_csv}.
 
-\begin{lstlisting}[language=SQL,caption={Import listy kodów ICD9 z pliku CSV. Autor: Mateusz Urbanik},label=sql_import_csv]
+\begin{lstlisting}[language=SQL,caption={Import listy kodów ICD9 z pliku CSV.},label=sql_import_csv]
 CREATE TEMPORARY TABLE ICD9_TMP(
     LIST_CODE_ID VARCHAR(5) NOT NULL, -- Kod listy
     LIST_TYPE_ID CHAR(1) NOT NULL,    -- Typ listy
@@ -234,7 +234,7 @@ CREATE TEMPORARY TABLE ICD9_TMP(
 
 Następnym krokiem jest normalizacja bazy danych. Proces normalizacji bazy przeprowadzony został zgodnie z regułami postaci normalnych: 1PN, 2PN oraz 3PN\cite{bazy_mimuw}. Rozdzielono tabele, wprowadzono klucze publiczne i obce, usunięto zwielokrotnione wiersze. Listing \ref{sql_normalizacja_create} przedstawia skrypt tworzący nowe tabele.
 \newpage
-\begin{lstlisting}[language=SQL,caption={Normalizacja - tworzenie tabel dla listy kodów ICD9. Autor: Mateusz Urbanik},label=sql_normalizacja_create]
+\begin{lstlisting}[language=SQL,caption={Normalizacja - tworzenie tabel dla listy kodów ICD9.},label=sql_normalizacja_create]
 CREATE TABLE ICD_LIST_TYPE(
     ID CHAR(1) PRIMARY KEY,
     NAME VARCHAR(10) NOT NULL
@@ -263,7 +263,7 @@ CREATE TABLE ICD9_LIST_CODE(
 
 Po utworzeniu znormalizowanego schematu danych skopiowano dane z tabel tymczasowych do docelowych pomijając zwielokrotnione wiersze. Listing \ref{sql_normalizacja_insert} przedstawia skrypt SQL wypełniający tabele docelowe dla listy kodów ICD9.
 
-\begin{lstlisting}[language=SQL,caption={Normalizacja - wypełnianie tabel danymi dla listy kodów ICD9. Autor: Mateusz Urbanik},label=sql_normalizacja_insert]
+\begin{lstlisting}[language=SQL,caption={Normalizacja - wypełnianie tabel danymi dla listy kodów ICD9.},label=sql_normalizacja_insert]
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('G', 'globalna');
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('U', 'do sekcji');
 INSERT INTO ICD_LIST_TYPE (ID, NAME) VALUES ('H', 'do grupy');
@@ -284,7 +284,7 @@ Spełniając założenia postaci normalnych bazy przeniesiono wszystkie potrzebn
 W wyniku procesu normalizacji i wstępnej optymalizacji schematu bazy, utworzonych zostało 16 plików SQL. Skrypty importują dane do tabel tymczasowych, następnie wykonują instrukcje tworzące schemat, który spełnia warunki spójności oraz zabiega anomaliom bazo-danowym. Ostatnim krokiem jest przepisanie danych, w którym pomijane są zwielokrotnione wpisy. Skrypty zostały uporządkowane w kolejności, w której muszą zostać wykonane, aby stworzyć model wypełniając go danymi z pliku opublikowanego przez NFZ. Tabela \ref{table_csv_sql} zawiera wszystkie wyróżnione tabele oraz powiązane z nimi pliki z danymi.
 
 \begin{table}[h]
-   \caption{Pliki oraz tabele  - model danych. Autor: Mateusz Urbanik}
+   \caption{Pliki oraz tabele  - model danych.}
    \tiny\tt
    \centering
    \vspace{0in}
@@ -352,7 +352,7 @@ W wyniku procesu dogłębnej analizy modelu danych, a następnie jego normalizac
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.31]{images/erd}
-\caption[Diagram ERD]{Diagram ERD. Autor: Mateusz Urbanik}
+\caption[Diagram ERD]{Diagram ERD.}
 \label{img:diagram_erd}
 \end{figure}
 
@@ -372,7 +372,7 @@ Wynikiem działania algorytmu ,,Grupera'' jest grupa JGP, która spełnia okreś
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.4]{images/activity-gruper}
-\caption[Diagram aktywności]{Diagram aktywności - algorytm ,,Grupera''. Autor: Mateusz Urbanik}
+\caption[Diagram aktywności]{Diagram aktywności - algorytm ,,Grupera''.}
 \label{img:diagram_activity_gruper}
 \end{figure}
 
@@ -392,7 +392,7 @@ Po wybraniu ścieżki wyznaczana jest lista kodów JGP wraz z zestawem warunków
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.4]{images/activity-jgp} 
-\caption[Diagram aktywności]{Diagram aktywności - wyznaczanie grupy JGP. Autor: Mateusz Urbanik}
+\caption[Diagram aktywności]{Diagram aktywności - wyznaczanie grupy JGP.}
 \label{img:diagram_activity_jgp}
 \end{figure}
 
@@ -410,7 +410,7 @@ Sposób w jaki zdecydowano się zaimplementować warunki kierunkowe przedstawiaj
 \end{itemize}
 Zaletą takiego rozwiązania jest możliwość implementacji generycznego silnika do sprawdzania warunków kierunkowych. Zdefiniowano zatem algorytm działania takiego silnika. Dla każdego wybranego obiektu klasy \mbox{JGPParameter}(warunki które mają zostać sprawdzone) na podstawie odczytanej sygnatury warunku kierunkowego zostaje uruchamiany odpowiedni kawałek kodu JAVY sprawdzający poprawność warunków dla pobytu. Listing \ref{java_check} przedstawia kawałek kodu JAVY realizujący tą funkcjonalność.
 
-\begin{lstlisting}[language=Java,caption={Metoda sprawdzająca warunki kierunkowe. Autor: Mateusz Urbanik},label=java_check]
+\begin{lstlisting}[language=Java,caption={Metoda sprawdzająca warunki kierunkowe.},label=java_check]
 private boolean checkDirectional(Stay stay, JGPParameter parameter, List<Reason> reasons) {
   //pobranie sygnatury(A-Z) warunku ktory powinien zostac sprawdzony
   Condition condition = parameter.getCondition();
@@ -432,7 +432,7 @@ Wyznacznikiem kosztów leczenia pacjenta nie może być tylko wartość punktowa
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.5]{images/activity-manday}
-\caption[Diagram aktywności]{Diagram aktywności - mechanizm osobodni. Autor: Mateusz Urbanik}
+\caption[Diagram aktywności]{Diagram aktywności - mechanizm osobodni.}
 \label{img:diagram_activity_maday}
 \end{figure}
 
@@ -478,7 +478,7 @@ Proces wyznaczania nowych wartości mechanizmem osobodni, gdzie sprawdzane są w
 \label{sec:maszynaWnioskujaca}
 Realizacja maszyny wnioskującej w języku JAVA odbywa się na poziomie warstwy biznesowej w technologii Spring. Klasa serwisowa przeprowadzająca proces wnioskowania zgodnie z wymaganiami systemu JGP to JGPService(Listing \ref{java_jgp_service}).
 
-\begin{lstlisting}[language=Java,caption={Serwis JGP - realizacja maszyny wnioskującej. Autor: Mateusz Urbanik},label=java_jgp_service]
+\begin{lstlisting}[language=Java,caption={Serwis JGP - realizacja maszyny wnioskującej.},label=java_jgp_service]
 public interface JGPService {
     public List<JGP> findJGP(final JGPFilter filter);
 
@@ -522,7 +522,7 @@ Taka implementacja sprawia że, system pamięta informację jakie dokładnie war
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.4]{images/reason-classes2}
-\caption[Diagram aktywności]{Diagram klas - hierarchia powodów niezaakceptowania. Autor: Mateusz Urbanik}
+\caption[Diagram aktywności]{Diagram klas - hierarchia powodów niezaakceptowania.}
 \label{img:diagram_class_reason}
 \end{figure}
 
@@ -530,7 +530,7 @@ Taka implementacja sprawia że, system pamięta informację jakie dokładnie war
 Rozszerzono listę argumentów każdej z metod sprawdzających warunki o argument \mbox{\textit{,,List<Reason> reasons''}}(lista powodów niezaakceptowania). Powodem niezaakceptowania grupy systemu JGP jest niespełnienie konkretnego warunku.
 W przypadku niezaakceptowania warunku tworzona jest odpowiednia instancja obiektu \textit{Reason} i jest ona  dodawana do listy powodów niezaakceptowania. Przykładowa implementacja tej funkcjonalności jest przedstawiona na listingu \ref{java_check_hosp_limit}.
 
-\begin{lstlisting}[language=Java,caption={Metoda sprawdzająca warunek na czas hospitalizacji. Autor: Mateusz Urbanik},label=java_check_hosp_limit]
+\begin{lstlisting}[language=Java,caption={Metoda sprawdzająca warunek na czas hospitalizacji.},label=java_check_hosp_limit]
 protected boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Reason> reasons) {
      if (hospLimit != null) {
          int time = stay.getEpisode().hospitalTime(hospLimit.getTimeUnit());
