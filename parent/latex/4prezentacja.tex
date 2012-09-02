@@ -10,7 +10,7 @@ przedstawiony interfejs graficzny użytkownika. Następnie rozdział~\ref{sec:pr
 \label{sec:interfejsUzytkownika}
 Aplikacja posiada standardowo okienkowy interfejs użytkownika. Skórka aplikacji jest ustawiona na przyjazny ,,PlasticXPLookAndFeel''.
 
-Wszystkie funkcjonalności, takie jak dodawanie, usuwanie, filtrowanie oraz cały widoczny układ komponentów graficznych dostarcza framework Valkyrie-RCP. Realizuje je klasa ,,DataEditor'', która jest komponentem graficznym(Widgetem). Do obiektu klasy ,,DataEditor'' wstrzykiwane są JavaBean'y: \textbf{DataProvider} - fasadę danych dla interfejsu użytkownika, \textbf{DetailForm} - formę do dodawania/usuwania danych, \textbf{FilterForm} formę dla dodatkowego filtrowania oraz \textbf{TableWidget} - obiekt definiujący wyświetlaną tabelkę danych\cite{valkyrie_reference}.
+Wszystkie funkcjonalności, takie jak dodawanie, usuwanie, filtrowanie oraz cały widoczny układ komponentów graficznych dostarcza framework Valkyrie-RCP. Realizuje je klasa ,,DataEditor'', która jest komponentem graficznym(Widgetem). Do obiektu klasy ,,DataEditor'' wstrzykiwane są JavaBean'y: \textbf{DataProvider} - fasada danych dla interfejsu użytkownika, \textbf{DetailForm} - forma do dodawania/usuwania danych, \textbf{FilterForm} forma dla dodatkowego filtrowania oraz \textbf{TableWidget} - obiekt definiujący wyświetlaną tabelkę danych\cite{valkyrie_reference}.
 Rysunek \ref{img:patient} ilutruje widok bazy pacjetnów, który jest oparty na szablonie ,,DataEditor''.
 
 \begin{figure}[!ht]
@@ -20,7 +20,7 @@ Rysunek \ref{img:patient} ilutruje widok bazy pacjetnów, który jest oparty na 
 \label{img:patient}
 \end{figure}
 
-W oparciu o wzorzec ,,DataEditor'' zbudowane są następujące widoki: katalog kodów ICD-9, ICD-10, JGP. Z tą różnicą w stosunku do widoku bazy pacjentów, że zablokowana jest dla nich możliwość dodawania, edycji i usuwania.
+W oparciu o wzorzec ,,DataEditor'' zbudowane są następujące widoki: katalog kodów \mbox{ICD-9}, \mbox{ICD-10}, JGP. Z tą różnicą w stosunku do widoku bazy pacjentów, że zablokowana jest dla nich możliwość dodawania, edycji i usuwania.
 
 %---------------------------------------------------------------------------
 
@@ -29,7 +29,13 @@ W oparciu o wzorzec ,,DataEditor'' zbudowane są następujące widoki: katalog k
 Aby zilustrować działanie aplikacji przedstawiono w tym podrozdziale konkretny i realny przypadek użycia aplikacji. Zostanie wykorzystany również mechanizm dzięki, któremu lekarz ma możliwość optymalizacji kosztów leczenia pacjenta.
 
 Zdefiniowano fakty wejściowe. Leczony pacjent urodzony w 1937 roku ma 75 lat, jest mężczyzną, przyjęty był na okres 7 dni w trybie przyjęcia ,,Przyjęcie planowe na podstawie skierowania'' oraz wypisany trybie ,,Zakończenie procesu terapeutycznego lub diagnostycznego''. Typ hospitalizacji ustalono na ,,Hospitalizacja zwykła''. Rysunek \ref{img:gruper1} przedstawia uzupełniony powyższymi danymi widok ,,Grupera''. 
-Następnie należy zdefiniować pobyt. Do tego celu służy okno dialowe(\ref{img:gruper2}) wyświetlane po kliknięciu przycisku ,,Dodaj pobyt''.
+Następnie należy zdefiniować pobyt. Do tego celu służy okno dialowe(Rys.~\ref{img:gruper2}) wyświetlane po kliknięciu przycisku ,,Dodaj pobyt''. Ustalono następujące dane pobytu: oddział kod świadczenia; data przyjęcia i wypisu przepisuje się automatycznie.
+Kolejnym krokiem jest dodanie zdiagnozowanych rozpoznań(Rys.~\ref{img:gruper3}). Aby dodać rozpoznanie do pobytu należy kliknąć przycisk ,,Select''.
+Następnie dodano wykonane procedury medyczne, należy kliknąć przycisk ,,Dodaj procedurę''(Rys~\ref{img:gruper5}).
+Po wybraniu procedury należy ustalić w jakim terminie została ona wykonana oraz ile razy(Rys.~\ref{img:gruper6}).
+Zatwierdzenie przyciskiem ,,OK'' przenosi użytkownika do okienka z zdefiniowanym pobytem(Rys.~\ref{img:gruper7}).
+Kiedy wszystkie dane dla pobytu zostały uzupełnione zapisujemy pobyt przyciskiem OK(Rys.~\ref{img:gruper7}).
+Widok ,,Gruper'' z wypełnionymi wszystkimi danymi wejściowymi prawidłowo, pozwala użytkownikowi na uruchomienie algorytmu. Należy nacisnąć przycisk ,,Grupuj''(Rys.~\ref{img:gruper8}).
 
 \begin{figure}%[!ht]
 \centering
@@ -45,16 +51,12 @@ Następnie należy zdefiniować pobyt. Do tego celu służy okno dialowe(\ref{im
 \label{img:gruper2}
 \end{figure}
 
-Ustalono następujące dane pobytu: oddział kod świadczenia; data przyjęcia i wypisu przepisuje się automatycznie.
-
 \begin{figure}%[!ht]
 \centering
 \includegraphics[scale=0.4]{images/gruper3}
 \caption[Widok grupera]{Okno dialogowe - wybór rozpoznania.}
 \label{img:gruper3}
 \end{figure}
-
-Kolejnym krokiem jest dodanie zdiagnozowanych rozpoznań(\ref{img:gruper3}). Aby dodać rozpoznanie do pobytu należy kliknąć przycisk ,,Select''.
 
 \begin{figure}%[!ht]
 \centering
@@ -63,16 +65,12 @@ Kolejnym krokiem jest dodanie zdiagnozowanych rozpoznań(\ref{img:gruper3}). Aby
 \label{img:gruper4}
 \end{figure}
 
-Następnie dodano wykonane procedury medyczne, klikamy przycisk ,,Dodaj procedurę''(\ref{img:gruper5}).
-
 \begin{figure}%[!ht]
 \centering
 \includegraphics[scale=0.4]{images/gruper5}
 \caption[Widok grupera]{Okno dialogowe - wybór procedury.}
 \label{img:gruper5}
 \end{figure}
-
-Po wybraniu procedury należy ustalić w jakim terminie została ona wykonana oraz ile razy(\ref{img:gruper6}).
 
 \begin{figure}%[!ht]
 \centering
@@ -81,16 +79,12 @@ Po wybraniu procedury należy ustalić w jakim terminie została ona wykonana or
 \label{img:gruper6}
 \end{figure}
 
-Zatwierdzenie przyciskiem ,,OK'' przenosi użytkownika do okienka z zdefiniowanym pobytem(\ref{img:gruper7}).
-
 \begin{figure}%[!ht]
 \centering
 \includegraphics[scale=0.4]{images/gruper7}
 \caption[Widok grupera]{Okno dialogowe - dodawanie pobytu - uzupełnione procedury i rozpoznania.}
 \label{img:gruper7}
 \end{figure}
-
-Kiedy wszystkie dane dla pobytu zostały uzupełnione zapisujemy pobyt przyciskiem OK(\ref{img:gruper7}).
 
 \begin{figure}%[!ht]
 \centering
@@ -99,8 +93,6 @@ Kiedy wszystkie dane dla pobytu zostały uzupełnione zapisujemy pobyt przyciski
 \label{img:gruper8}
 \end{figure}
 
-Widok ,,Gruper'' z wypełnionymi wszystkimi danymi wejściowymi prawidłowo, pozwala użytkownikowi na uruchomienie algorytmu. Należy nacisnąć przycisk ,,Grupuj''(\ref{img:gruper8}).
-
 \begin{figure}%[!ht]
 \centering
 \includegraphics[scale=0.4]{images/gruper9}
@@ -108,9 +100,9 @@ Widok ,,Gruper'' z wypełnionymi wszystkimi danymi wejściowymi prawidłowo, poz
 \label{img:gruper9}
 \end{figure}
 
-Uruchamiany jest algorytm wnioskowania, który wybiera warunki do sprawdzenia, testuje je, a wyniki zapisuje na listach: Zaakceptowane, Potencjalnie droższe, Potencjalnie tańsze. W tym miejscu można zakończyć przebieg grupowania. Została wybrana optymalna grupa JGP: ,,A49 - Udar mózgu - leczenie > 3 dni'' oraz ustalona została wartość kosztów leczenia 77pkt(\ref{img:gruper9}).
+Uruchamiany jest algorytm wnioskowania, który wybiera warunki do sprawdzenia, testuje je, a~wyniki zapisuje na listach: Zaakceptowane, Potencjalnie droższe, Potencjalnie tańsze. W tym miejscu można zakończyć przebieg grupowania. Została wybrana optymalna grupa JGP: ,,A49 - Udar mózgu - leczenie > 3 dni'' oraz ustalona została wartość kosztów leczenia 77pkt(Rys.~\ref{img:gruper9}).
 
-Następny krok w prezentacji działania aplikacji to optymalizacja kosztów leczenia. Przedstawione zostanie narzędzie pozwalające przewidywać wyliczane według NFZ koszty leczenia pacjenta. Przeporwadzony zostanie proces zmaksymalizacji kosztów leczenia. Na tym etapie należy spojrzeć na zakładkę ,,Potencjalnie droższe''. Znajdują się tu grupy JGP, wśród których poszukiwane jest najlepsze rozwiązanie.
+Następny krok w prezentacji działania aplikacji to optymalizacja kosztów leczenia. Przedstawione zostanie narzędzie pozwalające przewidywać wyliczane według NFZ koszty leczenia pacjenta. Przeprowadzony zostanie proces maksymalizacji kosztów leczenia. Na tym etapie należy spojrzeć na zakładkę ,,Potencjalnie droższe''(Rys.~\ref{img:gruper10}). Znajdują się tu grupy JGP, wśród których poszukiwane jest najlepsze rozwiązanie.
 
 \begin{figure}%[!ht]
 \centering
@@ -119,7 +111,7 @@ Następny krok w prezentacji działania aplikacji to optymalizacja kosztów lecz
 \label{img:gruper10}
 \end{figure}
 
-Zauważono, że istnieje grupa JGP dająca możliwość wygenerwoania kosztów w wysokości 162pkt. Jest to ponad 2-krotnie większa wartość od wyliczonej aktualnie. Aby zakwalifikować leczenie do tej grupy systemu JGP, należy kliknąć przycisk ,,Szczegóły'' i sprawdzić powody niezaakceptowania grupy A48(Rys.~\ref{img:gruper11}).
+Zauważono, że istnieje grupa JGP dająca możliwość wygenerwoania kosztów w wysokości 162pkt. Jest to ponad dwukrotnie większa wartość od wyliczonej aktualnie. Należy kliknąć przycisk ,,Szczegóły'' i sprawdzić powody niezaakceptowania grupy A48(Rys.~\ref{img:gruper11}).
 
 \begin{figure}%[!ht]
 \centering
@@ -128,7 +120,7 @@ Zauważono, że istnieje grupa JGP dająca możliwość wygenerwoania kosztów w
 \label{img:gruper11}
 \end{figure}
 
-Z rysunku \ref{img:gruper12} można odczytać następujące powody niezaakceptowania pacjenta:
+Z rysunku \ref{img:gruper11} można odczytać następujące powody niezaakceptowania pacjenta:
 \begin{itemize}
  \item Wymagane jest zdefiniowanie 2 procedur medycznych,
  \item Wymagany jest czas hospitalizacji powyżej 7 dni.
@@ -175,7 +167,7 @@ Wybrana zostaje grupa ,,A48 - Kompleksowe leczenie udarów mózgu > 7 dni w oddz
 \section{Testy integracyjne}
 \label{sec:testyIntegracyjne}
 
-Dobrą praktyką zwiększającą jakość oprogramowania jest wysokie pokrycie kodu w testach. Zdecydowano się zatem napisać testy integracyjne klasy JGPService. Stworzono klasę ,,JGPServiceTest'', której zadaniem jest przetestowanie wszystkich głównych ścieżek algorytmu grupowania, gdzie testowana grupa wynikowa będzie pochodzić z konkretnego warunku kierunkowego. Zatem poszczególne testy są napisane w ten sposób, aby przetestować każdy z możliwych 26 warunków kierunkowcyh A-Z.
+Dobrą praktyką zwiększającą współczynnik jakości oprogramowania jest wysokie pokrycie kodu w testach. Zdecydowano się zatem napisać testy integracyjne klasy JGPService. Stworzono klasę ,,JGPServiceTest'', której zadaniem jest przetestowanie wszystkich głównych ścieżek algorytmu grupowania, gdzie testowana grupa wynikowa będzie pochodzić z konkretnego warunku kierunkowego. Zatem poszczególne testy są napisane w ten sposób, aby przetestować każdy z możliwych 26 warunków kierunkowcyh A-Z.
 Przykład przedstawiony w sekcji \ref{sec:praktyczneUzycieSystemu} został również zaimplementwoany w testach. Test ten sprawdza poprawne działanie systemu dla warunku kierunkowego E - ,,grupa zdefiniowana procedurą i rozpoznaniem zasadniczym; może mieć dodatkowe warunki (czas hospitalizacji, wiek)''.
 Dla testów integracyjnych przygotowana została testowa baza wiedzy. Przebieg testu jest następujący: ustalane są dane epizodu, uruchamiany jest mechanizm wnioskowania. Następnie sprawdzane są wyniki. Testowana jest poprawność wyników z listy zaakceptowanych kodów oraz z listy niezaakceptowanych kodów, wraz z testami zgodności powodów niezaakceptowania z wartościami oczekiwanymi.
 Kod przykładowego testu integracyjnego zawiera listing \ref{java_test}.

@@ -1,7 +1,7 @@
 \chapter{Opis stworzonego rozwiązania}
 \label{cha:rozwiazanie}
 
-Niniejszy rozdział zawiera opis systemu, który został stworzony na potrzeby tej pracy. W rozdziale~\ref{sec:zalozeniaProjektowe} zostały krótko przedstawione najważniejsze założenia, na których opiera się realizacja projektu. Następnie rozdział~\ref{sec:architekturaSystemu} opisuje architekturę stworzonego rozwiązania. Rozdział~\ref{sec:modelDanych} zawiera szczegółowy opis w jaki sposób został określony model danych. Sposób działania algorytmu grupowania został zaprezentowany w rozdziale~\ref{sec:gruperNFZ}. Spojrzenie na system z punktu widzenia systemu ekspertowego został zawarty w sekcji~\ref{sec:systemEkspertowy}. Rozdział~\ref{sec:optymalizacjaJGP} przedstawia realizację maszyny wyjąśniającej, która jest narzędziem umożliwiającym przeprowadzenie optymalizacji JGP w systemie.
+Niniejszy rozdział zawiera opis systemu, który został stworzony na potrzeby tej pracy. W rozdziale~\ref{sec:zalozeniaProjektowe} zostały krótko przedstawione najważniejsze założenia, na których opiera się realizacja projektu. Następnie rozdział~\ref{sec:architekturaSystemu} opisuje architekturę stworzonego rozwiązania. Rozdział~\ref{sec:modelDanych} zawiera szczegółowy opis w jaki sposób został określony model danych. Sposób działania algorytmu grupowania został zaprezentowany w rozdziale~\ref{sec:gruperNFZ}. Spojrzenie na system z punktu widzenia systemu ekspertowego zostało zawarte w sekcji~\ref{sec:systemEkspertowy}. Rozdział~\ref{sec:optymalizacjaJGP} przedstawia realizację maszyny wyjąśniającej, która jest narzędziem umożliwiającym przeprowadzenie optymalizacji JGP w systemie.
 
 %---------------------------------------------------------------------------
 %---------------------------------------------------------------------------
@@ -76,7 +76,7 @@ W aplikacji postanowiono wykorzystać kilka bazowych elementów architektury. Ot
  \item Service - Spring Service Beans - obiekty serwisowe wykonujące logikę biznesową.
 \end{itemize}
 
-Dla warstwy prezentacji wykorzystałem również wsparcie Spring. W 2008 roku została wydana przez społeczność Spring pierwsza wersja środowiska do tworzenia aplikacji desktopowych w JAVIE - SpringRCP - Rich Client Project. Niestety po wydaniu wersji 1.1 w 2009 roku projekt, który był na wyższym technologicznie poziomie niż NetBeans-RCP lub Eclipse-RCP z nieznanych powodów przestał być rozwijany\cite{spring_rcp_reference}. W roku 2011 jeden z głównych projektantów Spring-RCP postanowił go odświeżyć. W niecałe 6 miesięcy przepisano całe środowisko używając najnowszej metodologii pochodzącej z Spring 3. Nowa wersja projektu otrzymała nazwę Valkyrie-RCP\cite{valkyrie_reference}. W kolejnych iteracjach dodanych zostało wiele nowych funkcjonalności, w wyniku których po kolejnych 3 miesiącach powstało solidne narzędzie do tworzenia skomplikowanych aplikacji desktopowych w JAVIE. Jego podstawowe cechy to przejrzystość, prostota, stosowanie dobrych wzorców GUI.
+Dla warstwy prezentacji wykorzystano również wsparcie Spring. W 2008 roku została wydana przez społeczność Spring pierwsza wersja środowiska do tworzenia aplikacji desktopowych w JAVIE - SpringRCP - Rich Client Project. Niestety po wydaniu wersji 1.1 w 2009 roku projekt, który był na wyższym technologicznie poziomie niż NetBeans-RCP lub Eclipse-RCP z nieznanych powodów przestał być rozwijany\cite{spring_rcp_reference}. W roku 2011 jeden z głównych projektantów Spring-RCP postanowił go odświeżyć. W niecałe 6 miesięcy przepisano całe środowisko używając najnowszej metodologii pochodzącej z Spring 3. Nowa wersja projektu otrzymała nazwę Valkyrie-RCP\cite{valkyrie_reference}. W kolejnych iteracjach dodanych zostało wiele nowych funkcjonalności, w wyniku których po kolejnych 3 miesiącach powstało solidne narzędzie do tworzenia skomplikowanych aplikacji desktopowych w JAVIE. Jego podstawowe cechy to przejrzystość, prostota, stosowanie dobrych wzorców GUI.
 Podstawowe elementy pakietu Valyrie-RCP, które wykorzystano do stworzenia aplikacji to\cite{valkyrie_reference}:
 \begin{itemize}
  \item Widget - komponent GUI (tabelka, forma, widok, edytor-danych).
@@ -92,7 +92,7 @@ Rysunek \ref{img:rysunek_spring2} przedstawia architekturę systemu jaki został
 \label{img:rysunek_spring2}
 \end{figure}
 
-Należy zaznaczyć, że model architektury spełnia założenia architekty trójwarstwowej:
+Należy zaznaczyć, że przyjęty model architektury Spring spełnia założenia architekty trójwarstwowej(tabela \ref{tab:modules}).
 \begin{table}[h]
  \caption{Moduły Spring jako elementy architektury trójwarstwowej}
  \small\tt
@@ -109,6 +109,7 @@ Należy zaznaczyć, że model architektury spełnia założenia architekty trój
  Prezentacja & Valkyrie-RCP \\
  \hline
  \end{tabular}
+ \label{tab:modules}
 \end{table}
 
 %---------------------------------------------------------------------------
@@ -127,7 +128,7 @@ Jedna z definicji systemu ekspertowego definiuje go jako system charakteryzując
  \item Dynamiczna baza danych.
 \end{itemize}
 
-Bardzo istotnym elementem systemu ekspertowego jest oddzielenie wiedzy dziedzinowej od reszty systemu. Takie podejście umożliwia usprawnienie działania systemu bez ingerencji w kod programu. W~skrócie wyjaśnię elementy architektury systemu ekspertowego.
+Bardzo istotnym elementem systemu ekspertowego jest oddzielenie wiedzy dziedzinowej od reszty systemu. Takie podejście umożliwia usprawnienie działania systemu bez ingerencji w kod programu. Poniżej znajduje się wyjaśnienie poszczególnych elementów architektury systemu ekspertowego.
 
 \textbf{Interfejs użytkownika} umożliwia zadawanie pytań, udzielanie informacji systemowi oraz odbieranie od systemu odpowiedzi i wyjaśnień.
 \textbf{Edytor bazy wiedzy} pozwala na modyfikację wiedzy zawartej w systemie, umożliwiając tym samym jego rozbudowę.
@@ -165,7 +166,7 @@ W tym podrozdziale znajduje się opis w jaki sposób stworzony został model dan
 %---------------------------------------------------------------------------
 \subsection{Dane wejściowe NFZ}
 \label{sec:daneWejscioweNFZ}
-Jedynym źródłem danych wejściowych dla aplikacji były rozporządzenia NFZ opublikowane na oficjalnej witrynie internetowej Funduszu\cite{rozporzadzenia_nfz}. Fundusz opublikował ponad 30 wersji pliku parametryzującego w formacie MS-Excel. W pliku tym znajdują się arkusze kalkulacyjne, w których dane zostały zapisane w postaci tabel. Każda następna wersja pliku parametryzującego począwszy od wersji pierwszej dostarcza zaktualizowane dane(np. nowe kody rozponań, procedur). Z kolejnymi wydaniami pliku poprawione zostały drobne błędy związane z formatem zapisu danych. Aby zobrazować sposób w jaki dane zmieniały się przeanalizowano zapis w kolumnie ranga procedury. Ranga większa niż 2 była zapisywana początkowo jako napis '>2', zmieniono ten zapis na wartość '3'. Ze względu na fakt, iż wiele poprawiono wraz z wydaniami kolejnych wersji pliku parametryzującego postanowiono pracować na wersji 25, która jest jedną z najnowszych. 
+Jedynym źródłem danych wejściowych dla aplikacji były rozporządzenia NFZ opublikowane na oficjalnej witrynie internetowej Funduszu\cite{rozporzadzenia_nfz}. Fundusz opublikował ponad 30 wersji pliku parametryzującego w formacie MS-Excel. W pliku tym znajdują się arkusze kalkulacyjne, w których dane zostały zapisane w postaci tabel. Każda następna wersja pliku parametryzującego począwszy od wersji pierwszej dostarcza zaktualizowane dane(np. nowe kody rozponań, procedur). Z kolejnymi wydaniami pliku poprawione zostały drobne błędy związane z formatem zapisu danych. Aby zobrazować sposób w jaki dane zmieniały się, przeanalizowano zapis w kolumnie ranga procedury. Ranga większa niż 2 była zapisywana początkowo jako napis '>2', zmieniono ten zapis na wartość '3'. Ze względu na fakt, iż wiele poprawiono wraz z wydaniami kolejnych wersji pliku parametryzującego postanowiono pracować na wersji 25, która jest jedną z najnowszych. 
 
 Kolejne wersje pliku z danymi nie wnosiły żadnych zmian do modelu danych, który pozostawał dalej źle zdefiniowany. Dla przykładu arkusz o nazwie 'JPG' zawiera listę kodów JGP, gdzie jako wartości kolumn przyjęte zostały wartości oddziałów, a na przecięciu wiersza(kodu, kodu produktu, nazwy JGP) i kolumny(oddział) postawiony został krzyżyk(znak 'X'). Inny przykład źle zdefiniowanego modelu danych to arkusz, w którym zapisane są wartości punktowe dla kodów JGP. W arkuszu tym zostały przepisane jeszcze raz wszystkie kody JGP, kody produktu i nazwy grup, a obok podane zostały wartości punktowe. Jeszcze jednym przykładem nieprawidłowego zapisu danych jest zdefiniowanie w arkuszu 'procedury' redundantnych danych. Kody i nazwy procedur zostały zwielekrotnione, chociaż różniły się one jedynie kolumną 'typ listy'.
 
@@ -214,7 +215,7 @@ Ważną decyzją projektową jest wybór konkretnego silnika bazy danych. Szukan
  \label{table_h2}
 \end{table}
 
-H2 to silnik bazodanowy spełniający postawione wymagania. Jest to rozwiązanie typu ,,open source'', którego autorem jest Thomas Mueller. Zaletą silnika H2 jest łatwość administracji bazy z poziomu przeglądarki(H2-Console). Implementacja JDBC-API pozwala na łatwą konfigurację w aplikacji. Brak potrzeby instalowania serwera bazy danych w systemie operacyjnym jest kolejnym atutem tego rozwiązania. Domyślnie silnik posiada funkcje CSVREAD i CSVWRITE, które pozwalają na import i~eksport danych z poziomu języka SQL. Dokumentacja do silnika jest przejrzysta oraz aktualizowana na bieżąco\cite{h2_reference}.
+H2 to silnik bazodanowy spełniający postawione wymagania. Jest to rozwiązanie typu \mbox{,,open source''}, którego autorem jest Thomas Mueller. Zaletą silnika H2 jest łatwość administracji bazy z poziomu przeglądarki(H2-Console). Implementacja JDBC-API pozwala na łatwą konfigurację w aplikacji. Brak potrzeby instalowania serwera bazy danych w systemie operacyjnym jest kolejnym atutem tego rozwiązania. Domyślnie silnik posiada funkcje CSVREAD i CSVWRITE, które pozwalają na import i~eksport danych z poziomu języka SQL. Dokumentacja do silnika jest przejrzysta oraz aktualizowana na bieżąco\cite{h2_reference}.
 
 %---------------------------------------------------------------------------
 \subsection{Normalizacja danych}
@@ -382,8 +383,8 @@ Wynikiem działania algorytmu ,,Grupera'' jest grupa JGP, która spełnia okreś
 \label{sec:procesWyznaczaniaGrupySystemuJGP}
 Proces wyznaczania grupy można podzielić na dwie główne gałęzie. Pierwsza gałąź(tzw. ścieżka 'ICD-9') wyznacza zbiór zakwalifikowanych grup wraz z warunkami do sprawdzenia na podstawie procedur znaczących. Druga ścieżka 'ICD-10' wyznacza analogicznie zbiór zakwalifikowanych grup, ale na podstawie rozpoznań zasadniczych. Ścieżka dla rozpoznań jest wybierana przez program jeśli spełniony jest jeden z następujących warunków:
 \begin{itemize}\itemsep2pt
-\item w danych epizodu nie występuje żadna procedura
-\item ranga procedury <= 2 i czas hospitalizacji > 1 dnia
+\item w danych epizodu nie występuje żadna procedura,
+\item ranga procedury <= 2 i czas hospitalizacji > 1 dnia.
 \end{itemize}
 Jeśli wymienione wyżej warunki nie są spełnione wybierana jest ścieżka ICD-9\cite{algorytm_grupera}.
 
@@ -436,10 +437,10 @@ Wyznacznikiem kosztów leczenia pacjenta nie może być tylko wartość punktowa
 \label{img:diagram_activity_maday}
 \end{figure}
 
-Jeśli wyznaczona grupa JGP dla epizodu nie kwalifikuje się do zmiany punktowej, pozostawiamy wartość wyznaczoną przez algorytm bez zmian. Natomiast jeśli zachodzi potrzeba zmiany wartości punktowej stosujemy następujący algorytm dla 2 przypadków:
+Jeśli wyznaczona grupa JGP dla epizodu nie kwalifikuje się do zmiany punktowej, pozostawia się wartość wyznaczoną przez algorytm bez zmian. Natomiast jeśli zachodzi potrzeba zmiany wartości punktowej należy zastosować następujący algorytm dla 2 przypadków:
 \begin{itemize}
-\item Jeśli czas hospitalizacji jest mniejszy od 2 dni ustalamy nową wartość punktową ustalaną na podstawie wartości 'poniżej 2 dni' z obiektu klasy JGPHospital. Należy zaznaczyć, że z powyższego mechanizmu są wyłączone zgony, świadczenia rozliczane w ramach umów z zakresu ,,zespół opieki dziennej'' oraz ,,zespół chirurgii jednego dnia''.
-\item Jeśli czas trwania episodu jest większy lub równy 2 dni i jest większy od limitu ustalonego na podstawie wartości ,,dni'' z obiektu klasy JGPHospital. To wartość JGP jest ustalana poprzez powiększenie aktualnej wartości JGP o wynik iloczynu dni powyżej limitu z wartością punktową określoną przez wartość "powyżej".
+\item Jeśli czas hospitalizacji jest mniejszy od 2 dni przyjmuje się nową wartość punktową ustalaną na podstawie wartości 'poniżej 2 dni'(pobranej z~obiektu klasy JGPHospital). Należy zaznaczyć, że z~powyższego mechanizmu są wyłączone zgony, świadczenia rozliczane w ramach umów z~zakresu ,,zespół opieki dziennej'' oraz ,,zespół chirurgii jednego dnia''.
+\item Jeśli czas trwania episodu jest większy lub równy 2 dni i jest większy od limitu ustalonego na podstawie wartości ,,dni'' z obiektu klasy JGPHospital, to wartość JGP jest ustalana poprzez powiększenie aktualnej wartości JGP o wynik iloczynu dni powyżej limitu z wartością punktową określoną przez wartość "powyżej".
 
 NOWA WARTOŚĆ PUNKTOWA = STARA WARTOŚĆ + RÓŻNICA DNI PONAD LIMIT * WARTOŚĆ Z KOLUMNY ,,POWYŻEJ LIMITU''
 \end{itemize} 
@@ -546,7 +547,7 @@ protected boolean checkHospitalLimit(Stay stay, HospitalLimit hospLimit, List<Re
 
 Metoda \textit{,,checkHospitalLimit''} realizuje dopisanie powodu niezaakcpetowania grupy JGP w przypadku, gdy test sprawdzający czas hospitalizacji epizodu będzie miał wynik negatywny. Przykładem zapisu powodu niezaakceptowania jest przypadek, gdy czas hospitalizacji dla grupy JGP musi być większy niż 7 dni, a zdefiniowany czas leczenia jest równy 5 dni.
 
-Takie podejście pozwala na stworzenie funkocjonalności, która będzie podpowiadać lekarzowi jakie może uzyskać grupy JGP z większą wartości punktową, czyli jak zmaksymalizować koszty leczenia pacjenta. Program podpowiadałby również jakie konkretnie warunki musi spełnić hospitalizacja, aby zaliczyć ją do droższej grupy (wybranej przez lekarza).
+Takie podejście pozwala na stworzenie funkcjonalności, która będzie podpowiadać lekarzowi jakie może uzyskać grupy JGP z większą wartości punktową, czyli jak zmaksymalizować koszty leczenia pacjenta. Program podpowiadałby również jakie konkretnie warunki musi spełnić hospitalizacja, aby zaliczyć ją do droższej grupy (wybranej przez lekarza).
 
 Zaimplementowanie mechanizmu ,,Reasons - powody niezaakceptowania do grupy'' odpowiada w systemie ekspertowym modułowi objaśniająco-wyjąśniającemu(ang. Explanation Facility). Jest to część systemu odpowiedzialna za wyprowadzanie na zewnątrz wniosków systemu. Moduł ten daje użytkownikowi radę, sugestię, ale nie podejmuje decyzji\cite{martyniuk_ekspertowe}. Należy zwrócić uwagę na fakt, iż zapis historii niespełnionych warunków pozwala odtworzyć część ścieżki poszukiwania rozwiązania.
 
@@ -559,11 +560,10 @@ Przeanalizowano konkurencyjne rozwiązania na rynku. Najpopularniejsze aplikacje
 
 \textbf{MP-System} - złożony system do kompleksowej obsługi szpitali. Już w trakcie instalacji wersji demo pojawiły się błędy dotyczące starej wersji serwera MS-SQL(dostarczanej wraz z aplikacją). Niestety nawet po kilku-godzinnych trudach nie udało się zainstalować i uruchomić aplikacji. Skomplikowany proces instalacji uniemożliwił zainstalowanie systemu Medycyny Praktycznej.
 
-\textbf{Internetowy OPTYMALIZATOR JGP} CompuGroup Medical Polska Lublin - wersja demo dostępna pod adresem http://jgp.uhc.com.pl/jgpgrouper(dostęp 12.06.2012).
-Aplikacja umożliwia przeporawdzenie pięciu darmowych grupowań dziennie. Powyżej tej liczby jest aplikacja jest płatna. Według statystyk zamieszonych na stronie przy użyciu aplikacji przeprowadzono 4mln grupowań dla kilkuset szpitali.%Jest to rozwiązanie wysokiej jakości, ale płatne.
-System ten posiada również moduł do optymalizacji, z którego korzysta 58\% użytkowników(pozostałe 42\% korzysta z samego algorytmu grupowania).
+\textbf{Internetowy OPTYMALIZATOR JGP} CompuGroup Medical Polska Lublin - wersja demo dostępna pod adresem \underline{\texttt{http://jgp.uhc.com.pl/jgpgrouper}}(dostęp 12.06.2012).
+Aplikacja umożliwia przeprowadzenie pięciu darmowych grupowań dziennie. Powyżej tej liczby aplikacja jest płatna. Według statystyk zamieszczonych na stronie przy użyciu aplikacji przeprowadzono 4mln grupowań dla kilkuset szpitali. System ten posiada również moduł do optymalizacji, z którego korzysta 58\% użytkowników(pozostałe 42\% korzysta z samego algorytmu grupowania).
 
-\textbf{SMARTGRUPER} - http://smartgruper.pl(dostęp 12.06.2012). Jest to komercyjne rozwiązanie, nie posiadające wersji demo. Z opisu na stronie projektu wynika, że jest to oprogramowanie, które posiada wiele funkcjonalności poza standardowym ,,Gruperem'', na przykład moduł optymalizacji JGP, zapisywanie grupowań. Dostępne są 3 wersje produktu:
+\textbf{SMARTGRUPER} - \underline{\texttt{http://smartgruper.pl}}(dostęp 12.06.2012). Jest to komercyjne rozwiązanie, nie posiadające wersji demo. Z opisu na stronie projektu wynika, że jest to oprogramowanie, które posiada wiele funkcjonalności poza standardowym ,,Gruperem'', na przykład moduł optymalizacji JGP, zapisywanie grupowań. Dostępne są 3 wersje produktu:
 \begin{itemize}
  \item Wersja On-line. Dostęp indywidualny oraz dla małych placówek medycznych. Dostęp do systemu Smart Gruper on-line.
  \item Wersja Professional. Rozwiązanie dla szpitala bez integracji. Instalacja na serwerze w szpitalu.
@@ -572,8 +572,9 @@ System ten posiada również moduł do optymalizacji, z którego korzysta 58\% u
 
 Każdy z powyżej wymienionych systemów jest rozwiązaniem komercyjnym. System stworzony w ramach tej pracy jest aktualnie jedynym rozwiązaniem typu ,,open source'' na rynku oraz jedynym, które wnosi możliwości jakie daje profesjonalny system ekspertowy.
 
-Przyszłością systemów do rozliczania kosztów leczenia pacjenta jest powstający system \mbox{Euro-DRG~7}, który docelowo stanowiłby jednolity system JGP dla całej Unii Europejskiej(http://www.eurodrg.eu).
+Przyszłością systemów do rozliczania kosztów leczenia pacjenta jest powstający system \mbox{Euro-DRG~7}, który docelowo stanowiłby jednolity system JGP dla całej Unii Europejskiej(\underline{\texttt{http://www.eurodrg.eu}} - dostęp 14.06.2012).
 NFZ stał się partnerem systemu Euro-DRG i aktywnie uczestniczy w jego tworzeniu. Być może stworzenie platformy systemu ekspertowego dla systemu Euro-DRG byłoby dobrym kierunkiem rozwoju tego typu rozwiązania. Jako projekt ,,open source'' posiadałby on swoich aktywnych uczestników nie tylko w Polsce, ale w całej Unii Europejskiej. Niestety aktualnie nie określona została jeszcze specyfikacja systemu. 
+
 \begin{comment}
 Problematyczne jest podejście wszystkich firm startujących w przetargach, ponieważ każda z nich chce mieć monopol na cały obszar zastosowania systemu. Jest to w mojej opinii poważna przeszkoda w tworzeniu najlepszej jakości oprogramowania, ponieważ w jej wyniku powstają systemy skomplikowane, ktorych używa się tylko dlatego, że nie ma innej alternatywy. Podobnie jak system operacyjny Linux jest ciągle ,,konkurencją'' dla systemu Winodws, tak samo oprogramowanie openSource w każdej dziedzinie będzie uczestniczyć w nieustającym wyścigu z oprogramowaniem komercyjnym. 
 \end{comment}
@@ -601,11 +602,11 @@ Tabela \ref{tab:tools} zawiera listę narzędzi wykorzystanych do stworzenia sys
  \hline
  jgoodies-2.2.0 & GUI narzędzia pomocnicze \\
  \hline
- jodatime-2.1 & Najlepsza biblioteka do wykonywania obliczeń datowo/czasowych \\
+ jodatime-2.1 & Biblioteka do wykonywania obliczeń datowo/czasowych \\
  \hline
  spring-framework-3.0.5 & Spring framework z komponentami Core, JDBC, Security, Beans, Aspects, ORM, Test, TX \\
  \hline
- valkyriercp-1.0 & Biblioteka pozwalająca na wysokopozimowe programowanie GUI \\
+ valkyriercp-1.0 & Biblioteka pozwalająca na wysokopoziomowe programowanie GUI \\
  \hline
  \end{tabular}
  \label{tab:tools}
@@ -616,19 +617,19 @@ Tabela \ref{tab:tools} zawiera listę narzędzi wykorzystanych do stworzenia sys
 \section{Jakość oprogramowania}
 \label{sec:jakoscOprogramowania}
 
-Zestawienie wartości liczbowych charakteryzujące oprogramowanie jest nazywane metryką oprogramowania. Dla projektu wykonanego w ramach pracy obliczyłem następujące wartości metryk chrakteryzujące jego wielkość:
+Zestawienie wartości liczbowych charakteryzujące oprogramowanie jest nazywane metryką oprogramowania. Dla projektu wykonanego w ramach pracy obliczono następujące wartości metryk chrakteryzujące jego wielkość:
 \begin{itemize}
- \item 7009 LOC(Lines of code) - ilość linijek kodu źródłowego
+ \item 7009 LOC(Lines of code) - ilość linii kodu źródłowego.
  \item 191 C(Classes) - ilość zdefiniowanych klas JAVY.
 \end{itemize}
 
-Następne zestawienie metryk charakteryzujące jakość napisanego kodu to MOOD - Metrics for Object-Oriented Design. Metryki te służą do wyrażenia w procentach cech charakteryzujących dla programowania obiektowego:
+Następne zestawienie metryk charakteryzujące jakość napisanego kodu to MOOD(ang. Metrics for Object-Oriented Design). Metryki te służą do wyrażenia w procentach cech charakteryzujących dla programowania obiektowego:
 \begin{itemize}
- \item 78,26\% AHF - Attribute Hiding Factor - hermetyzacja atrybutów
- \item 23,55\% MHF - Method Hiding Factor - hermetyzacja metod
- \item 71,49\% AIF - Attribute Inheritance Factor - dziedziczenie atrybutów
- \item 32,29\% MIF - Method Inheritance Factor - dziedziczenie metod
- \item 5,47\% CF - Coupling Factor - przekazywanie komunikatów 
- \item 57,21\% PF - polimorfizm
+ \item 78,26\% AHF - Attribute Hiding Factor - hermetyzacja atrybutów.
+ \item 23,55\% MHF - Method Hiding Factor - hermetyzacja metod.
+ \item 71,49\% AIF - Attribute Inheritance Factor - dziedziczenie atrybutów.
+ \item 32,29\% MIF - Method Inheritance Factor - dziedziczenie metod.
+ \item 5,47\% CF - Coupling Factor - przekazywanie komunikatów.
+ \item 57,21\% PF - polimorfizm.
 \end{itemize}
 

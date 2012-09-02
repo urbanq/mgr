@@ -220,4 +220,6 @@ University of Science and Technology in Krakow}}}
 \renewcommand{\cftchappagefont}{\normalsize}
 
 \renewcommand{\fnum@figure}[1]{\textbf{Rys.~\thefigure. }}
-\renewcommand{\fnum@table}[1]{Tab.~\thetable. } % for tables if re
+\renewcommand{\fnum@table}[1]{Tab.~\thetable. } % for tables
+
+\renewcommand{\ttdefault}{aett}
